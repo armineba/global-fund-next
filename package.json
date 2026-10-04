@@ -1,0 +1,33 @@
+{
+  "name": "global-fund-next",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n server,web \"npm run dev -w @global-fund/server\" \"npm run dev -w @global-fund/web\"",
+    "build": "npm run typecheck && npm run build -w @global-fund/web",
+    "typecheck": "tsc --noEmit",
+    "start": "npm run start -w @global-fund/server",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "simulate": "tsx scripts/simulate.ts",
+    "db:migrate": "npm run db:migrate -w @global-fund/server"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "vitest": "5.0.3"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@global-fund/web", "version": "0.1.0", "private": true, "type": "module",
+  "scripts": { "dev": "vite --host 0.0.0.0 --port 5174", "build": "vite build" },
+  "dependencies": {
+    "@global-fund/shared": "*", "@global-fund/ui": "*", "@pixi/react": "8.0.5", "pixi.js": "8.22.0",
+    "react": "19.3.0", "react-dom": "19.3.0", "zustand": "5.0.15", "echarts": "6.1.0", "socket.io-client": "^4.8.1", "lucide-react": "^0.468.0"
+  },
+  "devDependencies": { "vite": "8.3.2", "@vitejs/plugin-react": "^6.0.0", "tailwindcss": "4.3.3", "@tailwindcss/vite": "4.3.3" }
+}

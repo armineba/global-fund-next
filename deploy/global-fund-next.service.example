@@ -1,0 +1,25 @@
+[Unit]
+Description=Global Fund Next
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=global-fund-next
+Group=global-fund-next
+WorkingDirectory=/opt/global-fund-next/current
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3101
+EnvironmentFile=/etc/global-fund-next/global-fund-next.env
+ExecStartPre=/usr/bin/npm run db:migrate
+ExecStart=/usr/bin/npm run start
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/global-fund-next/shared/runtime
+
+[Install]
+WantedBy=multi-user.target

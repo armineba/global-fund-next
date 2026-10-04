@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: global_fund_next
+      POSTGRES_USER: global_fund_next
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Définissez POSTGRES_PASSWORD dans le fichier .env}
+    volumes:
+      - global_fund_next_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U global_fund_next -d global_fund_next"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  app:
+    build: .
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3101
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:3101}
+      DATABASE_URL: postgres://global_fund_next:${POSTGRES_PASSWORD:?Définissez POSTGRES_PASSWORD dans le fichier .env}@postgres:5432/global_fund_next
+    ports:
+      - "127.0.0.1:3101:3101"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  global_fund_next_pgdata:
