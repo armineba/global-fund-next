@@ -1,0 +1,3309 @@
+{
+  "scenario": "progression",
+  "outputLabel": "progression",
+  "baseValuesPath": "packages/game-engine/legacy/data/gameData.json",
+  "seed": 20261006,
+  "historyRetention": 2,
+  "capThresholdsUSD": {
+    "medium": 40000000000,
+    "large": 200000000000
+  },
+  "catalogPath": "packages/game-engine/legacy/data/gameData.json",
+  "catalogHash": "4e0c64e7a833593037b626f1fe69d1207f318d46c528b154c4fd3876fbb4eeaf",
+  "researchHash": "b0b176107f453e2df9ab5fd03a645915baffeaf15fe9f915bd2245238361ac64",
+  "bands": {
+    "small": [
+      25,
+      100
+    ],
+    "medium": [
+      180,
+      450
+    ],
+    "large": [
+      550,
+      1500
+    ],
+    "yields": {
+      "small": 0.06,
+      "medium": 0.07,
+      "large": 0.08
+    }
+  },
+  "requestedGames": 20,
+  "completedGames": 20,
+  "durationSeconds": 176.96227488299996,
+  "commands": 14294,
+  "failures": [],
+  "classificationCoverage": 91,
+  "stages": {
+    "beginning": {
+      "purchases": {
+        "small": 80,
+        "medium": 64,
+        "large": 0,
+        "unknown": 0
+      },
+      "shares": {
+        "small": 89,
+        "medium": 84,
+        "large": 0,
+        "unknown": 0
+      }
+    },
+    "middle": {
+      "purchases": {
+        "small": 103,
+        "medium": 23,
+        "large": 0,
+        "unknown": 0
+      },
+      "shares": {
+        "small": 123,
+        "medium": 24,
+        "large": 0,
+        "unknown": 0
+      }
+    },
+    "end": {
+      "purchases": {
+        "small": 49,
+        "medium": 14,
+        "large": 1,
+        "unknown": 0
+      },
+      "shares": {
+        "small": 61,
+        "medium": 17,
+        "large": 1,
+        "unknown": 0
+      }
+    }
+  },
+  "checkpoints": {
+    "10": {
+      "games": 20,
+      "averageNAV": 82.74533333333332,
+      "averageCash": 36.04050833333334,
+      "heldCompaniesPerFund": {
+        "small": 0.7666666666666666,
+        "medium": 0.75,
+        "large": 0,
+        "unknown": 0
+      },
+      "sharesPerFund": {
+        "small": 1.0833333333333333,
+        "medium": 0.9333333333333332,
+        "large": 0,
+        "unknown": 0
+      },
+      "controlsPerGame": 0,
+      "monopoliesPerGame": 0
+    },
+    "35": {
+      "games": 18,
+      "averageNAV": 65.16055555555555,
+      "averageCash": 22.591787037037037,
+      "heldCompaniesPerFund": {
+        "small": 0.6666666666666666,
+        "medium": 0.3888888888888889,
+        "large": 0,
+        "unknown": 0
+      },
+      "sharesPerFund": {
+        "small": 1.3518518518518519,
+        "medium": 0.4444444444444444,
+        "large": 0,
+        "unknown": 0
+      },
+      "controlsPerGame": 0.1111111111111111,
+      "monopoliesPerGame": 0.05555555555555555
+    },
+    "70": {
+      "games": 9,
+      "averageNAV": 81.66629629629628,
+      "averageCash": 18.43268518518518,
+      "heldCompaniesPerFund": {
+        "small": 0.7037037037037037,
+        "medium": 0.4444444444444444,
+        "large": 0,
+        "unknown": 0
+      },
+      "sharesPerFund": {
+        "small": 1.962962962962963,
+        "medium": 0.6666666666666666,
+        "large": 0,
+        "unknown": 0
+      },
+      "controlsPerGame": 0.6666666666666666,
+      "monopoliesPerGame": 0
+    },
+    "opening": {
+      "games": 20,
+      "averageNAV": 100,
+      "averageCash": 100,
+      "heldCompaniesPerFund": {
+        "small": 0,
+        "medium": 0,
+        "large": 0,
+        "unknown": 0
+      },
+      "sharesPerFund": {
+        "small": 0,
+        "medium": 0,
+        "large": 0,
+        "unknown": 0
+      },
+      "controlsPerGame": 0,
+      "monopoliesPerGame": 0
+    },
+    "final": {
+      "games": 20,
+      "averageNAV": 53.313,
+      "averageCash": 16.98851666666667,
+      "heldCompaniesPerFund": {
+        "small": 0.4666666666666666,
+        "medium": 0.18333333333333335,
+        "large": 0.016666666666666666,
+        "unknown": 0
+      },
+      "sharesPerFund": {
+        "small": 1.3833333333333335,
+        "medium": 0.21666666666666667,
+        "large": 0.016666666666666666,
+        "unknown": 0
+      },
+      "controlsPerGame": 0.45,
+      "monopoliesPerGame": 0.2
+    }
+  },
+  "summary": {
+    "averageCycles": 69,
+    "averageGameSeconds": 8.845813362849999,
+    "averageNAV": 53.313,
+    "averageCash": 16.98851666666667,
+    "medianNAV": 0,
+    "averageSurvivorNAV": 122.91461538461539,
+    "medianSurvivorNAV": 82.88,
+    "averageWinnerNAV": 140.264,
+    "sectorIncomePerFund": 49.58466666666665,
+    "sectorBankIncomePerFund": 19.708500000000004,
+    "performanceFlowsPerFund": -26.333333333333336,
+    "performanceInjectionsPerFund": 22.666666666666664,
+    "performanceWithdrawalsPerFund": 49.00000000000001,
+    "marketEndsWithAffordableElsewherePerGame": 40.85,
+    "dividendsPerFund": 1.1666666666666665,
+    "purchasesPerFund": 5.566666666666665,
+    "purchasedSharesPerFund": 6.65,
+    "bankruptciesPerGame": 169.45,
+    "insolventFunds": 34,
+    "gamesWithLargePurchase": 1,
+    "gamesWithLargePurchaseByCycle10": 0,
+    "minimumFirstLargeCycle": 92,
+    "averageFirstLargeCycle": 92,
+    "peakControlsPerGame": 0.75,
+    "peakMonopoliesPerGame": 0.25,
+    "maximumNAV": 559.93,
+    "p95NAV": 240.81499999999986,
+    "p95SurvivorNAV": 301.53749999999997,
+    "medianFirstLargeCycle": 92.0
+  },
+  "records": [
+    {
+      "game": 1,
+      "seed": 20261006,
+      "durationSeconds": 8.392660833,
+      "purchases": 18,
+      "purchasedShares": 19,
+      "sectorIncome": 151.77,
+      "bankIncome": 54.099999999999994,
+      "performanceFlows": -20,
+      "performanceInjections": 80,
+      "performanceWithdrawals": 100,
+      "marketEndsWithAffordableElsewhere": 41,
+      "dividends": 4,
+      "incomeByPlayer": {
+        "p1": 98.43000000000002,
+        "p2": 28.94,
+        "p3": 24.400000000000002
+      },
+      "bankruptcies": 132,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 1,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 128.31666666666666,
+          "averageCash": 36.803333333333335,
+          "held": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 4,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 102.88,
+            "medium": 171.66,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 90.53666666666668,
+          "averageCash": 25.962333333333337,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 111.78,
+            "medium": 81.94,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 57,
+        "averageNAV": 97.33999999999999,
+        "averageCash": 18.662166666666675,
+        "held": {
+          "small": 2,
+          "medium": 2,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 9,
+          "medium": 2,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 167.75,
+          "medium": 68.28,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 1,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 292.02,
+          "cash": 55.98650000000002,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 2,
+      "seed": 20261007,
+      "durationSeconds": 6.95083122,
+      "purchases": 13,
+      "purchasedShares": 15,
+      "sectorIncome": 145.07999999999998,
+      "bankIncome": 60.89,
+      "performanceFlows": -40,
+      "performanceInjections": 40,
+      "performanceWithdrawals": 80,
+      "marketEndsWithAffordableElsewhere": 18,
+      "dividends": 7,
+      "incomeByPlayer": {
+        "p1": 110.14999999999999,
+        "p2": 27.4,
+        "p3": 7.53
+      },
+      "bankruptcies": 151,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 1,
+      "peakMonopolies": 1,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 70.18,
+          "averageCash": 30.909166666666664,
+          "held": {
+            "small": 4,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 7,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 81.49000000000001,
+            "medium": 36.32,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 80.43333333333334,
+          "averageCash": 6.12683333333334,
+          "held": {
+            "small": 2,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 6,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 179.34000000000003,
+            "medium": 43.58,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 1,
+          "monopolies": 1
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 45,
+        "averageNAV": 44.346666666666664,
+        "averageCash": 14.456666666666672,
+        "held": {
+          "small": 2,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 6,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 89.67000000000002,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 1,
+        "monopolies": 1
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 133.04,
+          "cash": 43.37000000000002,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 3,
+      "seed": 20261008,
+      "durationSeconds": 13.304823725999999,
+      "purchases": 31,
+      "purchasedShares": 38,
+      "sectorIncome": 213.93999999999988,
+      "bankIncome": 103.89000000000001,
+      "performanceFlows": -40,
+      "performanceInjections": 120,
+      "performanceWithdrawals": 160,
+      "marketEndsWithAffordableElsewhere": 49,
+      "dividends": 4,
+      "incomeByPlayer": {
+        "p1": 46.04000000000003,
+        "p2": 4.04,
+        "p3": 163.85999999999993
+      },
+      "bankruptcies": 215,
+      "insolventFunds": 1,
+      "firstLargePurchase": 92,
+      "peakControls": 2,
+      "peakMonopolies": 1,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 80.45,
+          "averageCash": 34.722166666666666,
+          "held": {
+            "small": 4,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 6,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 61.84,
+            "medium": 75.34,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 64.93333333333334,
+          "averageCash": 20.25916666666666,
+          "held": {
+            "small": 4,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 9,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 112.83000000000001,
+            "medium": 21.19,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 1,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 69.36666666666667,
+          "averageCash": 20.92249999999999,
+          "held": {
+            "small": 4,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 9,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 90.11000000000001,
+            "medium": 55.220000000000006,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 1,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 101,
+        "averageNAV": 113.3,
+        "averageCash": 18.243833333333335,
+        "held": {
+          "small": 1,
+          "medium": 0,
+          "large": 1,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 2,
+          "medium": 0,
+          "large": 1,
+          "unknown": 0
+        },
+        "value": {
+          "small": 20.28,
+          "medium": 0,
+          "large": 264.89,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 35.19,
+          "cash": 35.191500000000005,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 304.71,
+          "cash": 19.54,
+          "solvent": true
+        }
+      ]
+    },
+    {
+      "game": 4,
+      "seed": 20261009,
+      "durationSeconds": 4.665215262999999,
+      "purchases": 10,
+      "purchasedShares": 12,
+      "sectorIncome": 50.35,
+      "bankIncome": 18.68,
+      "performanceFlows": -100,
+      "performanceInjections": 0,
+      "performanceWithdrawals": 100,
+      "marketEndsWithAffordableElsewhere": 19,
+      "dividends": 3,
+      "incomeByPlayer": {
+        "p1": 34.89999999999999,
+        "p2": 10.17,
+        "p3": 5.28
+      },
+      "bankruptcies": 125,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 74.76,
+          "averageCash": 38.166666666666664,
+          "held": {
+            "small": 1,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 1,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 14.96,
+            "medium": 94.82,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 29,
+        "averageNAV": 27.7,
+        "averageCash": 13.203333333333333,
+        "held": {
+          "small": 2,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 2,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 14.91,
+          "medium": 28.58,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 83.1,
+          "cash": 39.61,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 5,
+      "seed": 20261010,
+      "durationSeconds": 8.830286682999999,
+      "purchases": 15,
+      "purchasedShares": 16,
+      "sectorIncome": 89.93000000000002,
+      "bankIncome": 33.019999999999996,
+      "performanceFlows": -120,
+      "performanceInjections": 40,
+      "performanceWithdrawals": 160,
+      "marketEndsWithAffordableElsewhere": 31,
+      "dividends": 0,
+      "incomeByPlayer": {
+        "p1": 30.469999999999995,
+        "p2": 13.44,
+        "p3": 46.019999999999996
+      },
+      "bankruptcies": 137,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 108.58,
+          "averageCash": 32.053333333333335,
+          "held": {
+            "small": 2,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 2,
+            "medium": 5,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 47.03,
+            "medium": 182.55,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 38.32333333333333,
+          "averageCash": 33.33833333333333,
+          "held": {
+            "small": 1,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 1,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 14.96,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 58,
+        "averageNAV": 19.56,
+        "averageCash": 19.55933333333333,
+        "held": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 58.68,
+          "cash": 58.67799999999999,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 6,
+      "seed": 20261011,
+      "durationSeconds": 7.459054881999997,
+      "purchases": 10,
+      "purchasedShares": 11,
+      "sectorIncome": 64.13,
+      "bankIncome": 18.709999999999997,
+      "performanceFlows": -100,
+      "performanceInjections": 20,
+      "performanceWithdrawals": 120,
+      "marketEndsWithAffordableElsewhere": 25,
+      "dividends": 2,
+      "incomeByPlayer": {
+        "p1": 43.58,
+        "p2": 15.749999999999998,
+        "p3": 4.8
+      },
+      "bankruptcies": 114,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 86.02,
+          "averageCash": 36.038,
+          "held": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 37.81,
+            "medium": 112.14,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 37.3,
+          "averageCash": 13.191166666666673,
+          "held": {
+            "small": 2,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 44.7,
+            "medium": 27.63,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 40,
+        "averageNAV": 23.653333333333332,
+        "averageCash": 11.60333333333334,
+        "held": {
+          "small": 2,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 3,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 22.34,
+          "medium": 13.81,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 70.96,
+          "cash": 34.810000000000024,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 7,
+      "seed": 20261012,
+      "durationSeconds": 7.313983370999995,
+      "purchases": 14,
+      "purchasedShares": 16,
+      "sectorIncome": 94.08000000000001,
+      "bankIncome": 48.80000000000001,
+      "performanceFlows": -120,
+      "performanceInjections": 20,
+      "performanceWithdrawals": 140,
+      "marketEndsWithAffordableElsewhere": 33,
+      "dividends": 5,
+      "incomeByPlayer": {
+        "p1": 36.65,
+        "p2": 20.600000000000005,
+        "p3": 36.83
+      },
+      "bankruptcies": 188,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 87.92999999999999,
+          "averageCash": 43.56,
+          "held": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 29.9,
+            "medium": 103.21000000000001,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 41.803333333333335,
+          "averageCash": 23.07666666666668,
+          "held": {
+            "small": 0,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 56.18,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 47,
+        "averageNAV": 28.893333333333334,
+        "averageCash": 21.40383333333334,
+        "held": {
+          "small": 0,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 0,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 0,
+          "medium": 22.47,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 83.68,
+          "cash": 61.211500000000015,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 3,
+          "cash": 3,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 8,
+      "seed": 20261013,
+      "durationSeconds": 10.963523639,
+      "purchases": 20,
+      "purchasedShares": 23,
+      "sectorIncome": 60.84000000000002,
+      "bankIncome": 24.85,
+      "performanceFlows": -100,
+      "performanceInjections": 80,
+      "performanceWithdrawals": 180,
+      "marketEndsWithAffordableElsewhere": 48,
+      "dividends": 0,
+      "incomeByPlayer": {
+        "p1": 6.47,
+        "p2": 25.310000000000002,
+        "p3": 29.060000000000006
+      },
+      "bankruptcies": 220,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 64.66333333333334,
+          "averageCash": 33.70333333333334,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 6,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 52.26,
+            "medium": 40.62,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 62.53333333333333,
+          "averageCash": 34.56533333333334,
+          "held": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 25.81,
+            "medium": 58.1,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 14.773333333333333,
+          "averageCash": 14.77366666666667,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 76,
+        "averageNAV": 7.510000000000001,
+        "averageCash": 7.50983333333334,
+        "held": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 22.53,
+          "cash": 22.52950000000002,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 9,
+      "seed": 20261014,
+      "durationSeconds": 13.814632991999998,
+      "purchases": 13,
+      "purchasedShares": 15,
+      "sectorIncome": 170.79999999999998,
+      "bankIncome": 49.63,
+      "performanceFlows": -120,
+      "performanceInjections": 80,
+      "performanceWithdrawals": 200,
+      "marketEndsWithAffordableElsewhere": 36,
+      "dividends": 7,
+      "incomeByPlayer": {
+        "p1": 102.61,
+        "p2": 60.779999999999994,
+        "p3": 7.41
+      },
+      "bankruptcies": 219,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 88.65333333333332,
+          "averageCash": 33.4845,
+          "held": {
+            "small": 0,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 165.51,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 81.60333333333334,
+          "averageCash": 26.277999999999995,
+          "held": {
+            "small": 1,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 111.51,
+            "medium": 54.47,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 60.48666666666667,
+          "averageCash": 20.405333333333342,
+          "held": {
+            "small": 1,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 4,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 29.72,
+            "medium": 90.52,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 98,
+        "averageNAV": 16.103333333333335,
+        "averageCash": 6.19216666666667,
+        "held": {
+          "small": 1,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 3,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 29.73,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 48.31,
+          "cash": 18.57650000000001,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 10,
+      "seed": 20261015,
+      "durationSeconds": 8.578862978999998,
+      "purchases": 13,
+      "purchasedShares": 15,
+      "sectorIncome": 68.97999999999998,
+      "bankIncome": 21.810000000000002,
+      "performanceFlows": -140,
+      "performanceInjections": 20,
+      "performanceWithdrawals": 160,
+      "marketEndsWithAffordableElsewhere": 20,
+      "dividends": 0,
+      "incomeByPlayer": {
+        "p1": 27.160000000000004,
+        "p2": 13.599999999999998,
+        "p3": 28.220000000000002
+      },
+      "bankruptcies": 134,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 79.89,
+          "averageCash": 32.44116666666667,
+          "held": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 4,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 59.620000000000005,
+            "medium": 82.73,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 84.85333333333334,
+          "averageCash": 22.61766666666666,
+          "held": {
+            "small": 2,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 150.39000000000001,
+            "medium": 36.32,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 55,
+        "averageNAV": 27.55333333333333,
+        "averageCash": 12.683333333333337,
+        "held": {
+          "small": 1,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 3,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 44.61,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 82.66,
+          "cash": 38.05000000000001,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 11,
+      "seed": 20261016,
+      "durationSeconds": 11.802201277,
+      "purchases": 37,
+      "purchasedShares": 44,
+      "sectorIncome": 747.2300000000001,
+      "bankIncome": 345.6600000000001,
+      "performanceFlows": 40,
+      "performanceInjections": 180,
+      "performanceWithdrawals": 140,
+      "marketEndsWithAffordableElsewhere": 100,
+      "dividends": 4,
+      "incomeByPlayer": {
+        "p1": 356.9500000000001,
+        "p2": 18.380000000000003,
+        "p3": 371.90000000000003
+      },
+      "bankruptcies": 127,
+      "insolventFunds": 1,
+      "firstLargePurchase": null,
+      "peakControls": 3,
+      "peakMonopolies": 2,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 81.68666666666667,
+          "averageCash": 37.28333333333334,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 28.02,
+            "medium": 105.19,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 103.48333333333333,
+          "averageCash": 29.869999999999994,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 119.4,
+            "medium": 101.44,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 278.21333333333337,
+          "averageCash": 25.906666666666656,
+          "held": {
+            "small": 3,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 11,
+            "medium": 10,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 369.52000000000004,
+            "medium": 387.4,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 3,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 101,
+        "averageNAV": 221.17,
+        "averageCash": 27.715500000000002,
+        "held": {
+          "small": 4,
+          "medium": 2,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 17,
+          "medium": 4,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 393.18,
+          "medium": 187.18,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 3,
+        "monopolies": 2
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 559.93,
+          "cash": 62.00000000000003,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 103.58,
+          "cash": 21.146499999999975,
+          "solvent": true
+        }
+      ]
+    },
+    {
+      "game": 12,
+      "seed": 20261017,
+      "durationSeconds": 10.480315176000003,
+      "purchases": 22,
+      "purchasedShares": 28,
+      "sectorIncome": 207.01999999999978,
+      "bankIncome": 66.22,
+      "performanceFlows": -60,
+      "performanceInjections": 120,
+      "performanceWithdrawals": 180,
+      "marketEndsWithAffordableElsewhere": 50,
+      "dividends": 5,
+      "incomeByPlayer": {
+        "p1": 59.100000000000016,
+        "p2": 53.18,
+        "p3": 94.73999999999998
+      },
+      "bankruptcies": 176,
+      "insolventFunds": 1,
+      "firstLargePurchase": null,
+      "peakControls": 1,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 95.79666666666667,
+          "averageCash": 35.266666666666666,
+          "held": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 2,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 24.439999999999998,
+            "medium": 157.14999999999998,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 89.62,
+          "averageCash": 19.711499999999997,
+          "held": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 114.4,
+            "medium": 95.32000000000001,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 37.03666666666666,
+          "averageCash": 15.572499999999996,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 31.75,
+            "medium": 32.64,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 101,
+        "averageNAV": 65.37666666666667,
+        "averageCash": 23.528833333333328,
+        "held": {
+          "small": 2,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 6,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 70.28999999999999,
+          "medium": 55.25,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 1,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 133.23,
+          "cash": 48.239999999999995,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 62.9,
+          "cash": 22.346499999999992,
+          "solvent": true
+        }
+      ]
+    },
+    {
+      "game": 13,
+      "seed": 20261018,
+      "durationSeconds": 10.656547995,
+      "purchases": 25,
+      "purchasedShares": 33,
+      "sectorIncome": 298.59999999999985,
+      "bankIncome": 126.11999999999999,
+      "performanceFlows": -40,
+      "performanceInjections": 140,
+      "performanceWithdrawals": 180,
+      "marketEndsWithAffordableElsewhere": 72,
+      "dividends": 2,
+      "incomeByPlayer": {
+        "p1": 88.41000000000001,
+        "p2": 20.76,
+        "p3": 189.4299999999999
+      },
+      "bankruptcies": 158,
+      "insolventFunds": 1,
+      "firstLargePurchase": null,
+      "peakControls": 3,
+      "peakMonopolies": 1,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 64.24,
+          "averageCash": 35.9755,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 12.95,
+            "medium": 71.84,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 59.446666666666665,
+          "averageCash": 24.46316666666667,
+          "held": {
+            "small": 4,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 6,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 83.16,
+            "medium": 21.79,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 166.18666666666664,
+          "averageCash": 31.903166666666664,
+          "held": {
+            "small": 5,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 14,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 303.19000000000005,
+            "medium": 99.66,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 2,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 101,
+        "averageNAV": 98.69333333333333,
+        "averageCash": 30.76616666666666,
+        "held": {
+          "small": 3,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 12,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 149.78,
+          "medium": 54,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 2,
+        "monopolies": 1
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 169.54,
+          "cash": 56.056499999999986,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 126.54,
+          "cash": 36.24199999999999,
+          "solvent": true
+        }
+      ]
+    },
+    {
+      "game": 14,
+      "seed": 20261019,
+      "durationSeconds": 9.764883634000013,
+      "purchases": 10,
+      "purchasedShares": 14,
+      "sectorIncome": 33.849999999999994,
+      "bankIncome": 11.94,
+      "performanceFlows": -80,
+      "performanceInjections": 100,
+      "performanceWithdrawals": 180,
+      "marketEndsWithAffordableElsewhere": 45,
+      "dividends": 0,
+      "incomeByPlayer": {
+        "p1": 16.620000000000005,
+        "p2": 8.330000000000002,
+        "p3": 8.899999999999999
+      },
+      "bankruptcies": 406,
+      "insolventFunds": 1,
+      "firstLargePurchase": null,
+      "peakControls": 1,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 72.40333333333334,
+          "averageCash": 33.8455,
+          "held": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 31.36,
+            "medium": 84.31,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 10.553333333333333,
+          "averageCash": 10.553833333333339,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 11.553333333333335,
+          "averageCash": 11.553833333333339,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 101,
+        "averageNAV": 33.50666666666667,
+        "averageCash": 22.57383333333334,
+        "held": {
+          "small": 1,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 2,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 32.8,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 31,
+          "cash": 30.997499999999995,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 69.52,
+          "cash": 36.724000000000025,
+          "solvent": true
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 15,
+      "seed": 20261020,
+      "durationSeconds": 5.202242142000003,
+      "purchases": 11,
+      "purchasedShares": 13,
+      "sectorIncome": 29.8,
+      "bankIncome": 4.28,
+      "performanceFlows": -100,
+      "performanceInjections": 0,
+      "performanceWithdrawals": 100,
+      "marketEndsWithAffordableElsewhere": 19,
+      "dividends": 4,
+      "incomeByPlayer": {
+        "p1": 15.569999999999995,
+        "p2": 4.51,
+        "p3": 9.719999999999999
+      },
+      "bankruptcies": 128,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 59.35,
+          "averageCash": 31.855666666666668,
+          "held": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 30.41,
+            "medium": 52.07,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 31,
+        "averageNAV": 16.493333333333332,
+        "averageCash": 16.493833333333335,
+        "held": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 49.48,
+          "cash": 49.481500000000004,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 16,
+      "seed": 20261021,
+      "durationSeconds": 10.759264962999994,
+      "purchases": 15,
+      "purchasedShares": 17,
+      "sectorIncome": 161.00000000000003,
+      "bankIncome": 52.809999999999995,
+      "performanceFlows": -140,
+      "performanceInjections": 80,
+      "performanceWithdrawals": 220,
+      "marketEndsWithAffordableElsewhere": 36,
+      "dividends": 4,
+      "incomeByPlayer": {
+        "p1": 53.720000000000006,
+        "p2": 20.810000000000002,
+        "p3": 86.46999999999997
+      },
+      "bankruptcies": 229,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 1,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 115.01333333333332,
+          "averageCash": 50.60333333333333,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 73.51,
+            "medium": 119.72,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 57.67666666666667,
+          "averageCash": 14.622499999999995,
+          "held": {
+            "small": 2,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 107.97,
+            "medium": 21.19,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 32.026666666666664,
+          "averageCash": 13.574833333333329,
+          "held": {
+            "small": 2,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 55.36,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 96,
+        "averageNAV": 11.883333333333333,
+        "averageCash": 11.88349999999999,
+        "held": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 0,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 35.65,
+          "cash": 35.65049999999997,
+          "solvent": true
+        }
+      ]
+    },
+    {
+      "game": 17,
+      "seed": 20261022,
+      "durationSeconds": 11.310018695000005,
+      "purchases": 19,
+      "purchasedShares": 24,
+      "sectorIncome": 182.58999999999997,
+      "bankIncome": 84.19999999999999,
+      "performanceFlows": -80,
+      "performanceInjections": 120,
+      "performanceWithdrawals": 200,
+      "marketEndsWithAffordableElsewhere": 59,
+      "dividends": 6,
+      "incomeByPlayer": {
+        "p1": 85.24999999999999,
+        "p2": 24.639999999999997,
+        "p3": 72.69999999999999
+      },
+      "bankruptcies": 178,
+      "insolventFunds": 1,
+      "firstLargePurchase": null,
+      "peakControls": 1,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 69.64999999999999,
+          "averageCash": 34.23233333333333,
+          "held": {
+            "small": 2,
+            "medium": 3,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 2,
+            "medium": 4,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 24.82,
+            "medium": 81.43,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 69.03333333333335,
+          "averageCash": 37.131833333333326,
+          "held": {
+            "small": 2,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 73.23,
+            "medium": 22.47,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "70": {
+          "cycle": 70,
+          "averageNAV": 65.35333333333334,
+          "averageCash": 11.28166666666666,
+          "held": {
+            "small": 2,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 162.21,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 101,
+        "averageNAV": 52.60666666666666,
+        "averageCash": 22.748333333333324,
+        "held": {
+          "small": 2,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 5,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 89.57,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 126.53,
+          "cash": 52.166499999999985,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 31.29,
+          "cash": 16.078499999999984,
+          "solvent": true
+        }
+      ]
+    },
+    {
+      "game": 18,
+      "seed": 20261023,
+      "durationSeconds": 5.502138444999989,
+      "purchases": 16,
+      "purchasedShares": 19,
+      "sectorIncome": 112.05,
+      "bankIncome": 28.55,
+      "performanceFlows": -40,
+      "performanceInjections": 60,
+      "performanceWithdrawals": 100,
+      "marketEndsWithAffordableElsewhere": 44,
+      "dividends": 10,
+      "incomeByPlayer": {
+        "p1": 79.92000000000002,
+        "p2": 18.75,
+        "p3": 13.38
+      },
+      "bankruptcies": 50,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 1,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 98.36666666666667,
+          "averageCash": 34.01133333333333,
+          "held": {
+            "small": 4,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 6,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 94.24,
+            "medium": 98.83,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 105.14,
+          "averageCash": 34.717999999999996,
+          "held": {
+            "small": 3,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 8,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 165.22,
+            "medium": 46.05,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 45,
+        "averageNAV": 79.37333333333333,
+        "averageCash": 18.17999999999999,
+        "held": {
+          "small": 2,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 8,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 149.05,
+          "medium": 34.53,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 1,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 238.12,
+          "cash": 54.539999999999964,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 19,
+      "seed": 20261024,
+      "durationSeconds": 5.742861688000004,
+      "purchases": 9,
+      "purchasedShares": 10,
+      "sectorIncome": 81.41000000000001,
+      "bankIncome": 24.31,
+      "performanceFlows": -80,
+      "performanceInjections": 40,
+      "performanceWithdrawals": 120,
+      "marketEndsWithAffordableElsewhere": 45,
+      "dividends": 3,
+      "incomeByPlayer": {
+        "p1": 57.68000000000001,
+        "p2": 22.23,
+        "p3": 1.5
+      },
+      "bankruptcies": 64,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 81.41666666666667,
+          "averageCash": 39.02466666666667,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 20.63,
+            "medium": 106.55000000000001,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 70.28666666666666,
+          "averageCash": 20.193333333333328,
+          "held": {
+            "small": 2,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 3,
+            "medium": 2,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 67.04,
+            "medium": 83.24000000000001,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 50,
+        "averageNAV": 69.35333333333334,
+        "averageCash": 12.796666666666665,
+        "held": {
+          "small": 2,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 4,
+          "medium": 1,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 99.44,
+          "medium": 70.23,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 208.06,
+          "cash": 38.38999999999999,
+          "solvent": true
+        },
+        {
+          "difficulty": "normal",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    },
+    {
+      "game": 20,
+      "seed": 20261025,
+      "durationSeconds": 5.42191765399999,
+      "purchases": 13,
+      "purchasedShares": 17,
+      "sectorIncome": 11.63,
+      "bankIncome": 4.04,
+      "performanceFlows": -100,
+      "performanceInjections": 20,
+      "performanceWithdrawals": 120,
+      "marketEndsWithAffordableElsewhere": 27,
+      "dividends": 0,
+      "incomeByPlayer": {
+        "p1": 4.2,
+        "p2": 4.42,
+        "p3": 3.0100000000000002
+      },
+      "bankruptcies": 238,
+      "insolventFunds": 2,
+      "firstLargePurchase": null,
+      "peakControls": 0,
+      "peakMonopolies": 0,
+      "checkpoints": {
+        "10": {
+          "cycle": 10,
+          "averageNAV": 47.54,
+          "averageCash": 36.83016666666666,
+          "held": {
+            "small": 3,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 5,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 32.13,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "35": {
+          "cycle": 35,
+          "averageNAV": 25.330000000000002,
+          "averageCash": 9.972499999999998,
+          "held": {
+            "small": 1,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 1,
+            "medium": 1,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 14.96,
+            "medium": 31.11,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        },
+        "opening": {
+          "cycle": 1,
+          "averageNAV": 100,
+          "averageCash": 100,
+          "held": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "shares": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "value": {
+            "small": 0,
+            "medium": 0,
+            "large": 0,
+            "unknown": 0
+          },
+          "controls": 0,
+          "monopolies": 0
+        }
+      },
+      "final": {
+        "cycle": 47,
+        "averageNAV": 11.843333333333334,
+        "averageCash": 9.565833333333332,
+        "held": {
+          "small": 1,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "shares": {
+          "small": 1,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "value": {
+          "small": 6.83,
+          "medium": 0,
+          "large": 0,
+          "unknown": 0
+        },
+        "controls": 0,
+        "monopolies": 0
+      },
+      "players": [
+        {
+          "difficulty": "easy",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        },
+        {
+          "difficulty": "normal",
+          "nav": 35.53,
+          "cash": 28.697499999999998,
+          "solvent": true
+        },
+        {
+          "difficulty": "hard",
+          "nav": 0,
+          "cash": 0,
+          "solvent": false
+        }
+      ]
+    }
+  ],
+  "aiPolicy": "legacy-geography"
+}

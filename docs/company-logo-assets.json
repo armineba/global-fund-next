@@ -1,0 +1,202 @@
+{
+  "checkedAt": "2026-10-06",
+  "scope": "Dix logos locaux correspondants à 10 sociétés/slots catalogués dans packages/game-engine/legacy/data/gameData.json (huit trouvés pour le lot logo, deux ajoutés dans l’audit monde).",
+  "rightsNote": "Wikimedia Commons marque ces créations comme domaine public car limitées au texte et/ou formes simples, et signale séparément qu'elles sont des marques déposées. La qualification copyright ne confère aucun droit d'usage de marque. Utilisation prévue: identification de l'entreprise dans le jeu; vérifier les droits de marque applicables avant une exploitation commerciale/publicitaire.",
+  "assets": [
+    {
+      "company": "TotalEnergies",
+      "gameId": "total-sa",
+      "file": "totalenergies.svg",
+      "commonsTitle": "TotalEnergies wordmark (2021-present).svg",
+      "author": "™/®TotalEnergies SE; vectorisation par Vulphere",
+      "date": "2021; fichier Commons du 2022-02-07",
+      "source": "Rapport financier officiel TotalEnergies H1 2021 (source de la vectorisation)",
+      "sourceUrl": "https://totalenergies.com/sites/g/files/nytnzq121/files/documents/2021-07/Financial-report-first-half-2021.pdf",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:TotalEnergies_wordmark_(2021-present).svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d1/TotalEnergies_wordmark_%282021-present%29.svg",
+      "copyrightStatus": "PD-textlogo / domaine public (texte simple)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/totalenergies.svg",
+        "apps/web/public/assets/companies/logos/totalenergies.svg"
+      ],
+      "limitations": "Wordmark rouge seul, sans emblème multicolore. TotalEnergies est le nom affiché pour ce logo; total-sa est uniquement l’identifiant historique du jeu."
+    },
+    {
+      "company": "Siemens AG",
+      "gameId": "siemens-ag",
+      "file": "siemens.svg",
+      "commonsTitle": "Siemens AG logo.svg",
+      "author": "Siemens AG (fichier Commons téléversé par Hautala, basé sur l'identité officielle)",
+      "date": "2007; révision Commons courante 2022-11-30",
+      "source": "Logo officiel Siemens référencé sur la page Commons",
+      "sourceUrl": "https://new.siemens.com/etc.clientlibs/siemens-sites/components/content/header/clientlibs/resources/logo/siemens-logo-default.svg",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Siemens_AG_logo.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Siemens_AG_logo.svg",
+      "copyrightStatus": "PD-textlogo / domaine public (texte simple)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/siemens.svg",
+        "apps/web/public/assets/companies/logos/siemens.svg"
+      ],
+      "limitations": "Wordmark sans pictogramme."
+    },
+    {
+      "company": "SAP",
+      "gameId": "sap",
+      "file": "sap.svg",
+      "commonsTitle": "SAP 2011 logo.svg",
+      "author": "SAP SE; téléversement initial de Marsupilami, fichier mis à jour depuis le site SAP",
+      "date": "Logo introduit en 2011; fichier Commons actualisé le 2025-10-19",
+      "source": "SAP Design System, identité et logo",
+      "sourceUrl": "https://www.sap.com/design-system/digital/foundations/identity/logo",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:SAP_2011_logo.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg",
+      "copyrightStatus": "PD-textlogo / domaine public (texte et formes simples)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/sap.svg",
+        "apps/web/public/assets/companies/logos/sap.svg"
+      ],
+      "limitations": "Le titre Commons est historique; la page indique un SVG SAP actualisé à partir du site officiel. Vérifier visuellement avant présentation finale."
+    },
+    {
+      "company": "Microsoft Corporation",
+      "gameId": "microsoft-corp",
+      "file": "microsoft.svg",
+      "commonsTitle": "Microsoft.svg (Microsoft logo 2012)",
+      "author": "Microsoft Corporation — Jason Wells (crédit page Commons)",
+      "date": "Logo 2012; page révisée en 2025 et 2023",
+      "source": "Fichier Flipgrid/Microsoft officiel indiqué sur Commons",
+      "sourceUrl": "https://static.flipgrid.com/fg-svgs/microsoft-logo.svg",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Microsoft.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
+      "copyrightStatus": "PD-textlogo / domaine public (texte et formes géométriques simples)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/microsoft.svg",
+        "apps/web/public/assets/companies/logos/microsoft.svg"
+      ],
+      "limitations": "Variante wordmark Microsoft + quatre fenêtres de 2012; la page Commons la présente comme logo courant."
+    },
+    {
+      "company": "IBM",
+      "gameId": "ibm-corp",
+      "file": "ibm.svg",
+      "commonsTitle": "IBM logo.svg",
+      "author": "Paul Rand (dessin du wordmark; fichier SVG édité par des contributeurs Commons)",
+      "date": "Wordmark introduit en 1967; fichier Commons révisé le 2026-05-03",
+      "source": "IBM Design Language, version 8-bar citée par Commons",
+      "sourceUrl": "https://www.ibm.com/design/language/ibm-plex/brand/",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:IBM_logo.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+      "copyrightStatus": "PD-textlogo / domaine public (texte et formes simples)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/ibm.svg",
+        "apps/web/public/assets/companies/logos/ibm.svg"
+      ],
+      "limitations": "Wordmark huit barres historique; l'export courant inclut ®."
+    },
+    {
+      "company": "Intel",
+      "gameId": "intel-corp",
+      "file": "intel.svg",
+      "commonsTitle": "Intel logo 2023.svg",
+      "author": "Intel",
+      "date": "2020–; fichier Commons du 2023-02-05",
+      "source": "Intel newsroom press kit officiel",
+      "sourceUrl": "https://www.intel.com/content/www/us/en/newsroom/resources/press-kits-intel-overview.html",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Intel_logo_2023.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Intel_logo_2023.svg",
+      "copyrightStatus": "PD-textlogo/simple / domaine public (texte et formes simples)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/intel.svg",
+        "apps/web/public/assets/companies/logos/intel.svg"
+      ],
+      "limitations": "Wordmark 2020, pas l'ancien logo Intel Inside."
+    },
+    {
+      "company": "Oracle Corporation",
+      "gameId": "oracle-corp",
+      "file": "oracle.svg",
+      "commonsTitle": "Oracle wordmark.svg",
+      "author": "Oracle Corporation",
+      "date": "Date inconnue; fichier Commons du 2007-07-24",
+      "source": "Oracle Logos > Oracle Signature (source citée par Commons)",
+      "sourceUrl": "https://www.oracle.com/a/ocom/docs/corporate/oracle-logos.zip",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Oracle_wordmark.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Oracle_wordmark.svg",
+      "copyrightStatus": "PD-textlogo / domaine public (texte simple)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/oracle.svg",
+        "apps/web/public/assets/companies/logos/oracle.svg"
+      ],
+      "limitations": "Wordmark historique rouge; vérifier les directives d'identité Oracle actuelles."
+    },
+    {
+      "company": "Shell plc",
+      "gameId": "royal-dutch-shell",
+      "file": "shell.svg",
+      "commonsTitle": "Shell wordmark 2019.svg",
+      "author": "Royal Dutch Shell; extraction téléversée par Alexis Jazz",
+      "date": "2019; fichier Commons du 2020-03-07",
+      "source": "Extrait de Shell Energy logo (2019).svg; page Commons renvoie aussi à des usages du wordmark",
+      "sourceUrl": "https://www.shell.com/",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Shell_wordmark_2019.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Shell_wordmark_2019.svg",
+      "copyrightStatus": "PD-textlogo / domaine public (texte simple)",
+      "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+      "paths": [
+        "assets/companies/logos/shell.svg",
+        "apps/web/public/assets/companies/logos/shell.svg"
+      ],
+      "limitations": "Wordmark seul, sans emblème coquillage. Shell plc est le nom actuel de l’entreprise; royal-dutch-shell reste l’identifiant historique du jeu."
+    },
+    {
+      "company": "Mitsubishi Heavy Industries (MHI)",
+      "gameId": "gazprom",
+      "file": "gazprom.svg",
+      "commonsTitle": "Mitsubishi_heavyindustries_mhi_logo.svg",
+      "author": "Mitsubishi; identified as its company logo on Commons.",
+      "date": "2022; current Commons file revision dated 2025-07-06.",
+      "source": "Official company site cited in Commons file description",
+      "sourceUrl": "https://www.mhi.com/",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Mitsubishi_heavyindustries_mhi_logo.svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Mitsubishi_heavyindustries_mhi_logo.svg",
+      "copyrightStatus": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+      "trademark": "Commons page expressly notes it may remain trademark-protected; the copyright license is not a trademark permission. Use only as a source-marked company logo in the proposed replacement context.",
+      "paths": [
+        "assets/companies/logos/gazprom.svg",
+        "apps/web/public/assets/companies/logos/gazprom.svg"
+      ],
+      "limitations": "The image corresponds to the v2 replacement label; protected trademark rights may apply."
+    },
+    {
+      "company": "Telstra Group",
+      "gameId": "pacific-link",
+      "file": "pacific-link.svg",
+      "commonsTitle": "Telstra_logo_(horizontal_variant).svg",
+      "author": "Telstra",
+      "date": "Created 2012-09-13; current Commons file revision dated 2022-04-26.",
+      "source": "Official company site cited in Commons file description",
+      "sourceUrl": "https://www.telstra.com.au/",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Telstra_logo_(horizontal_variant).svg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Telstra_logo_%28horizontal_variant%29.svg",
+      "copyrightStatus": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+      "trademark": "Commons page expressly notes trademark restrictions can apply; this is copyright status, not trademark authorization. Use only as a source-marked company logo in the proposed replacement context.",
+      "paths": [
+        "assets/companies/logos/pacific-link.svg",
+        "apps/web/public/assets/companies/logos/pacific-link.svg"
+      ],
+      "limitations": "The image corresponds to the v2 replacement label; protected trademark rights may apply."
+    }
+  ],
+  "validation": {
+    "format": "SVG XML parsé localement",
+    "safety": "Vérification locale: pas d'élément script/foreignObject ni de href/src vers HTTP(S), // ou data:. Les SVG sont copiés localement, aucun chargement CDN/runtime.",
+    "mirrors": "Chaque fichier est recopié à l'identique dans les deux racines listées."
+  }
+}

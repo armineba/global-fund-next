@@ -12,26 +12,27 @@ import type {
   SeatConfig,
   Session,
 } from "@global-fund/shared";
+import { MARKET_IDS } from "@global-fund/shared";
 
 const seats: SeatConfig[] = [
   {
     name: "Host",
     kind: "local",
-    nationality: "france",
+    startingMarket: "europe",
     pawn: "lion",
     difficulty: "normal",
   },
   {
     name: "Guest",
     kind: "remote",
-    nationality: "japan",
+    startingMarket: "asia",
     pawn: "bull",
     difficulty: "normal",
   },
   {
     name: "Bot",
     kind: "ai",
-    nationality: "canada",
+    startingMarket: "americas",
     pawn: "globe",
     difficulty: "easy",
   },
@@ -99,6 +100,71 @@ async function setup() {
 }
 
 describe("authoritative socket server", () => {
+  it("accepts exactly five canonical markets and rejects an explicit sixth in create, join and start", async () => {
+    const { port } = await setup();
+    const host = await client(port);
+    const guest = await client(port);
+    for (const startingMarket of MARKET_IDS) {
+      const created = await emit(host, "room:create", { seats: [{ ...seats[0], startingMarket }, seats[1]] });
+      expect(created.ok).toBe(true);
+      if (!created.ok) throw new Error("create failed");
+      expect(created.room.players[0].startingMarket).toBe(startingMarket);
+      expect(created.room.players[0]).not.toHaveProperty("nationality");
+    }
+    const invalid = await emit(host, "room:create", {
+      seats: [{ ...seats[0], startingMarket: "mea", nationality: "france" }, seats[1]],
+    });
+    expect(invalid.ok).toBe(false);
+    const created = await emit(host, "room:create", { seats: [seats[0], seats[1]] });
+    if (!created.ok) throw new Error("create failed");
+    const roomId = created.room.roomId;
+    expect((await emit(guest, "room:join", { roomId, name: "Guest", startingMarket: "mea", nationality: "japan" })).ok).toBe(false);
+    expect((await emit(host, "room:start", { roomId, startingMarket: "mea" })).ok).toBe(false);
+    const joined = await emit(guest, "room:join", { roomId, name: "Guest", startingMarket: "africa" });
+    if (!joined.ok) throw new Error("join failed");
+    expect(joined.room.players[1].startingMarket).toBe("africa");
+    await emit(guest, "room:ready", { roomId, ready: true });
+    const started = await emit(host, "room:start", { roomId });
+    if (!started.ok) throw new Error("start failed");
+    expect(started.room.game!.players[1]).toMatchObject({ startingMarket: "africa", currentMarket: "africa", zone: "africa", cash: 100 });
+    expect(started.room.game!.players[1]).not.toHaveProperty("nationality");
+  });
+
+  it("adapts old create/join country requests to real markets", async () => {
+    const { port } = await setup();
+    const host = await client(port);
+    const guest = await client(port);
+    const legacySeats = seats.slice(0, 2).map(({ startingMarket: _market, ...seat }, index) => ({ ...seat, nationality: index === 0 ? "france" : "japan" }));
+    const created = await emit(host, "room:create", { seats: legacySeats });
+    if (!created.ok) throw new Error("legacy create failed");
+    expect(created.room.players.map((player) => player.startingMarket)).toEqual(["europe", "asia"]);
+    const roomId = created.room.roomId;
+    expect((await emit(guest, "room:join", { roomId, name: "Guest", nationality: "invalid" })).ok).toBe(false);
+    const joined = await emit(guest, "room:join", { roomId, name: "Guest", nationality: "canada" });
+    if (!joined.ok) throw new Error("legacy join failed");
+    expect(joined.room.players[1].startingMarket).toBe("americas");
+    await emit(guest, "room:ready", { roomId, ready: true });
+    const started = await emit(host, "room:start", { roomId });
+    if (!started.ok) throw new Error("legacy start failed");
+    expect(started.room.game!.players[1]).toMatchObject({ startingMarket: "americas", currentMarket: "americas", nationality: "canada" });
+  });
+
+  it("rebalances AI locations after a remote human changes their starting market", async () => {
+    const { port } = await setup();
+    const host = await client(port);
+    const guest = await client(port);
+    const created = await emit(host, "room:create", { seats: [seats[0], seats[1], { ...seats[2], startingMarket: "europe" }] });
+    if (!created.ok) throw new Error("create failed");
+    const roomId = created.room.roomId;
+    const botMarket = created.room.players[2].startingMarket;
+    await emit(guest, "room:join", { roomId, name: "Guest", startingMarket: botMarket });
+    await emit(guest, "room:ready", { roomId, ready: true });
+    const started = await emit(host, "room:start", { roomId });
+    if (!started.ok) throw new Error("start failed");
+    expect(new Set(started.room.players.map((player) => player.startingMarket)).size).toBe(3);
+    expect(started.room.players.map((player) => player.startingMarket)).toEqual(started.room.game!.players.map((player) => player.startingMarket));
+  });
+
   it("creates local, remote, and AI seats; requires claimed remote readiness before host start", async () => {
     const { port } = await setup();
     const host = await client(port);
@@ -274,6 +340,13 @@ describe("authoritative socket server", () => {
       host.disconnect();
       await first.close();
       services.splice(services.indexOf(first), 1);
+      // Simulate a lobby written before startingMarket was introduced.
+      const oldRooms = JSON.parse(readFileSync(storageFile, "utf8"));
+      for (const player of oldRooms[0].players) {
+        delete player.startingMarket;
+        player.nationality = { p1: "france", p2: "japan", p3: "canada" }[player.id as "p1" | "p2" | "p3"];
+      }
+      writeFileSync(storageFile, JSON.stringify(oldRooms));
       const second = await createServer({ storageFile });
       services.push(second);
       await second.app.listen({ host: "127.0.0.1", port: 0 });
@@ -283,7 +356,10 @@ describe("authoritative socket server", () => {
       const resumedHost = await client(secondAddress.port);
       const resumed = await emit(resumedHost, "room:resume", created.session);
       expect(resumed.ok).toBe(true);
-      if (resumed.ok) expect(resumed.room.players[0].connected).toBe(true);
+      if (resumed.ok) {
+        expect(resumed.room.players[0].connected).toBe(true);
+        expect(resumed.room.players.map((player) => player.startingMarket)).toEqual(["europe", "asia", "americas"]);
+      }
     } finally {
       rmSync(folder, { recursive: true, force: true });
     }

@@ -4,15 +4,17 @@ let locks = 0;
 let previousOverflow = "";
 
 /** Focus et défilement communs aux scènes HTML, sans effet sur le moteur. */
-export function useDialogFocus(onClose?: () => void) {
+export function useDialogFocus(onClose?: () => void, modal = true) {
   const ref = useRef<HTMLElement>(null);
   const close = useRef(onClose);
   close.current = onClose;
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
-    if (locks++ === 0) {
-      previousOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
+    if (modal) {
+      if (locks++ === 0) {
+        previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+      }
     }
     const dialog = ref.current;
     dialog?.focus();
@@ -20,12 +22,13 @@ export function useDialogFocus(onClose?: () => void) {
       const modals = Array.from(
         document.querySelectorAll('[aria-modal="true"]'),
       );
-      if (modals.at(-1) !== dialog?.closest('[aria-modal="true"]')) return;
+      if (modal && modals.at(-1) !== dialog?.closest('[aria-modal="true"]')) return;
+      if (!modal && modals.length) return;
       if (event.key === "Escape" && close.current) {
         event.preventDefault();
         close.current();
       }
-      if (event.key !== "Tab") return;
+      if (!modal || event.key !== "Tab") return;
       const items = Array.from(
         dialog?.querySelectorAll<HTMLElement>(
           'button,[href],input,select,textarea,[tabindex="0"]',
@@ -59,9 +62,9 @@ export function useDialogFocus(onClose?: () => void) {
     document.addEventListener("keydown", keydown);
     return () => {
       document.removeEventListener("keydown", keydown);
-      if (--locks === 0) document.body.style.overflow = previousOverflow;
-      previous?.focus();
+      if (modal && --locks === 0) document.body.style.overflow = previousOverflow;
+      if (previous?.isConnected) previous.focus();
     };
-  }, []);
+  }, [modal]);
   return ref;
 }

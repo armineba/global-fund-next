@@ -76,23 +76,33 @@
   "companies": [
     {
       "id": "orascom-construction-industries",
-      "name": "Orascom Construction Industries",
+      "name": "Orascom Construction PLC",
       "zone": "africa",
       "sector": "realestate",
-      "country": "Egypte",
-      "basePrice": 5.0,
-      "baseIncome": 5.0,
-      "source": "classeur"
+      "country": "Égypte",
+      "basePrice": 25,
+      "baseIncome": 2.5,
+      "source": "classeur",
+      "marketCapUSD": 1750000000,
+      "marketCapAsOf": "2026-10-06",
+      "marketCapSource": "https://stockanalysis.com/quote/adx/ORAS/market-cap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "tata-motors",
-      "name": "Tata Motors",
+      "name": "Tata Motors Limited",
       "zone": "asia",
       "sector": "transport",
       "country": "Inde",
-      "basePrice": 5.0,
-      "baseIncome": 5.0,
-      "source": "classeur"
+      "basePrice": 81.13,
+      "baseIncome": 8.11,
+      "source": "classeur",
+      "marketCapUSD": 18000000000,
+      "marketCapAsOf": "2026-09-24",
+      "marketCapSource": "https://www.nseindia.com/get-quote/equity/TMCV/Tata-Motors",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "maroc-telecom",
@@ -100,59 +110,105 @@
       "zone": "africa",
       "sector": "media",
       "country": "Maroc",
-      "basePrice": 5.0,
-      "baseIncome": 5.0,
-      "source": "classeur"
+      "basePrice": 63.37,
+      "baseIncome": 6.34,
+      "source": "classeur",
+      "marketCapUSD": 8610000000,
+      "marketCapAsOf": "2026-10-06",
+      "marketCapSource": "https://www.zonebourse.com/cours/action/MAROC-TELECOM-5274/valorisation/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "enersis",
-      "name": "Enersis",
+      "name": "Enel Chile",
       "zone": "americas",
       "sector": "energy",
       "country": "Chili",
-      "basePrice": 5.0,
-      "baseIncome": 5.0,
-      "source": "classeur"
+      "basePrice": 54.67,
+      "baseIncome": 5.47,
+      "source": "classeur",
+      "marketCapUSD": 6000000000,
+      "marketCapAsOf": "2026-10-06",
+      "marketCapSource": "https://stockanalysis.com/stocks/enic/market-cap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "bank-central-asia",
-      "name": "Bank Central Asia",
+      "name": "PT Bank Central Asia Tbk",
       "zone": "asia",
       "sector": "finance",
       "country": "Indonésie",
-      "basePrice": 20.0,
-      "baseIncome": 7.0,
-      "source": "classeur"
+      "basePrice": 188.34,
+      "baseIncome": 22.6,
+      "source": "classeur",
+      "marketCapUSD": 45020000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/bank-central-asia/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/bca.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Bank_Central_Asia_(with_slogan).svg"
     },
     {
       "id": "astra-international",
-      "name": "Astra International",
+      "name": "FANUC Corporation",
       "zone": "asia",
-      "sector": "transport",
-      "country": "Indonésie",
-      "basePrice": 30.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "sector": "industry",
+      "country": "Japon",
+      "basePrice": 98.07,
+      "baseIncome": 9.81,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "astra-international"
+      ],
+      "legacyNameAliases": [
+        "Astra International"
+      ],
+      "catalogSourceURL": "https://www.fanuc.co.jp/en/profile/profile/",
+      "marketCapUSD": 36370000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/fanuc/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "industries-qatar",
-      "name": "Industries Qatar",
+      "name": "Emaar Properties PJSC",
       "zone": "africa",
-      "sector": "industry",
-      "country": "Qatar",
-      "basePrice": 30.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "sector": "realestate",
+      "country": "Émirats arabes unis (Dubaï)",
+      "basePrice": 91.4,
+      "baseIncome": 9.14,
+      "source": "https://www.emaar.com/en/investor-relations/emaar-properties-pjsc",
+      "catalogVersion": 3,
+      "logoPath": "/assets/companies/logos/emaar.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Emaar_logo.svg",
+      "ticker": "EMAAR.DFM",
+      "marketCapUSD": 27570000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/emaar-properties/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "mtn-group",
-      "name": "MTN group",
+      "name": "MTN Group Limited",
       "zone": "africa",
       "sector": "media",
       "country": "Afrique du Sud",
-      "basePrice": 30.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 86.91,
+      "baseIncome": 8.69,
+      "source": "classeur",
+      "marketCapUSD": 22880000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/mtn-group/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/mtn.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:MTN_2022_logo.svg"
     },
     {
       "id": "qatar-national-bank",
@@ -160,79 +216,133 @@
       "zone": "africa",
       "sector": "finance",
       "country": "Qatar",
-      "basePrice": 30.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 100,
+      "baseIncome": 10,
+      "source": "classeur",
+      "marketCapUSD": 39400000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/qnb-qatar-national-bank/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/qnb.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:QNB_Logo.svg"
     },
     {
       "id": "sasol",
-      "name": "SASOL",
+      "name": "Sasol Limited",
       "zone": "africa",
       "sector": "energy",
       "country": "Afrique du Sud",
-      "basePrice": 30.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 65.51,
+      "baseIncome": 6.55,
+      "source": "classeur",
+      "marketCapUSD": 9410000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/sasol/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "banco-brasil",
-      "name": "Banco Brasil",
+      "name": "Banco do Brasil",
       "zone": "americas",
       "sector": "finance",
       "country": "Brésil",
-      "basePrice": 40.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 93.44,
+      "baseIncome": 9.34,
+      "source": "classeur",
+      "marketCapUSD": 30000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/banco-do-brasil/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "amx",
-      "name": "AMX",
+      "name": "América Móvil",
       "zone": "americas",
       "sector": "media",
       "country": "Mexique",
-      "basePrice": 50.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 260.59,
+      "baseIncome": 31.27,
+      "source": "classeur",
+      "marketCapUSD": 67000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/america-movil/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "walmex",
-      "name": "Walmex",
+      "name": "Walmart de México y Centroamérica",
       "zone": "americas",
       "sector": "agrifood",
       "country": "Mexique",
-      "basePrice": 60.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 192.26,
+      "baseIncome": 23.07,
+      "source": "classeur",
+      "marketCapUSD": 46000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/walmex/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/walmart-mexico-2025.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Walmart_México_y_Centroamérica_logo_(2025).svg"
     },
     {
       "id": "sabmiller-plc",
-      "name": "Sabmiller PLC",
+      "name": "Heineken N.V.",
       "zone": "europe",
       "sector": "agrifood",
-      "country": "Royaume-Uni",
-      "basePrice": 80.0,
-      "baseIncome": 16.0,
-      "source": "classeur"
+      "country": "Pays-Bas",
+      "basePrice": 184.18,
+      "baseIncome": 22.1,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "sabmiller-plc"
+      ],
+      "legacyNameAliases": [
+        "Sabmiller PLC"
+      ],
+      "catalogSourceURL": "https://www.theheinekencompany.com/newsroom/heineken-nv-reports-2025-full-year-results/",
+      "marketCapUSD": 44000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/heineken/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "vodafone-group-plc",
-      "name": "Vodafone Group PLC",
+      "name": "Vodafone Group Plc",
       "zone": "europe",
       "sector": "media",
       "country": "Royaume-Uni",
-      "basePrice": 90.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "basePrice": 99.75,
+      "baseIncome": 9.98,
+      "source": "classeur",
+      "marketCapUSD": 39000000000,
+      "marketCapAsOf": "2026-10-05",
+      "marketCapSource": "https://companiesmarketcap.com/vodafone/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "mcdonald-s-corp",
-      "name": "McDonald's Corp",
+      "name": "McDonald’s Corporation",
       "zone": "americas",
-      "sector": "media",
-      "country": "USA",
-      "basePrice": 90.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "sector": "agrifood",
+      "country": "États-Unis",
+      "basePrice": 418.77,
+      "baseIncome": 50.25,
+      "source": "classeur",
+      "marketCapUSD": 160000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/mcdonald/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/mcdonalds-arches.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:McDonald's_cutted_arches.svg"
     },
     {
       "id": "astrazeneca-plc",
@@ -240,9 +350,16 @@
       "zone": "europe",
       "sector": "health",
       "country": "Royaume-Uni",
-      "basePrice": 90.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 627.92,
+      "baseIncome": 87.91,
+      "source": "classeur",
+      "marketCapUSD": 260000000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/astrazeneca/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/astrazeneca.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Astrazeneca_text_logo.svg"
     },
     {
       "id": "siemens-ag",
@@ -250,189 +367,318 @@
       "zone": "europe",
       "sector": "industry",
       "country": "Allemagne",
-      "basePrice": 90.0,
-      "baseIncome": 18.0,
-      "source": "classeur"
+      "basePrice": 604.15,
+      "baseIncome": 84.58,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/siemens.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Siemens_AG_logo.svg",
+      "marketCapUSD": 240000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/siemens/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "sap",
-      "name": "SAP",
+      "name": "SAP SE",
       "zone": "europe",
       "sector": "technology",
       "country": "Allemagne",
-      "basePrice": 90.0,
-      "baseIncome": 17.0,
-      "source": "classeur"
+      "basePrice": 604.15,
+      "baseIncome": 84.58,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/sap.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:SAP_2011_logo.svg",
+      "marketCapUSD": 240000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/sap/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "lvmh-sa",
-      "name": "LVMH SA",
+      "name": "LVMH Moët Hennessy Louis Vuitton SE",
       "zone": "europe",
-      "sector": "media",
+      "sector": "industry",
       "country": "France",
-      "basePrice": 90.0,
-      "baseIncome": 16.0,
-      "source": "classeur"
+      "basePrice": 564.49,
+      "baseIncome": 79.03,
+      "source": "classeur",
+      "marketCapUSD": 210000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/lvmh/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/lvmh.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:LVMH_logo.svg"
     },
     {
       "id": "taiwan-semiconductor-manufacturing",
-      "name": "Taiwan Semiconductor Manufacturing",
+      "name": "Taiwan Semiconductor Manufacturing Company Limited",
       "zone": "asia",
       "sector": "technology",
-      "country": "Taiwan",
-      "basePrice": 90.0,
-      "baseIncome": 15.0,
-      "source": "classeur"
+      "country": "Taïwan",
+      "basePrice": 1294.38,
+      "baseIncome": 181.21,
+      "source": "classeur",
+      "marketCapUSD": 2452000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/tsmc/marketcap/",
+      "capCategory": "large",
+      "logoPath": "/assets/companies/logos/tsmc.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:TSMC_wordmark.svg",
+      "economyVersion": 3
     },
     {
       "id": "nike-inc",
-      "name": "Nike Inc",
+      "name": "NIKE, Inc.",
       "zone": "americas",
-      "sector": "media",
-      "country": "USA",
-      "basePrice": 90.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 207.41,
+      "baseIncome": 24.89,
+      "source": "classeur",
+      "marketCapUSD": 50000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/nike/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "united-parcel-service",
-      "name": "United Parcel Service",
+      "name": "United Parcel Service, Inc.",
       "zone": "americas",
       "sector": "transport",
-      "country": "USA",
-      "basePrice": 90.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 290.53,
+      "baseIncome": 34.86,
+      "source": "classeur",
+      "marketCapUSD": 79000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/ups/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "gazprom",
-      "name": "Gazprom",
+      "name": "Mitsubishi Heavy Industries (MHI)",
       "zone": "asia",
-      "sector": "energy",
-      "country": "Russie",
-      "basePrice": 100.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "sector": "industry",
+      "country": "Japon",
+      "basePrice": 293.9,
+      "baseIncome": 35.27,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "gazprom"
+      ],
+      "legacyNameAliases": [
+        "Gazprom"
+      ],
+      "catalogSourceURL": "https://www.mhi.com/company/overview/profile",
+      "logoPath": "/assets/companies/logos/gazprom.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Mitsubishi_heavyindustries_mhi_logo.svg",
+      "marketCapUSD": 80480000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/mitsubishi-heavy-industries/marketcap",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "british-american-tobacco-plc",
-      "name": "British American Tobacco PLC",
+      "name": "British American Tobacco p.l.c.",
       "zone": "europe",
-      "sector": "agrifood",
+      "sector": "industry",
       "country": "Royaume-Uni",
-      "basePrice": 100.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 366.5,
+      "baseIncome": 43.98,
+      "source": "classeur",
+      "marketCapUSD": 120000000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/british-american-tobacco/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/bat-2020.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Bat_logo20.svg"
     },
     {
       "id": "3m-co",
-      "name": "3M Co",
+      "name": "3M Company",
       "zone": "americas",
       "sector": "industry",
-      "country": "USA",
-      "basePrice": 100.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 301.68,
+      "baseIncome": 36.2,
+      "source": "classeur",
+      "marketCapUSD": 84000000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/3m/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/3m.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:3M_wordmark.svg"
     },
     {
       "id": "mastercard-inc",
-      "name": "MasterCard Inc",
+      "name": "Mastercard Incorporated",
       "zone": "americas",
-      "sector": "industry",
-      "country": "USA",
-      "basePrice": 100.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "sector": "finance",
+      "country": "États-Unis",
+      "basePrice": 810.01,
+      "baseIncome": 113.4,
+      "source": "classeur",
+      "marketCapUSD": 480000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/mastercard/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/mastercard-2019.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Mastercard_2019_logo.svg"
     },
     {
       "id": "the-boeing-company",
       "name": "The Boeing Company",
       "zone": "americas",
-      "sector": "transport",
-      "country": "USA",
-      "basePrice": 100.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 407.04,
+      "baseIncome": 48.84,
+      "source": "classeur",
+      "marketCapUSD": 150000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/boeing/marketcap/",
+      "capCategory": "medium",
+      "logoPath": "/assets/companies/logos/boeing.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Boeing_full_logo.svg",
+      "economyVersion": 3
     },
     {
       "id": "daimler-ag",
-      "name": "Daimler AG",
+      "name": "Mercedes-Benz Group AG",
       "zone": "europe",
       "sector": "transport",
       "country": "Allemagne",
-      "basePrice": 100.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 180,
+      "baseIncome": 21.6,
+      "source": "classeur",
+      "marketCapUSD": 43000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/mercedes-benz-group/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "inditex-s-a",
-      "name": "Inditex S.A",
+      "name": "Industria de Diseño Textil, S.A. (Inditex)",
       "zone": "europe",
-      "sector": "media",
+      "sector": "industry",
       "country": "Espagne",
-      "basePrice": 100.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 450,
+      "baseIncome": 54,
+      "source": "classeur",
+      "marketCapUSD": 190000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/inditex/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/inditex.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Inditex_logo_black.svg"
     },
     {
       "id": "l-oreal-sa",
-      "name": "L'Oréal SA",
+      "name": "L’Oréal S.A.",
       "zone": "europe",
-      "sector": "agrifood",
+      "sector": "industry",
       "country": "France",
-      "basePrice": 100.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 578.31,
+      "baseIncome": 80.96,
+      "source": "classeur",
+      "marketCapUSD": 220000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/l-oreal/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/loreal.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:L'Oréal_logo.svg"
     },
     {
       "id": "glaxosmithkline-plc",
-      "name": "GlaxoSmithkline PLC",
+      "name": "GSK plc",
       "zone": "europe",
       "sector": "health",
       "country": "Royaume-Uni",
-      "basePrice": 110.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 322.12,
+      "baseIncome": 38.65,
+      "source": "classeur",
+      "marketCapUSD": 94000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/glaxo-smith-kline/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "petrobras",
-      "name": "Petrobras",
+      "name": "Petróleo Brasileiro S.A. (Petrobras)",
       "zone": "americas",
       "sector": "energy",
       "country": "Brésil",
-      "basePrice": 110.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 418.77,
+      "baseIncome": 50.25,
+      "source": "classeur",
+      "marketCapUSD": 160000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/petrobras/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "ping-an-insurance-group-co-of-china-ltd",
-      "name": "Ping An Insurance Group Co of China Ltd",
+      "name": "Ping An Insurance (Group) Company of China, Ltd.",
       "zone": "asia",
       "sector": "finance",
       "country": "Chine",
-      "basePrice": 110.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 399.53,
+      "baseIncome": 47.94,
+      "source": "classeur",
+      "marketCapUSD": 143920000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/ping-an-insurance/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/ping-an.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Ping_An_Logo_(2022).svg"
     },
     {
       "id": "banco-santander-s-a",
-      "name": "Banco Santander S.A.",
+      "name": "Banco Santander, S.A.",
       "zone": "europe",
       "sector": "finance",
       "country": "Espagne",
-      "basePrice": 110.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "basePrice": 550,
+      "baseIncome": 77,
+      "source": "classeur",
+      "marketCapUSD": 200000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/santander/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "total-sa",
-      "name": "Total SA",
+      "name": "TotalEnergies SE",
       "zone": "europe",
       "sector": "energy",
       "country": "France",
-      "basePrice": 120.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "basePrice": 450,
+      "baseIncome": 54,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/totalenergies.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:TotalEnergies_wordmark_(2021-present).svg",
+      "marketCapUSD": 190000000000,
+      "marketCapAsOf": "2026-10-05",
+      "marketCapSource": "https://companiesmarketcap.com/totalenergies/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "volkswagen-ag",
@@ -440,29 +686,46 @@
       "zone": "europe",
       "sector": "transport",
       "country": "Allemagne",
-      "basePrice": 120.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "basePrice": 99.13,
+      "baseIncome": 9.91,
+      "source": "classeur",
+      "marketCapUSD": 38000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/volkswagen/marketcap/",
+      "capCategory": "small",
+      "logoPath": "/assets/companies/logos/volkswagen.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Volkswagen_logo_2019.svg",
+      "economyVersion": 3
     },
     {
       "id": "bp-plc",
-      "name": "BP PLC",
+      "name": "BP p.l.c.",
       "zone": "europe",
       "sector": "energy",
       "country": "Royaume-Uni",
-      "basePrice": 120.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "basePrice": 350.68,
+      "baseIncome": 42.08,
+      "source": "classeur",
+      "marketCapUSD": 110000000000,
+      "marketCapAsOf": "2026-10-05",
+      "marketCapSource": "https://companiesmarketcap.com/bp/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "philip-morris-international",
-      "name": "Philip Morris International",
+      "name": "Philip Morris International Inc.",
       "zone": "americas",
       "sector": "agrifood",
-      "country": "USA",
-      "basePrice": 120.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 670.42,
+      "baseIncome": 93.86,
+      "source": "classeur",
+      "marketCapUSD": 300000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/philip-morris/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "bayer-ag",
@@ -470,39 +733,61 @@
       "zone": "europe",
       "sector": "health",
       "country": "Allemagne",
-      "basePrice": 120.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 224.73,
+      "baseIncome": 26.97,
+      "source": "classeur",
+      "marketCapUSD": 55000000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/bayer/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/bayer-2018.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_Bayer.svg"
     },
     {
       "id": "sinopec",
-      "name": "Sinopec",
+      "name": "China Petroleum & Chemical Corporation (Sinopec)",
       "zone": "asia",
       "sector": "energy",
       "country": "Chine",
-      "basePrice": 120.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 324.5,
+      "baseIncome": 38.94,
+      "source": "classeur",
+      "marketCapUSD": 95240000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/sinopec/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "unilever-nv",
-      "name": "Unilever NV",
+      "name": "Unilever PLC",
       "zone": "europe",
       "sector": "agrifood",
-      "country": "Pays-bas",
-      "basePrice": 120.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "country": "Royaume-Uni",
+      "basePrice": 381.04,
+      "baseIncome": 45.72,
+      "source": "classeur",
+      "marketCapUSD": 130000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/unilever/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "ambev",
-      "name": "Ambev",
+      "name": "Ambev S.A.",
       "zone": "americas",
       "sector": "agrifood",
       "country": "Brésil",
-      "basePrice": 130.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "basePrice": 207.41,
+      "baseIncome": 24.89,
+      "source": "classeur",
+      "marketCapUSD": 50000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/ambev/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "sanofi",
@@ -510,479 +795,859 @@
       "zone": "europe",
       "sector": "health",
       "country": "France",
-      "basePrice": 130.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "basePrice": 324.04,
+      "baseIncome": 38.88,
+      "source": "classeur",
+      "marketCapUSD": 95000000000,
+      "marketCapAsOf": "2026-10-05",
+      "marketCapSource": "https://companiesmarketcap.com/sanofi/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/sanofi-2022.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Sanofi-2022.svg"
     },
     {
       "id": "pepsico",
-      "name": "PepsiCo",
+      "name": "PepsiCo, Inc.",
       "zone": "americas",
       "sector": "agrifood",
-      "country": "USA",
-      "basePrice": 140.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 429.79,
+      "baseIncome": 51.57,
+      "source": "classeur",
+      "marketCapUSD": 170000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/pepsico/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "cisco-systems",
-      "name": "Cisco Systems",
+      "name": "Cisco Systems, Inc.",
       "zone": "americas",
       "sector": "technology",
-      "country": "USA",
-      "basePrice": 140.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 797.37,
+      "baseIncome": 111.63,
+      "source": "classeur",
+      "marketCapUSD": 460000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/cisco/marketcap/",
+      "capCategory": "large",
+      "logoPath": "/assets/companies/logos/cisco.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Cisco_logo_blue_2016.svg",
+      "economyVersion": 3
     },
     {
       "id": "intel-corp",
-      "name": "Intel Corp",
+      "name": "Intel Corporation",
       "zone": "americas",
       "sector": "technology",
-      "country": "USA",
-      "basePrice": 150.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 881.19,
+      "baseIncome": 123.37,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/intel.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Intel_logo_2023.svg",
+      "marketCapUSD": 610000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/intel/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "hsbc-holdings-plc",
-      "name": "HSBC Holdings PLC",
+      "name": "HSBC Holdings plc",
       "zone": "europe",
       "sector": "finance",
       "country": "Royaume-Uni",
-      "basePrice": 160.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "basePrice": 698.73,
+      "baseIncome": 97.82,
+      "source": "classeur",
+      "marketCapUSD": 330000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/hsbc/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "ibm-corp",
-      "name": "IBM Corp",
+      "name": "International Business Machines Corporation (IBM)",
       "zone": "americas",
       "sector": "technology",
-      "country": "USA",
-      "basePrice": 160.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 564.49,
+      "baseIncome": 79.03,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/ibm.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:IBM_logo.svg",
+      "marketCapUSD": 210000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/ibm/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "visa-inc",
-      "name": "Visa Inc",
+      "name": "Visa Inc.",
       "zone": "americas",
-      "sector": "industry",
-      "country": "USA",
-      "basePrice": 160.0,
-      "baseIncome": 10.0,
-      "source": "classeur"
+      "sector": "finance",
+      "country": "États-Unis",
+      "basePrice": 917.79,
+      "baseIncome": 128.49,
+      "source": "classeur",
+      "marketCapUSD": 690000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/visa/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/visa-2021.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Visa_Inc._logo_(2021–present).svg"
     },
     {
       "id": "at-t-inc",
-      "name": "AT&T Inc",
+      "name": "AT&T Inc.",
       "zone": "americas",
       "sector": "media",
-      "country": "USA",
-      "basePrice": 170.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 429.79,
+      "baseIncome": 51.57,
+      "source": "classeur",
+      "marketCapUSD": 170000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/att/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "the-coca-cola-co",
-      "name": "The Coca-cola Co",
+      "name": "The Coca-Cola Company",
       "zone": "americas",
       "sector": "agrifood",
-      "country": "USA",
-      "basePrice": 180.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 732.71,
+      "baseIncome": 102.58,
+      "source": "classeur",
+      "marketCapUSD": 370000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/coca-cola/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "toyota-motor",
-      "name": "Toyota Motor",
+      "name": "Toyota Motor Corporation",
       "zone": "asia",
       "sector": "transport",
-      "country": "Japan",
-      "basePrice": 180.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "Japon",
+      "basePrice": 575.64,
+      "baseIncome": 80.59,
+      "source": "classeur",
+      "marketCapUSD": 218030000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/toyota/marketcap/",
+      "capCategory": "large",
+      "logoPath": "/assets/companies/logos/toyota.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Toyota_carlogo.svg",
+      "economyVersion": 3
     },
     {
       "id": "the-walt-disney-co",
-      "name": "The Walt Disney Co",
+      "name": "The Walt Disney Company",
       "zone": "americas",
       "sector": "media",
-      "country": "USA",
-      "basePrice": 180.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 440.18,
+      "baseIncome": 52.82,
+      "source": "classeur",
+      "marketCapUSD": 180000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/walt-disney/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "tencent-holdings-ltd",
-      "name": "Tencent Holdings Ltd",
+      "name": "Tencent Holdings Limited",
       "zone": "asia",
       "sector": "technology",
       "country": "Chine",
-      "basePrice": 180.0,
-      "baseIncome": 20.0,
-      "source": "classeur"
+      "basePrice": 809.85,
+      "baseIncome": 113.38,
+      "source": "classeur",
+      "marketCapUSD": 479740000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/tencent/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/tencent.png",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Tencent_logo_2017.svg"
     },
     {
       "id": "royal-dutch-shell",
-      "name": "Royal Dutch Shell",
+      "name": "Shell plc",
       "zone": "europe",
       "sector": "energy",
       "country": "Royaume-Uni",
-      "basePrice": 190.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "basePrice": 649.93,
+      "baseIncome": 90.99,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/shell.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Shell_wordmark_2019.svg",
+      "marketCapUSD": 280000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/shell/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "agricultural-bank-of-china",
-      "name": "Agricultural bank of China",
+      "name": "Sun Hung Kai Properties Limited",
       "zone": "asia",
-      "sector": "finance",
-      "country": "Chine",
-      "basePrice": 190.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "sector": "realestate",
+      "country": "Hong Kong",
+      "basePrice": 99.47,
+      "baseIncome": 9.95,
+      "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/2025102200125.pdf",
+      "catalogVersion": 3,
+      "logoPath": "/assets/companies/logos/sun-hung-kai.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Sun_Hung_Kai_Properties_logo.svg",
+      "ticker": "0016.HK",
+      "marketCapUSD": 38550000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/sun-hung-kai-properties/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "oracle-corp",
-      "name": "Oracle Corp",
+      "name": "Oracle Corporation",
       "zone": "americas",
       "sector": "technology",
-      "country": "USA",
-      "basePrice": 190.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 777.34,
+      "baseIncome": 108.83,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/oracle.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Oracle_wordmark.svg",
+      "marketCapUSD": 430000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/oracle/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "alibaba-group-holding",
-      "name": "Alibaba Group Holding",
+      "name": "Alibaba Group Holding Limited",
       "zone": "asia",
       "sector": "technology",
       "country": "Chine",
-      "basePrice": 200.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "basePrice": 645.27,
+      "baseIncome": 90.34,
+      "source": "classeur",
+      "marketCapUSD": 275640000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/alibaba/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/alibaba.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Alibaba_en_logo.svg"
     },
     {
       "id": "bank-of-china-ltd",
-      "name": "Bank of China Ltd",
+      "name": "Bank of China Limited",
       "zone": "asia",
       "sector": "finance",
       "country": "Chine",
-      "basePrice": 200.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "basePrice": 693.23,
+      "baseIncome": 97.05,
+      "source": "classeur",
+      "marketCapUSD": 323950000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/bank-of-china/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "chevron-corp",
-      "name": "Chevron Corp",
+      "name": "Chevron Corporation",
       "zone": "americas",
       "sector": "energy",
-      "country": "USA",
-      "basePrice": 200.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 763.2,
+      "baseIncome": 106.85,
+      "source": "classeur",
+      "marketCapUSD": 410000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/chevron/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/chevron.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Chevron_Logo.svg"
     },
     {
       "id": "anheuser-busch",
-      "name": "Anheuser-Busch",
+      "name": "Anheuser-Busch InBev SA/NV",
       "zone": "europe",
       "sector": "agrifood",
       "country": "Belgique",
-      "basePrice": 200.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "basePrice": 407.04,
+      "baseIncome": 48.84,
+      "source": "classeur",
+      "marketCapUSD": 150000000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/anheuser-busch-inbev/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "china-construction-bank-corp",
-      "name": "China Construction Bank Corp",
+      "name": "Komatsu Ltd.",
       "zone": "asia",
-      "sector": "realestate",
-      "country": "Chine",
-      "basePrice": 210.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "sector": "industry",
+      "country": "Japon",
+      "basePrice": 182.64,
+      "baseIncome": 21.92,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "china-construction-bank-corp"
+      ],
+      "legacyNameAliases": [
+        "China Construction Bank Corp"
+      ],
+      "catalogSourceURL": "https://www.komatsu.com/en-us/about",
+      "marketCapUSD": 43630000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/komatsu/marketcap/",
+      "capCategory": "medium",
+      "logoPath": "/assets/companies/logos/komatsu.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Komatsu_company_logos.svg",
+      "economyVersion": 3
     },
     {
       "id": "samsung-electronics-co-ltd",
-      "name": "Samsung Electronics Co Ltd",
+      "name": "Samsung Electronics Co., Ltd.",
       "zone": "asia",
       "sector": "technology",
-      "country": "Korée du Sud",
-      "basePrice": 210.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "country": "Corée du Sud",
+      "basePrice": 1113.59,
+      "baseIncome": 155.9,
+      "source": "classeur",
+      "marketCapUSD": 1334000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/samsung/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/samsung-electronics.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg"
     },
     {
       "id": "pfizer-inc",
-      "name": "Pfizer Inc",
+      "name": "Pfizer Inc.",
       "zone": "americas",
       "sector": "health",
-      "country": "USA",
-      "basePrice": 210.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 418.77,
+      "baseIncome": 50.25,
+      "source": "classeur",
+      "marketCapUSD": 160000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/pfizer/marketcap/",
+      "capCategory": "medium",
+      "logoPath": "/assets/companies/logos/pfizer.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Pfizer_(2021).svg",
+      "economyVersion": 3
     },
     {
       "id": "procter-gamble-co",
-      "name": "Procter & Gamble Co",
+      "name": "The Procter & Gamble Company",
       "zone": "americas",
-      "sector": "agrifood",
-      "country": "USA",
-      "basePrice": 220.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 707.6,
+      "baseIncome": 99.06,
+      "source": "classeur",
+      "marketCapUSD": 340000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/procter-and-gamble/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/procter-gamble.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Procter_&_Gamble_logo.svg"
     },
     {
       "id": "nestle",
-      "name": "Nestlé",
+      "name": "Nestlé S.A.",
       "zone": "europe",
       "sector": "agrifood",
       "country": "Suisse",
-      "basePrice": 230.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "basePrice": 591.51,
+      "baseIncome": 82.81,
+      "source": "classeur",
+      "marketCapUSD": 230000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/nestle/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/nestle-wordmark-2024.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Nestlé_textlogo.svg"
     },
     {
       "id": "novartis",
-      "name": "Novartis",
+      "name": "Novartis AG",
       "zone": "europe",
       "sector": "health",
       "country": "Suisse",
-      "basePrice": 230.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "basePrice": 639.13,
+      "baseIncome": 89.48,
+      "source": "classeur",
+      "marketCapUSD": 270000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/novartis/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/novartis-2023.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Novartis-Logo-2023.svg"
     },
     {
       "id": "jpmorgan-chase-co",
-      "name": "JPMorgan Chase & Co",
+      "name": "JPMorgan Chase & Co.",
       "zone": "americas",
       "sector": "finance",
-      "country": "USA",
-      "basePrice": 230.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 990.03,
+      "baseIncome": 138.6,
+      "source": "classeur",
+      "marketCapUSD": 880000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/jp-morgan-chase/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "roche",
-      "name": "Roche",
+      "name": "Roche Holding AG",
       "zone": "europe",
       "sector": "health",
       "country": "Suisse",
-      "basePrice": 230.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "basePrice": 707.6,
+      "baseIncome": 99.06,
+      "source": "classeur",
+      "marketCapUSD": 340000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/roche/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "general-electric",
-      "name": "General Electric",
+      "name": "GE Aerospace",
       "zone": "americas",
       "sector": "industry",
-      "country": "USA",
-      "basePrice": 250.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 689.59,
+      "baseIncome": 96.54,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "general-electric"
+      ],
+      "legacyNameAliases": [
+        "General Electric"
+      ],
+      "catalogSourceURL": "https://www.ge.com/investor-relations/spinoff-resources",
+      "marketCapUSD": 320000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/general-electric/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "wal-mart-stores-inc",
-      "name": "Wal-Mart Stores Inc",
+      "name": "Walmart Inc.",
       "zone": "americas",
       "sector": "agrifood",
-      "country": "USA",
-      "basePrice": 260.0,
-      "baseIncome": 30.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 972.66,
+      "baseIncome": 136.17,
+      "source": "classeur",
+      "marketCapUSD": 830000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/walmart/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/walmart-inc-2025.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Walmart_logo_(2025).svg"
     },
     {
       "id": "china-mobile-ltd",
-      "name": "China Mobile Ltd",
+      "name": "China Mobile Limited",
       "zone": "asia",
       "sector": "media",
-      "country": "Chine",
-      "basePrice": 270.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "country": "Hong Kong (RAS de Chine)",
+      "basePrice": 575.64,
+      "baseIncome": 80.59,
+      "source": "classeur",
+      "marketCapUSD": 218030000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/china-mobile/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "icbc-ltd",
-      "name": "ICBC Ltd",
+      "name": "Industrial and Commercial Bank of China Limited",
       "zone": "asia",
       "sector": "finance",
       "country": "Chine",
-      "basePrice": 270.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "basePrice": 706.37,
+      "baseIncome": 98.89,
+      "source": "classeur",
+      "marketCapUSD": 338600000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/icbc/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/icbc.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:ICBC_China_logo.svg"
     },
     {
       "id": "wells-fargo-co",
-      "name": "Wells Fargo & Co",
+      "name": "Wells Fargo & Company",
       "zone": "americas",
       "sector": "finance",
-      "country": "USA",
-      "basePrice": 280.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 616.27,
+      "baseIncome": 86.28,
+      "source": "classeur",
+      "marketCapUSD": 250000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/wells-fargo/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/wells-fargo-2020.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Wells_Fargo_Logo_(2020).svg"
     },
     {
       "id": "johnson-johnson",
       "name": "Johnson & Johnson",
       "zone": "americas",
       "sector": "health",
-      "country": "USA",
-      "basePrice": 280.0,
-      "baseIncome": 40.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 881.19,
+      "baseIncome": 123.37,
+      "source": "classeur",
+      "marketCapUSD": 610000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/johnson-and-johnson/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "petrochina-co-ltd",
-      "name": "PetroChina Co Ltd",
+      "name": "PetroChina Company Limited",
       "zone": "asia",
       "sector": "energy",
       "country": "Chine",
-      "basePrice": 330.0,
-      "baseIncome": 70.0,
-      "source": "classeur"
+      "basePrice": 585.67,
+      "baseIncome": 81.99,
+      "source": "classeur",
+      "marketCapUSD": 225520000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/petro-china/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "microsoft-corp",
-      "name": "Microsoft Corp",
+      "name": "Microsoft Corporation",
       "zone": "americas",
       "sector": "technology",
-      "country": "USA",
-      "basePrice": 330.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 1424.49,
+      "baseIncome": 199.43,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/microsoft.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Microsoft.svg",
+      "marketCapUSD": 3800000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/microsoft/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "exxon-mobil-corp",
-      "name": "Exxon Mobil Corp",
+      "name": "Exxon Mobil Corporation",
       "zone": "americas",
       "sector": "energy",
-      "country": "USA",
-      "basePrice": 350.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 909.06,
+      "baseIncome": 127.27,
+      "source": "classeur",
+      "marketCapUSD": 670000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/exxon-mobil/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "berkshire-hathaway-inc",
-      "name": "Berkshire Hathaway Inc",
+      "name": "Berkshire Hathaway Inc.",
       "zone": "americas",
       "sector": "finance",
-      "country": "USA",
-      "basePrice": 350.0,
-      "baseIncome": 50.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 1056.31,
+      "baseIncome": 147.88,
+      "source": "classeur",
+      "marketCapUSD": 1100000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/berkshire-hathaway/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "alphabet-google-inc",
-      "name": "Alphabet (Google Inc)",
+      "name": "Alphabet Inc.",
       "zone": "americas",
       "sector": "technology",
-      "country": "USA",
-      "basePrice": 400.0,
-      "baseIncome": 60.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 1454.22,
+      "baseIncome": 203.59,
+      "source": "classeur",
+      "marketCapUSD": 4200000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/usd/alphabet-google/marketcap/",
+      "capCategory": "large",
+      "logoPath": "/assets/companies/logos/alphabet.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Alphabet_Inc_Logo_2015.svg",
+      "economyVersion": 3
     },
     {
       "id": "apple-inc",
-      "name": "Apple Inc",
+      "name": "Apple Inc.",
       "zone": "americas",
       "sector": "technology",
-      "country": "USA",
-      "basePrice": 700.0,
-      "baseIncome": 110.0,
-      "source": "classeur"
+      "country": "États-Unis",
+      "basePrice": 1500,
+      "baseIncome": 210,
+      "source": "classeur",
+      "marketCapUSD": 4900000000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/apple/marketcap/",
+      "capCategory": "large",
+      "economyVersion": 3
     },
     {
       "id": "pacifica-minerals",
-      "name": "Pacifica Minerals",
+      "name": "Woolworths Group Limited",
       "zone": "oceania",
       "sector": "agrifood",
-      "country": "Océanie",
-      "basePrice": 45,
-      "baseIncome": 9,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 96.62,
+      "baseIncome": 9.66,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "pacifica-minerals"
+      ],
+      "legacyNameAliases": [
+        "Pacifica Minerals"
+      ],
+      "catalogSourceURL": "https://www.woolworthsgroup.com.au/content/dam/wwg/sustainability/reports/f25/Woolworths%20Group%20Annual%20Report%202025%20.pdf",
+      "marketCapUSD": 34240000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/woolworths-group/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "southern-cross-energy",
-      "name": "Southern Cross Energy",
+      "name": "Origin Energy",
       "zone": "oceania",
       "sector": "energy",
-      "country": "Océanie",
-      "basePrice": 70,
-      "baseIncome": 14,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 73.57,
+      "baseIncome": 7.36,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "southern-cross-energy"
+      ],
+      "legacyNameAliases": [
+        "Southern Cross Energy"
+      ],
+      "catalogSourceURL": "https://www.originenergy.com.au/about/",
+      "marketCapUSD": 13150000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/origin-energy/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "coral-reef-health",
-      "name": "Coral Reef Health",
+      "name": "CSL Limited",
       "zone": "oceania",
       "sector": "health",
-      "country": "Océanie",
-      "basePrice": 55,
-      "baseIncome": 11,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 235.94,
+      "baseIncome": 28.31,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "coral-reef-health"
+      ],
+      "legacyNameAliases": [
+        "Coral Reef Health"
+      ],
+      "catalogSourceURL": "https://www.csl.com/we-are-csl",
+      "marketCapUSD": 58500000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/csl/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/csl.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:CSL_Limited_logo.svg"
     },
     {
       "id": "pacific-link",
-      "name": "Pacific Link",
+      "name": "Telstra Group",
       "zone": "oceania",
       "sector": "media",
-      "country": "Océanie",
-      "basePrice": 60,
-      "baseIncome": 12,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 98.75,
+      "baseIncome": 9.88,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "pacific-link"
+      ],
+      "legacyNameAliases": [
+        "Pacific Link"
+      ],
+      "catalogSourceURL": "https://www.telstra.com.au/aboutus",
+      "marketCapUSD": 37410000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/telstra/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "harbour-infrastructure",
-      "name": "Harbour Infrastructure",
+      "name": "Goodman Group",
       "zone": "oceania",
       "sector": "realestate",
-      "country": "Océanie",
-      "basePrice": 80,
-      "baseIncome": 16,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 98.8,
+      "baseIncome": 9.88,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "harbour-infrastructure"
+      ],
+      "legacyNameAliases": [
+        "Harbour Infrastructure"
+      ],
+      "catalogSourceURL": "https://au.goodman.com/about-goodman/about-us",
+      "marketCapUSD": 37480000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/goodman/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "oceanic-air",
-      "name": "Oceanic Air",
+      "name": "Qantas Airways",
       "zone": "oceania",
       "sector": "transport",
-      "country": "Océanie",
-      "basePrice": 50,
-      "baseIncome": 10,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 65.92,
+      "baseIncome": 6.59,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "oceanic-air"
+      ],
+      "legacyNameAliases": [
+        "Oceanic Air"
+      ],
+      "catalogSourceURL": "https://www.qantas.com/corporate/about-us",
+      "marketCapUSD": 9570000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/qantas-airways/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3,
+      "logoPath": "/assets/companies/logos/qantas-wordmark.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Qantas_wordmark_2016.svg"
     },
     {
       "id": "southpoint-finance",
-      "name": "Southpoint Finance",
+      "name": "Commonwealth Bank of Australia",
       "zone": "oceania",
       "sector": "finance",
-      "country": "Océanie",
-      "basePrice": 65,
-      "baseIncome": 13,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 437.48,
+      "baseIncome": 52.5,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "southpoint-finance"
+      ],
+      "legacyNameAliases": [
+        "Southpoint Finance"
+      ],
+      "catalogSourceURL": "https://www.commbank.com.au/about-us.html",
+      "marketCapUSD": 177350000000,
+      "marketCapAsOf": "2026-10",
+      "marketCapSource": "https://companiesmarketcap.com/commonwealth-bank/marketcap/",
+      "capCategory": "medium",
+      "economyVersion": 3
     },
     {
       "id": "reef-data-systems",
-      "name": "Reef Data Systems",
+      "name": "WiseTech Global Limited",
       "zone": "oceania",
       "sector": "technology",
-      "country": "Océanie",
-      "basePrice": 55,
-      "baseIncome": 11,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 60.21,
+      "baseIncome": 6.02,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "reef-data-systems"
+      ],
+      "legacyNameAliases": [
+        "Reef Data Systems"
+      ],
+      "catalogSourceURL": "https://wisetechglobal.com/media/w15p1uve/wtc-1h25-app-4d-and-financial-report.pdf",
+      "marketCapUSD": 7550000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/wisetech-global/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     },
     {
       "id": "austral-manufacturing",
-      "name": "Austral Manufacturing",
+      "name": "Fortescue",
       "zone": "oceania",
       "sector": "industry",
-      "country": "Océanie",
-      "basePrice": 45,
-      "baseIncome": 9,
-      "source": "jeu"
+      "country": "Australie",
+      "basePrice": 98.5,
+      "baseIncome": 9.85,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "austral-manufacturing"
+      ],
+      "legacyNameAliases": [
+        "Austral Manufacturing"
+      ],
+      "catalogSourceURL": "https://www.fortescue.com/en/about-fortescue",
+      "marketCapUSD": 37020000000,
+      "marketCapAsOf": "2026-09",
+      "marketCapSource": "https://companiesmarketcap.com/fortescue/marketcap/",
+      "capCategory": "small",
+      "economyVersion": 3
     }
   ],
   "events": [
@@ -990,7 +1655,7 @@
       "id": 1,
       "type": "positive",
       "title": "Hausse des commandes",
-      "description": "Hausse des commandes. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "En Europe, les carnets de commandes se remplissent et les fournisseurs du secteur énergie prolongent leurs équipes.",
       "effect": "Zone Europe → A; Secteur Énergie → A.",
       "changes": [
         {
@@ -1009,7 +1674,7 @@
       "id": 2,
       "type": "positive",
       "title": "Relance des infrastructures",
-      "description": "Relance des infrastructures. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Des chantiers longtemps bloqués redémarrent en Europe ; les entreprises du secteur industrie réembauchent.",
       "effect": "Zone Europe → A; Secteur Industrie → A.",
       "changes": [
         {
@@ -1028,7 +1693,7 @@
       "id": 3,
       "type": "positive",
       "title": "Relance budgétaire",
-      "description": "Relance budgétaire. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un nouveau budget public est voté en Europe et promet des débouchés aux acteurs du secteur santé.",
       "effect": "Zone Europe → B; Secteur Santé → B.",
       "changes": [
         {
@@ -1047,7 +1712,7 @@
       "id": 4,
       "type": "positive",
       "title": "Découverte énergétique",
-      "description": "Découverte énergétique. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Une découverte de ressources en Asie mobilise les banques qui financent son exploitation.",
       "effect": "Zone Asie → B; Secteur Finance → A.",
       "changes": [
         {
@@ -1066,7 +1731,7 @@
       "id": 5,
       "type": "positive",
       "title": "Rebond manufacturier",
-      "description": "Rebond manufacturier. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les usines d’Océanie rouvrent des lignes de production ; les prêteurs accompagnent leur reprise.",
       "effect": "Zone Océanie → A; Secteur Finance → A.",
       "changes": [
         {
@@ -1085,7 +1750,7 @@
       "id": 6,
       "type": "positive",
       "title": "Dynamisme des marchés émergents",
-      "description": "Dynamisme des marchés émergents. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "De nouveaux marchés s’ouvrent en Asie et les investisseurs s’intéressent aux entreprises du secteur santé.",
       "effect": "Zone Asie → B; Secteur Santé → A.",
       "changes": [
         {
@@ -1104,7 +1769,7 @@
       "id": 7,
       "type": "positive",
       "title": "Croissance au-dessus des attentes",
-      "description": "Croissance au-dessus des attentes. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les comptes publiés en Océanie surprennent les analystes et relancent les projets du secteur énergie.",
       "effect": "Zone Océanie → A; Secteur Énergie → B.",
       "changes": [
         {
@@ -1123,7 +1788,7 @@
       "id": 8,
       "type": "positive",
       "title": "Percée technologique",
-      "description": "Percée technologique. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un laboratoire d’Asie présente une percée ; les groupes du secteur santé préparent son déploiement.",
       "effect": "Zone Asie → B; Secteur Santé → A.",
       "changes": [
         {
@@ -1142,7 +1807,7 @@
       "id": 9,
       "type": "positive",
       "title": "Accords énergétiques",
-      "description": "Accords énergétiques. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un accord d’approvisionnement conclu en Europe rassure les financeurs des prochains projets.",
       "effect": "Zone Europe → A; Secteur Finance → A.",
       "changes": [
         {
@@ -1161,7 +1826,7 @@
       "id": 10,
       "type": "positive",
       "title": "Résultats supérieurs aux attentes",
-      "description": "Résultats supérieurs aux attentes. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les entreprises d’Europe publient de meilleurs comptes ; les sociétés du secteur énergie revoient leurs prévisions.",
       "effect": "Zone Europe → B; Secteur Énergie → A.",
       "changes": [
         {
@@ -1180,7 +1845,7 @@
       "id": 11,
       "type": "positive",
       "title": "Accord commercial majeur",
-      "description": "Accord commercial majeur. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un grand accord commercial ouvre des routes en Afrique & Moyen-Orient et facilite l’accès aux produits du secteur santé.",
       "effect": "Zone Afrique → B; Secteur Santé → B.",
       "changes": [
         {
@@ -1199,7 +1864,7 @@
       "id": 12,
       "type": "positive",
       "title": "Succès des introductions en bourse",
-      "description": "Succès des introductions en bourse. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "De nouvelles sociétés entrent en Bourse en Europe et lèvent des fonds pour leurs activités du secteur santé.",
       "effect": "Zone Europe → A; Secteur Santé → B.",
       "changes": [
         {
@@ -1218,7 +1883,7 @@
       "id": 13,
       "type": "positive",
       "title": "Plan climat ambitieux",
-      "description": "Plan climat ambitieux. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un plan climat est annoncé en Europe ; les banques organisent le financement de la transition.",
       "effect": "Zone Europe → A; Secteur Finance → A.",
       "changes": [
         {
@@ -1237,7 +1902,7 @@
       "id": 14,
       "type": "positive",
       "title": "Amélioration du crédit",
-      "description": "Amélioration du crédit. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les banques d’Europe assouplissent le crédit et les entreprises du secteur technologie relancent leurs projets.",
       "effect": "Zone Europe → A; Secteur Technologie → A.",
       "changes": [
         {
@@ -1256,7 +1921,7 @@
       "id": 15,
       "type": "positive",
       "title": "Boom des semi-conducteurs",
-      "description": "Boom des semi-conducteurs. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Une vague de commandes de composants traverse Océanie et remplit les ateliers du secteur industrie.",
       "effect": "Zone Océanie → B; Secteur Industrie → A.",
       "changes": [
         {
@@ -1275,7 +1940,7 @@
       "id": 16,
       "type": "positive",
       "title": "Accès élargi au financement",
-      "description": "Accès élargi au financement. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "De nouveaux prêts deviennent accessibles en Afrique & Moyen-Orient et les jeunes entreprises du secteur technologie accélèrent.",
       "effect": "Zone Afrique → A; Secteur Technologie → A.",
       "changes": [
         {
@@ -1294,7 +1959,7 @@
       "id": 17,
       "type": "positive",
       "title": "Baisse surprise des taux",
-      "description": "Baisse surprise des taux. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "La banque centrale surprend Europe avec une baisse des taux ; les sociétés du secteur technologie révisent leurs plans.",
       "effect": "Zone Europe → A; Secteur Technologie → B.",
       "changes": [
         {
@@ -1313,7 +1978,7 @@
       "id": 18,
       "type": "positive",
       "title": "Optimisme des entreprises",
-      "description": "Optimisme des entreprises. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les dirigeants d’Europe annoncent davantage d’investissements et réservent des capacités dans le secteur industrie.",
       "effect": "Zone Europe → B; Secteur Industrie → A.",
       "changes": [
         {
@@ -1332,7 +1997,7 @@
       "id": 19,
       "type": "positive",
       "title": "Stabilisation des devises",
-      "description": "Stabilisation des devises. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les monnaies se stabilisent en Afrique & Moyen-Orient ; les entreprises du secteur santé peuvent enfin chiffrer leurs contrats.",
       "effect": "Zone Afrique → B; Secteur Santé → A.",
       "changes": [
         {
@@ -1351,7 +2016,7 @@
       "id": 20,
       "type": "positive",
       "title": "Cadre réglementaire favorable",
-      "description": "Cadre réglementaire favorable. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un cadre plus lisible est adopté en Europe et les sociétés du secteur santé reprennent des projets suspendus.",
       "effect": "Zone Europe → A; Secteur Santé → B.",
       "changes": [
         {
@@ -1370,7 +2035,7 @@
       "id": 21,
       "type": "positive",
       "title": "Plan d'investissement public",
-      "description": "Plan d'investissement public. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "L’État lance un programme d’investissement en Europe et commande de nouveaux équipements au secteur énergie.",
       "effect": "Zone Europe → B; Secteur Énergie → B.",
       "changes": [
         {
@@ -1389,7 +2054,7 @@
       "id": 22,
       "type": "positive",
       "title": "Exportations agricoles dynamiques",
-      "description": "Exportations agricoles dynamiques. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les exportateurs agricoles d’Europe signent des contrats ; la demande du secteur énergie suit leur croissance.",
       "effect": "Zone Europe → B; Secteur Énergie → A.",
       "changes": [
         {
@@ -1408,7 +2073,7 @@
       "id": 23,
       "type": "positive",
       "title": "Partenariat public-privé",
-      "description": "Partenariat public-privé. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un partenariat public-privé finance de nouveaux sites en Océanie et donne du travail au secteur industrie.",
       "effect": "Zone Océanie → A; Secteur Industrie → A.",
       "changes": [
         {
@@ -1427,7 +2092,7 @@
       "id": 24,
       "type": "positive",
       "title": "Appétit pour le risque",
-      "description": "Appétit pour le risque. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les investisseurs acceptent davantage de risque en Afrique & Moyen-Orient et soutiennent les paris du secteur technologie.",
       "effect": "Zone Afrique → A; Secteur Technologie → A.",
       "changes": [
         {
@@ -1446,7 +2111,7 @@
       "id": 25,
       "type": "positive",
       "title": "Reprise immobilière",
-      "description": "Reprise immobilière. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les transactions immobilières repartent en Europe ; les banques renégocient et financent les projets.",
       "effect": "Zone Europe → B; Secteur Finance → A.",
       "changes": [
         {
@@ -1465,7 +2130,7 @@
       "id": 26,
       "type": "positive",
       "title": "Rebond des matières premières",
-      "description": "Rebond des matières premières. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Le prix des matières premières rebondit en Asie et les producteurs du secteur énergie relancent leurs forages.",
       "effect": "Zone Asie → B; Secteur Énergie → A.",
       "changes": [
         {
@@ -1484,7 +2149,7 @@
       "id": 27,
       "type": "positive",
       "title": "Rallye boursier",
-      "description": "Rallye boursier. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Une série d’achats entraîne la Bourse d’Asie ; les valeurs du secteur technologie concentrent les échanges.",
       "effect": "Zone Asie → A; Secteur Technologie → A.",
       "changes": [
         {
@@ -1503,7 +2168,7 @@
       "id": 28,
       "type": "positive",
       "title": "Innovation médicale",
-      "description": "Innovation médicale. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Une avancée médicale est annoncée en Europe ; les banques financent les essais et leur industrialisation.",
       "effect": "Zone Europe → A; Secteur Finance → B.",
       "changes": [
         {
@@ -1522,7 +2187,7 @@
       "id": 29,
       "type": "positive",
       "title": "Amélioration de la confiance",
-      "description": "Amélioration de la confiance. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les ménages d’Afrique & Moyen-Orient reprennent confiance et les projets du secteur énergie trouvent de nouveaux clients.",
       "effect": "Zone Afrique → A; Secteur Énergie → B.",
       "changes": [
         {
@@ -1541,7 +2206,7 @@
       "id": 30,
       "type": "positive",
       "title": "Allègement fiscal",
-      "description": "Allègement fiscal. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Un allègement fiscal entre en vigueur en Océanie et libère des moyens pour les entreprises du secteur énergie.",
       "effect": "Zone Océanie → A; Secteur Énergie → A.",
       "changes": [
         {
@@ -1560,7 +2225,7 @@
       "id": 31,
       "type": "positive",
       "title": "Reprise du tourisme",
-      "description": "Reprise du tourisme. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les réservations touristiques affluent en Europe ; les services du secteur santé préparent la saison.",
       "effect": "Zone Europe → B; Secteur Santé → B.",
       "changes": [
         {
@@ -1579,7 +2244,7 @@
       "id": 32,
       "type": "positive",
       "title": "Flux d'investissements entrants",
-      "description": "Flux d'investissements entrants. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Des capitaux étrangers arrivent en Océanie et les banques les orientent vers les entreprises locales.",
       "effect": "Zone Océanie → A; Secteur Finance → A.",
       "changes": [
         {
@@ -1598,7 +2263,7 @@
       "id": 33,
       "type": "positive",
       "title": "Accélération des exportations",
-      "description": "Accélération des exportations. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les exportateurs d’Afrique & Moyen-Orient remplissent leurs carnets ; les usines du secteur industrie augmentent leurs cadences.",
       "effect": "Zone Afrique → A; Secteur Industrie → B.",
       "changes": [
         {
@@ -1617,7 +2282,7 @@
       "id": 34,
       "type": "positive",
       "title": "Records de productivité",
-      "description": "Records de productivité. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Les ateliers d’Océanie produisent davantage avec les mêmes moyens et les groupes du secteur industrie investissent.",
       "effect": "Zone Océanie → B; Secteur Industrie → B.",
       "changes": [
         {
@@ -1636,7 +2301,7 @@
       "id": 35,
       "type": "positive",
       "title": "Rebond industriel",
-      "description": "Rebond industriel. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "description": "Des chaînes de production redémarrent en Amériques, entraînant une nouvelle demande adressée au secteur énergie.",
       "effect": "Zone Amériques → B; Secteur Énergie → A.",
       "changes": [
         {
@@ -1655,7 +2320,7 @@
       "id": 36,
       "type": "negative",
       "title": "Pénurie d'énergie",
-      "description": "Pénurie d'énergie. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une pénurie d’électricité interrompt des sites en Europe et prive les entreprises du secteur technologie de capacité.",
       "effect": "Zone Europe → D; Secteur Technologie → E.",
       "changes": [
         {
@@ -1674,7 +2339,7 @@
       "id": 37,
       "type": "negative",
       "title": "Récession technique",
-      "description": "Récession technique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Deux trimestres de contraction sont annoncés en Afrique & Moyen-Orient ; les commandes du secteur énergie sont reportées.",
       "effect": "Zone Afrique → E; Secteur Énergie → E.",
       "changes": [
         {
@@ -1693,7 +2358,7 @@
       "id": 38,
       "type": "negative",
       "title": "Crise industrielle",
-      "description": "Crise industrielle. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Plusieurs usines ferment temporairement en Asie et la demande adressée au secteur énergie se grippe.",
       "effect": "Zone Asie → E; Secteur Énergie → E.",
       "changes": [
         {
@@ -1712,7 +2377,7 @@
       "id": 39,
       "type": "negative",
       "title": "Détérioration du crédit",
-      "description": "Détérioration du crédit. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les défauts de paiement augmentent en Asie ; les banques resserrent leurs critères de crédit.",
       "effect": "Zone Asie → D; Secteur Finance → D.",
       "changes": [
         {
@@ -1731,7 +2396,7 @@
       "id": 40,
       "type": "negative",
       "title": "Pénuries alimentaires",
-      "description": "Pénuries alimentaires. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les récoltes manquent en Afrique & Moyen-Orient ; les banques provisionnent les prêts des distributeurs fragilisés.",
       "effect": "Zone Afrique → E; Secteur Finance → E.",
       "changes": [
         {
@@ -1750,7 +2415,7 @@
       "id": 41,
       "type": "negative",
       "title": "Effondrement sectoriel",
-      "description": "Effondrement sectoriel. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une série de mauvais résultats secoue Afrique & Moyen-Orient et les investisseurs désertent les valeurs du secteur technologie.",
       "effect": "Zone Afrique → E; Secteur Technologie → E.",
       "changes": [
         {
@@ -1769,7 +2434,7 @@
       "id": 42,
       "type": "negative",
       "title": "Crise climatique aiguë",
-      "description": "Crise climatique aiguë. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Des dégâts climatiques frappent Afrique & Moyen-Orient et interrompent des infrastructures indispensables au secteur technologie.",
       "effect": "Zone Afrique → E; Secteur Technologie → E.",
       "changes": [
         {
@@ -1788,7 +2453,7 @@
       "id": 43,
       "type": "negative",
       "title": "Inflation persistante",
-      "description": "Inflation persistante. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les coûts de production montent en Afrique & Moyen-Orient ; les industriels du secteur industrie réduisent leurs marges.",
       "effect": "Zone Afrique → D; Secteur Industrie → D.",
       "changes": [
         {
@@ -1807,7 +2472,7 @@
       "id": 44,
       "type": "negative",
       "title": "Régime de change instable",
-      "description": "Régime de change instable. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une forte instabilité monétaire renchérit les importations en Europe et les achats des groupes du secteur santé.",
       "effect": "Zone Europe → E; Secteur Santé → E.",
       "changes": [
         {
@@ -1826,7 +2491,7 @@
       "id": 45,
       "type": "negative",
       "title": "Dérive réglementaire",
-      "description": "Dérive réglementaire. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Un changement imprévu des règles en Amériques inquiète les banques et retarde leurs financements.",
       "effect": "Zone Amériques → D; Secteur Finance → D.",
       "changes": [
         {
@@ -1845,7 +2510,7 @@
       "id": 46,
       "type": "negative",
       "title": "Fuite des capitaux",
-      "description": "Fuite des capitaux. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Des investisseurs retirent leurs capitaux d’Europe et les projets du secteur énergie cherchent des fonds.",
       "effect": "Zone Europe → E; Secteur Énergie → D.",
       "changes": [
         {
@@ -1864,7 +2529,7 @@
       "id": 47,
       "type": "negative",
       "title": "Crise immobilière",
-      "description": "Crise immobilière. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les ventes immobilières se figent en Asie ; les entreprises du secteur technologie repoussent leurs investissements.",
       "effect": "Zone Asie → D; Secteur Technologie → E.",
       "changes": [
         {
@@ -1883,7 +2548,7 @@
       "id": 48,
       "type": "negative",
       "title": "Rupture logistique",
-      "description": "Rupture logistique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Des ports saturés retardent les livraisons en Asie et désorganisent les chaînes du secteur industrie.",
       "effect": "Zone Asie → D; Secteur Industrie → D.",
       "changes": [
         {
@@ -1902,7 +2567,7 @@
       "id": 49,
       "type": "negative",
       "title": "Mauvais résultats",
-      "description": "Mauvais résultats. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les comptes publiés en Amériques déçoivent ; les groupes du secteur santé abaissent leurs objectifs.",
       "effect": "Zone Amériques → E; Secteur Santé → D.",
       "changes": [
         {
@@ -1921,7 +2586,7 @@
       "id": 50,
       "type": "negative",
       "title": "Rappel massif de produits",
-      "description": "Rappel massif de produits. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Un défaut découvert après livraison impose des rappels en Asie et arrête des lignes du secteur industrie.",
       "effect": "Zone Asie → E; Secteur Industrie → E.",
       "changes": [
         {
@@ -1940,7 +2605,7 @@
       "id": 51,
       "type": "negative",
       "title": "Dérive des coûts",
-      "description": "Dérive des coûts. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les factures d’énergie et de transport gonflent en Océanie ; les marges du secteur industrie s’érodent.",
       "effect": "Zone Océanie → E; Secteur Industrie → E.",
       "changes": [
         {
@@ -1959,7 +2624,7 @@
       "id": 52,
       "type": "negative",
       "title": "Retrait des investisseurs",
-      "description": "Retrait des investisseurs. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les grands fonds quittent Asie et les banques doivent trouver de nouveaux prêteurs.",
       "effect": "Zone Asie → E; Secteur Finance → E.",
       "changes": [
         {
@@ -1978,7 +2643,7 @@
       "id": 53,
       "type": "negative",
       "title": "Changement politique brusque",
-      "description": "Changement politique brusque. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Un changement politique soudain suspend des projets en Océanie et inquiète les producteurs du secteur énergie.",
       "effect": "Zone Océanie → E; Secteur Énergie → E.",
       "changes": [
         {
@@ -1997,7 +2662,7 @@
       "id": 54,
       "type": "negative",
       "title": "Stress de liquidité",
-      "description": "Stress de liquidité. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les banques d’Océanie peinent à se refinancer et réduisent brutalement leurs nouveaux prêts.",
       "effect": "Zone Océanie → E; Secteur Finance → E.",
       "changes": [
         {
@@ -2016,7 +2681,7 @@
       "id": 55,
       "type": "negative",
       "title": "Confiance en berne",
-      "description": "Confiance en berne. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les enquêtes de confiance se dégradent en Europe ; les clients du secteur technologie reportent leurs achats.",
       "effect": "Zone Europe → D; Secteur Technologie → E.",
       "changes": [
         {
@@ -2035,7 +2700,7 @@
       "id": 56,
       "type": "negative",
       "title": "Déficit budgétaire record",
-      "description": "Déficit budgétaire record. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Le déficit public atteint un record en Amériques et le financement des projets du secteur énergie devient incertain.",
       "effect": "Zone Amériques → E; Secteur Énergie → D.",
       "changes": [
         {
@@ -2054,7 +2719,7 @@
       "id": 57,
       "type": "negative",
       "title": "Hausse des taux brutale",
-      "description": "Hausse des taux brutale. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une hausse brutale des taux renchérit le crédit en Amériques et pèse sur les usines du secteur industrie.",
       "effect": "Zone Amériques → E; Secteur Industrie → D.",
       "changes": [
         {
@@ -2073,7 +2738,7 @@
       "id": 58,
       "type": "negative",
       "title": "Sanctions économiques",
-      "description": "Sanctions économiques. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "De nouvelles sanctions coupent des circuits de paiement en Amériques et compliquent le travail des banques.",
       "effect": "Zone Amériques → E; Secteur Finance → D.",
       "changes": [
         {
@@ -2092,7 +2757,7 @@
       "id": 59,
       "type": "negative",
       "title": "Choc pétrolier",
-      "description": "Choc pétrolier. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "La flambée du pétrole alourdit les coûts en Europe et réduit les budgets disponibles pour le secteur technologie.",
       "effect": "Zone Europe → E; Secteur Technologie → D.",
       "changes": [
         {
@@ -2111,7 +2776,7 @@
       "id": 60,
       "type": "negative",
       "title": "Faillite bancaire",
-      "description": "Faillite bancaire. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une banque importante vacille en Océanie ; les entreprises du secteur technologie cherchent d’urgence d’autres prêteurs.",
       "effect": "Zone Océanie → D; Secteur Technologie → D.",
       "changes": [
         {
@@ -2130,7 +2795,7 @@
       "id": 61,
       "type": "negative",
       "title": "Guerre commerciale",
-      "description": "Guerre commerciale. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Des droits de douane apparaissent en Europe et ferment des débouchés aux entreprises du secteur technologie.",
       "effect": "Zone Europe → E; Secteur Technologie → E.",
       "changes": [
         {
@@ -2149,7 +2814,7 @@
       "id": 62,
       "type": "negative",
       "title": "Chute des devises",
-      "description": "Chute des devises. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une chute des devises renchérit les machines importées en Asie et bloque des usines du secteur industrie.",
       "effect": "Zone Asie → D; Secteur Industrie → E.",
       "changes": [
         {
@@ -2168,7 +2833,7 @@
       "id": 63,
       "type": "negative",
       "title": "Grève générale",
-      "description": "Grève générale. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une grève générale interrompt les transports en Asie et immobilise les chaînes du secteur industrie.",
       "effect": "Zone Asie → E; Secteur Industrie → E.",
       "changes": [
         {
@@ -2187,7 +2852,7 @@
       "id": 64,
       "type": "negative",
       "title": "Affaiblissement des exportations",
-      "description": "Affaiblissement des exportations. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Les commandes étrangères se raréfient en Océanie ; les entreprises du secteur santé revoient leurs budgets.",
       "effect": "Zone Océanie → E; Secteur Santé → D.",
       "changes": [
         {
@@ -2206,7 +2871,7 @@
       "id": 65,
       "type": "negative",
       "title": "Échec de négociations",
-      "description": "Échec de négociations. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Des négociations commerciales échouent en Amériques et les industriels du secteur industrie perdent des contrats.",
       "effect": "Zone Amériques → E; Secteur Industrie → E.",
       "changes": [
         {
@@ -2225,7 +2890,7 @@
       "id": 66,
       "type": "negative",
       "title": "Cyberattaque systémique",
-      "description": "Cyberattaque systémique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une cyberattaque paralyse des réseaux en Asie et bloque des usines du secteur industrie.",
       "effect": "Zone Asie → D; Secteur Industrie → E.",
       "changes": [
         {
@@ -2244,7 +2909,7 @@
       "id": 67,
       "type": "negative",
       "title": "Krach boursier",
-      "description": "Krach boursier. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une vague de ventes panique les opérateurs en Océanie ; même les valeurs du secteur santé sont entraînées.",
       "effect": "Zone Océanie → D; Secteur Santé → D.",
       "changes": [
         {
@@ -2263,7 +2928,7 @@
       "id": 68,
       "type": "negative",
       "title": "Désordre politique",
-      "description": "Désordre politique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Une crise politique brouille les prévisions en Océanie et retarde les investissements du secteur industrie.",
       "effect": "Zone Océanie → D; Secteur Industrie → D.",
       "changes": [
         {
@@ -2282,7 +2947,7 @@
       "id": 69,
       "type": "negative",
       "title": "Crise de la dette",
-      "description": "Crise de la dette. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "La dette publique inquiète les créanciers d’Océanie et les groupes du secteur industrie paient leur crédit plus cher.",
       "effect": "Zone Océanie → E; Secteur Industrie → D.",
       "changes": [
         {
@@ -2301,7 +2966,7 @@
       "id": 70,
       "type": "negative",
       "title": "Volatilité extrême",
-      "description": "Volatilité extrême. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "description": "Des ordres contradictoires secouent les places d’Afrique & Moyen-Orient et les producteurs du secteur énergie hésitent à investir.",
       "effect": "Zone Afrique → D; Secteur Énergie → E.",
       "changes": [
         {
@@ -2320,7 +2985,7 @@
       "id": 71,
       "type": "neutral",
       "title": "Flux commerciaux stables",
-      "description": "Flux commerciaux stables. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Amériques, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur industrie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Les flux commerciaux se normalisent en Océanie et les entreprises du secteur énergie ajustent leurs stocks.",
       "effect": "Zone Océanie → C; Secteur Énergie → C.",
       "changes": [
         {
@@ -2339,7 +3004,7 @@
       "id": 72,
       "type": "neutral",
       "title": "Marchés prudents",
-      "description": "Marchés prudents. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Europe, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur énergie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Les investisseurs observent les prochaines statistiques d’Asie avant de se positionner dans le secteur santé.",
       "effect": "Zone Asie → C; Secteur Santé → C.",
       "changes": [
         {
@@ -2358,7 +3023,7 @@
       "id": 73,
       "type": "neutral",
       "title": "Volatilité contenue",
-      "description": "Volatilité contenue. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Afrique, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Les séances deviennent moins agitées en Europe et les sociétés du secteur technologie retrouvent de la visibilité.",
       "effect": "Zone Europe → C; Secteur Technologie → C.",
       "changes": [
         {
@@ -2377,7 +3042,7 @@
       "id": 74,
       "type": "neutral",
       "title": "Rééquilibrage régional",
-      "description": "Rééquilibrage régional. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Océanie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Les portefeuilles se rééquilibrent en Afrique & Moyen-Orient ; les banques revoient leurs allocations de prêts.",
       "effect": "Zone Afrique → C; Secteur Finance → C.",
       "changes": [
         {
@@ -2396,7 +3061,7 @@
       "id": 75,
       "type": "neutral",
       "title": "Transition ordonnée",
-      "description": "Transition ordonnée. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Afrique, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur technologie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Une transition économique progresse sans heurt en Afrique & Moyen-Orient et les usines du secteur industrie adaptent leur calendrier.",
       "effect": "Zone Afrique → C; Secteur Industrie → C.",
       "changes": [
         {
@@ -2415,7 +3080,7 @@
       "id": 76,
       "type": "neutral",
       "title": "Stabilisation des marchés",
-      "description": "Stabilisation des marchés. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Asie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Après plusieurs séances tendues, les échanges se calment en Afrique & Moyen-Orient et les banques rouvrent leurs guichets.",
       "effect": "Zone Afrique → C; Secteur Finance → C.",
       "changes": [
         {
@@ -2434,7 +3099,7 @@
       "id": 77,
       "type": "neutral",
       "title": "Pause réglementaire",
-      "description": "Pause réglementaire. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Amériques, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur industrie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Les autorités marquent une pause réglementaire en Asie ; les producteurs du secteur énergie attendent les arbitrages.",
       "effect": "Zone Asie → C; Secteur Énergie → C.",
       "changes": [
         {
@@ -2453,7 +3118,7 @@
       "id": 78,
       "type": "neutral",
       "title": "Indicateurs contrastés",
-      "description": "Indicateurs contrastés. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Asie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur énergie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Des indicateurs opposés arrivent d’Amériques ; les banques attendent des données plus nettes.",
       "effect": "Zone Amériques → C; Secteur Finance → C.",
       "changes": [
         {
@@ -2472,7 +3137,7 @@
       "id": 79,
       "type": "neutral",
       "title": "Attentisme monétaire",
-      "description": "Attentisme monétaire. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Océanie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "La banque centrale diffère sa décision en Amériques ; les prêteurs gardent leurs conditions actuelles.",
       "effect": "Zone Amériques → C; Secteur Finance → C.",
       "changes": [
         {
@@ -2491,7 +3156,7 @@
       "id": 80,
       "type": "neutral",
       "title": "Neutralité budgétaire",
-      "description": "Neutralité budgétaire. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Europe, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur énergie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "description": "Un budget sans surprise est adopté en Océanie et les usines du secteur industrie poursuivent leurs plans.",
       "effect": "Zone Océanie → C; Secteur Industrie → C.",
       "changes": [
         {
@@ -2510,7 +3175,7 @@
       "id": 81,
       "type": "prison",
       "title": "Détournement de fonds",
-      "description": "Détournement de fonds. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Scénario inspiré des fraudes à la Ponzi révélées dans l’histoire financière : des flux clients inexpliqués déclenchent une enquête en Asie.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Asie → E.",
       "changes": [
         {
@@ -2528,8 +3193,8 @@
     {
       "id": 82,
       "type": "prison",
-      "title": "Opérations fictives",
-      "description": "Opérations fictives. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "title": "Créances inexpliquées",
+      "description": "Des créances sans activité économique identifiable apparaissent dans un dossier de Amériques ; les auditeurs demandent des justificatifs.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Amériques → D.",
       "changes": [
         {
@@ -2548,7 +3213,7 @@
       "id": 83,
       "type": "prison",
       "title": "Fuite d'informations confidentielles",
-      "description": "Fuite d'informations confidentielles. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Une fuite d’informations avant une annonce officielle conduit les autorités de Afrique & Moyen-Orient à examiner les contrôles de marché.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Afrique → D.",
       "changes": [
         {
@@ -2567,7 +3232,7 @@
       "id": 84,
       "type": "prison",
       "title": "Soupçons d'abus de marché",
-      "description": "Soupçons d'abus de marché. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Des transactions anticipent une annonce publique en Amériques ; les autorités vérifient si les règles de marché ont été respectées.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Amériques → E.",
       "changes": [
         {
@@ -2586,7 +3251,7 @@
       "id": 85,
       "type": "prison",
       "title": "Perte dissimulée",
-      "description": "Perte dissimulée. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Une perte jusque-là mal documentée est réexaminée par les auditeurs d’un établissement de Amériques.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Amériques → D.",
       "changes": [
         {
@@ -2605,7 +3270,7 @@
       "id": 86,
       "type": "prison",
       "title": "Conflit d'intérêts",
-      "description": "Conflit d'intérêts. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Un examen de gouvernance en Afrique & Moyen-Orient met l’accent sur les conflits d’intérêts dans l’attribution de contrats.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Afrique → E.",
       "changes": [
         {
@@ -2624,7 +3289,7 @@
       "id": 87,
       "type": "prison",
       "title": "Manipulation de marché présumée",
-      "description": "Manipulation de marché présumée. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Des ordres coordonnés anormaux font l’objet d’une enquête sur une place de Asie ; les contrôles de marché sont renforcés.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Asie → D.",
       "changes": [
         {
@@ -2643,7 +3308,7 @@
       "id": 88,
       "type": "prison",
       "title": "Enquête pour délit d'initié",
-      "description": "Enquête pour délit d'initié. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Des opérations réalisées avant une annonce sensible sont examinées dans une enquête pour délit d’initié en Amériques.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Amériques → D.",
       "changes": [
         {
@@ -2662,7 +3327,7 @@
       "id": 89,
       "type": "prison",
       "title": "Fraude comptable révélée",
-      "description": "Fraude comptable révélée. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Des écarts entre pièces justificatives et écritures comptables sont découverts dans un dossier de Océanie.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Océanie → E.",
       "changes": [
         {
@@ -2681,7 +3346,7 @@
       "id": 90,
       "type": "prison",
       "title": "Blanchiment présumé",
-      "description": "Blanchiment présumé. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "description": "Une enquête sur des soupçons de blanchiment conduit les autorités de Océanie à renforcer la traçabilité des paiements.",
       "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Océanie → D.",
       "changes": [
         {
@@ -2700,7 +3365,7 @@
       "id": 91,
       "type": "regulation",
       "title": "Démantèlement d'un conglomérat",
-      "description": "Démantèlement d'un conglomérat. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Une étude de marché sur santé relance le débat sur la séparation d’activités dominantes.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → D.",
       "changes": [
         {
@@ -2714,7 +3379,7 @@
       "id": 92,
       "type": "regulation",
       "title": "Supervision accrue des monopoles",
-      "description": "Supervision accrue des monopoles. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Les autorités publient une revue générale de la concurrence dans le secteur santé ; les marchés évaluent les coûts possibles de conformité.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → D.",
       "changes": [
         {
@@ -2728,7 +3393,7 @@
       "id": 93,
       "type": "regulation",
       "title": "Examen de concentration",
-      "description": "Examen de concentration. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Un projet de fusion dans le secteur technologie fait l’objet d’un examen réglementaire, comme dans les procédures de concentration historiques.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Technologie → C.",
       "changes": [
         {
@@ -2742,7 +3407,7 @@
       "id": 94,
       "type": "regulation",
       "title": "Garde-fous sectoriels",
-      "description": "Garde-fous sectoriels. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Après plusieurs crises sectorielles, de nouveaux contrôles sont proposés pour le secteur énergie.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Énergie → B.",
       "changes": [
         {
@@ -2756,7 +3421,7 @@
       "id": 95,
       "type": "regulation",
       "title": "Encadrement des acquisitions",
-      "description": "Encadrement des acquisitions. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Les autorités précisent les critères d’examen des acquisitions dans le secteur finance, ajoutant de l’incertitude aux projets en cours.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Finance → C.",
       "changes": [
         {
@@ -2770,7 +3435,7 @@
       "id": 96,
       "type": "regulation",
       "title": "Durcissement des règles concurrentielles",
-      "description": "Durcissement des règles concurrentielles. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Une réforme durcit l’application du droit de la concurrence dans le secteur santé et pousse les acteurs à revoir leurs contrats.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → C.",
       "changes": [
         {
@@ -2784,7 +3449,7 @@
       "id": 97,
       "type": "regulation",
       "title": "Contrôle des prix",
-      "description": "Contrôle des prix. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Un dispositif temporaire de contrôle des prix est débattu pour le secteur santé, ravivant le débat sur la protection des consommateurs.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → C.",
       "changes": [
         {
@@ -2798,7 +3463,7 @@
       "id": 98,
       "type": "regulation",
       "title": "Limitation des positions dominantes",
-      "description": "Limitation des positions dominantes. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Les régulateurs examinent des limites de détention dans le secteur industrie afin de réduire les risques de concentration.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Industrie → B.",
       "changes": [
         {
@@ -2812,7 +3477,7 @@
       "id": 99,
       "type": "regulation",
       "title": "Action antitrust renforcée",
-      "description": "Action antitrust renforcée. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Une enquête sectorielle sur finance vérifie les pratiques commerciales et les barrières à l’entrée.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Finance → D.",
       "changes": [
         {
@@ -2826,7 +3491,7 @@
       "id": 100,
       "type": "regulation",
       "title": "Surveillance des plateformes",
-      "description": "Surveillance des plateformes. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "description": "Une consultation réglementaire sur les plateformes du secteur énergie demande davantage de transparence sur l’accès au marché.",
       "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Énergie → B.",
       "changes": [
         {

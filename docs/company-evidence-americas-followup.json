@@ -1,0 +1,104 @@
+[
+  {
+    "id": "banco-brasil",
+    "sourceURL": "https://ri.bb.com.br/en/faq/ownership/",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "La page IR officielle identifie Banco do Brasil S.A. comme société cotée contrôlée par l’État et organisée comme banque multiple; elle cite explicitement la Constitution brésilienne. Cela confirme le nom, le pays et finance."
+    }
+  },
+  {
+    "id": "amx",
+    "sourceURL": "https://sustainability.americamovil.com/portal/su/pdf/Annual-Report-20F-2024.pdf",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "Le 20-F 2024 identifie América Móvil, S.A.B. de C.V., société constituée au Mexique, avec siège exécutif à Mexico; le rapport décrit des services de télécommunications et une activité mobile, fixe, haut débit et TV payante. Mexique et catégorie media (télécommunications) sont donc justifiés."
+    }
+  },
+  {
+    "id": "petrobras",
+    "sourceURL": "https://petrobras.com.br/quem-somos/perfil",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "La page officielle Perfil nomme Petrobras/Petróleo Brasileiro S.A. comme société brésilienne cotée et décrit son activité intégrée de pétrole, gaz naturel et énergie; confirme Brésil et energy."
+    }
+  },
+  {
+    "id": "ambev",
+    "sourceURL": "https://www.sec.gov/Archives/edgar/data/1565025/0001292814-26-000640-index.html",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "L’index EDGAR de son 20-F 2025 identifie AMBEV S.A. (filer), adresse commerciale et postale à São Paulo, Brazil, et SIC 2080 Beverages / Manufacturing; confirme le nom, pays et activité boissons, cohérente avec agrifood."
+    }
+  },
+  {
+    "id": "visa-inc",
+    "sourceURL": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000045/v-20251231.htm",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "Le 10-K 2025 identifie Visa Inc. comme entreprise mondiale de technologie de paiement, exploitant VisaNet, et précise explicitement que Visa n’est pas une institution financière. Le pays États-Unis est confirmé par l’en-tête SEC; finance reste la catégorie de jeu la plus proche pour un réseau de paiements, pas une classification réglementaire."
+    }
+  },
+  {
+    "id": "at-t-inc",
+    "sourceURL": "https://investors.att.com/~/media/Files/A/ATT-IR-V2/financial-reports/annual-reports/2025/2025-annual-report-complete.pdf",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "Le rapport annuel 2025 identifie l’émetteur comme AT&T Inc., donne son siège à Dallas, Texas, et décrit le secteur Communications avec services télécoms et réseau. Confirme nom, États-Unis et catégorie media (télécommunications)."
+    }
+  },
+  {
+    "id": "chevron-corp",
+    "sourceURL": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/0000093410-26-000078-index.html",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "L’index EDGAR du 10-K 2025 identifie Chevron Corp, siège commercial à Houston, Texas, et SIC 2911 Petroleum Refining, rattaché par la SEC à Energy & Transportation; confirme nom, pays et classement energy."
+    }
+  },
+  {
+    "id": "procter-gamble-co",
+    "sourceURL": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "Le 10-K 2025 nomme The Procter & Gamble Company, précise Cincinnati (Ohio) et l’État d’incorporation Ohio; décrit P&G comme entreprise mondiale de produits de consommation. Confirme États-Unis et industry comme catégorie de biens de consommation."
+    }
+  },
+  {
+    "id": "general-electric",
+    "sourceURL": "https://www.geaerospace.com/investor-relations/annual-report",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "La page officielle du rapport annuel 2025 identifie GE Aerospace comme entreprise indépendante lancée en 2024 et décrit ses moteurs et systèmes aéronautiques; elle situe une usine à Terre Haute, Indiana. Le 10-K précise le siège exécutif à Evendale, Ohio. Confirme le nom courant, pays États-Unis et industry (aérospatiale).",
+      "corroboratingSourceURL": "https://www.sec.gov/Archives/edgar/data/40545/000004054526000008/ge-20251231.htm"
+    }
+  },
+  {
+    "id": "exxon-mobil-corp",
+    "sourceURL": "https://www.sec.gov/Archives/edgar/data/34088/000003408826000078/xom-20260527.htm",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "Le 8-K SEC du 27 mai 2026 identifie Exxon Mobil Corporation, son incorporation au New Jersey et ses bureaux principaux au Texas; cela confirme nom et pays États-Unis. L’activité énergétique est décrite sur la page corporate What we do, consultée directement; la catégorie energy est cohérente avec les activités énergie/pétrole et gaz.",
+      "corroboratingSourceURL": "https://corporate.exxonmobil.com/what-we-do"
+    }
+  }
+]

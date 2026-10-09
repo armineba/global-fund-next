@@ -1,4 +1,5 @@
 import { createRequire } from "node:module";
+import { diversifyStartingMarkets, isMarketId, marketFromLegacyNationality } from "@global-fund/shared";
 import type {
   Company,
   Difficulty,
@@ -33,7 +34,7 @@ interface LegacyCore {
 }
 const core = require("../legacy/game.cjs") as LegacyCore;
 
-/** Setup catalogs; changes to these exported copies cannot affect the core's datasets. */
+/** Read adapter for old clients/saves only. New funds choose a market directly. */
 export const nationalities = structuredClone(core.nationalities);
 export const zones = structuredClone(core.data.zones);
 export const sectors = structuredClone(core.data.sectors);
@@ -42,8 +43,10 @@ export const board = structuredClone(core.data.board);
 const difficulties: Difficulty[] = ["easy", "normal", "hard"];
 const pawns = ["lion", "bull", "globe", "crystal", "tower", "leaf"];
 
-/** Create a game with the opening cycle at C and each nationality's free starting market. */
-export function createGame(seats: SeatConfig[]): GameState {
+type LegacySeatConfig = Omit<SeatConfig, "startingMarket"> & { startingMarket?: never; nationality: string };
+
+/** Opening at C, with free market placement and diversified AI fund locations. */
+export function createGame(seats: (SeatConfig | LegacySeatConfig)[]): GameState {
   if (!Array.isArray(seats) || seats.length < 2 || seats.length > 6)
     throw new Error("La partie doit compter de 2 à 6 joueurs.");
   for (const seat of seats) {
@@ -56,14 +59,23 @@ export function createGame(seats: SeatConfig[]): GameState {
       throw new Error("Nom de joueur invalide.");
     if (!["local", "remote", "ai"].includes(seat.kind))
       throw new Error("Type de joueur invalide.");
-    if (!core.nationalities.some((item) => item.id === seat.nationality))
-      throw new Error("Nationalité inconnue.");
+    if (Object.hasOwn(seat, "startingMarket")
+      ? !isMarketId(seat.startingMarket)
+      : !marketFromLegacyNationality(seat.nationality))
+      throw new Error("Place de marché inconnue.");
     if (!pawns.includes(seat.pawn)) throw new Error("Pion inconnu.");
     if (!difficulties.includes(seat.difficulty))
       throw new Error("Difficulté inconnue.");
   }
   return refreshState(
-    core.createGame(seats.map((seat) => ({ ...seat, name: seat.name.trim() }))),
+    core.createGame(diversifyStartingMarkets(seats.map((seat) => ({
+      name: seat.name.trim(),
+      kind: seat.kind,
+      startingMarket: isMarketId(seat.startingMarket) ? seat.startingMarket : marketFromLegacyNationality(seat.nationality)!,
+      ...(marketFromLegacyNationality(seat.nationality) ? { nationality: seat.nationality } : {}),
+      pawn: seat.pawn,
+      difficulty: seat.difficulty,
+    })))),
   );
 }
 
@@ -76,6 +88,11 @@ const allowedFields: Record<GameCommand["type"], string[]> = {
   SELL_SHARE: ["type", "companyId", "quantity"],
   END_TURN: ["type"],
   NEXT_TURN: ["type"],
+  LIQUIDATE_ASSETS: ["type", "assets"],
+  PROPOSE_SETTLEMENT: ["type", "assets"],
+  ACCEPT_SETTLEMENT: ["type"],
+  REJECT_SETTLEMENT: ["type"],
+  REQUIRE_CASH: ["type"],
 };
 
 function validateCommand(command: GameCommand): void {
@@ -91,9 +108,15 @@ function validateCommand(command: GameCommand): void {
     throw new Error(
       "Champ de commande interdit : les dés sont tirés par le serveur.",
     );
+  if (command.type === "LIQUIDATE_ASSETS" || command.type === "PROPOSE_SETTLEMENT") {
+    if (!Array.isArray(command.assets) || !command.assets.length || command.assets.some((asset) =>
+      !asset || typeof asset !== "object" || Object.keys(asset).some((field) => !["companyId", "quantity"].includes(field)) ||
+      typeof asset.companyId !== "string" || !asset.companyId || !Number.isInteger(asset.quantity) || asset.quantity < 1 || asset.quantity > 5))
+      throw new Error("Sélection de titres invalide.");
+  }
   if (
     command.type === "MOVE" &&
-    (typeof command.zoneId !== "string" || !command.zoneId)
+    !isMarketId(command.zoneId)
   )
     throw new Error("Zone invalide.");
   if (command.type === "BUY_SHARE" || command.type === "SELL_SHARE") {
@@ -140,6 +163,15 @@ export function executeCommand(
       break;
     case "END_TURN":
       core.applyAction(next, playerId, "endMarket");
+      break;
+    case "LIQUIDATE_ASSETS":
+    case "PROPOSE_SETTLEMENT":
+      core.applyAction(next, playerId, command.type === "LIQUIDATE_ASSETS" ? "liquidateAssets" : "proposeSettlement", { assets: command.assets });
+      break;
+    case "ACCEPT_SETTLEMENT":
+    case "REJECT_SETTLEMENT":
+    case "REQUIRE_CASH":
+      core.applyAction(next, playerId, ({ ACCEPT_SETTLEMENT: "acceptSettlement", REJECT_SETTLEMENT: "rejectSettlement", REQUIRE_CASH: "requireCash" })[command.type]);
       break;
     case "NEXT_TURN":
       core.applyAction(next, playerId, "nextTurn");
@@ -189,6 +221,38 @@ export function fundValue(state: GameState, player: Player): number {
   return core.fundValue(state, player);
 }
 
+/** Settlement can ask a creditor outside the active player's turn. */
+export function getDecisionPlayerId(state: GameState | GameView): string {
+  return state.pendingSettlement?.decisionActorId ?? state.players[state.activeIndex].id;
+}
+
+function chooseSettlementCommand(state: GameState, difficulty: Difficulty): GameCommand {
+  const pending = state.pendingSettlement!;
+  const debtor = state.players.find((player) => player.id === pending.debtorId)!;
+  if (pending.status === "awaitingCreditor") {
+    const creditor = state.players.find((player) => player.id === pending.creditorId)!;
+    const offer = pending.offer!;
+    if (offer.cashDelta < 0 && creditor.cash < -offer.cashDelta) return { type: "REQUIRE_CASH" };
+    const strategic = offer.assets.some((asset) => {
+      const company = state.companies.find((item) => item.id === asset.companyId)!;
+      return (company.holdings[creditor.id] || 0) > 0 || company.zone === creditor.zone || company.capCategory === "large";
+    });
+    const reserve = difficulty === "hard" ? 8 : difficulty === "normal" ? 15 : 25;
+    return strategic && creditor.cash + offer.cashDelta >= reserve
+      ? { type: "ACCEPT_SETTLEMENT" } : { type: "REQUIRE_CASH" };
+  }
+  const companies = state.companies.filter((company) => company.available && priceFor(company, state) > 0 && (company.holdings[debtor.id] || 0) > 0)
+    .sort((a, b) => incomeFor(a, state) / priceFor(a, state) - incomeFor(b, state) / priceFor(b, state) || a.id.localeCompare(b.id));
+  const assets: { companyId: string; quantity: number }[] = [];
+  let value = 0;
+  for (const company of companies) {
+    if (debtor.cash + value >= pending.amount) break;
+    const quantity = Math.min(company.holdings[debtor.id], Math.ceil((pending.amount - debtor.cash - value) / priceFor(company, state)));
+    assets.push({ companyId: company.id, quantity }); value += quantity * priceFor(company, state);
+  }
+  return { type: pending.creditorId && !pending.marketOnly && debtor.cash + value >= pending.amount ? "PROPOSE_SETTLEMENT" : "LIQUIDATE_ASSETS", assets };
+}
+
 function quality(
   state: GameState,
   company: Company,
@@ -225,34 +289,35 @@ export function chooseAiCommand(
     throw new Error("Difficulté inconnue.");
   if (state.finished || state.phase === "finished")
     throw new Error("La partie est terminée.");
+  if (state.pendingSettlement) return chooseSettlementCommand(state, difficulty);
   const player = state.players[state.activeIndex];
   if (!player.solvent || state.phase === "awaitNext")
     return { type: "NEXT_TURN" };
   if (state.phase === "geography") {
     if (player.jailed) return { type: "PRISON_ROLL" };
     if (difficulty === "easy") return { type: "STAY" };
+    const reserve = difficulty === "hard" ? 18 : 30;
     const ranked = state.zones
-      .map((zone) => ({
-        id: zone.id,
-        value:
-          state.companies
-            .filter(
-              (company) =>
-                company.zone === zone.id &&
-                company.available &&
-                Object.values(company.holdings).reduce(
-                  (sum, value) => sum + value,
-                  0,
-                ) < 5,
-            )
-            .reduce(
-              (best, company) =>
-                Math.max(best, quality(state, company, difficulty)),
-              0,
-            ) + (zone.id === player.zone ? 0.025 : 0),
-      }))
+      .map((zone) => {
+        const travelCost = zone.id === player.zone ? 0 : 1;
+        const candidates = state.companies.filter(
+          (company) =>
+            company.zone === zone.id &&
+            company.available &&
+            !(state.zoneGrades[company.zone] === "E" && state.sectorGrades[company.sector] === "E") &&
+            Object.values(company.holdings).reduce((sum, value) => sum + value, 0) < 5 &&
+            priceFor(company, state) <= player.cash - reserve - travelCost,
+        );
+        return {
+          id: zone.id,
+          value: candidates.reduce(
+            (best, company) => Math.max(best, quality(state, company, difficulty)),
+            0,
+          ) + (candidates.length && zone.id === player.zone ? 0.025 : 0),
+        };
+      })
       .sort((a, b) => b.value - a.value);
-    return !ranked[0] || ranked[0].id === player.zone || player.cash <= 1
+    return !ranked[0] || ranked[0].value <= 0 || ranked[0].id === player.zone || player.cash <= 1
       ? { type: "STAY" }
       : { type: "MOVE", zoneId: ranked[0].id };
   }
@@ -321,7 +386,7 @@ export function simulateGames(count: number): SimulationSummary {
       difficulties.map((difficulty, seat) => ({
         name: difficulty,
         kind: "ai",
-        nationality: ["france", "united-states", "japan"][seat],
+        startingMarket: ["europe", "americas", "asia"][seat] as SeatConfig["startingMarket"],
         pawn: ["lion", "bull", "globe"][seat] as SeatConfig["pawn"],
         difficulty,
       })),
@@ -332,7 +397,7 @@ export function simulateGames(count: number): SimulationSummary {
         throw new Error(
           `Simulation ${index + 1} bloquée au cycle ${state.cycle}.`,
         );
-      const active = state.players[state.activeIndex];
+      const active = state.players.find((player) => player.id === getDecisionPlayerId(state))!;
       state = executeCommand(
         state,
         active.id,

@@ -1,0 +1,1539 @@
+{
+  "checkedAt": "2026-10-07T21:30:41.330109+00:00",
+  "latestProductionRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+  "publicURL": "https://global-fund-next.213.199.40.67.sslip.io/",
+  "health": {
+    "serviceName": "global-fund-next",
+    "version": "0.1.0",
+    "status": "ok"
+  },
+  "publicIndexMatchesBuild": true,
+  "tests": {
+    "unitAndIntegration": 122,
+    "unitFiles": 9,
+    "playwright": 15,
+    "buildAndTypecheck": "passed"
+  },
+  "captureGuards": {
+    "general": "No page/console/request errors; 52 cells and six pawns; no horizontal overflow or HUD overlap. Trading/portfolio complete chart and fixed ticket checked at all three sizes; Context grades/first after-price and carousel wheel checked at all three sizes.",
+    "settlement": "15 successful capture checks; no page/console errors or horizontal overflow; visible desk/footer/action bounds with2px tolerance; major impacts still visible after5.2s."
+  },
+  "provenanceNote": "Trading, portfolio and Context refreshed after the mid-height CSS fix. Analysis, statistics and newspaper scenes retain the preceding logo release because the final selectors do not affect them. Settlement scenes retain the validated earlier release because the later changes only touch logos and trading/Context selectors, absent from those scenes. No new GPU performance measurement.",
+  "aliases1366": [
+    "trading",
+    "value-card",
+    "analysis",
+    "event-newspaper",
+    "context",
+    "settlement",
+    "forced-liquidation",
+    "share-offer",
+    "share-offer-over-debt",
+    "multi-creditor-settlement"
+  ],
+  "historicalIntegrity": {
+    "historicalSources": {
+      "checked": 157,
+      "changed": []
+    },
+    "historicalInfrastructure": {
+      "checked": 2,
+      "changed": []
+    }
+  },
+  "images": [
+    {
+      "view": "trading",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/visual-validation/trading-1920x1080.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:24:07.835243+00:00",
+      "sha256": "020196908d6b1d99abfec0ce4a52b31db5d323ad2fa3ffbff0d722d83b963a41",
+      "metrics": {
+        "name": "trading",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/trading-1920x1080.png",
+        "width": 1920,
+        "docWidth": 1920,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902
+        },
+        "centralContentBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902,
+          "width": 1596,
+          "height": 702
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 24,
+          "y": 200,
+          "width": 1596,
+          "height": 702,
+          "scrollHeight": 700,
+          "clientHeight": 700
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 931,
+            "y": 454,
+            "width": 663,
+            "height": 250,
+            "scrollHeight": 250,
+            "clientHeight": 250
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "16px",
+          "width": 225,
+          "height": 42,
+          "x": 168,
+          "y": 82
+        },
+        "sectorsBounds": {
+          "x": 425,
+          "y": 63,
+          "width": 1160,
+          "height": 88
+        },
+        "phaseTitleOverlapsSectors": false,
+        "focusTicketBounds": {
+          "focusTop": 291,
+          "orderBottom": 861,
+          "focusBottom": 871,
+          "disabledReasons": []
+        }
+      }
+    },
+    {
+      "view": "trading",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/visual-validation/trading-1440x900.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:24:24.216119+00:00",
+      "sha256": "05d18424e04fc8ab7c44b9dce1f14c7358cc8c3e292c139d2959fe1443d84a34",
+      "metrics": {
+        "name": "trading",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/trading-1440x900.png",
+        "width": 1440,
+        "docWidth": 1440,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734
+        },
+        "centralContentBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734,
+          "width": 1162,
+          "height": 554
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 18,
+          "y": 180,
+          "width": 1162,
+          "height": 554,
+          "scrollHeight": 552,
+          "clientHeight": 552
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 682,
+            "y": 388,
+            "width": 472,
+            "height": 180,
+            "scrollHeight": 180,
+            "clientHeight": 180
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 160,
+          "height": 31,
+          "x": 168,
+          "y": 80
+        },
+        "sectorsBounds": {
+          "x": 330,
+          "y": 64,
+          "width": 818,
+          "height": 77
+        },
+        "phaseTitleOverlapsSectors": false,
+        "focusTicketBounds": {
+          "focusTop": 271,
+          "orderBottom": 693,
+          "focusBottom": 703,
+          "disabledReasons": []
+        }
+      }
+    },
+    {
+      "view": "trading",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/visual-validation/trading-1366x768.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:24:40.499995+00:00",
+      "sha256": "ee0cfe1ad7b47185007acba2f1cfc992372062e76c72a7b50e855acd6931c3ad",
+      "metrics": {
+        "name": "trading",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/trading-1366x768.png",
+        "width": 1366,
+        "docWidth": 1366,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615
+        },
+        "centralContentBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615,
+          "width": 1115,
+          "height": 458
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 16,
+          "y": 157,
+          "width": 1115,
+          "height": 458,
+          "scrollHeight": 456,
+          "clientHeight": 456
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 653,
+            "y": 360,
+            "width": 449,
+            "height": 155,
+            "scrollHeight": 155,
+            "clientHeight": 155
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 120,
+          "height": 31,
+          "x": 161,
+          "y": 68
+        },
+        "sectorsBounds": {
+          "x": 300,
+          "y": 59,
+          "width": 801,
+          "height": 65
+        },
+        "phaseTitleOverlapsSectors": false,
+        "focusTicketBounds": {
+          "focusTop": 252,
+          "orderBottom": 570,
+          "focusBottom": 581,
+          "disabledReasons": []
+        }
+      }
+    },
+    {
+      "view": "portfolio",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/visual-validation/portfolio-1920x1080.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:25:02.949824+00:00",
+      "sha256": "3694938b80862dcf591dd388a8771a0051492bb31ca2de70faf72732bd58ef7e",
+      "metrics": {
+        "name": "portfolio",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/portfolio-1920x1080.png",
+        "width": 1920,
+        "docWidth": 1920,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902
+        },
+        "centralContentBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902,
+          "width": 1596,
+          "height": 702
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 24,
+          "y": 200,
+          "width": 1596,
+          "height": 702,
+          "scrollHeight": 700,
+          "clientHeight": 700
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 931,
+            "y": 454,
+            "width": 663,
+            "height": 250,
+            "scrollHeight": 250,
+            "clientHeight": 250
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "16px",
+          "width": 225,
+          "height": 42,
+          "x": 168,
+          "y": 82
+        },
+        "sectorsBounds": {
+          "x": 425,
+          "y": 63,
+          "width": 1160,
+          "height": 88
+        },
+        "phaseTitleOverlapsSectors": false,
+        "focusTicketBounds": {
+          "focusTop": 291,
+          "orderBottom": 861,
+          "focusBottom": 871,
+          "disabledReasons": [
+            {
+              "top": 849.8125,
+              "bottom": 861
+            }
+          ]
+        }
+      }
+    },
+    {
+      "view": "portfolio",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/visual-validation/portfolio-1440x900.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:25:18.328707+00:00",
+      "sha256": "29e12e3db3af8a55e662901b13e1713ca7c101451fb6d5864605737d128c3a0a",
+      "metrics": {
+        "name": "portfolio",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/portfolio-1440x900.png",
+        "width": 1440,
+        "docWidth": 1440,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734
+        },
+        "centralContentBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734,
+          "width": 1162,
+          "height": 554
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 18,
+          "y": 180,
+          "width": 1162,
+          "height": 554,
+          "scrollHeight": 552,
+          "clientHeight": 552
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 682,
+            "y": 388,
+            "width": 472,
+            "height": 180,
+            "scrollHeight": 180,
+            "clientHeight": 180
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 160,
+          "height": 31,
+          "x": 168,
+          "y": 80
+        },
+        "sectorsBounds": {
+          "x": 330,
+          "y": 64,
+          "width": 818,
+          "height": 77
+        },
+        "phaseTitleOverlapsSectors": false,
+        "focusTicketBounds": {
+          "focusTop": 271,
+          "orderBottom": 693,
+          "focusBottom": 703,
+          "disabledReasons": [
+            {
+              "top": 681.8125,
+              "bottom": 693
+            }
+          ]
+        }
+      }
+    },
+    {
+      "view": "portfolio",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/visual-validation/portfolio-1366x768.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:25:34.443583+00:00",
+      "sha256": "b7ca47300bd16f4c2c6b61d12b5d5a59e64006834440b0da1ecfab2b4c102316",
+      "metrics": {
+        "name": "portfolio",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/portfolio-1366x768.png",
+        "width": 1366,
+        "docWidth": 1366,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615
+        },
+        "centralContentBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615,
+          "width": 1115,
+          "height": 458
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 16,
+          "y": 157,
+          "width": 1115,
+          "height": 458,
+          "scrollHeight": 456,
+          "clientHeight": 456
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 653,
+            "y": 345,
+            "width": 449,
+            "height": 155,
+            "scrollHeight": 155,
+            "clientHeight": 155
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 120,
+          "height": 31,
+          "x": 161,
+          "y": 68
+        },
+        "sectorsBounds": {
+          "x": 300,
+          "y": 59,
+          "width": 801,
+          "height": 65
+        },
+        "phaseTitleOverlapsSectors": false,
+        "portfolioInteraction": {
+          "tableViewportHeight": 195,
+          "rowCount": 11,
+          "firstRowVisible": true,
+          "secondSelectionChangedFocus": true,
+          "firstSelectionRestored": true,
+          "scrollReset": true
+        },
+        "focusTicketBounds": {
+          "focusTop": 252,
+          "orderBottom": 570,
+          "focusBottom": 581,
+          "disabledReasons": [
+            {
+              "top": 558.8125,
+              "bottom": 570
+            }
+          ]
+        }
+      }
+    },
+    {
+      "view": "analysis",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/visual-validation/analysis-1920x1080.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:15:38.376939+00:00",
+      "sha256": "b9080b239769775b608302d50b8551ca67e7f01dbd3bb2ec5d9d6e51d0c4db2e",
+      "metrics": {
+        "name": "analysis",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/analysis-1920x1080.png",
+        "width": 1920,
+        "docWidth": 1920,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902
+        },
+        "centralContentBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902,
+          "width": 1596,
+          "height": 702
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 24,
+          "y": 200,
+          "width": 1596,
+          "height": 702,
+          "scrollHeight": 700,
+          "clientHeight": 700
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 47,
+            "y": 337,
+            "width": 757,
+            "height": 285,
+            "scrollHeight": 285,
+            "clientHeight": 285
+          },
+          {
+            "x": 838,
+            "y": 337,
+            "width": 757,
+            "height": 285,
+            "scrollHeight": 285,
+            "clientHeight": 285
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "16px",
+          "width": 225,
+          "height": 42,
+          "x": 168,
+          "y": 82
+        },
+        "sectorsBounds": {
+          "x": 425,
+          "y": 63,
+          "width": 1160,
+          "height": 88
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "analysis",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/visual-validation/analysis-1440x900.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:15:56.518816+00:00",
+      "sha256": "83ca73c562e366e98e7a6541b4c2995d782f508d75d507589ebde8c050cf84f4",
+      "metrics": {
+        "name": "analysis",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/analysis-1440x900.png",
+        "width": 1440,
+        "docWidth": 1440,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734
+        },
+        "centralContentBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734,
+          "width": 1162,
+          "height": 554
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 18,
+          "y": 180,
+          "width": 1162,
+          "height": 554,
+          "scrollHeight": 552,
+          "clientHeight": 552
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 41,
+            "y": 317,
+            "width": 540,
+            "height": 243,
+            "scrollHeight": 243,
+            "clientHeight": 243
+          },
+          {
+            "x": 615,
+            "y": 317,
+            "width": 540,
+            "height": 243,
+            "scrollHeight": 243,
+            "clientHeight": 243
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 160,
+          "height": 31,
+          "x": 168,
+          "y": 80
+        },
+        "sectorsBounds": {
+          "x": 330,
+          "y": 64,
+          "width": 818,
+          "height": 77
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "analysis",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/visual-validation/analysis-1366x768.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:16:14.322693+00:00",
+      "sha256": "a82f8148f506caf0af0a82857e91819dc83a767aca2513fa3683e5fcb99dcac6",
+      "metrics": {
+        "name": "analysis",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/analysis-1366x768.png",
+        "width": 1366,
+        "docWidth": 1366,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615
+        },
+        "centralContentBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615,
+          "width": 1115,
+          "height": 458
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 16,
+          "y": 157,
+          "width": 1115,
+          "height": 458,
+          "scrollHeight": 456,
+          "clientHeight": 456
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 42,
+            "y": 298,
+            "width": 514,
+            "height": 193,
+            "scrollHeight": 193,
+            "clientHeight": 193
+          },
+          {
+            "x": 590,
+            "y": 298,
+            "width": 514,
+            "height": 193,
+            "scrollHeight": 193,
+            "clientHeight": 193
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 120,
+          "height": 31,
+          "x": 161,
+          "y": 68
+        },
+        "sectorsBounds": {
+          "x": 300,
+          "y": 59,
+          "width": 801,
+          "height": 65
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "statistics",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/visual-validation/statistics-1920x1080.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:16:36.417541+00:00",
+      "sha256": "5adc6b760a5d45de1cfa7b735b891a635c4c31767f0a7d2be1e0a1c2c742f7a1",
+      "metrics": {
+        "name": "statistics",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/statistics-1920x1080.png",
+        "width": 1920,
+        "docWidth": 1920,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902
+        },
+        "centralContentBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902,
+          "width": 1596,
+          "height": 702
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 24,
+          "y": 200,
+          "width": 1596,
+          "height": 702,
+          "scrollHeight": 700,
+          "clientHeight": 700
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 47,
+            "y": 346,
+            "width": 493,
+            "height": 292,
+            "scrollHeight": 292,
+            "clientHeight": 292
+          },
+          {
+            "x": 575,
+            "y": 378,
+            "width": 493,
+            "height": 292,
+            "scrollHeight": 292,
+            "clientHeight": 292
+          },
+          {
+            "x": 1102,
+            "y": 386,
+            "width": 493,
+            "height": 292,
+            "scrollHeight": 292,
+            "clientHeight": 292
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "16px",
+          "width": 225,
+          "height": 42,
+          "x": 168,
+          "y": 82
+        },
+        "sectorsBounds": {
+          "x": 425,
+          "y": 63,
+          "width": 1160,
+          "height": 88
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "statistics",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/visual-validation/statistics-1440x900.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:16:55.021411+00:00",
+      "sha256": "431b4beff1e941d7a269068d65e43adc5d893fe323830b9f9b8a9cb760d92166",
+      "metrics": {
+        "name": "statistics",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/statistics-1440x900.png",
+        "width": 1440,
+        "docWidth": 1440,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734
+        },
+        "centralContentBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734,
+          "width": 1162,
+          "height": 554
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 18,
+          "y": 180,
+          "width": 1162,
+          "height": 554,
+          "scrollHeight": 552,
+          "clientHeight": 552
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 41,
+            "y": 326,
+            "width": 348,
+            "height": 243,
+            "scrollHeight": 243,
+            "clientHeight": 243
+          },
+          {
+            "x": 424,
+            "y": 358,
+            "width": 348,
+            "height": 243,
+            "scrollHeight": 243,
+            "clientHeight": 243
+          },
+          {
+            "x": 807,
+            "y": 366,
+            "width": 348,
+            "height": 243,
+            "scrollHeight": 243,
+            "clientHeight": 243
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 160,
+          "height": 31,
+          "x": 168,
+          "y": 80
+        },
+        "sectorsBounds": {
+          "x": 330,
+          "y": 64,
+          "width": 818,
+          "height": 77
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "statistics",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/visual-validation/statistics-1366x768.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:17:14.896272+00:00",
+      "sha256": "bfa606fc20abae2a52587d84eb1833b4de22615751ce8c1591b465cea9ceb9d6",
+      "metrics": {
+        "name": "statistics",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/statistics-1366x768.png",
+        "width": 1366,
+        "docWidth": 1366,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "TRADING",
+        "centralBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615
+        },
+        "centralContentBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615,
+          "width": 1115,
+          "height": 458
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": {
+          "x": 16,
+          "y": 157,
+          "width": 1115,
+          "height": 458,
+          "scrollHeight": 456,
+          "clientHeight": 456
+        },
+        "dialogBounds": null,
+        "chartBounds": [
+          {
+            "x": 42,
+            "y": 307,
+            "width": 330,
+            "height": 210,
+            "scrollHeight": 210,
+            "clientHeight": 210
+          },
+          {
+            "x": 407,
+            "y": 339,
+            "width": 330,
+            "height": 210,
+            "scrollHeight": 210,
+            "clientHeight": 210
+          },
+          {
+            "x": 773,
+            "y": 347,
+            "width": 330,
+            "height": 210,
+            "scrollHeight": 210,
+            "clientHeight": 210
+          }
+        ],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 120,
+          "height": 31,
+          "x": 161,
+          "y": 68
+        },
+        "sectorsBounds": {
+          "x": 300,
+          "y": 59,
+          "width": 801,
+          "height": 65
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "context",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/visual-validation/context-1920x1080.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:25:51.600452+00:00",
+      "sha256": "8cfc271a9a501746986147b3fadcc1ffbe68a954cdfd42ca068183d7e9ae4f78",
+      "metrics": {
+        "name": "context",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/context-1920x1080.png",
+        "width": 1920,
+        "docWidth": 1920,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "CARD_READING",
+        "centralBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902
+        },
+        "centralContentBounds": {
+          "x": 262,
+          "y": 200,
+          "right": 1382,
+          "bottom": 902,
+          "width": 1120,
+          "height": 702
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": null,
+        "dialogBounds": {
+          "x": 262,
+          "y": 200,
+          "width": 1120,
+          "height": 702,
+          "scrollHeight": 700,
+          "clientHeight": 700
+        },
+        "chartBounds": [],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Choisir son marché",
+          "fontSize": "16px",
+          "width": 225,
+          "height": 21,
+          "x": 168,
+          "y": 92
+        },
+        "sectorsBounds": {
+          "x": 425,
+          "y": 63,
+          "width": 1160,
+          "height": 88
+        },
+        "phaseTitleOverlapsSectors": false,
+        "contextLaptopBounds": {
+          "contentTop": 355,
+          "contentBottom": 842,
+          "footerTop": 842,
+          "firstAfterCourse": {
+            "top": 705,
+            "bottom": 724.5
+          },
+          "gradeRows": [
+            {
+              "top": 404,
+              "bottom": 431
+            },
+            {
+              "top": 404,
+              "bottom": 431
+            }
+          ]
+        }
+      }
+    },
+    {
+      "view": "context",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/visual-validation/context-1440x900.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:26:06.724336+00:00",
+      "sha256": "ad9ebefb07240753f98fe20f992864f9f416548f87647be1425c09953feb0c53",
+      "metrics": {
+        "name": "context",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/context-1440x900.png",
+        "width": 1440,
+        "docWidth": 1440,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "CARD_READING",
+        "centralBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734
+        },
+        "centralContentBounds": {
+          "x": 39,
+          "y": 180,
+          "right": 1159,
+          "bottom": 734,
+          "width": 1120,
+          "height": 554
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": null,
+        "dialogBounds": {
+          "x": 39,
+          "y": 180,
+          "width": 1120,
+          "height": 554,
+          "scrollHeight": 552,
+          "clientHeight": 552
+        },
+        "chartBounds": [],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Choisir son marché",
+          "fontSize": "12px",
+          "width": 160,
+          "height": 16,
+          "x": 168,
+          "y": 88
+        },
+        "sectorsBounds": {
+          "x": 330,
+          "y": 64,
+          "width": 818,
+          "height": 77
+        },
+        "phaseTitleOverlapsSectors": false,
+        "contextLaptopBounds": {
+          "contentTop": 295.671875,
+          "contentBottom": 676,
+          "footerTop": 676,
+          "firstAfterCourse": {
+            "top": 555.671875,
+            "bottom": 575.171875
+          },
+          "gradeRows": [
+            {
+              "top": 325.671875,
+              "bottom": 352.671875
+            },
+            {
+              "top": 325.671875,
+              "bottom": 352.671875
+            }
+          ]
+        }
+      }
+    },
+    {
+      "view": "context",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/visual-validation/context-1366x768.png",
+      "sourceRelease": ".releases/2026-10-07T21-22-53-574Z-337339",
+      "modifiedAt": "2026-10-07T21:26:19.040242+00:00",
+      "sha256": "075aacad3584b79028bbc087487200183c37e4cbde986288ac023c9aa67da1d4",
+      "metrics": {
+        "name": "context",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/context-1366x768.png",
+        "width": 1366,
+        "docWidth": 1366,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "CARD_READING",
+        "centralBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615
+        },
+        "centralContentBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615,
+          "width": 1115,
+          "height": 458
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": null,
+        "dialogBounds": {
+          "x": 16,
+          "y": 157,
+          "width": 1115,
+          "height": 458,
+          "scrollHeight": 456,
+          "clientHeight": 456
+        },
+        "chartBounds": [],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Choisir son marché",
+          "fontSize": "12px",
+          "width": 120,
+          "height": 31,
+          "x": 161,
+          "y": 68
+        },
+        "sectorsBounds": {
+          "x": 300,
+          "y": 59,
+          "width": 801,
+          "height": 65
+        },
+        "phaseTitleOverlapsSectors": false,
+        "contextLaptopBounds": {
+          "contentTop": 272.5,
+          "contentBottom": 557,
+          "footerTop": 557,
+          "firstAfterCourse": {
+            "top": 532.5,
+            "bottom": 552
+          },
+          "gradeRows": [
+            {
+              "top": 302.5,
+              "bottom": 329.5
+            },
+            {
+              "top": 302.5,
+              "bottom": 329.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "view": "event",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/visual-validation/event-1920x1080.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:18:14.613850+00:00",
+      "sha256": "3e4d31b792e5fcf6c03506ed825bdbff60bb7b39ce820c4557abdcff4c4b6257",
+      "metrics": {
+        "name": "event",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/event-1920x1080.png",
+        "width": 1920,
+        "docWidth": 1920,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "CARD_READING",
+        "centralBounds": {
+          "x": 24,
+          "y": 200,
+          "right": 1620,
+          "bottom": 902
+        },
+        "centralContentBounds": {
+          "x": 262,
+          "y": 200,
+          "right": 1382,
+          "bottom": 902,
+          "width": 1120,
+          "height": 702
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": null,
+        "dialogBounds": {
+          "x": 262,
+          "y": 200,
+          "width": 1120,
+          "height": 702,
+          "scrollHeight": 698,
+          "clientHeight": 698
+        },
+        "chartBounds": [],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "16px",
+          "width": 225,
+          "height": 42,
+          "x": 168,
+          "y": 82
+        },
+        "sectorsBounds": {
+          "x": 425,
+          "y": 63,
+          "width": 1160,
+          "height": 88
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "event",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/visual-validation/event-1440x900.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:18:25.951769+00:00",
+      "sha256": "3390fd9f8ec942756a190acd6c474d1b604fdfacdceae6ea624185cc063bfceb",
+      "metrics": {
+        "name": "event",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/event-1440x900.png",
+        "width": 1440,
+        "docWidth": 1440,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "CARD_READING",
+        "centralBounds": {
+          "x": 18,
+          "y": 180,
+          "right": 1180,
+          "bottom": 734
+        },
+        "centralContentBounds": {
+          "x": 39,
+          "y": 180,
+          "right": 1159,
+          "bottom": 734,
+          "width": 1120,
+          "height": 554
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": null,
+        "dialogBounds": {
+          "x": 39,
+          "y": 180,
+          "width": 1120,
+          "height": 554,
+          "scrollHeight": 550,
+          "clientHeight": 550
+        },
+        "chartBounds": [],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 160,
+          "height": 31,
+          "x": 168,
+          "y": 80
+        },
+        "sectorsBounds": {
+          "x": 330,
+          "y": 64,
+          "width": 818,
+          "height": 77
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "event",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/visual-validation/event-1366x768.png",
+      "sourceRelease": ".releases/2026-10-07T21-12-57-036Z-336221",
+      "modifiedAt": "2026-10-07T21:18:36.985690+00:00",
+      "sha256": "83e4a62224bbe2076b2e7f31c8b520e151417a0fd40913e02973dfd422d83d16",
+      "metrics": {
+        "name": "event",
+        "file": "/home/codex/projects/global-fund-next/screenshots/visual-validation/event-1366x768.png",
+        "width": 1366,
+        "docWidth": 1366,
+        "cells": 52,
+        "pawns": 6,
+        "presentationStage": "CARD_READING",
+        "centralBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615
+        },
+        "centralContentBounds": {
+          "x": 16,
+          "y": 157,
+          "right": 1131,
+          "bottom": 615,
+          "width": 1115,
+          "height": 458
+        },
+        "centralContentHudOverlap": false,
+        "terminalBounds": null,
+        "dialogBounds": {
+          "x": 16,
+          "y": 157,
+          "width": 1115,
+          "height": 458,
+          "scrollHeight": 454,
+          "clientHeight": 454
+        },
+        "chartBounds": [],
+        "fps": 0,
+        "phaseTitle": {
+          "text": "Composer son portefeuille",
+          "fontSize": "12px",
+          "width": 120,
+          "height": 31,
+          "x": 161,
+          "y": 68
+        },
+        "sectorsBounds": {
+          "x": 300,
+          "y": 59,
+          "width": 801,
+          "height": 65
+        },
+        "phaseTitleOverlapsSectors": false
+      }
+    },
+    {
+      "view": "settlement",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/settlement-validation/1920x1080/settlement.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:07:51.897738+00:00",
+      "sha256": "6ccf7228d645ac7c61dc9a59db92aac9977f9e6415da93084b8038bb21dda075"
+    },
+    {
+      "view": "settlement",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/settlement-validation/1440x900/settlement.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:08:47.317278+00:00",
+      "sha256": "df77dd96ba5a810de14b53afbcf7c697d2cf1fe8b8ca911edfa98c7c36b2dd56"
+    },
+    {
+      "view": "settlement",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/settlement-validation/1366x768/settlement.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:09:44.435804+00:00",
+      "sha256": "37e2914182f7e3d11e022e47877b51de3d15b3ca4a5aa1a2aa4931fbd15ceb21"
+    },
+    {
+      "view": "forced-liquidation",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/settlement-validation/1920x1080/forced-liquidation.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:07:52.882730+00:00",
+      "sha256": "b7385878153fc74d3c04f814f50e6a7d7d3fa101be81875edbe9a5dc1a8d6727"
+    },
+    {
+      "view": "forced-liquidation",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/settlement-validation/1440x900/forced-liquidation.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:08:47.883273+00:00",
+      "sha256": "7f01bcb877ff14cbcadfea3b7989e817bcd771eefaaa41dbd6179c95b03b0f22"
+    },
+    {
+      "view": "forced-liquidation",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/settlement-validation/1366x768/forced-liquidation.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:09:44.938800+00:00",
+      "sha256": "d18da1deb05ee76313a4d538508fc620bfe0666cfc0eee2b004054d66546356f"
+    },
+    {
+      "view": "share-offer",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/settlement-validation/1920x1080/share-offer.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:08:05.106628+00:00",
+      "sha256": "0117ba05adb3573399357c0a77b4a4b8167390599b94165b65407c6385ad6af1"
+    },
+    {
+      "view": "share-offer",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/settlement-validation/1440x900/share-offer.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:08:59.335178+00:00",
+      "sha256": "83e35b1a52fa3bdcaceecbb9e169d1c93b48eda0e3fef37f9d34e48c135049d6"
+    },
+    {
+      "view": "share-offer",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/settlement-validation/1366x768/share-offer.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:09:56.207707+00:00",
+      "sha256": "634028836b15934f17502a61cc590a99131c3b4ffae8526ed322b9b60cee12ef"
+    },
+    {
+      "view": "share-offer-over-debt",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/settlement-validation/1920x1080/share-offer-over-debt.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:08:26.048454+00:00",
+      "sha256": "ce8507d279535149698bb4b873a2bc4926e2b341c0830e1eaed6f8c2fd46e980"
+    },
+    {
+      "view": "share-offer-over-debt",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/settlement-validation/1440x900/share-offer-over-debt.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:09:21.639993+00:00",
+      "sha256": "4688815f25c067aaa26fe5a3f89dd68bcfd997bf8db7af57cf6324094fdf4e32"
+    },
+    {
+      "view": "share-offer-over-debt",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/settlement-validation/1366x768/share-offer-over-debt.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:10:19.233516+00:00",
+      "sha256": "cf2ccd39c3476943b1381d035606d7c41bd0641245f0173e74ba1c480e60f671"
+    },
+    {
+      "view": "multi-creditor-settlement",
+      "width": 1920,
+      "height": 1080,
+      "file": "screenshots/settlement-validation/1920x1080/multi-creditor-settlement.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:08:37.607358+00:00",
+      "sha256": "29c43d8b0e814eeb60e73d42df762c06b15d0a0be0415444bffc5b266dc9a1ec"
+    },
+    {
+      "view": "multi-creditor-settlement",
+      "width": 1440,
+      "height": 900,
+      "file": "screenshots/settlement-validation/1440x900/multi-creditor-settlement.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:09:31.317913+00:00",
+      "sha256": "bb16a4fae8814e26d23e2b9dc69604c6de30c2f7058be8bc2ef30209ea7d88b8"
+    },
+    {
+      "view": "multi-creditor-settlement",
+      "width": 1366,
+      "height": 768,
+      "file": "screenshots/settlement-validation/1366x768/multi-creditor-settlement.png",
+      "sourceRelease": ".releases/2026-10-07T20-55-45-406Z-333507",
+      "modifiedAt": "2026-10-07T21:10:30.921420+00:00",
+      "sha256": "34e769819beb9606ac6e48661bb8acdfaf5db9af0ccf191a32f378d1270c0236"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "agricultural-bank-of-china",
+    "oldName": "Agricultural Bank of China Limited",
+    "newName": "Sun Hung Kai Properties Limited",
+    "oldSector": "finance",
+    "sector": "realestate",
+    "zone": "asia",
+    "country": "Hong Kong",
+    "sourceURL": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/2025102200125.pdf",
+    "listingSourceURL": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/2025102200125.pdf",
+    "capSource": "https://companiesmarketcap.com/sun-hung-kai-properties/marketcap/",
+    "legacyIdRetained": true,
+    "catalogVersion": 3
+  },
+  {
+    "id": "industries-qatar",
+    "oldName": "Industries Qatar",
+    "newName": "Emaar Properties PJSC",
+    "oldSector": "industry",
+    "sector": "realestate",
+    "zone": "africa",
+    "country": "Émirats arabes unis (Dubaï)",
+    "sourceURL": "https://www.emaar.com/en/investor-relations/emaar-properties-pjsc",
+    "listingSourceURL": "https://www.dfm.ae/the-exchange/market-information/company/emaar",
+    "capSource": "https://companiesmarketcap.com/emaar-properties/marketcap/",
+    "legacyIdRetained": true,
+    "catalogVersion": 3
+  }
+]

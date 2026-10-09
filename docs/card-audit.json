@@ -1,0 +1,4374 @@
+{
+  "generatedAt": "2026-10-07",
+  "catalog": {
+    "companyCount": 91,
+    "capCategoryCounts": {
+      "small": 20,
+      "medium": 31,
+      "large": 40
+    },
+    "capCategoryMethod": "Utilise directement capCategory du catalogue; seuils Global Fund : small < 40 Md USD, medium de 40 à moins de 200 Md USD, large à partir de 200 Md USD.",
+    "replacements": [
+      {
+        "id": "agricultural-bank-of-china",
+        "name": "Sun Hung Kai Properties Limited",
+        "sector": "realestate",
+        "zone": "asia",
+        "capCategory": "small"
+      },
+      {
+        "id": "industries-qatar",
+        "name": "Emaar Properties PJSC",
+        "sector": "realestate",
+        "zone": "africa",
+        "capCategory": "small"
+      }
+    ]
+  },
+  "counts": {
+    "eventCards": 50,
+    "contextCards": 100,
+    "companies": 91,
+    "explicitCompanyNameMentionsInEventStories": 0,
+    "companyPlaceholders": 50
+  },
+  "targetingSemantics": "Le moteur tire parmi les sociétés disponibles du secteur ciblé (ou toutes si aucun secteur n’est fixé), en priorisant les sociétés détenues par le joueur actif, puis toute société détenue. Les occurrences de pool décrivent la couverture possible par carte; elles ne sont pas une probabilité de tirage, car les portefeuilles et la disponibilité biaisent le pool.",
+  "companyPoolCoverage": {
+    "cardsByTargetSector": {
+      "all": 7,
+      "technology": 5,
+      "finance": 6,
+      "industry": 5,
+      "health": 4,
+      "energy": 6,
+      "realestate": 5,
+      "agrifood": 4,
+      "media": 3,
+      "transport": 5
+    },
+    "eligibleCompanyCountBySector": {
+      "technology": 13,
+      "finance": 14,
+      "industry": 14,
+      "health": 9,
+      "energy": 11,
+      "realestate": 4,
+      "agrifood": 12,
+      "media": 8,
+      "transport": 6
+    },
+    "companiesBySectorCapCategory": {
+      "technology": {
+        "small": 1,
+        "medium": 0,
+        "large": 12
+      },
+      "finance": {
+        "small": 2,
+        "medium": 3,
+        "large": 9
+      },
+      "industry": {
+        "small": 2,
+        "medium": 7,
+        "large": 5
+      },
+      "health": {
+        "small": 0,
+        "medium": 5,
+        "large": 4
+      },
+      "energy": {
+        "small": 3,
+        "medium": 4,
+        "large": 4
+      },
+      "realestate": {
+        "small": 4,
+        "medium": 0,
+        "large": 0
+      },
+      "agrifood": {
+        "small": 1,
+        "medium": 7,
+        "large": 4
+      },
+      "media": {
+        "small": 4,
+        "medium": 3,
+        "large": 1
+      },
+      "transport": {
+        "small": 3,
+        "medium": 2,
+        "large": 1
+      }
+    },
+    "companiesByZoneCapCategory": {
+      "americas": {
+        "small": 2,
+        "medium": 13,
+        "large": 20
+      },
+      "europe": {
+        "small": 2,
+        "medium": 11,
+        "large": 11
+      },
+      "asia": {
+        "small": 3,
+        "medium": 5,
+        "large": 9
+      },
+      "africa": {
+        "small": 6,
+        "medium": 0,
+        "large": 0
+      },
+      "oceania": {
+        "small": 7,
+        "medium": 2,
+        "large": 0
+      }
+    },
+    "poolOpportunityOccurrences": {
+      "totalPoolCompanyOccurrences": 1080,
+      "byCapCategory": {
+        "small": {
+          "count": 236,
+          "sharePct": 21.9
+        },
+        "medium": {
+          "count": 361,
+          "sharePct": 33.4
+        },
+        "large": {
+          "count": 483,
+          "sharePct": 44.7
+        }
+      },
+      "byZone": {
+        "Amériques": {
+          "count": 415,
+          "byCapCategory": {
+            "small": 26,
+            "medium": 146,
+            "large": 243
+          }
+        },
+        "Europe": {
+          "count": 281,
+          "byCapCategory": {
+            "small": 22,
+            "medium": 128,
+            "large": 131
+          }
+        },
+        "Asie": {
+          "count": 208,
+          "byCapCategory": {
+            "small": 36,
+            "medium": 63,
+            "large": 109
+          }
+        },
+        "Afrique & Moyen-Orient": {
+          "count": 70,
+          "byCapCategory": {
+            "small": 70,
+            "medium": 0,
+            "large": 0
+          }
+        },
+        "Océanie": {
+          "count": 106,
+          "byCapCategory": {
+            "small": 82,
+            "medium": 24,
+            "large": 0
+          }
+        }
+      },
+      "bySector": {
+        "Technologie": {
+          "count": 156,
+          "byCapCategory": {
+            "small": 12,
+            "medium": 0,
+            "large": 144
+          }
+        },
+        "Finance": {
+          "count": 182,
+          "byCapCategory": {
+            "small": 26,
+            "medium": 39,
+            "large": 117
+          }
+        },
+        "Industrie": {
+          "count": 168,
+          "byCapCategory": {
+            "small": 24,
+            "medium": 84,
+            "large": 60
+          }
+        },
+        "Santé": {
+          "count": 99,
+          "byCapCategory": {
+            "small": 0,
+            "medium": 55,
+            "large": 44
+          }
+        },
+        "Énergie": {
+          "count": 143,
+          "byCapCategory": {
+            "small": 39,
+            "medium": 52,
+            "large": 52
+          }
+        },
+        "Immobilier & infrastructures": {
+          "count": 48,
+          "byCapCategory": {
+            "small": 48,
+            "medium": 0,
+            "large": 0
+          }
+        },
+        "Agroalimentaire & ressources": {
+          "count": 132,
+          "byCapCategory": {
+            "small": 11,
+            "medium": 77,
+            "large": 44
+          }
+        },
+        "Communication & médias": {
+          "count": 80,
+          "byCapCategory": {
+            "small": 40,
+            "medium": 30,
+            "large": 10
+          }
+        },
+        "Transports & logistique": {
+          "count": 72,
+          "byCapCategory": {
+            "small": 36,
+            "medium": 24,
+            "large": 12
+          }
+        }
+      },
+      "companyById": {
+        "orascom-construction-industries": {
+          "name": "Orascom Construction PLC",
+          "zone": "africa",
+          "sector": "realestate",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "tata-motors": {
+          "name": "Tata Motors Limited",
+          "zone": "asia",
+          "sector": "transport",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "maroc-telecom": {
+          "name": "Maroc Telecom",
+          "zone": "africa",
+          "sector": "media",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "enersis": {
+          "name": "Enel Chile",
+          "zone": "americas",
+          "sector": "energy",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "bank-central-asia": {
+          "name": "PT Bank Central Asia Tbk",
+          "zone": "asia",
+          "sector": "finance",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "astra-international": {
+          "name": "FANUC Corporation",
+          "zone": "asia",
+          "sector": "industry",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "industries-qatar": {
+          "name": "Emaar Properties PJSC",
+          "zone": "africa",
+          "sector": "realestate",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "mtn-group": {
+          "name": "MTN Group Limited",
+          "zone": "africa",
+          "sector": "media",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "qatar-national-bank": {
+          "name": "Qatar National Bank",
+          "zone": "africa",
+          "sector": "finance",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "sasol": {
+          "name": "Sasol Limited",
+          "zone": "africa",
+          "sector": "energy",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "banco-brasil": {
+          "name": "Banco do Brasil",
+          "zone": "americas",
+          "sector": "finance",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "amx": {
+          "name": "América Móvil",
+          "zone": "americas",
+          "sector": "media",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "walmex": {
+          "name": "Walmart de México y Centroamérica",
+          "zone": "americas",
+          "sector": "agrifood",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "sabmiller-plc": {
+          "name": "Heineken N.V.",
+          "zone": "europe",
+          "sector": "agrifood",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "vodafone-group-plc": {
+          "name": "Vodafone Group Plc",
+          "zone": "europe",
+          "sector": "media",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "mcdonald-s-corp": {
+          "name": "McDonald’s Corporation",
+          "zone": "americas",
+          "sector": "agrifood",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "astrazeneca-plc": {
+          "name": "AstraZeneca PLC",
+          "zone": "europe",
+          "sector": "health",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "siemens-ag": {
+          "name": "Siemens AG",
+          "zone": "europe",
+          "sector": "industry",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "sap": {
+          "name": "SAP SE",
+          "zone": "europe",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "lvmh-sa": {
+          "name": "LVMH Moët Hennessy Louis Vuitton SE",
+          "zone": "europe",
+          "sector": "industry",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "taiwan-semiconductor-manufacturing": {
+          "name": "Taiwan Semiconductor Manufacturing Company Limited",
+          "zone": "asia",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "nike-inc": {
+          "name": "NIKE, Inc.",
+          "zone": "americas",
+          "sector": "industry",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "united-parcel-service": {
+          "name": "United Parcel Service, Inc.",
+          "zone": "americas",
+          "sector": "transport",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "gazprom": {
+          "name": "Mitsubishi Heavy Industries (MHI)",
+          "zone": "asia",
+          "sector": "industry",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "british-american-tobacco-plc": {
+          "name": "British American Tobacco p.l.c.",
+          "zone": "europe",
+          "sector": "industry",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "3m-co": {
+          "name": "3M Company",
+          "zone": "americas",
+          "sector": "industry",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "mastercard-inc": {
+          "name": "Mastercard Incorporated",
+          "zone": "americas",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "the-boeing-company": {
+          "name": "The Boeing Company",
+          "zone": "americas",
+          "sector": "industry",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "daimler-ag": {
+          "name": "Mercedes-Benz Group AG",
+          "zone": "europe",
+          "sector": "transport",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "inditex-s-a": {
+          "name": "Industria de Diseño Textil, S.A. (Inditex)",
+          "zone": "europe",
+          "sector": "industry",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "l-oreal-sa": {
+          "name": "L’Oréal S.A.",
+          "zone": "europe",
+          "sector": "industry",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "glaxosmithkline-plc": {
+          "name": "GSK plc",
+          "zone": "europe",
+          "sector": "health",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "petrobras": {
+          "name": "Petróleo Brasileiro S.A. (Petrobras)",
+          "zone": "americas",
+          "sector": "energy",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "ping-an-insurance-group-co-of-china-ltd": {
+          "name": "Ping An Insurance (Group) Company of China, Ltd.",
+          "zone": "asia",
+          "sector": "finance",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "banco-santander-s-a": {
+          "name": "Banco Santander, S.A.",
+          "zone": "europe",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "total-sa": {
+          "name": "TotalEnergies SE",
+          "zone": "europe",
+          "sector": "energy",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "volkswagen-ag": {
+          "name": "Volkswagen AG",
+          "zone": "europe",
+          "sector": "transport",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "bp-plc": {
+          "name": "BP p.l.c.",
+          "zone": "europe",
+          "sector": "energy",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "philip-morris-international": {
+          "name": "Philip Morris International Inc.",
+          "zone": "americas",
+          "sector": "agrifood",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "bayer-ag": {
+          "name": "Bayer AG",
+          "zone": "europe",
+          "sector": "health",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "sinopec": {
+          "name": "China Petroleum & Chemical Corporation (Sinopec)",
+          "zone": "asia",
+          "sector": "energy",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "unilever-nv": {
+          "name": "Unilever PLC",
+          "zone": "europe",
+          "sector": "agrifood",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "ambev": {
+          "name": "Ambev S.A.",
+          "zone": "americas",
+          "sector": "agrifood",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "sanofi": {
+          "name": "Sanofi",
+          "zone": "europe",
+          "sector": "health",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "pepsico": {
+          "name": "PepsiCo, Inc.",
+          "zone": "americas",
+          "sector": "agrifood",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "cisco-systems": {
+          "name": "Cisco Systems, Inc.",
+          "zone": "americas",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "intel-corp": {
+          "name": "Intel Corporation",
+          "zone": "americas",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "hsbc-holdings-plc": {
+          "name": "HSBC Holdings plc",
+          "zone": "europe",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "ibm-corp": {
+          "name": "International Business Machines Corporation (IBM)",
+          "zone": "americas",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "visa-inc": {
+          "name": "Visa Inc.",
+          "zone": "americas",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "at-t-inc": {
+          "name": "AT&T Inc.",
+          "zone": "americas",
+          "sector": "media",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "the-coca-cola-co": {
+          "name": "The Coca-Cola Company",
+          "zone": "americas",
+          "sector": "agrifood",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "toyota-motor": {
+          "name": "Toyota Motor Corporation",
+          "zone": "asia",
+          "sector": "transport",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "the-walt-disney-co": {
+          "name": "The Walt Disney Company",
+          "zone": "americas",
+          "sector": "media",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "tencent-holdings-ltd": {
+          "name": "Tencent Holdings Limited",
+          "zone": "asia",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "royal-dutch-shell": {
+          "name": "Shell plc",
+          "zone": "europe",
+          "sector": "energy",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "agricultural-bank-of-china": {
+          "name": "Sun Hung Kai Properties Limited",
+          "zone": "asia",
+          "sector": "realestate",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "oracle-corp": {
+          "name": "Oracle Corporation",
+          "zone": "americas",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "alibaba-group-holding": {
+          "name": "Alibaba Group Holding Limited",
+          "zone": "asia",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "bank-of-china-ltd": {
+          "name": "Bank of China Limited",
+          "zone": "asia",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "chevron-corp": {
+          "name": "Chevron Corporation",
+          "zone": "americas",
+          "sector": "energy",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "anheuser-busch": {
+          "name": "Anheuser-Busch InBev SA/NV",
+          "zone": "europe",
+          "sector": "agrifood",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "china-construction-bank-corp": {
+          "name": "Komatsu Ltd.",
+          "zone": "asia",
+          "sector": "industry",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "samsung-electronics-co-ltd": {
+          "name": "Samsung Electronics Co., Ltd.",
+          "zone": "asia",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "pfizer-inc": {
+          "name": "Pfizer Inc.",
+          "zone": "americas",
+          "sector": "health",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "procter-gamble-co": {
+          "name": "The Procter & Gamble Company",
+          "zone": "americas",
+          "sector": "industry",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "nestle": {
+          "name": "Nestlé S.A.",
+          "zone": "europe",
+          "sector": "agrifood",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "novartis": {
+          "name": "Novartis AG",
+          "zone": "europe",
+          "sector": "health",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "jpmorgan-chase-co": {
+          "name": "JPMorgan Chase & Co.",
+          "zone": "americas",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "roche": {
+          "name": "Roche Holding AG",
+          "zone": "europe",
+          "sector": "health",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "general-electric": {
+          "name": "GE Aerospace",
+          "zone": "americas",
+          "sector": "industry",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "wal-mart-stores-inc": {
+          "name": "Walmart Inc.",
+          "zone": "americas",
+          "sector": "agrifood",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "china-mobile-ltd": {
+          "name": "China Mobile Limited",
+          "zone": "asia",
+          "sector": "media",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "icbc-ltd": {
+          "name": "Industrial and Commercial Bank of China Limited",
+          "zone": "asia",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "wells-fargo-co": {
+          "name": "Wells Fargo & Company",
+          "zone": "americas",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "johnson-johnson": {
+          "name": "Johnson & Johnson",
+          "zone": "americas",
+          "sector": "health",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "petrochina-co-ltd": {
+          "name": "PetroChina Company Limited",
+          "zone": "asia",
+          "sector": "energy",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "microsoft-corp": {
+          "name": "Microsoft Corporation",
+          "zone": "americas",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "exxon-mobil-corp": {
+          "name": "Exxon Mobil Corporation",
+          "zone": "americas",
+          "sector": "energy",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "berkshire-hathaway-inc": {
+          "name": "Berkshire Hathaway Inc.",
+          "zone": "americas",
+          "sector": "finance",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "alphabet-google-inc": {
+          "name": "Alphabet Inc.",
+          "zone": "americas",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "apple-inc": {
+          "name": "Apple Inc.",
+          "zone": "americas",
+          "sector": "technology",
+          "capCategory": "large",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "pacifica-minerals": {
+          "name": "Woolworths Group Limited",
+          "zone": "oceania",
+          "sector": "agrifood",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "southern-cross-energy": {
+          "name": "Origin Energy",
+          "zone": "oceania",
+          "sector": "energy",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "coral-reef-health": {
+          "name": "CSL Limited",
+          "zone": "oceania",
+          "sector": "health",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 11
+        },
+        "pacific-link": {
+          "name": "Telstra Group",
+          "zone": "oceania",
+          "sector": "media",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 10
+        },
+        "harbour-infrastructure": {
+          "name": "Goodman Group",
+          "zone": "oceania",
+          "sector": "realestate",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "oceanic-air": {
+          "name": "Qantas Airways",
+          "zone": "oceania",
+          "sector": "transport",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "southpoint-finance": {
+          "name": "Commonwealth Bank of Australia",
+          "zone": "oceania",
+          "sector": "finance",
+          "capCategory": "medium",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 13
+        },
+        "reef-data-systems": {
+          "name": "WiseTech Global Limited",
+          "zone": "oceania",
+          "sector": "technology",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        },
+        "austral-manufacturing": {
+          "name": "Fortescue",
+          "zone": "oceania",
+          "sector": "industry",
+          "capCategory": "small",
+          "explicitCompanyMentions": 0,
+          "targetPoolOccurrences": 12
+        }
+      }
+    }
+  },
+  "eventCards": [
+    {
+      "id": "board-01",
+      "title": "Contrat public inattendu",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Tous secteurs",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 91,
+        "capCategoryCounts": {
+          "small": 20,
+          "medium": 31,
+          "large": 40
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "modérée",
+      "inspiration": "Marchés publics et commandes exceptionnelles",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-02",
+      "title": "Prime de fidélité bancaire",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Finance",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 3,
+          "large": 9
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "modérée",
+      "inspiration": "Dividendes et restructurations bancaires historiques",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-03",
+      "title": "Rachat stratégique",
+      "category": "Consolidation / OPA",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Industrie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 7,
+          "large": 5
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "buyback",
+      "intensity": "forte",
+      "inspiration": "Offres publiques de rachat",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-04",
+      "title": "Crédit d’innovation",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Tous secteurs",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 91,
+        "capCategoryCounts": {
+          "small": 20,
+          "medium": 31,
+          "large": 40
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "faible",
+      "inspiration": "Financement public de l’innovation",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-05",
+      "title": "Dividende exceptionnel",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Énergie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 11,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 4,
+          "large": 4
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "forte",
+      "inspiration": "Distributions après cessions d’actifs",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-06",
+      "title": "Commande humanitaire",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Tous secteurs",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 91,
+        "capCategoryCounts": {
+          "small": 20,
+          "medium": 31,
+          "large": 40
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "forte",
+      "inspiration": "Achats d’urgence de matériel médical",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-07",
+      "title": "Offre de retrait",
+      "category": "Consolidation / OPA",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Asie",
+        "Océanie"
+      ],
+      "sectorScope": "Immobilier & infrastructures",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 4,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 0,
+          "large": 0
+        },
+        "zoneIds": [
+          "africa",
+          "asia",
+          "oceania"
+        ]
+      },
+      "effect": "buyback",
+      "intensity": "modérée",
+      "inspiration": "Offres de retrait immobilier",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-08",
+      "title": "Brevet décisif",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Technologie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 13,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 0,
+          "large": 12
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "modérée",
+      "inspiration": "Licences de brevets",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-09",
+      "title": "Amende de conformité",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Tous secteurs",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 91,
+        "capCategoryCounts": {
+          "small": 20,
+          "medium": 31,
+          "large": 40
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "modérée",
+      "inspiration": "Sanctions de conformité",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-10",
+      "title": "Rappel de sécurité",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Industrie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 7,
+          "large": 5
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "forte",
+      "inspiration": "Rappels de produits et sécurité",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-11",
+      "title": "Taxe carbone accélérée",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Énergie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 11,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 4,
+          "large": 4
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "faible",
+      "inspiration": "Tarification carbone et chocs de politique climatique",
+      "sourceRef": "S4",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-12",
+      "title": "Frais de restructuration",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Tous secteurs",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 91,
+        "capCategoryCounts": {
+          "small": 20,
+          "medium": 31,
+          "large": 40
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "modérée",
+      "inspiration": "Restructurations d’entreprise",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-13",
+      "title": "Vente réglementaire",
+      "category": "Réallocation / vente",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Finance",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 3,
+          "large": 9
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "forcedSale",
+      "intensity": "faible",
+      "inspiration": "Réglementation prudentielle",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-14",
+      "title": "Désengagement d’un assureur",
+      "category": "Réallocation / vente",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Santé",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 9,
+        "capCategoryCounts": {
+          "small": 0,
+          "medium": 5,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "forcedSale",
+      "intensity": "modérée",
+      "inspiration": "Retraits de couverture d’assurance",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-15",
+      "title": "Audit des participations croisées",
+      "category": "Réallocation / vente",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Technologie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 13,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 0,
+          "large": 12
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "forcedSale",
+      "intensity": "forte",
+      "inspiration": "Audits de participations croisées",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-16",
+      "title": "Liquidité sous surveillance",
+      "category": "Réallocation / vente",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Asie",
+        "Océanie"
+      ],
+      "sectorScope": "Immobilier & infrastructures",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 4,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 0,
+          "large": 0
+        },
+        "zoneIds": [
+          "africa",
+          "asia",
+          "oceania"
+        ]
+      },
+      "effect": "forcedSale",
+      "intensity": "modérée",
+      "inspiration": "Stress de liquidité",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-17",
+      "title": "Garantie de rachat",
+      "category": "Consolidation / OPA",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Transports & logistique",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 6,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 2,
+          "large": 1
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "buyback",
+      "intensity": "modérée",
+      "inspiration": "Offres de retrait avec prime",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-18",
+      "title": "Appel de marge",
+      "category": "Tension / liquidité",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Finance",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 3,
+          "large": 9
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "marginCall",
+      "intensity": "forte",
+      "inspiration": "Appels de marge et volatilité",
+      "sourceRef": "S3",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-19",
+      "title": "Collatéral déprécié",
+      "category": "Tension / liquidité",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Énergie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 11,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 4,
+          "large": 4
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "marginCall",
+      "intensity": "modérée",
+      "inspiration": "Chocs sur les garanties financières",
+      "sourceRef": "S3",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-20",
+      "title": "Risque de change",
+      "category": "Tension / liquidité",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Agroalimentaire & ressources",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 12,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 7,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "marginCall",
+      "intensity": "faible",
+      "inspiration": "Risque de change et appels de marge",
+      "sourceRef": "S3",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-21",
+      "title": "Convocation judiciaire",
+      "category": "Justice / contrôle interne",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Tous secteurs",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 91,
+        "capCategoryCounts": {
+          "small": 20,
+          "medium": 31,
+          "large": 40
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "prison",
+      "intensity": "faible",
+      "inspiration": "Enquêtes judiciaires historiques",
+      "sourceRef": "S1",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-22",
+      "title": "Soupçon de délit d’initié",
+      "category": "Justice / contrôle interne",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Finance",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 3,
+          "large": 9
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "prison",
+      "intensity": "modérée",
+      "inspiration": "Négociation non autorisée et abus de marché historiques",
+      "sourceRef": "S1",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-23",
+      "title": "Saisie préventive",
+      "category": "Justice / contrôle interne",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Tous secteurs",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 91,
+        "capCategoryCounts": {
+          "small": 20,
+          "medium": 31,
+          "large": 40
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "prison",
+      "intensity": "forte",
+      "inspiration": "Saisies et enquêtes comptables historiques",
+      "sourceRef": "S1",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-24",
+      "title": "Plafond de détention",
+      "category": "Concurrence / régulation",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Communication & médias",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 8,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 3,
+          "large": 1
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "regulation",
+      "intensity": "faible",
+      "inspiration": "Plafonds de détention",
+      "sourceRef": "S2",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-25",
+      "title": "Accès équitable au réseau",
+      "category": "Concurrence / régulation",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Transports & logistique",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 6,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 2,
+          "large": 1
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "regulation",
+      "intensity": "modérée",
+      "inspiration": "Accès ouvert aux infrastructures",
+      "sourceRef": "S2",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-26",
+      "title": "Fin du privilège exclusif",
+      "category": "Concurrence / régulation",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Santé",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 9,
+        "capCategoryCounts": {
+          "small": 0,
+          "medium": 5,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "regulation",
+      "intensity": "forte",
+      "inspiration": "Contrats exclusifs et droit de la concurrence",
+      "sourceRef": "S2",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-27",
+      "title": "Indemnité de livraison",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Transports & logistique",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 6,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 2,
+          "large": 1
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "modérée",
+      "inspiration": "Indemnisation contractuelle",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-28",
+      "title": "Récolte sous assurance",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Agroalimentaire & ressources",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 12,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 7,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "forte",
+      "inspiration": "Assurance agricole et pertes de récolte",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-29",
+      "title": "Accord de cybersécurité",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Technologie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 13,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 0,
+          "large": 12
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "modérée",
+      "inspiration": "Cyber-résilience et assurance",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-30",
+      "title": "Licence médicale",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Santé",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 9,
+        "capCategoryCounts": {
+          "small": 0,
+          "medium": 5,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "modérée",
+      "inspiration": "Autorisations et accès au marché",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-31",
+      "title": "Révision des normes comptables",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Finance",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 3,
+          "large": 9
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "faible",
+      "inspiration": "Corrections comptables et audits",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-32",
+      "title": "Conversion des entrepôts",
+      "category": "Consolidation / OPA",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Asie",
+        "Océanie"
+      ],
+      "sectorScope": "Immobilier & infrastructures",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 4,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 0,
+          "large": 0
+        },
+        "zoneIds": [
+          "africa",
+          "asia",
+          "oceania"
+        ]
+      },
+      "effect": "buyback",
+      "intensity": "modérée",
+      "inspiration": "Reconversion d’actifs immobiliers",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-33",
+      "title": "Fret exceptionnel",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Transports & logistique",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 6,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 2,
+          "large": 1
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "forte",
+      "inspiration": "Contrats de fret d’urgence",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-34",
+      "title": "Couverture agricole",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Agroalimentaire & ressources",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 12,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 7,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "modérée",
+      "inspiration": "Assurance agricole",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-35",
+      "title": "Violation de données",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Technologie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 13,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 0,
+          "large": 12
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "modérée",
+      "inspiration": "Notification des violations de données",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-36",
+      "title": "Réparation du réseau",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Énergie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 11,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 4,
+          "large": 4
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "modérée",
+      "inspiration": "Pannes et réparations de réseaux",
+      "sourceRef": "S4",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-37",
+      "title": "Autorisation de distribution",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Communication & médias",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 8,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 3,
+          "large": 1
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "modérée",
+      "inspiration": "Licences de distribution",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-38",
+      "title": "Simplification de la structure",
+      "category": "Réallocation / vente",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Industrie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 7,
+          "large": 5
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "forcedSale",
+      "intensity": "faible",
+      "inspiration": "Réorganisations de filiales",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-39",
+      "title": "Offre de coopérative",
+      "category": "Consolidation / OPA",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Agroalimentaire & ressources",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 12,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 7,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "buyback",
+      "intensity": "modérée",
+      "inspiration": "Approvisionnement coopératif",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-40",
+      "title": "Chambre de compensation",
+      "category": "Tension / liquidité",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Transports & logistique",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 6,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 2,
+          "large": 1
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "marginCall",
+      "intensity": "modérée",
+      "inspiration": "Compensation et appels de marge",
+      "sourceRef": "S3",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-41",
+      "title": "Diversification imposée",
+      "category": "Réallocation / vente",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Énergie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 11,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 4,
+          "large": 4
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "forcedSale",
+      "intensity": "modérée",
+      "inspiration": "Limites de concentration des portefeuilles",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-42",
+      "title": "Clause de transparence",
+      "category": "Concurrence / régulation",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Finance",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 3,
+          "large": 9
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "regulation",
+      "intensity": "faible",
+      "inspiration": "Accès ouvert et concurrence",
+      "sourceRef": "S2",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-43",
+      "title": "Commercialisation d’un vaccin",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Amériques",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Santé",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 9,
+        "capCategoryCounts": {
+          "small": 0,
+          "medium": 5,
+          "large": 4
+        },
+        "zoneIds": [
+          "americas",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "modérée",
+      "inspiration": "Autorisation de nouveaux produits de santé",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-44",
+      "title": "Contrôle des loyers",
+      "category": "Risque / sanction",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Asie",
+        "Océanie"
+      ],
+      "sectorScope": "Immobilier & infrastructures",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 4,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 0,
+          "large": 0
+        },
+        "zoneIds": [
+          "africa",
+          "asia",
+          "oceania"
+        ]
+      },
+      "effect": "fine",
+      "intensity": "modérée",
+      "inspiration": "Réglementation locative",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-45",
+      "title": "Archives judiciaires",
+      "category": "Justice / contrôle interne",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Industrie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 7,
+          "large": 5
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "prison",
+      "intensity": "faible",
+      "inspiration": "Enquêtes judiciaires historiques",
+      "sourceRef": "S1",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-46",
+      "title": "Redevances audiovisuelles",
+      "category": "Finance / distributions",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Communication & médias",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 8,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 3,
+          "large": 1
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "dividend",
+      "intensity": "modérée",
+      "inspiration": "Redevances et droits de diffusion",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-47",
+      "title": "Garantie de chantier",
+      "category": "Tension / liquidité",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Asie",
+        "Océanie"
+      ],
+      "sectorScope": "Immobilier & infrastructures",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 4,
+        "capCategoryCounts": {
+          "small": 4,
+          "medium": 0,
+          "large": 0
+        },
+        "zoneIds": [
+          "africa",
+          "asia",
+          "oceania"
+        ]
+      },
+      "effect": "marginCall",
+      "intensity": "forte",
+      "inspiration": "Réévaluation de chantiers",
+      "sourceRef": "S3",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-48",
+      "title": "Programme de recyclage",
+      "category": "Opportunité / financement",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Industrie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 14,
+        "capCategoryCounts": {
+          "small": 2,
+          "medium": 7,
+          "large": 5
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "cash",
+      "intensity": "faible",
+      "inspiration": "Subventions à la transition industrielle",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-49",
+      "title": "Ouverture des brevets",
+      "category": "Concurrence / régulation",
+      "zoneScope": [
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Technologie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 13,
+        "capCategoryCounts": {
+          "small": 1,
+          "medium": 0,
+          "large": 12
+        },
+        "zoneIds": [
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "regulation",
+      "intensity": "modérée",
+      "inspiration": "Licences de brevets et concurrence",
+      "sourceRef": "S2",
+      "explicitCompanyMentions": 1
+    },
+    {
+      "id": "board-50",
+      "title": "Rachat du réseau local",
+      "category": "Consolidation / OPA",
+      "zoneScope": [
+        "Afrique & Moyen-Orient",
+        "Amériques",
+        "Asie",
+        "Europe",
+        "Océanie"
+      ],
+      "sectorScope": "Énergie",
+      "companyTarget": {
+        "selection": "dynamique selon les participations détenues, puis toutes les sociétés disponibles du pool",
+        "candidateCount": 11,
+        "capCategoryCounts": {
+          "small": 3,
+          "medium": 4,
+          "large": 4
+        },
+        "zoneIds": [
+          "africa",
+          "americas",
+          "asia",
+          "europe",
+          "oceania"
+        ]
+      },
+      "effect": "buyback",
+      "intensity": "forte",
+      "inspiration": "Consolidation d’infrastructures",
+      "sourceRef": "fiction historique, voir sources thématiques",
+      "explicitCompanyMentions": 1
+    }
+  ],
+  "contextStories": {
+    "status": "appliquées au catalogue courant",
+    "count": 100,
+    "entries": [
+      {
+        "id": 1,
+        "title": "Hausse des commandes",
+        "type": "positive",
+        "description": "En Europe, les carnets de commandes se remplissent et les fournisseurs du secteur énergie prolongent leurs équipes.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Relance des infrastructures",
+        "type": "positive",
+        "description": "Des chantiers longtemps bloqués redémarrent en Europe ; les entreprises du secteur industrie réembauchent.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Relance budgétaire",
+        "type": "positive",
+        "description": "Un nouveau budget public est voté en Europe et promet des débouchés aux acteurs du secteur santé.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Découverte énergétique",
+        "type": "positive",
+        "description": "Une découverte de ressources en Asie mobilise les banques qui financent son exploitation.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Rebond manufacturier",
+        "type": "positive",
+        "description": "Les usines d’Océanie rouvrent des lignes de production ; les prêteurs accompagnent leur reprise.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Dynamisme des marchés émergents",
+        "type": "positive",
+        "description": "De nouveaux marchés s’ouvrent en Asie et les investisseurs s’intéressent aux entreprises du secteur santé.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Croissance au-dessus des attentes",
+        "type": "positive",
+        "description": "Les comptes publiés en Océanie surprennent les analystes et relancent les projets du secteur énergie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Percée technologique",
+        "type": "positive",
+        "description": "Un laboratoire d’Asie présente une percée ; les groupes du secteur santé préparent son déploiement.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Accords énergétiques",
+        "type": "positive",
+        "description": "Un accord d’approvisionnement conclu en Europe rassure les financeurs des prochains projets.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Résultats supérieurs aux attentes",
+        "type": "positive",
+        "description": "Les entreprises d’Europe publient de meilleurs comptes ; les sociétés du secteur énergie revoient leurs prévisions.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Accord commercial majeur",
+        "type": "positive",
+        "description": "Un grand accord commercial ouvre des routes en Afrique & Moyen-Orient et facilite l’accès aux produits du secteur santé.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Succès des introductions en bourse",
+        "type": "positive",
+        "description": "De nouvelles sociétés entrent en Bourse en Europe et lèvent des fonds pour leurs activités du secteur santé.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Plan climat ambitieux",
+        "type": "positive",
+        "description": "Un plan climat est annoncé en Europe ; les banques organisent le financement de la transition.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Amélioration du crédit",
+        "type": "positive",
+        "description": "Les banques d’Europe assouplissent le crédit et les entreprises du secteur technologie relancent leurs projets.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Boom des semi-conducteurs",
+        "type": "positive",
+        "description": "Une vague de commandes de composants traverse Océanie et remplit les ateliers du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "title": "Accès élargi au financement",
+        "type": "positive",
+        "description": "De nouveaux prêts deviennent accessibles en Afrique & Moyen-Orient et les jeunes entreprises du secteur technologie accélèrent.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "title": "Baisse surprise des taux",
+        "type": "positive",
+        "description": "La banque centrale surprend Europe avec une baisse des taux ; les sociétés du secteur technologie révisent leurs plans.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "title": "Optimisme des entreprises",
+        "type": "positive",
+        "description": "Les dirigeants d’Europe annoncent davantage d’investissements et réservent des capacités dans le secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "title": "Stabilisation des devises",
+        "type": "positive",
+        "description": "Les monnaies se stabilisent en Afrique & Moyen-Orient ; les entreprises du secteur santé peuvent enfin chiffrer leurs contrats.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "title": "Cadre réglementaire favorable",
+        "type": "positive",
+        "description": "Un cadre plus lisible est adopté en Europe et les sociétés du secteur santé reprennent des projets suspendus.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "title": "Plan d'investissement public",
+        "type": "positive",
+        "description": "L’État lance un programme d’investissement en Europe et commande de nouveaux équipements au secteur énergie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "title": "Exportations agricoles dynamiques",
+        "type": "positive",
+        "description": "Les exportateurs agricoles d’Europe signent des contrats ; la demande du secteur énergie suit leur croissance.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "title": "Partenariat public-privé",
+        "type": "positive",
+        "description": "Un partenariat public-privé finance de nouveaux sites en Océanie et donne du travail au secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "title": "Appétit pour le risque",
+        "type": "positive",
+        "description": "Les investisseurs acceptent davantage de risque en Afrique & Moyen-Orient et soutiennent les paris du secteur technologie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "title": "Reprise immobilière",
+        "type": "positive",
+        "description": "Les transactions immobilières repartent en Europe ; les banques renégocient et financent les projets.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Rebond des matières premières",
+        "type": "positive",
+        "description": "Le prix des matières premières rebondit en Asie et les producteurs du secteur énergie relancent leurs forages.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "title": "Rallye boursier",
+        "type": "positive",
+        "description": "Une série d’achats entraîne la Bourse d’Asie ; les valeurs du secteur technologie concentrent les échanges.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "title": "Innovation médicale",
+        "type": "positive",
+        "description": "Une avancée médicale est annoncée en Europe ; les banques financent les essais et leur industrialisation.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "title": "Amélioration de la confiance",
+        "type": "positive",
+        "description": "Les ménages d’Afrique & Moyen-Orient reprennent confiance et les projets du secteur énergie trouvent de nouveaux clients.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "title": "Allègement fiscal",
+        "type": "positive",
+        "description": "Un allègement fiscal entre en vigueur en Océanie et libère des moyens pour les entreprises du secteur énergie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "title": "Reprise du tourisme",
+        "type": "positive",
+        "description": "Les réservations touristiques affluent en Europe ; les services du secteur santé préparent la saison.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "title": "Flux d'investissements entrants",
+        "type": "positive",
+        "description": "Des capitaux étrangers arrivent en Océanie et les banques les orientent vers les entreprises locales.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "title": "Accélération des exportations",
+        "type": "positive",
+        "description": "Les exportateurs d’Afrique & Moyen-Orient remplissent leurs carnets ; les usines du secteur industrie augmentent leurs cadences.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "A"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "title": "Records de productivité",
+        "type": "positive",
+        "description": "Les ateliers d’Océanie produisent davantage avec les mêmes moyens et les groupes du secteur industrie investissent.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "title": "Rebond industriel",
+        "type": "positive",
+        "description": "Des chaînes de production redémarrent en Amériques, entraînant une nouvelle demande adressée au secteur énergie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "B"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "title": "Pénurie d'énergie",
+        "type": "negative",
+        "description": "Une pénurie d’électricité interrompt des sites en Europe et prive les entreprises du secteur technologie de capacité.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "title": "Récession technique",
+        "type": "negative",
+        "description": "Deux trimestres de contraction sont annoncés en Afrique & Moyen-Orient ; les commandes du secteur énergie sont reportées.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "title": "Crise industrielle",
+        "type": "negative",
+        "description": "Plusieurs usines ferment temporairement en Asie et la demande adressée au secteur énergie se grippe.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 39,
+        "title": "Détérioration du crédit",
+        "type": "negative",
+        "description": "Les défauts de paiement augmentent en Asie ; les banques resserrent leurs critères de crédit.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "title": "Pénuries alimentaires",
+        "type": "negative",
+        "description": "Les récoltes manquent en Afrique & Moyen-Orient ; les banques provisionnent les prêts des distributeurs fragilisés.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 41,
+        "title": "Effondrement sectoriel",
+        "type": "negative",
+        "description": "Une série de mauvais résultats secoue Afrique & Moyen-Orient et les investisseurs désertent les valeurs du secteur technologie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "title": "Crise climatique aiguë",
+        "type": "negative",
+        "description": "Des dégâts climatiques frappent Afrique & Moyen-Orient et interrompent des infrastructures indispensables au secteur technologie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "title": "Inflation persistante",
+        "type": "negative",
+        "description": "Les coûts de production montent en Afrique & Moyen-Orient ; les industriels du secteur industrie réduisent leurs marges.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "title": "Régime de change instable",
+        "type": "negative",
+        "description": "Une forte instabilité monétaire renchérit les importations en Europe et les achats des groupes du secteur santé.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "title": "Dérive réglementaire",
+        "type": "negative",
+        "description": "Un changement imprévu des règles en Amériques inquiète les banques et retarde leurs financements.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "title": "Fuite des capitaux",
+        "type": "negative",
+        "description": "Des investisseurs retirent leurs capitaux d’Europe et les projets du secteur énergie cherchent des fonds.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "title": "Crise immobilière",
+        "type": "negative",
+        "description": "Les ventes immobilières se figent en Asie ; les entreprises du secteur technologie repoussent leurs investissements.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "title": "Rupture logistique",
+        "type": "negative",
+        "description": "Des ports saturés retardent les livraisons en Asie et désorganisent les chaînes du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "title": "Mauvais résultats",
+        "type": "negative",
+        "description": "Les comptes publiés en Amériques déçoivent ; les groupes du secteur santé abaissent leurs objectifs.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "title": "Rappel massif de produits",
+        "type": "negative",
+        "description": "Un défaut découvert après livraison impose des rappels en Asie et arrête des lignes du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "title": "Dérive des coûts",
+        "type": "negative",
+        "description": "Les factures d’énergie et de transport gonflent en Océanie ; les marges du secteur industrie s’érodent.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 52,
+        "title": "Retrait des investisseurs",
+        "type": "negative",
+        "description": "Les grands fonds quittent Asie et les banques doivent trouver de nouveaux prêteurs.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 53,
+        "title": "Changement politique brusque",
+        "type": "negative",
+        "description": "Un changement politique soudain suspend des projets en Océanie et inquiète les producteurs du secteur énergie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "title": "Stress de liquidité",
+        "type": "negative",
+        "description": "Les banques d’Océanie peinent à se refinancer et réduisent brutalement leurs nouveaux prêts.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "title": "Confiance en berne",
+        "type": "negative",
+        "description": "Les enquêtes de confiance se dégradent en Europe ; les clients du secteur technologie reportent leurs achats.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "title": "Déficit budgétaire record",
+        "type": "negative",
+        "description": "Le déficit public atteint un record en Amériques et le financement des projets du secteur énergie devient incertain.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 57,
+        "title": "Hausse des taux brutale",
+        "type": "negative",
+        "description": "Une hausse brutale des taux renchérit le crédit en Amériques et pèse sur les usines du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 58,
+        "title": "Sanctions économiques",
+        "type": "negative",
+        "description": "De nouvelles sanctions coupent des circuits de paiement en Amériques et compliquent le travail des banques.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 59,
+        "title": "Choc pétrolier",
+        "type": "negative",
+        "description": "La flambée du pétrole alourdit les coûts en Europe et réduit les budgets disponibles pour le secteur technologie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 60,
+        "title": "Faillite bancaire",
+        "type": "negative",
+        "description": "Une banque importante vacille en Océanie ; les entreprises du secteur technologie cherchent d’urgence d’autres prêteurs.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 61,
+        "title": "Guerre commerciale",
+        "type": "negative",
+        "description": "Des droits de douane apparaissent en Europe et ferment des débouchés aux entreprises du secteur technologie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 62,
+        "title": "Chute des devises",
+        "type": "negative",
+        "description": "Une chute des devises renchérit les machines importées en Asie et bloque des usines du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 63,
+        "title": "Grève générale",
+        "type": "negative",
+        "description": "Une grève générale interrompt les transports en Asie et immobilise les chaînes du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 64,
+        "title": "Affaiblissement des exportations",
+        "type": "negative",
+        "description": "Les commandes étrangères se raréfient en Océanie ; les entreprises du secteur santé revoient leurs budgets.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 65,
+        "title": "Échec de négociations",
+        "type": "negative",
+        "description": "Des négociations commerciales échouent en Amériques et les industriels du secteur industrie perdent des contrats.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 66,
+        "title": "Cyberattaque systémique",
+        "type": "negative",
+        "description": "Une cyberattaque paralyse des réseaux en Asie et bloque des usines du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 67,
+        "title": "Krach boursier",
+        "type": "negative",
+        "description": "Une vague de ventes panique les opérateurs en Océanie ; même les valeurs du secteur santé sont entraînées.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 68,
+        "title": "Désordre politique",
+        "type": "negative",
+        "description": "Une crise politique brouille les prévisions en Océanie et retarde les investissements du secteur industrie.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 69,
+        "title": "Crise de la dette",
+        "type": "negative",
+        "description": "La dette publique inquiète les créanciers d’Océanie et les groupes du secteur industrie paient leur crédit plus cher.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "E"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 70,
+        "title": "Volatilité extrême",
+        "type": "negative",
+        "description": "Des ordres contradictoires secouent les places d’Afrique & Moyen-Orient et les producteurs du secteur énergie hésitent à investir.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "D"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 71,
+        "title": "Flux commerciaux stables",
+        "type": "neutral",
+        "description": "Les flux commerciaux se normalisent en Océanie et les entreprises du secteur énergie ajustent leurs stocks.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 72,
+        "title": "Marchés prudents",
+        "type": "neutral",
+        "description": "Les investisseurs observent les prochaines statistiques d’Asie avant de se positionner dans le secteur santé.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 73,
+        "title": "Volatilité contenue",
+        "type": "neutral",
+        "description": "Les séances deviennent moins agitées en Europe et les sociétés du secteur technologie retrouvent de la visibilité.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "europe",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 74,
+        "title": "Rééquilibrage régional",
+        "type": "neutral",
+        "description": "Les portefeuilles se rééquilibrent en Afrique & Moyen-Orient ; les banques revoient leurs allocations de prêts.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 75,
+        "title": "Transition ordonnée",
+        "type": "neutral",
+        "description": "Une transition économique progresse sans heurt en Afrique & Moyen-Orient et les usines du secteur industrie adaptent leur calendrier.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 76,
+        "title": "Stabilisation des marchés",
+        "type": "neutral",
+        "description": "Après plusieurs séances tendues, les échanges se calment en Afrique & Moyen-Orient et les banques rouvrent leurs guichets.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 77,
+        "title": "Pause réglementaire",
+        "type": "neutral",
+        "description": "Les autorités marquent une pause réglementaire en Asie ; les producteurs du secteur énergie attendent les arbitrages.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 78,
+        "title": "Indicateurs contrastés",
+        "type": "neutral",
+        "description": "Des indicateurs opposés arrivent d’Amériques ; les banques attendent des données plus nettes.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 79,
+        "title": "Attentisme monétaire",
+        "type": "neutral",
+        "description": "La banque centrale diffère sa décision en Amériques ; les prêteurs gardent leurs conditions actuelles.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 80,
+        "title": "Neutralité budgétaire",
+        "type": "neutral",
+        "description": "Un budget sans surprise est adopté en Océanie et les usines du secteur industrie poursuivent leurs plans.",
+        "changes": [
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "C"
+          },
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 81,
+        "title": "Détournement de fonds",
+        "type": "prison",
+        "description": "Scénario fictif inspiré des fraudes à la Ponzi révélées dans l’histoire financière : des flux clients inexpliqués déclenchent une enquête en Asie.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          },
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 82,
+        "title": "Opérations fictives",
+        "type": "prison",
+        "description": "Des créances sans activité économique identifiable apparaissent dans un dossier fictif de Amériques ; les auditeurs demandent des justificatifs.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          },
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 83,
+        "title": "Fuite d'informations confidentielles",
+        "type": "prison",
+        "description": "Un scénario fictif de fuite d’informations avant une annonce officielle conduit les autorités de Afrique & Moyen-Orient à examiner les contrôles de marché.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          },
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 84,
+        "title": "Soupçons d'abus de marché",
+        "type": "prison",
+        "description": "Des transactions anticipent une annonce publique en Amériques ; les autorités vérifient si les règles de marché ont été respectées.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          },
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 85,
+        "title": "Perte dissimulée",
+        "type": "prison",
+        "description": "Dans un cas fictif, une perte jusque-là mal documentée est réexaminée par les auditeurs d’un établissement de Amériques.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          },
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 86,
+        "title": "Conflit d'intérêts",
+        "type": "prison",
+        "description": "Un examen fictif de gouvernance en Afrique & Moyen-Orient met l’accent sur les conflits d’intérêts dans l’attribution de contrats.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          },
+          {
+            "scope": "zone",
+            "id": "africa",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 87,
+        "title": "Manipulation de marché présumée",
+        "type": "prison",
+        "description": "Des ordres coordonnés anormaux font l’objet d’une enquête fictive sur une place de Asie ; les contrôles de marché sont renforcés.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          },
+          {
+            "scope": "zone",
+            "id": "asia",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 88,
+        "title": "Enquête pour délit d'initié",
+        "type": "prison",
+        "description": "Des opérations réalisées avant une annonce sensible sont examinées dans un scénario fictif de délit d’initié en Amériques.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "E"
+          },
+          {
+            "scope": "zone",
+            "id": "americas",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 89,
+        "title": "Fraude comptable révélée",
+        "type": "prison",
+        "description": "Des écarts entre pièces justificatives et écritures comptables sont découverts dans un dossier fictif de Océanie.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          },
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "E"
+          }
+        ]
+      },
+      {
+        "id": 90,
+        "title": "Blanchiment présumé",
+        "type": "prison",
+        "description": "Un scénario fictif de blanchiment conduit les autorités de Océanie à renforcer la traçabilité des paiements.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          },
+          {
+            "scope": "zone",
+            "id": "oceania",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 91,
+        "title": "Démantèlement d'un conglomérat",
+        "type": "regulation",
+        "description": "Une étude de marché sur santé relance le débat sur la séparation d’activités dominantes.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 92,
+        "title": "Supervision accrue des monopoles",
+        "type": "regulation",
+        "description": "Les autorités publient une revue générale de la concurrence dans le secteur santé ; les marchés évaluent les coûts possibles de conformité.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 93,
+        "title": "Examen de concentration",
+        "type": "regulation",
+        "description": "Un projet de fusion dans le secteur technologie fait l’objet d’un examen réglementaire, comme dans les procédures de concentration historiques.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "technology",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 94,
+        "title": "Garde-fous sectoriels",
+        "type": "regulation",
+        "description": "Après plusieurs crises sectorielles, de nouveaux contrôles sont proposés pour le secteur énergie.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 95,
+        "title": "Encadrement des acquisitions",
+        "type": "regulation",
+        "description": "Les autorités précisent les critères d’examen des acquisitions dans le secteur finance, ajoutant de l’incertitude aux projets en cours.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 96,
+        "title": "Durcissement des règles concurrentielles",
+        "type": "regulation",
+        "description": "Une réforme fictive durcit l’application du droit de la concurrence dans le secteur santé et pousse les acteurs à revoir leurs contrats.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 97,
+        "title": "Contrôle des prix",
+        "type": "regulation",
+        "description": "Un dispositif temporaire de contrôle des prix est débattu pour le secteur santé, ravivant le débat sur la protection des consommateurs.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "health",
+            "grade": "C"
+          }
+        ]
+      },
+      {
+        "id": 98,
+        "title": "Limitation des positions dominantes",
+        "type": "regulation",
+        "description": "Les régulateurs examinent des limites de détention dans le secteur industrie afin de réduire les risques de concentration.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "industry",
+            "grade": "B"
+          }
+        ]
+      },
+      {
+        "id": 99,
+        "title": "Action antitrust renforcée",
+        "type": "regulation",
+        "description": "Une enquête sectorielle fictive sur finance vérifie les pratiques commerciales et les barrières à l’entrée.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "finance",
+            "grade": "D"
+          }
+        ]
+      },
+      {
+        "id": 100,
+        "title": "Surveillance des plateformes",
+        "type": "regulation",
+        "description": "Une consultation réglementaire sur les plateformes du secteur énergie demande davantage de transparence sur l’accès au marché.",
+        "changes": [
+          {
+            "scope": "sector",
+            "id": "energy",
+            "grade": "B"
+          }
+        ]
+      }
+    ]
+  }
+}

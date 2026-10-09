@@ -1,6 +1,23 @@
-export type AudioChannel = "master" | "music" | "effects" | "ambience";
+export type AudioChannel = "master" | "music" | "ambience" | "effects";
 export type AudioSettings = Record<AudioChannel, number> & { muted: boolean };
 export type AudioCue =
+  | "dice"
+  | "pawn_move"
+  | "buy"
+  | "sell"
+  | "money_gain"
+  | "loss"
+  | "context"
+  | "event"
+  | "bull"
+  | "bear"
+  | "crash"
+  | "travel"
+  | "prison"
+  | "victory"
+  | "ui_click"
+  | "UIclick"
+  // Existing callers remain supported.
   | "roll"
   | "trade"
   | "step"
@@ -12,23 +29,31 @@ const STORAGE_KEY = "global-fund-audio-settings";
 const defaults: AudioSettings = {
   master: 0.72,
   music: 0.32,
-  effects: 0.62,
   ambience: 0.24,
+  effects: 0.62,
   muted: true,
 };
+
 let settings = readSettings();
 let unlocked = false;
-let context: AudioContext | null = null;
-let chipAudio: HTMLAudioElement | null = null;
+const activeAudio = new Map<HTMLAudioElement, number>();
+const lastPlayed = new Map<string, number>();
+const MAX_CONCURRENT_SOUNDS = 8;
 
 function readSettings(): AudioSettings {
   if (typeof localStorage === "undefined") return { ...defaults };
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw == null)
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaults));
+    if (raw == null) localStorage.setItem(STORAGE_KEY, JSON.stringify(defaults));
     const saved = JSON.parse(raw ?? "null") as Partial<AudioSettings> | null;
-    return { ...defaults, ...saved, muted: saved?.muted ?? defaults.muted };
+    return {
+      master: clamp(saved?.master ?? defaults.master),
+      music: clamp(saved?.music ?? defaults.music),
+      ambience: clamp(saved?.ambience ?? defaults.ambience),
+      effects: clamp(saved?.effects ?? defaults.effects),
+      muted:
+        typeof saved?.muted === "boolean" ? saved.muted : defaults.muted,
+    };
   } catch {
     return { ...defaults };
   }
@@ -38,7 +63,7 @@ function persist() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
   } catch {
-    /* storage may be unavailable */
+    /* Storage can be unavailable in private or embedded contexts. */
   }
 }
 
@@ -48,106 +73,115 @@ export function getAudioSettings(): AudioSettings {
 
 export function setAudioSettings(next: Partial<AudioSettings>): AudioSettings {
   settings = {
-    master: clamp(next.master ?? settings.master),
-    music: clamp(next.music ?? settings.music),
-    effects: clamp(next.effects ?? settings.effects),
-    ambience: clamp(next.ambience ?? settings.ambience),
-    muted: next.muted ?? settings.muted,
+    master: clamp(next.master, settings.master),
+    music: clamp(next.music, settings.music),
+    ambience: clamp(next.ambience, settings.ambience),
+    effects: clamp(next.effects, settings.effects),
+    muted:
+      typeof next.muted === "boolean" ? next.muted : settings.muted,
   };
   persist();
+  syncActiveAudio();
   return getAudioSettings();
 }
 
-const clamp = (value: number) =>
-  Math.max(0, Math.min(1, Number.isFinite(value) ? value : 0));
+function clamp(value: unknown, fallback = 0): number {
+  return typeof value === "number" && Number.isFinite(value)
+    ? Math.max(0, Math.min(1, value))
+    : fallback;
+}
 
-/** Call directly from a user gesture (settings toggle, roll, trade, etc.). */
+/** Call directly from a user gesture. Cues remain silent until this is called. */
 export async function unlockAudio(): Promise<void> {
   if (typeof window === "undefined") return;
-  const AudioContextConstructor = window.AudioContext;
-  if (!AudioContextConstructor) {
-    unlocked = true;
-    return;
-  }
-  try {
-    context ??= new AudioContextConstructor();
-    if (context.state === "suspended") await context.resume();
-    unlocked = true;
-  } catch {
-    unlocked = false;
-  }
+  // HTMLAudioElement does not need an AudioContext, but this gesture boundary
+  // preserves the existing API contract and avoids creating media on load.
+  unlocked = true;
 }
 
 function volume(channel: AudioChannel) {
   return settings.muted ? 0 : settings.master * settings[channel];
 }
 
-function synth(
-  frequencies: number[],
-  duration: number,
-  shape: OscillatorType,
-  channel: AudioChannel,
-  delay = 0,
-) {
-  if (!context || volume(channel) <= 0) return;
-  const start = context.currentTime + delay;
-  const gain = context.createGain();
-  gain.gain.setValueAtTime(0.0001, start);
-  gain.gain.exponentialRampToValueAtTime(
-    Math.max(0.0002, volume(channel) * 0.11),
-    start + 0.018,
-  );
-  gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-  gain.connect(context.destination);
-  frequencies.forEach((frequency, index) => {
-    const oscillator = context!.createOscillator();
-    oscillator.type = shape;
-    oscillator.frequency.setValueAtTime(frequency, start);
-    if (index) oscillator.detune.value = index % 2 ? -7 : 6;
-    oscillator.connect(gain);
-    oscillator.start(start);
-    oscillator.stop(start + duration + 0.02);
-  });
-}
-
-const cues: Record<AudioCue, () => void> = {
-  roll: () => {
-    synth([493.88, 659.25], 0.19, "sine", "effects");
-  },
-  trade: () => {
-    synth([659.25, 830.61], 0.22, "triangle", "effects");
-  },
-  step: () => {
-    synth([392], 0.13, "sine", "effects");
-  },
-  confirm: () => {
-    synth([523.25], 0.12, "sine", "effects");
-    synth([783.99], 0.2, "sine", "effects", 0.085);
-  },
-  "market-up": () => {
-    synth([392, 493.88], 0.23, "triangle", "effects");
-    synth([587.33], 0.27, "sine", "effects", 0.12);
-  },
-  "market-down": () => {
-    synth([392, 311.13], 0.24, "triangle", "effects");
-    synth([233.08], 0.3, "sine", "effects", 0.12);
-  },
-};
-
-/** Short generated cues avoid external sound licenses; chip clicks use the local CC0 recording. */
-export function playCue(name: AudioCue): void {
-  if (!unlocked || settings.muted || volume("effects") <= 0) return;
-  if (name === "roll" || name === "trade" || name === "step") {
-    if (typeof Audio !== "undefined") {
-      try {
-        chipAudio ??= new Audio("/assets/audio/chips-collide.ogg");
-        const click = chipAudio.cloneNode(true) as HTMLAudioElement;
-        click.volume = Math.min(1, volume("effects") * 0.42);
-        void click.play().catch(() => {});
-      } catch {
-        /* generated cue remains available */
-      }
+function syncActiveAudio() {
+  for (const [audio, gain] of activeAudio) {
+    audio.volume = Math.min(1, volume("effects") * gain);
+    if (settings.muted || volume("effects") <= 0) {
+      audio.pause();
+      activeAudio.delete(audio);
     }
   }
-  cues[name]();
+}
+
+const files: Record<Exclude<AudioCue, "UIclick">, string[]> = {
+  dice: ["dieThrow1.ogg", "dieThrow2.ogg", "dieShuffle1.ogg"],
+  pawn_move: ["drop_001.ogg", "cardSlide1.ogg"],
+  buy: ["cardPlace1.ogg", "cardPlace2.ogg"],
+  sell: ["chipsCollide1.ogg", "chipsCollide2.ogg", "chipsCollide3.ogg"],
+  money_gain: ["chipsCollide1.ogg", "chipsCollide2.ogg", "chipsCollide3.ogg"],
+  loss: ["error_001.ogg"],
+  context: ["open_001.ogg"],
+  event: ["confirmation_001.ogg", "confirmation_002.ogg"],
+  bull: ["confirmation_001.ogg", "chipsCollide2.ogg"],
+  bear: ["error_001.ogg"],
+  crash: ["glass_001.ogg", "glitch_001.ogg"],
+  travel: ["cardSlide1.ogg", "drop_001.ogg"],
+  prison: ["error_001.ogg"],
+  victory: ["confirmation_001.ogg", "confirmation_002.ogg"],
+  ui_click: ["click_001.ogg", "click_002.ogg", "select_001.ogg", "select_002.ogg"],
+  roll: ["dieThrow1.ogg", "dieThrow2.ogg", "dieShuffle1.ogg"],
+  trade: ["chipsCollide1.ogg", "chipsCollide2.ogg", "chipsCollide3.ogg"],
+  step: ["drop_001.ogg", "cardSlide1.ogg"],
+  confirm: ["confirmation_001.ogg", "confirmation_002.ogg"],
+  "market-up": ["chipsCollide1.ogg", "chipsCollide2.ogg"],
+  "market-down": ["error_001.ogg"],
+};
+
+function normalizedCue(name: AudioCue): Exclude<AudioCue, "UIclick"> {
+  return name === "UIclick" ? "ui_click" : name;
+}
+
+function chooseFile(name: AudioCue): string {
+  const candidates = files[normalizedCue(name)];
+  return candidates[Math.floor(Math.random() * candidates.length)];
+}
+
+const cueGains: Partial<Record<AudioCue, number>> = {
+  dice: 0.75,
+  roll: 0.75,
+  pawn_move: 0.48,
+  step: 0.48,
+  ui_click: 0.35,
+  UIclick: 0.35,
+  crash: 0.7,
+};
+
+/** Plays a local CC0 cue after an explicit user gesture has unlocked audio. */
+export function playCue(name: AudioCue): void {
+  if (!unlocked || settings.muted || volume("effects") <= 0) return;
+  if (typeof Audio === "undefined") return;
+
+  const now = typeof performance === "undefined" ? Date.now() : performance.now();
+  const minGap = name === "ui_click" || name === "UIclick" ? 90 : 45;
+  if (now - (lastPlayed.get(name) ?? -Infinity) < minGap) return;
+  lastPlayed.set(name, now);
+
+  while (activeAudio.size >= MAX_CONCURRENT_SOUNDS) {
+    const oldest = activeAudio.keys().next().value as HTMLAudioElement | undefined;
+    if (!oldest) break;
+    oldest.pause();
+    activeAudio.delete(oldest);
+  }
+
+  try {
+    const audio = new Audio(`/assets/audio/${chooseFile(name)}`);
+    const gain = cueGains[name] ?? cueGains[normalizedCue(name)] ?? 0.62;
+    audio.volume = Math.min(1, volume("effects") * gain);
+    activeAudio.set(audio, gain);
+    audio.addEventListener("ended", () => activeAudio.delete(audio), { once: true });
+    audio.addEventListener("error", () => activeAudio.delete(audio), { once: true });
+    void audio.play().catch(() => activeAudio.delete(audio));
+  } catch {
+    /* Unsupported audio leaves the rest of the game available. */
+  }
 }

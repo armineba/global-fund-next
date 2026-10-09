@@ -1,6 +1,11 @@
 node_modules
 **/node_modules
 **/dist
+apps/web/.releases
+apps/web/dist.next
+screenshots
+baseline
+samples
 runtime
 .env
 .env.*

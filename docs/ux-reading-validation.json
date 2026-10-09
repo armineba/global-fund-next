@@ -1,0 +1,93 @@
+{
+  "checkedAt": "2026-10-08T17:51:31.423896+00:00",
+  "release": ".releases/2026-10-08T17-28-38-805Z-365505",
+  "scope": "Configuration persistante, cartes compactes, plateau passif et confirmation des ajustements",
+  "unitAndIntegration": {
+    "passed": 123,
+    "files": 9,
+    "command": "npm test"
+  },
+  "browser": {
+    "distinctScenariosPassed": 16,
+    "details": "13 scénarios passés au premier run ; les trois échecs de harnais corrigés passent au run ciblé ; la configuration étendue au retour depuis le salon repasse ensuite seule.",
+    "commands": [
+      "npm run test:e2e",
+      "npm run test:e2e -- --grep \"Échap applique|deux humains|sur tablette|le setup retrouve\"",
+      "npm run test:e2e -- tests/e2e/setup-draft.spec.ts"
+    ]
+  },
+  "build": "npm run build : passé, publication atomique",
+  "captureCommands": [
+    "npm run capture:visuals -- --only=context,event",
+    "npm run capture:visuals -- --only=market-impact,portfolio-impact --size=1366",
+    "npm run capture:settlement -- --payment-card-only"
+  ],
+  "checks": [
+    "absence de footer dans les cartes",
+    "notes et premier cours après visibles aux trois tailles",
+    "carrousel horizontal à la molette",
+    "en-tête paiement avec fonds, sans cycle, un seul bouton",
+    "confirmation de marché visible en 1366x768",
+    "aucun débordement sur le HUD ni erreur navigateur dans les captures de cartes/impacts",
+    "menu, rechargement et retour depuis le salon conservent les choix",
+    "survol canvas sans curseur help ni infobulle",
+    "Échap applique les conséquences ; confirmation manuelle après IA/animations réduites ; accusés seulement après la fin de la présentation"
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots/visual-validation/context-1920x1080.png",
+      "sha256": "bb268f2901ffee789f35237af18e16bd87e2061111385e5659713c780a2e1c6c",
+      "capturedAt": "2026-10-08T17:44:18.830640+00:00"
+    },
+    {
+      "path": "screenshots/visual-validation/context-1440x900.png",
+      "sha256": "57ae11dbbb7d33438305b8de4d616a8459efc3965a23e75e2068a3d9905fac72",
+      "capturedAt": "2026-10-08T17:44:32.817278+00:00"
+    },
+    {
+      "path": "screenshots/visual-validation/context-1366x768.png",
+      "sha256": "2b89a37ccd4260d64943e72a2afa5f1f890f481cdf0e816bd2b6da7343482305",
+      "capturedAt": "2026-10-08T17:44:46.167938+00:00"
+    },
+    {
+      "path": "screenshots/visual-validation/event-1920x1080.png",
+      "sha256": "a31f164561636eec43e158846c08385ca3192412dbb01f77304d0dc755c5a6d2",
+      "capturedAt": "2026-10-08T17:45:00.576577+00:00"
+    },
+    {
+      "path": "screenshots/visual-validation/event-1440x900.png",
+      "sha256": "3bde4c0c8a8b6f9932045c48248bbaa42e5dbb6e7ac42484b10acd315fd7e6b8",
+      "capturedAt": "2026-10-08T17:45:15.376212+00:00"
+    },
+    {
+      "path": "screenshots/visual-validation/event-1366x768.png",
+      "sha256": "fe5115cef18fd219e73c911d9700866f370d298e1b46f2bdc30c3a2f73933f90",
+      "capturedAt": "2026-10-08T17:45:26.868932+00:00"
+    },
+    {
+      "path": "screenshots/visual-validation/market-impact-1366x768.png",
+      "sha256": "60fc0248bec3ff7f62d9661a65e3ed4fbd5fa51ef90977983883dd4d0f03a667",
+      "capturedAt": "2026-10-08T17:46:43.654146+00:00"
+    },
+    {
+      "path": "screenshots/visual-validation/portfolio-impact-1366x768.png",
+      "sha256": "1e99bb6faa3f1b6e787dd521887d803f163376f1de1d318bcac07116cb3a8b5e",
+      "capturedAt": "2026-10-08T17:47:04.707680+00:00"
+    },
+    {
+      "path": "screenshots/settlement-validation/1920x1080/payment-card.png",
+      "sha256": "db3d7cad99bcc78762700973047ae818386abbb443d710dc2489edd6d5750622",
+      "capturedAt": "2026-10-08T17:47:58.640527+00:00"
+    },
+    {
+      "path": "screenshots/settlement-validation/1440x900/payment-card.png",
+      "sha256": "2854d7c9ea03cf1155e5075ce9074deefb0c0796fc7fe76afffcbcab57cd224d",
+      "capturedAt": "2026-10-08T17:48:00.394490+00:00"
+    },
+    {
+      "path": "screenshots/settlement-validation/1366x768/payment-card.png",
+      "sha256": "1ae65c0d707b2e6270a03c6f43a6d63dea5a2434be8ced7230c5c5868ce30c81",
+      "capturedAt": "2026-10-08T17:48:04.130413+00:00"
+    }
+  ]
+}

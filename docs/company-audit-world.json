@@ -1,0 +1,812 @@
+{
+  "auditDate": "2026-10-06",
+  "scope": "P4 — uniquement companies de zones asia, africa, oceania dans packages/game-engine/legacy/data/gameData.json; audit documentaire en lecture seule.",
+  "sourceNote": "verifiedSourceURL pointe vers la page institutionnelle de la société utilisée pour contrôler son existence, son identité, son pays ou son activité. Pour les noms fictifs, la source est celle de la société réelle proposée.",
+  "preservation": "No gameData.json or catalog edits. Recommendations preserve the three selected Asia line IDs and their basePrice/baseIncome values; total catalog remains 91 entries.",
+  "companies": [
+    {
+      "id": "orascom-construction-industries",
+      "oldName": "Orascom Construction Industries",
+      "currentName": "Orascom Construction PLC",
+      "country": "Égypte",
+      "zone": "africa",
+      "sector": "realestate",
+      "verifiedSourceURL": "https://orascom.com/",
+      "modification": "Le nom « Orascom Construction Industries » est historique; mettre à jour le nom affiché vers Orascom Construction (si cette entité est celle visée). Le pays est Égypte; le secteur immobilier/infrastructure est acceptable.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "La page présente Orascom Construction PLC comme entrepreneur mondial de génie civil/construction, avec infrastructure, industrie et commerce; activités MENA, Afrique, États-Unis. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "tata-motors",
+      "oldName": "Tata Motors",
+      "currentName": "Tata Motors Limited",
+      "country": "Inde",
+      "zone": "asia",
+      "sector": "transport",
+      "verifiedSourceURL": "https://www.tatamotors.com/organisation/about-us/",
+      "modification": "Société réelle; nom officiel de groupe désormais Tata Motors Limited; pays Inde et secteur Transport cohérents.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Le site officiel « About us » décrit Tata Motors comme constructeur automobile indien et fournisseur de solutions de mobilité. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "maroc-telecom",
+      "oldName": "Maroc Telecom",
+      "currentName": "Maroc Telecom",
+      "country": "Maroc",
+      "zone": "africa",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.iam.ma/groupe-maroc-telecom",
+      "modification": "Société réelle; normaliser en Maroc Telecom (Itissalat Al-Maghrib); secteur Communication & médias cohérent.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Le portail institutionnel comporte les rubriques groupe, publications financières et événements Maroc Telecom/Itissalat Al-Maghrib.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "bank-central-asia",
+      "oldName": "Bank Central Asia",
+      "currentName": "PT Bank Central Asia Tbk",
+      "country": "Indonésie",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.bca.co.id/en/tentang-bca",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page About BCA; affiche siège à Jakarta et indicateurs d’activité bancaire (actifs, prêts, branches, comptes). The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "astra-international",
+      "oldName": "Astra International",
+      "currentName": "FANUC Corporation",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.fanuc.co.jp/en/profile/profile/",
+      "modification": "Source officielle: profil FANUC et activité d’automatisation industrielle, robots et machines-outils. Recommandation de remplacement sectoriel.",
+      "confiance": "élevée pour le candidat de remplacement; moyenne pour la ligne antérieure où indiqué dans replacementProposal.beforeEvidence",
+      "replacementProposal": {
+        "before": {
+          "name": "Astra International",
+          "country": "Indonésie",
+          "sector": {
+            "gazprom": "energy",
+            "china-construction-bank-corp": "realestate",
+            "astra-international": "transport"
+          },
+          "basePrice": 30,
+          "baseIncome": 10
+        },
+        "after": {
+          "name": "FANUC Corporation",
+          "country": "Japon",
+          "sector": "industry",
+          "basePrice": 30,
+          "baseIncome": 10
+        },
+        "pricePreserved": true,
+        "beforeEvidence": {
+          "verifiedSourceURL": "https://www.astra.co.id/about-astra",
+          "status": "direct_page_content_accessed",
+          "sourceVerified": true,
+          "checkedDate": "2026-10-06",
+          "summary": "Page officielle décrit PT Astra International Tbk (Indonésie) et ses métiers automobile, finance, équipements lourds/mines."
+        }
+      },
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Le profil officiel présente PT Astra International Tbk et ses secteurs automobile, services financiers et équipements lourds/mines.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "industries-qatar",
+      "oldName": "Industries Qatar",
+      "currentName": "Industries Qatar",
+      "country": "Qatar",
+      "zone": "africa",
+      "sector": "industry",
+      "verifiedSourceURL": "https://iq.com.qa/",
+      "modification": "Société réelle et secteur Industrie adapté. Qatar reste dans la zone Afrique & Moyen-Orient, selon le découpage du jeu.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Le site institutionnel identifie Industries Qatar Q.P.S.C.; portefeuille industrie/acier, pétrochimie et engrais.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "mtn-group",
+      "oldName": "MTN group",
+      "currentName": "MTN Group Limited",
+      "country": "Afrique du Sud",
+      "zone": "africa",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.mtn.com/about/",
+      "modification": "Société réelle; normaliser la casse en MTN Group; pays Afrique du Sud et secteur Communication & médias valides.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page institutionnelle MTN: fondée en Afrique du Sud, opérateur et solutions numériques en Afrique et Moyen-Orient. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "qatar-national-bank",
+      "oldName": "Qatar National Bank",
+      "currentName": "Qatar National Bank",
+      "country": "Qatar",
+      "zone": "africa",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.qnb.com/sites/qnb/qnbglobal/page/en/englobalaboutus.html",
+      "modification": "Société réelle; le nom d’usage de groupe est QNB Group (Qatar National Bank Q.P.S.C.); secteur Finance valide.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page institutionnelle « About Us » décrit QNB et son développement au Qatar; la FAQ confirme raison sociale et banque.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "sasol",
+      "oldName": "SASOL",
+      "currentName": "Sasol Limited",
+      "country": "Afrique du Sud",
+      "zone": "africa",
+      "sector": "energy",
+      "verifiedSourceURL": "https://sasol.com/who-we-are/about-us",
+      "modification": "Société réelle; utiliser Sasol Limited; activité énergie et produits chimiques, secteur Énergie acceptable.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page institutionnelle décrit Sasol comme groupe mondial de produits chimiques et d’énergie, société cotée en Afrique du Sud. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "taiwan-semiconductor-manufacturing",
+      "oldName": "Taiwan Semiconductor Manufacturing",
+      "currentName": "Taiwan Semiconductor Manufacturing Company Limited",
+      "country": "Taïwan",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.tsmc.com/english/aboutTSMC",
+      "modification": "Société réelle; afficher TSMC (Taiwan Semiconductor Manufacturing Company Limited) est plus juste que la raison sociale tronquée.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page About TSMC: fonderie de semi-conducteurs fondée en 1987; installations majeures à Taïwan. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "gazprom",
+      "oldName": "Gazprom",
+      "currentName": "Mitsubishi Heavy Industries (MHI)",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.mhi.com/company/overview/profile",
+      "modification": "Source officielle: page de profil MHI; société établie au Japon et activités affichées en énergie, infrastructures, systèmes industriels, aéronautique/défense. Recommandation de remplacement sectoriel.",
+      "confiance": "élevée pour le candidat de remplacement; moyenne pour la ligne antérieure où indiqué dans replacementProposal.beforeEvidence",
+      "replacementProposal": {
+        "before": {
+          "name": "Gazprom",
+          "country": "Russie",
+          "sector": {
+            "gazprom": "energy",
+            "china-construction-bank-corp": "realestate",
+            "astra-international": "transport"
+          },
+          "basePrice": 100,
+          "baseIncome": 50
+        },
+        "after": {
+          "name": "Mitsubishi Heavy Industries (MHI)",
+          "country": "Japon",
+          "sector": "industry",
+          "basePrice": 100,
+          "baseIncome": 50
+        },
+        "pricePreserved": true,
+        "beforeEvidence": {
+          "verifiedSourceURL": "https://www.gazprom.com/about/",
+          "status": "direct_access_unavailable_search_excerpt_only",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06",
+          "summary": "Résultat officiel Gazprom: PJSC Gazprom, société énergétique russe; page descriptive non ouverte directement par le navigateur web."
+        }
+      },
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Résultat de recherche officiel « About Gazprom » confirme PJSC Gazprom et activité énergétique; son URL bloque l’ouverture directe.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/gazprom.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Mitsubishi_heavyindustries_mhi_logo.svg",
+        "license": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+        "trademark": "Commons page expressly notes it may remain trademark-protected; the copyright license is not a trademark permission. Use only as a source-marked company logo in the proposed replacement context.",
+        "retrievedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "ping-an-insurance-group-co-of-china-ltd",
+      "oldName": "Ping An Insurance Group Co of China Ltd",
+      "currentName": "Ping An Insurance (Group) Company of China, Ltd.",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://group.pingan.com/about_us/who_we_are.html",
+      "modification": "Société réelle; nom affiché à normaliser en Ping An Insurance (Group) Company of China, Ltd.; secteur Finance valide.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page officielle « Who We Are » qualifie Ping An de groupe financier intégré chinois, centré finance, santé et soins aux aînés. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "sinopec",
+      "oldName": "Sinopec",
+      "currentName": "China Petroleum & Chemical Corporation (Sinopec)",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.sinopecgroup.com/u/cms/jtyw/202603/22203315gxqf.pdf",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page officielle Sinopec Corp. avec profil société et adresse Beijing; résultat d’indexation officielle confirme Chine Petroleum & Chemical Corporation. Ouverture directe limitée. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "toyota-motor",
+      "oldName": "Toyota Motor",
+      "currentName": "Toyota Motor Corporation",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "transport",
+      "verifiedSourceURL": "https://global.toyota/en/company/",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page de l’entreprise officielle Toyota Motor Corporation, liens vers profil et activités mondiales du constructeur. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "tencent-holdings-ltd",
+      "oldName": "Tencent Holdings Ltd",
+      "currentName": "Tencent Holdings Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.tencent.com/en-us/about.html",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page « Who we are » de Tencent décrit son activité de services et produits technologiques/internet. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "agricultural-bank-of-china",
+      "oldName": "Agricultural bank of China",
+      "currentName": "Agricultural Bank of China Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.abchina.com/en/investor-relations/company-overview/",
+      "modification": "Société réelle; normaliser en Agricultural Bank of China Limited; secteur Finance valide.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page officielle About ABC et Company Overview: banque commerciale chinoise et fournisseur de services financiers intégrés. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "alibaba-group-holding",
+      "oldName": "Alibaba Group Holding",
+      "currentName": "Alibaba Group Holding Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.alibabagroup.com/en-US/about-alibaba",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page officielle Introduction to Alibaba Group expose l’identité et les activités du groupe technologique/commerce numérique. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "bank-of-china-ltd",
+      "oldName": "Bank of China Ltd",
+      "currentName": "Bank of China Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.boc.cn/en/aboutboc/ab1/200809/t20080901_1601737.html",
+      "modification": "Société réelle; normaliser en Bank of China Limited; secteur Finance valide.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Présentation institutionnelle de Bank of China: banque commerciale et services financiers; entité chinoise cotée. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "china-construction-bank-corp",
+      "oldName": "China Construction Bank Corp",
+      "currentName": "Komatsu Ltd.",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.komatsu.com/en-us/about",
+      "modification": "Source officielle: Komatsu présente ses machines pour construction, mines, foresterie et équipements industriels. Recommandation de remplacement sectoriel.",
+      "confiance": "élevée pour le candidat de remplacement; moyenne pour la ligne antérieure où indiqué dans replacementProposal.beforeEvidence",
+      "replacementProposal": {
+        "before": {
+          "name": "China Construction Bank Corp",
+          "country": "Chine",
+          "sector": {
+            "gazprom": "energy",
+            "china-construction-bank-corp": "realestate",
+            "astra-international": "transport"
+          },
+          "basePrice": 210,
+          "baseIncome": 50
+        },
+        "after": {
+          "name": "Komatsu Ltd.",
+          "country": "Japon",
+          "sector": "industry",
+          "basePrice": 210,
+          "baseIncome": 50
+        },
+        "pricePreserved": true,
+        "beforeEvidence": {
+          "verifiedSourceURL": "https://www.ccb.com/en/newinvestor/overview.html",
+          "status": "direct_access_unavailable_search_excerpt_only",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06",
+          "summary": "Résultat officiel CCB identifie China Construction Bank Corporation, siège Beijing, banque commerciale; source corroborée via extrait indexé officiel."
+        }
+      },
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "La page Komatsu confirme société et fabrication de machines de construction/mines; remplace CCB dans la proposition et change le secteur vers Industrie.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "samsung-electronics-co-ltd",
+      "oldName": "Samsung Electronics Co Ltd",
+      "currentName": "Samsung Electronics Co., Ltd.",
+      "country": "Corée du Sud",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.samsung.com/global/ir/governance-csr/articles-of-incorporation/",
+      "modification": "Société réelle; normaliser en Samsung Electronics Co., Ltd.; pays Corée du Sud.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Articles d’incorporation officiels donnent le nom Samsung Electronics Co., Ltd.; société coréenne de l’électronique. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "china-mobile-ltd",
+      "oldName": "China Mobile Ltd",
+      "currentName": "China Mobile Limited",
+      "country": "Hong Kong (RAS de Chine)",
+      "zone": "asia",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.chinamobileltd.com/en/about/overview.php",
+      "modification": "Société réelle constituée à Hong Kong et opérant en Chine continentale; pays à préciser comme Hong Kong (RAS de Chine) pour l’entité cotée. Secteur Communication & médias valide.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Présentation officielle China Mobile Limited: société constituée à Hong Kong, opérateur télécom en Chine continentale et Hong Kong. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "icbc-ltd",
+      "oldName": "ICBC Ltd",
+      "currentName": "Industrial and Commercial Bank of China Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.icbc-ltd.com/ICBCLtd/About%20Us/Introduction/",
+      "modification": "Société réelle; normaliser en Industrial and Commercial Bank of China Limited (ICBC); secteur Finance valide.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Profil officiel ICBC: grande banque commerciale chinoise, activités et présentation institutionnelle. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "petrochina-co-ltd",
+      "oldName": "PetroChina Co Ltd",
+      "currentName": "PetroChina Company Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.petrochina.com.cn/ptr/ndbg/202605/c734755cc9764eb5ba8628aac4e3230c/files/c7e4f2a5e9aa4c9eacafb02ff2367d78.pdf",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Annual report officiel identifie PetroChina Company Limited, siège à Pékin, société chinoise d’exploration/production pétrole et gaz. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "pacifica-minerals",
+      "oldName": "Pacifica Minerals",
+      "currentName": "Woolworths Group Limited",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.woolworthsgroup.com.au/content/dam/wwg/sustainability/reports/f25/Woolworths%20Group%20Annual%20Report%202025%20.pdf",
+      "modification": "Remplacement proposé du nom fictif par Woolworths Group Limited, détaillant alimentaire australien. Nom, pays et secteur proposés correspondent à la source.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Annual Report officiel: Woolworths Group est un détaillant australien et néo-zélandais de produits alimentaires et du quotidien; son activité alimentaire justifie Agroalimentaire.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "southern-cross-energy",
+      "oldName": "Southern Cross Energy",
+      "currentName": "Origin Energy",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.originenergy.com.au/about/",
+      "modification": "Remplacer le nom fictif par Origin Energy.",
+      "confiance": "moyenne (page officielle non accessible directement; extrait de recherche officiel consulté)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page About Origin: Origin Energy fournit énergie, solaire, LPG et services liés à production, gaz et renouvelables.",
+        "sourceVerified": false
+      },
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "coral-reef-health",
+      "oldName": "Coral Reef Health",
+      "currentName": "CSL Limited",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.csl.com/we-are-csl",
+      "modification": "Remplacer le nom fictif par CSL Limited.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page CSL: entreprise biotechnologique fondée en Australie, médicaments et vaccins; correspond à Santé.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "pacific-link",
+      "oldName": "Pacific Link",
+      "currentName": "Telstra Group",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.telstra.com.au/aboutus",
+      "modification": "Remplacer le nom fictif par Telstra Group.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page About Telstra identifie l’opérateur télécom australien; correspond à Communication & médias.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/pacific-link.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Telstra_logo_(horizontal_variant).svg",
+        "license": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+        "trademark": "Commons page expressly notes trademark restrictions can apply; this is copyright status, not trademark authorization. Use only as a source-marked company logo in the proposed replacement context.",
+        "retrievedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "harbour-infrastructure",
+      "oldName": "Harbour Infrastructure",
+      "currentName": "Goodman Group",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "realestate",
+      "verifiedSourceURL": "https://au.goodman.com/about-goodman/about-us",
+      "modification": "Remplacer le nom fictif par Goodman Group.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page Goodman Australia: propriétaire/développeur/gestionnaire d’immobilier logistique et centres de données.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "oceanic-air",
+      "oldName": "Oceanic Air",
+      "currentName": "Qantas Airways",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "transport",
+      "verifiedSourceURL": "https://www.qantas.com/corporate/about-us",
+      "modification": "Remplacer le nom fictif par Qantas Airways.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page Qantas Group: principale activité de transport de passagers et fret, compagnie aérienne australienne.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "southpoint-finance",
+      "oldName": "Southpoint Finance",
+      "currentName": "Commonwealth Bank of Australia",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.commbank.com.au/about-us.html",
+      "modification": "Remplacer le nom fictif par Commonwealth Bank of Australia (CommBank).",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page CommBank: banque australienne parmi les plus grandes; services de banque de détail et commerciale.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "reef-data-systems",
+      "oldName": "Reef Data Systems",
+      "currentName": "WiseTech Global Limited",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "technology",
+      "verifiedSourceURL": "https://wisetechglobal.com/media/w15p1uve/wtc-1h25-app-4d-and-financial-report.pdf",
+      "modification": "Remplace la marque Atlassian comme slot australien logiciel: son parent a été domicilié au Delaware en 2022; WiseTech Global est une société australienne avec siège/adresse déclarée à Sydney et produit des logiciels logistiques. Pays ici attribué selon l’origine et le centre opérationnel australien, pas selon le lieu d’incorporation seul.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Le rapport intermédiaire officiel identifie WiseTech Global Limited, adresse Unit 3a, 72 O’Riordan Street, Alexandria NSW 2015, et activité de développement/fourniture de logiciels à l’industrie logistique mondiale. Pour comparaison historique, l’Atlassian SEC Form 10-K 2022 indique une société Delaware: https://www.sec.gov/Archives/edgar/data/1650372/000165037222000071/team-20221003.htm. La zone/pays WiseTech suit l’ancrage opérationnel et le siège australien.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    },
+    {
+      "id": "austral-manufacturing",
+      "oldName": "Austral Manufacturing",
+      "currentName": "Fortescue",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.fortescue.com/en/about-fortescue",
+      "modification": "Remplacement proposé par Fortescue, groupe australien de mines et métaux; classer en Industrie plutôt qu’en fabrication généraliste.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page Fortescue: groupe minier/métaux australien; minerai de fer, métaux et énergie. Classement Industrie recommandé.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06"
+    }
+  ],
+  "asiaIndustryAlternatives": [
+    {
+      "name": "Mitsubishi Heavy Industries (MHI)",
+      "country": "Japon",
+      "sector": "industry",
+      "officialSourceURL": "https://www.mhi.com/company/overview/profile",
+      "recommendation": "Candidat industriel robuste; proposer à la place d’une ligne Asie à réaffecter, en conservant son ID de case et son prix si la règle de catalogue l’exige.",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Profil officiel MHI donne le nom légal, siège au Japon et produits majeurs dans énergie, infrastructures, solutions industrielles, aéronautique et défense.",
+        "sourceVerified": true
+      }
+    },
+    {
+      "name": "Komatsu Ltd.",
+      "country": "Japon",
+      "sector": "industry",
+      "officialSourceURL": "https://www.komatsu.com/en-us/about",
+      "recommendation": "Fabricant de matériel lourd pour construction, mines et foresterie; candidat naturel pour augmenter le poids industriel asiatique.",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page officielle Komatsu identifie le groupe japonais fabricant d’équipements pour construction, mines, foresterie et applications industrielles.",
+        "sourceVerified": true
+      }
+    },
+    {
+      "name": "FANUC Corporation",
+      "country": "Japon",
+      "sector": "industry",
+      "officialSourceURL": "https://www.fanuc.co.jp/en/profile/profile/",
+      "recommendation": "Automatisation industrielle, robots et machines-outils; convient à Industrie.",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Corporate Profile FANUC: société japonaise opérant en automatisation, contrôle numérique, robots et machines.",
+        "sourceVerified": true
+      }
+    },
+    {
+      "name": "Daikin Industries, Ltd.",
+      "country": "Japon",
+      "sector": "industry",
+      "officialSourceURL": "https://www.daikin.com/corporate/overview/summary/data",
+      "recommendation": "Fabricant industriel HVAC; candidat adapté à Industrie.",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_access_unavailable_search_excerpt_only",
+        "summary": "Corporate Data donne le nom DAIKIN INDUSTRIES, LTD., siège Osaka et activités climatisation/réfrigération, chimie, hydraulique, défense et électronique.",
+        "sourceVerified": false
+      }
+    },
+    {
+      "name": "Hitachi, Ltd.",
+      "country": "Japon",
+      "sector": "industry",
+      "officialSourceURL": "https://www.hitachi.com/en/about/hitachi/",
+      "recommendation": "Groupe d’infrastructures et technologies industrielles; candidat adapté à Industrie.",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_access_unavailable_search_excerpt_only",
+        "summary": "Corporate Profile donne le nom Hitachi, Ltd. et siège Tokyo; activité groupe en numérique, énergie, mobilité, transport et industrie.",
+        "sourceVerified": false
+      }
+    }
+  ],
+  "assetPolicy": {
+    "logosDownloaded": true,
+    "files": [
+      {
+        "id": "gazprom",
+        "file": "assets/companies/logos/gazprom.svg",
+        "publicFile": "apps/web/public/assets/companies/logos/gazprom.svg",
+        "proposedDisplayName": "Mitsubishi Heavy Industries (MHI)",
+        "commonsFilePage": "https://commons.wikimedia.org/wiki/File:Mitsubishi_heavyindustries_mhi_logo.svg",
+        "source": "Official MHI website identified on Commons file description (https://www.mhi.com/).",
+        "license": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+        "trademarkNotice": "Commons page expressly notes it may remain trademark-protected; the copyright license is not a trademark permission. Use only as a source-marked company logo in the proposed replacement context.",
+        "checkedDate": "2026-10-06"
+      },
+      {
+        "id": "pacific-link",
+        "file": "assets/companies/logos/pacific-link.svg",
+        "publicFile": "apps/web/public/assets/companies/logos/pacific-link.svg",
+        "proposedDisplayName": "Telstra Group",
+        "commonsFilePage": "https://commons.wikimedia.org/wiki/File:Telstra_logo_(horizontal_variant).svg",
+        "source": "Telstra official website identified on Commons file description (https://www.telstra.com.au/).",
+        "license": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+        "trademarkNotice": "Commons page expressly notes trademark restrictions can apply; this is copyright status, not trademark authorization. Use only as a source-marked company logo in the proposed replacement context.",
+        "checkedDate": "2026-10-06"
+      }
+    ],
+    "fallbackForOtherIds": "Monogram fallback for all other IDs. The two files correspond to proposed display-name replacements; do not associate them with the current legacy names until those name recommendations are adopted."
+  },
+  "sourceVerificationDate": "2026-10-06"
+}

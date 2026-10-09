@@ -13,7 +13,7 @@ import {
   executeCommand,
   getGameView,
   chooseAiCommand,
-  nationalities,
+  getDecisionPlayerId,
 } from "@global-fund/game-engine";
 import type {
   ApiResult,
@@ -27,8 +27,9 @@ import type {
   SeatConfig,
   Session,
   SlotKind,
+  ZoneId,
 } from "@global-fund/shared";
-import { PLAYER_COLORS, PAWNS } from "@global-fund/shared";
+import { PLAYER_COLORS, PAWNS, diversifyStartingMarkets, isMarketId, legacyStartingMarket, marketFromLegacyNationality } from "@global-fund/shared";
 import { rooms as roomsTable } from "./schema.js";
 import { applyMigrations } from "./migrate.js";
 
@@ -65,7 +66,12 @@ const isRecord = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
 const validRoomId = (value: unknown): value is string =>
   typeof value === "string" && /^[A-F0-9]{8}$/.test(value);
-const knownNationalities = new Set(nationalities.map((n) => n.id));
+/** Canonical IDs are strict; an explicit invalid ID must never fall back to an old country. */
+function requestedMarket(record: Record<string, unknown>): ZoneId | undefined {
+  if (Object.hasOwn(record, "startingMarket"))
+    return isMarketId(record.startingMarket) ? record.startingMarket : undefined;
+  return marketFromLegacyNationality(record.nationality);
+}
 
 export async function createServer(options: Options = {}) {
   const app: FastifyInstance = Fastify({ logger: options.logger ?? false });
@@ -170,6 +176,13 @@ export async function createServer(options: Options = {}) {
   function resetConnections(room: StoredRoom) {
     room.hostId = "";
     for (const p of room.players) {
+      if (p.startingMarket === undefined) {
+        const savedPlayer = room.state?.players.find((item) => item.id === p.id);
+        p.startingMarket = legacyStartingMarket({
+          nationality: p.nationality,
+          ...savedPlayer,
+        });
+      }
       p.controllerId = null;
       p.connected = p.bot;
       if (p.bot) p.ready = true;
@@ -232,19 +245,20 @@ export async function createServer(options: Options = {}) {
   };
   const aiStep = (r: StoredRoom) => {
     if (closed || r.status !== "playing" || !r.state) return;
-    const active = r.players.find(
-      (p) => p.id === r.state!.players[r.state!.activeIndex]?.id,
-    );
+    const active = r.players.find((p) => p.id === getDecisionPlayerId(r.state!));
     if (!active?.bot || aiTimers.has(r.roomId)) return;
     const timer = setTimeout(() => {
       aiTimers.delete(r.roomId);
       void serialize(r.roomId, async () => {
         if (r.status !== "playing" || !r.state) return;
+        if (getDecisionPlayerId(r.state) !== active.id) { aiStep(r); return; }
         const command = chooseAiCommand(r.state, active.difficulty);
         if (!command) return;
-        r.state = executeCommand(r.state, active.id, command) as GameState;
-        if (r.state.finished) r.status = "finished";
-        await publish(r);
+        const next = executeCommand(r.state, active.id, command);
+        const draft: StoredRoom = { ...r, state: next, status: next.finished ? "finished" : r.status, revision: r.revision + 1 };
+        await persist(draft);
+        Object.assign(r, draft);
+        io.to(r.roomId).emit("room:state", view(r));
         aiStep(r);
       }).catch((error) =>
         app.log.error(
@@ -290,8 +304,7 @@ export async function createServer(options: Options = {}) {
                 !s.name.trim() ||
                 s.name.length > 40 ||
                 !["local", "remote", "ai"].includes(String(s.kind)) ||
-                typeof s.nationality !== "string" ||
-                !knownNationalities.has(s.nationality) ||
+                !requestedMarket(s) ||
                 !PAWNS.some((p) => p.id === s.pawn) ||
                 !["easy", "normal", "hard"].includes(String(s.difficulty)),
             )
@@ -302,20 +315,22 @@ export async function createServer(options: Options = {}) {
             roomId = randomBytes(4).toString("hex").toUpperCase();
           } while (roomMap.has(roomId));
           const hostId = socket.id;
-          const players: Slot[] = seats.map((s, i) => ({
+          const players: Slot[] = diversifyStartingMarkets(seats.map((s, i) => ({
             id: `p${i + 1}`,
             name: s.name.trim().slice(0, 40),
             kind: s.kind,
             bot: s.kind === "ai",
             pawn: s.pawn,
-            nationality: s.nationality,
+            startingMarket: requestedMarket(s)!,
+            // Only retain a real country when supplied by an old client.
+            ...(!Object.hasOwn(s, "startingMarket") ? { nationality: s.nationality } : {}),
             difficulty: s.difficulty,
             color: PLAYER_COLORS[i],
             ready: s.kind !== "remote",
             connected: s.kind === "local" || s.kind === "ai",
             controllerId: s.kind === "local" ? hostId : null,
             tokenHash: null,
-          }));
+          })));
           const session: Session = {
             roomId,
             playerId: players[0].id,
@@ -352,9 +367,8 @@ export async function createServer(options: Options = {}) {
             typeof body.name !== "string" ||
             !body.name.trim() ||
             body.name.length > 40 ||
-            (body.nationality !== undefined &&
-              (typeof body.nationality !== "string" ||
-                !knownNationalities.has(body.nationality))) ||
+            ((Object.hasOwn(body, "startingMarket") || Object.hasOwn(body, "nationality")) &&
+              !requestedMarket(body)) ||
             (body.pawn !== undefined &&
               (typeof body.pawn !== "string" ||
                 !PAWNS.some((p) => p.id === body.pawn)))
@@ -370,7 +384,12 @@ export async function createServer(options: Options = {}) {
             return ack?.(fail("Aucune place distante disponible.", "FULL"));
           const name = text(body?.name, 40);
           if (!name) return ack?.(fail("Le nom est obligatoire."));
-          if (body.nationality) p.nationality = body.nationality;
+          if (Object.hasOwn(body, "startingMarket") || Object.hasOwn(body, "nationality")) {
+            p.startingMarket = requestedMarket(body)!;
+            if (!Object.hasOwn(body, "startingMarket") && typeof body.nationality === "string")
+              p.nationality = body.nationality;
+            else delete p.nationality;
+          }
           if (body.pawn) p.pawn = body.pawn as typeof p.pawn;
           const session = sessionFor(r, p);
           p.tokenHash = hash(session.token);
@@ -457,7 +476,8 @@ export async function createServer(options: Options = {}) {
       safe(
         isRecord(body) ? text(body.roomId, 16) : "",
         async () => {
-          if (!isRecord(body) || !validRoomId(body.roomId))
+          if (!isRecord(body) || !validRoomId(body.roomId) ||
+            (Object.hasOwn(body, "startingMarket") && !isMarketId(body.startingMarket)))
             return ack?.(fail("Salle invalide."));
           const r = roomMap.get(text(body?.roomId, 16));
           if (!r || r.hostId !== socket.id)
@@ -480,11 +500,14 @@ export async function createServer(options: Options = {}) {
             r.players.map((p) => ({
               name: p.name,
               kind: p.kind,
-              nationality: p.nationality,
+              startingMarket: p.startingMarket,
+              ...(p.nationality ? { nationality: p.nationality } : {}),
               pawn: p.pawn,
               difficulty: p.difficulty,
             })),
           ) as GameState;
+          // A remote player's selection can change occupancy since room creation.
+          for (const p of r.players) p.startingMarket = r.state.players.find((player) => player.id === p.id)!.startingMarket;
           r.status = "playing";
           await publish(r);
           aiStep(r);
@@ -518,9 +541,9 @@ export async function createServer(options: Options = {}) {
                   "STALE_REVISION",
                 ),
               );
-            if (r.state.players[r.state.activeIndex]?.id !== p.id)
+            if (getDecisionPlayerId(r.state) !== p.id)
               return ack?.(
-                fail("Ce n’est pas le tour de ce joueur.", "NOT_ACTIVE"),
+                fail("Ce joueur n’a pas la décision en cours.", "NOT_ACTIVE"),
               );
             let next: GameState;
             try {
@@ -652,7 +675,14 @@ export async function createServer(options: Options = {}) {
       case "PRISON_ROLL":
       case "END_TURN":
       case "NEXT_TURN":
+      case "ACCEPT_SETTLEMENT":
+      case "REJECT_SETTLEMENT":
+      case "REQUIRE_CASH":
         return Object.keys(c).length === 1;
+      case "LIQUIDATE_ASSETS":
+      case "PROPOSE_SETTLEMENT":
+        return Object.keys(c).length === 2 && Array.isArray(c.assets) && c.assets.length > 0 && c.assets.length <= 91 && c.assets.every(asset =>
+          isRecord(asset) && Object.keys(asset).length === 2 && typeof asset.companyId === "string" && asset.companyId.length > 0 && asset.companyId.length <= 100 && Number.isInteger(asset.quantity) && asset.quantity >= 1 && asset.quantity <= 5);
       case "MOVE":
         return (
           Object.keys(c).length === 2 &&

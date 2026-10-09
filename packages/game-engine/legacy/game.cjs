@@ -24,22 +24,17 @@ function shuffle(list) {
 }
 
 const NATIONALITY_BY_ID = new Map(nationalities.map(item => [String(item.id), item]));
-const DEFAULT_NATIONALITY = nationalities[0];
+const MARKET_IDS = ['americas', 'europe', 'asia', 'africa', 'oceania'];
 
-function nationalityFor(value) {
-  const id = idOf(value);
-  return NATIONALITY_BY_ID.get(id) || DEFAULT_NATIONALITY;
-}
-
-function applyNationality(playerRecord, requested, fallbackZone = null) {
-  const selected = requested ? nationalityFor(requested) : null;
-  const inferred = fallbackZone && nationalities.find(item => item.zoneId === String(fallbackZone));
-  const nationality = selected || inferred || DEFAULT_NATIONALITY;
-  playerRecord.nationality = nationality.id;
-  playerRecord.nationalityName = nationality.name;
-  playerRecord.nationalityFlag = nationality.flag;
-  if (!playerRecord.zone) playerRecord.zone = nationality.zoneId;
-  return nationality;
+function syncPlayerMarkets(record) {
+  // Old nationality fields are read only. A saved fund retains its current
+  // location (including detention), trading access, holdings, and initial market.
+  if (!MARKET_IDS.includes(record.startingMarket)) {
+    const legacyMarket = NATIONALITY_BY_ID.get(record.nationality)?.zoneId;
+    record.startingMarket = MARKET_IDS.includes(legacyMarket) ? legacyMarket
+      : MARKET_IDS.includes(record.zone) ? record.zone : 'europe';
+  }
+  record.currentMarket = MARKET_IDS.includes(record.zone) ? record.zone : null;
 }
 
 function notice(game, value) {
@@ -54,10 +49,7 @@ function notice(game, value) {
 function player(game, playerId) {
   const found = game.players.find(p => p.id === String(playerId));
   if (!found) fail(`Joueur introuvable : ${playerId}`);
-  // Saved rooms created before nationalities were introduced have no such
-  // fields. Infer a sensible nationality from their existing market and keep
-  // their current location intact while the room is being upgraded.
-  if (!found.nationality || !found.nationalityName || !found.nationalityFlag) applyNationality(found, found.nationality, found.zone);
+  syncPlayerMarkets(found);
   if (!game.legacyOpening && (game.cycle || 1) === 1 && !found.jailed) found.geoResolved = true;
   else if (found.geoResolved == null) found.geoResolved = (game.cycle || 1) === 1;
   return found;
@@ -354,9 +346,9 @@ function drawBoardEvent(game, p, die, cell) {
     p.cash += cash;
     effectLines.push(`${p.name} reçoit ${cash} M€ de la banque.`);
   } else if (cash < 0) {
-    const context = { forcedSales: [] };
-    payOrSell(game, p, -cash, context);
-    effectLines.push(`${p.name} paie ${-cash} M€ à la banque${context.forcedSales.length ? ' et revend des titres pour couvrir la somme' : ''}.`);
+    const context = { forcedSales: [], reason: `Carte — ${card.title}` };
+    const paid = payOrSell(game, p, -cash, context);
+    effectLines.push(`${p.name} ${paid ? 'paie' : 'doit régler'} ${-cash} M€ à la banque${context.forcedSales.length ? ' et revend des titres pour couvrir la somme' : ''}.`);
   }
   if (card.effect === 'dividend' && target) {
     const holders = game.players.filter(holder => sharesOf(target, holder.id) > 0);
@@ -374,8 +366,8 @@ function drawBoardEvent(game, p, die, cell) {
     const holders = game.players.filter(holder => sharesOf(target, holder.id) > 0);
     holders.forEach(holder => {
       const due = sharesOf(target, holder.id) * amount;
-      payOrSell(game, holder, due);
-      effectLines.push(`${holder.name} paie ${due} M€ pour ses titres de ${target.name}.`);
+      const paid = payOrSell(game, holder, due, { reason: `Amende — ${target.name}` });
+      effectLines.push(`${holder.name} ${paid ? 'paie' : 'doit régler'} ${due} M€ pour ses titres de ${target.name}.`);
     });
     if (!holders.length) effectLines.push(`Aucun actionnaire de ${target.name} ne reçoit de charge supplémentaire.`);
   } else if (card.effect === 'forcedSale' && target) {
@@ -398,8 +390,8 @@ function drawBoardEvent(game, p, die, cell) {
     if (!holders.length) effectLines.push(`L’offre de rachat de ${target.name} ne trouve aucun titre détenu.`);
   } else if (card.effect === 'marginCall' && target) {
     if (sharesOf(target, p.id) > 0) {
-      payOrSell(game, p, amount);
-      effectLines.push(`${p.name} dépose ${amount} M€ de garantie supplémentaire pour ${target.name}.`);
+      const paid = payOrSell(game, p, amount, { reason: `Appel de marge — ${target.name}` });
+      effectLines.push(`${p.name} ${paid ? 'dépose' : 'doit déposer'} ${amount} M€ de garantie supplémentaire pour ${target.name}.`);
     } else effectLines.push(`${p.name} ne détient pas ${target.name} : aucune marge supplémentaire.`);
   } else if (card.effect === 'prison') {
     if (target && triggerOwnedTarget && !p.jailed) {
@@ -446,19 +438,189 @@ function recordMarketHistory(game, reason) {
   game.marketHistory.push(point);
   if (game.marketHistory.length > 180) game.marketHistory.splice(0, game.marketHistory.length - 180);
 }
-function payOrSell(game, p, amount, context = null) {
+const money = value => Math.round(Number(value) * 100) / 100;
+function liquidAssets(game, p) {
+  return game.companies.filter(c => c.available && sharesOf(c, p.id) > 0 && priceFor(c, game) > 0);
+}
+function payOrSell(game, p, amount, context = null, creditorId = null) {
+  amount = money(amount);
   if (amount <= 0) return true;
-  p.cash -= amount;
-  const assets = game.companies.flatMap(c => Array.from({ length: sharesOf(c, p.id) }, () => c));
-  for (const c of assets) {
-    if (p.cash >= 0) break;
-    const price = priceFor(c, game);
-    if (price <= 0) continue;
-      removeHolding(c, p.id, 1); p.cash += price;
-      if (context) context.forcedSales.push({ companyId: c.id, companyName: c.name || c.id, quantity: 1, perShare: price, amount: price });
+  if (!game._settlementDebts?.length && p.cash >= amount) {
+    p.cash = money(p.cash - amount);
+    if (creditorId) player(game, creditorId).cash = money(player(game, creditorId).cash + amount);
+    return true;
   }
-  if (p.cash < 0) { p.solvent = false; p.cash = 0; }
-  return p.solvent;
+  game._settlementDebts ||= [];
+  game._settlementDebts.push({ debtorId: p.id, creditorId, amount,
+    reason: context?.reason || 'Obligation financière', sectorId: context?.sectorId,
+    sectorLabel: context?.sectorLabel, items: context?.items,
+    lapBaseline: context?.lapBaseline || false });
+  return false;
+}
+function settlementResult(game, debt, cashAmount, assets = [], marketSales = [], unpaidAmount = 0, before = null) {
+  const { debtorId, creditorId, amount, reason, sectorId, sectorLabel, items, lapBaseline } = debt;
+  const publicDebt = { debtorId, creditorId, amount, reason, sectorId, sectorLabel, items };
+  const result = { ...publicDebt, cashAmount: money(cashAmount), assets, marketSales, unpaidAmount: money(unpaidAmount), cycle: game.cycle };
+  game.settlementHistory ||= [];
+  game.settlementHistory.push(result);
+  if (game.settlementHistory.length > 100) game.settlementHistory.shift();
+  if (lapBaseline) {
+    const p = player(game, debt.debtorId);
+    p.lapStartValue = money(Number(p.lapStartValue || 0) - (debt.amount - unpaidAmount));
+    if (unpaidAmount) {
+      p.capitalFlows = money(Number(p.capitalFlows || 0) + unpaidAmount);
+      p.lapStartCapitalFlows = p.capitalFlows;
+    }
+  }
+  game.log.push(`${player(game, debt.debtorId).name} règle ${debt.amount - unpaidAmount} M€ à ${debt.creditorId ? player(game, debt.creditorId).name : 'la banque'}${assets.length ? ' par transfert de titres' : ''}${unpaidAmount ? ` ; ${unpaidAmount} M€ non réglés, insolvabilité` : ''}.`);
+  return result;
+}
+function continueSettlements(game, debts, resumePhase, completed = [], creditorOrder = [], creditorPriorities = [], receiptBefore = null, receiptPayments = []) {
+  // This detached snapshot persists with the pending decision, so one receipt can
+  // describe a whole operation even when humans resolve it across several commands.
+  receiptBefore ||= marketSnapshot(game);
+  delete game.pendingSettlement;
+  while (debts.length) {
+    const debt = debts.shift();
+    const debtor = player(game, debt.debtorId);
+    const before = marketSnapshot(game);
+    if (debtor.cash >= debt.amount) {
+      debtor.cash = money(debtor.cash - debt.amount);
+      if (debt.creditorId) player(game, debt.creditorId).cash = money(player(game, debt.creditorId).cash + debt.amount);
+      completed.push(settlementResult(game, debt, debt.amount, [], [], 0, before));
+      continue;
+    }
+    if (!liquidAssets(game, debtor).length) {
+      const funded = Math.max(0, money(debtor.cash));
+      debtor.cash = 0; debtor.solvent = false;
+      if (debt.creditorId) player(game, debt.creditorId).cash = money(player(game, debt.creditorId).cash + funded);
+      completed.push(settlementResult(game, debt, funded, [], [], debt.amount - funded, before));
+      continue;
+    }
+    game.pendingSettlement = { ...debt, id: Number(game.noticeSeq || 0) + 1,
+      remainingAmount: debt.amount, resumePhase, decisionActorId: debtor.id,
+      status: 'selectAssets', debts, completed, creditorOrder, creditorPriorities, priorityMetric: 'fundValue', receiptBefore, receiptPayments };
+    game.phase = 'settlement'; game.stage = 'settlement';
+    return;
+  }
+  if (completed.length) {
+    const first = completed[0];
+    const sameSector = first.sectorId && completed.every(result => result.sectorId === first.sectorId);
+    const payments = [...receiptPayments, ...completed.flatMap(result =>
+      !result.assets.length && !result.unpaidAmount && result.items?.length
+        ? result.items.map(item => ({ ...item, forcedSales: result.marketSales }))
+        : [{
+          fromId: result.cashAmount < 0 ? result.creditorId : result.debtorId,
+          toId: result.cashAmount < 0 ? result.debtorId : result.creditorId,
+          amount: Math.abs(result.cashAmount), reason: result.reason, forcedSales: result.marketSales,
+        }])];
+    notice(game, { kind: 'payments', action: 'settlementComplete',
+      title: sameSector ? `Synthèse des règlements — ${first.sectorLabel || first.sectorId}` : 'Synthèse des règlements',
+      playerId: first.debtorId, settlements: completed,
+      cell: sameSector ? { kind: 'sector', label: first.sectorLabel || first.sectorId, sector: first.sectorId } : undefined,
+      payments, ...marketImpacts(game, receiptBefore) });
+  }
+  const active = game.players[game.activeIndex];
+  game.phase = active.solvent ? resumePhase : 'awaitNext';
+  game.stage = game.phase;
+  recordMarketHistory(game, 'règlement');
+}
+function validateSettlementAssets(game, pending, raw) {
+  if (!Array.isArray(raw) || !raw.length || raw.length > game.companies.length) fail('Sélectionnez des titres à céder.');
+  const seen = new Set();
+  return raw.map(item => {
+    if (!item || typeof item.companyId !== 'string' || seen.has(item.companyId) || !Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > 5) fail('Sélection de titres invalide.');
+    seen.add(item.companyId);
+    const c = company(game, item.companyId);
+    if (!c.available || priceFor(c, game) <= 0 || sharesOf(c, pending.debtorId) < item.quantity) fail('Titres indisponibles pour ce règlement.');
+    const perShare = priceFor(c, game);
+    return { companyId: c.id, companyName: c.name || c.id, quantity: item.quantity, perShare, value: money(perShare * item.quantity) };
+  });
+}
+function sellSettlementAssets(game, pending, assets) {
+  const debtor = player(game, pending.debtorId);
+  const sales = [];
+  for (const asset of assets) {
+    const c = company(game, asset.companyId);
+    const perShare = priceFor(c, game);
+    removeHolding(c, debtor.id, asset.quantity);
+    const amount = money(perShare * asset.quantity);
+    debtor.cash = money(debtor.cash + amount);
+    sales.push({ companyId: c.id, companyName: c.name || c.id, quantity: asset.quantity, perShare, amount });
+  }
+  return sales;
+}
+function finishCurrentSettlement(game, pending, cashAmount, assets = [], marketSales = [], unpaidAmount = 0, before = null) {
+  const completed = [...(pending.completed || []), settlementResult(game, pending, cashAmount, assets, marketSales, unpaidAmount, before)];
+  continueSettlements(game, pending.debts, pending.resumePhase, completed, pending.creditorOrder, pending.creditorPriorities, pending.receiptBefore || before, pending.receiptPayments || []);
+}
+function settleWithCash(game, pending, sales, before) {
+  const debtor = player(game, pending.debtorId);
+  if (debtor.cash < pending.amount && liquidAssets(game, debtor).length) {
+    pending.status = 'selectAssets'; pending.decisionActorId = debtor.id;
+    delete pending.offer;
+    pending.marketSales = [...(pending.marketSales || []), ...sales];
+    recordMarketHistory(game, 'liquidation');
+    return;
+  }
+  const funded = Math.min(pending.amount, Math.max(0, money(debtor.cash)));
+  debtor.cash = money(debtor.cash - funded);
+  if (pending.creditorId) player(game, pending.creditorId).cash = money(player(game, pending.creditorId).cash + funded);
+  const unpaid = money(pending.amount - funded);
+  if (unpaid) debtor.solvent = false;
+  finishCurrentSettlement(game, pending, funded, [], [...(pending.marketSales || []), ...sales], unpaid, before);
+}
+function settlementAction(game, playerId, action, payload) {
+  const pending = game.pendingSettlement;
+  if (!pending || game.phase !== 'settlement') fail('Aucun règlement en cours.');
+  if (pending.decisionActorId !== playerId) fail('Ce règlement attend la décision d’un autre fonds.');
+  const before = marketSnapshot(game);
+  if (pending.status === 'selectAssets') {
+    if (!['liquidateAssets', 'proposeSettlement'].includes(action)) fail('Sélectionnez des actifs pour le règlement.');
+    const assets = validateSettlementAssets(game, pending, payload.assets);
+    if (action === 'liquidateAssets') { settleWithCash(game, pending, sellSettlementAssets(game, pending, assets), before); return; }
+    if (!pending.creditorId) fail('Une dette bancaire se règle par une vente au marché.');
+    const value = money(assets.reduce((sum, asset) => sum + asset.value, 0));
+    const cashDelta = money(pending.amount - value);
+    if (cashDelta > player(game, pending.debtorId).cash) fail('Liquidités insuffisantes pour compléter cette proposition.');
+    pending.offer = { assets, value, cashDelta };
+    pending.status = 'awaitingCreditor'; pending.decisionActorId = pending.creditorId;
+    return;
+  }
+  if (!['acceptSettlement', 'rejectSettlement', 'requireCash'].includes(action) || !pending.offer) fail('Décision de règlement invalide.');
+  if (action === 'rejectSettlement') {
+    pending.status = 'selectAssets'; pending.decisionActorId = pending.debtorId;
+    if (player(game, pending.debtorId).bot) pending.marketOnly = true;
+    delete pending.offer; return;
+  }
+  if (action === 'requireCash') {
+    const assets = validateSettlementAssets(game, pending, pending.offer.assets);
+    const sales = sellSettlementAssets(game, pending, assets);
+    const debtor = player(game, pending.debtorId);
+    for (const c of liquidAssets(game, debtor)) {
+      if (debtor.cash >= pending.amount) break;
+      const quantity = Math.min(sharesOf(c, debtor.id), Math.ceil((pending.amount - debtor.cash) / priceFor(c, game)));
+      sales.push(...sellSettlementAssets(game, pending, [{ companyId: c.id, quantity }]));
+    }
+    settleWithCash(game, pending, sales, before); return;
+  }
+  const debtor = player(game, pending.debtorId), creditor = player(game, pending.creditorId);
+  const { assets, cashDelta } = pending.offer;
+  // Validate all ownership and both cash legs before changing either portfolio.
+  for (const asset of assets) {
+    const c = company(game, asset.companyId);
+    if (!c.available || sharesOf(c, debtor.id) < asset.quantity) fail('Les titres proposés ne sont plus disponibles.');
+  }
+  if (cashDelta >= 0 && debtor.cash < cashDelta) fail('Liquidités insuffisantes pour compléter cette proposition.');
+  if (cashDelta < 0 && creditor.cash < -cashDelta) fail('Liquidités insuffisantes pour accepter cette proposition.');
+  for (const asset of assets) {
+    const c = company(game, asset.companyId);
+    removeHolding(c, debtor.id, asset.quantity);
+    recordBuy(c, creditor.id, asset.quantity, asset.perShare);
+    c.holdings[creditor.id] = sharesOf(c, creditor.id) + asset.quantity;
+  }
+  debtor.cash = money(debtor.cash - cashDelta); creditor.cash = money(creditor.cash + cashDelta);
+  finishCurrentSettlement(game, pending, cashDelta, assets, pending.marketSales || [], 0, before);
 }
 
 function processPrisonRoll(game, p, roll) {
@@ -470,13 +632,14 @@ function processPrisonRoll(game, p, roll) {
   } else if (p.prisonStage === 1) {
     p.prisonStage = r === 5 || r === 6 ? -1 : 2;
   } else if (p.prisonStage === 2) {
-    payOrSell(game, p, 5); p.prisonStage = -1;
+    payOrSell(game, p, 5, { reason: 'Libération de prison' }); p.prisonStage = -1;
   }
   if (p.prisonStage === -1) {
     p.jailed = false;
     p.zone = p.previousZone && p.previousZone !== 'prison'
       ? p.previousZone
-      : NATIONALITY_BY_ID.get(p.nationality)?.zoneId || 'europe';
+      : p.startingMarket;
+    syncPlayerMarkets(p);
     delete p.previousZone;
     game.log.push(`${p.name} sort de prison et retrouve son marché en ${zone(game, p.zone).name}`);
     return true;
@@ -488,14 +651,15 @@ function chooseZone(game, p, target) {
   const fromZoneId = p.zone;
   const destination = zone(game, target);
   const cost = fromZoneId === target ? 0 : 1;
-  const moveContext = { forcedSales: [] };
-  if (cost) payOrSell(game, p, cost, moveContext);
+  const moveContext = { forcedSales: [], reason: 'Voyage entre marchés' };
+  const paid = !cost || payOrSell(game, p, cost, moveContext);
   p.zone = target;
+  syncPlayerMarkets(p);
   p.geoResolved = true;
   game.log.push(cost ? `${p.name} voyage vers ${destination.name} pour 1 M€` : `${p.name} reste en ${destination.name} sans frais`);
   if (cost) notice(game, { kind: 'payments', playerId: p.id, playerName: p.name, action: 'move',
     title: `Voyage vers ${destination.name}`, fromZoneId, zoneId: target, zoneName: destination.name,
-    payments: [{ fromId: p.id, toId: null, companyId: null, companyName: null, quantity: 1, perShare: 1, amount: 1, forcedSales: moveContext.forcedSales }] });
+    payments: [{ fromId: p.id, toId: null, companyId: null, companyName: null, quantity: 1, perShare: 1, amount: paid ? 1 : 0, dueAmount: paid ? undefined : 1, forcedSales: moveContext.forcedSales }] });
   recordMarketHistory(game, 'voyage');
 }
 
@@ -542,16 +706,17 @@ function settleLap(game, p, payments) {
   const performance = Math.round((currentValue - baseline - flow) * 100) / 100;
   const lapReturn = baseline > 0 ? Math.round((performance / baseline) * 10000) / 100 : 0;
   const adjustment = performance > 0 ? 20 : performance < 0 ? -20 : 0;
-  const forced = { forcedSales: [] };
+  const forced = { forcedSales: [], reason: 'Performance au Départ', lapBaseline: true };
+  let paid = true;
   if (adjustment > 0) p.cash += adjustment;
-  else if (adjustment < 0) payOrSell(game, p, -adjustment, forced);
+  else if (adjustment < 0) paid = payOrSell(game, p, -adjustment, forced);
   p.capitalFlows = Number(p.capitalFlows || 0) + adjustment;
   p.lapPerformance = performance;
   // Start records the new baseline only after the injection/withdrawal.
   p.lapStartValue = fundValue(game, p);
   p.lapStartCapitalFlows = p.capitalFlows;
   if (adjustment) payments.push({ fromId: adjustment < 0 ? p.id : null, toId: adjustment > 0 ? p.id : null,
-    quantity: 1, perShare: Math.abs(adjustment), amount: Math.abs(adjustment), reason: 'Performance au Départ', forcedSales: forced.forcedSales });
+    quantity: 1, perShare: Math.abs(adjustment), amount: paid ? Math.abs(adjustment) : 0, dueAmount: paid ? undefined : Math.abs(adjustment), reason: 'Performance au Départ', forcedSales: forced.forcedSales });
   notice(game, { kind: 'event', source: 'board', action: 'lap', playerId: p.id, playerName: p.name,
     title: 'Bilan au Départ', lapPerformance: performance, lapReturn,
     description: `Performance du tour : ${performance} M€ (${lapReturn} %). Flux de capital : ${adjustment} M€.` });
@@ -616,26 +781,42 @@ function roll(game, p, payload) {
     notice(game, { kind: 'event', source: 'board', title: label || 'Variation de marché', roll: die, position: p.sectorPosition, description: describeGrades(game, before, targets),
       gradeOutcomes: gradeOutcomes(game, before, targets), ...marketImpacts(game, before) });
   }
+  // Freeze the entire sector debt list before any cash/ownership changes.
+  const sectorLabel = game.sectors.find(item => item.id === landed)?.name || landed;
+  const byCreditor = new Map();
   game.companies.filter(c => c.sector === landed).forEach(c => {
     Object.keys(c.holdings).forEach(pid => {
+      // A sector landing pays only other holders; the active fund earns no
+      // market income from its own shares, including full control/monopolies.
+      if (pid === p.id) return;
       const qty = sharesOf(c, pid);
       if (!qty) return;
-      const amount = qty * incomeForHolder(c, game, pid);
+      const amount = money(qty * incomeForHolder(c, game, pid));
       const holder = game.players.find(x => x.id === pid);
-      if (holder.jailed) {
-        if (pid !== p.id) { const context = { forcedSales: [] }; payOrSell(game, p, amount, context); payments.push({ fromId: p.id, toId: null, companyId: c.id, companyName: c.name || c.id, quantity: qty, perShare: incomeForHolder(c, game, pid), amount, forcedSales: context.forcedSales }); }
-        return;
-      }
-      if (pid === p.id) { p.cash += amount; payments.push({ fromId: null, toId: p.id, companyId: c.id, companyName: c.name || c.id, quantity: qty, perShare: incomeForHolder(c, game, pid), amount }); }
-      else {
-        const context = { forcedSales: [] };
-        payOrSell(game, p, amount, context);
-        holder.cash += amount;
-        payments.push({ fromId: p.id, toId: holder.id, companyId: c.id, companyName: c.name || c.id, quantity: qty, perShare: incomeForHolder(c, game, pid), amount, forcedSales: context.forcedSales });
-      }
+      if (!holder || !holder.solvent) return;
+      const item = { fromId: p.id, toId: holder.jailed ? null : holder.id,
+        companyId: c.id, companyName: c.name || c.id, quantity: qty, perShare: incomeForHolder(c, game, pid), amount };
+      const creditorId = holder.jailed ? null : holder.id;
+      const key = creditorId || 'bank';
+      if (!byCreditor.has(key)) byCreditor.set(key, { debtorId: p.id, creditorId, amount: 0,
+        reason: `Revenus du secteur ${sectorLabel}`, sectorId: landed, sectorLabel, items: [] });
+      const debt = byCreditor.get(key);
+      debt.amount = money(debt.amount + amount); debt.items.push(item);
     });
   });
-  if (payments.length || cell?.kind !== 'event') notice(game, { kind: 'payments', playerId: p.id, playerName: p.name, roll: die, position: p.sectorPosition, cell: cell ? { kind: cell.kind, label: cell.label, sector: landed } : null, payments });
+  const sectorDebts = [...byCreditor.values()].sort((a, b) => {
+    if (!a.creditorId) return b.creditorId ? 1 : 0;
+    if (!b.creditorId) return -1;
+    return fundValue(game, player(game, a.creditorId)) - fundValue(game, player(game, b.creditorId))
+      || game.players.findIndex(item => item.id === a.creditorId) - game.players.findIndex(item => item.id === b.creditorId);
+  });
+  if (sectorDebts.length) {
+    game._settlementDebts ||= [];
+    game._settlementDebts.push(...sectorDebts);
+    game._creditorOrder = sectorDebts.map(debt => debt.creditorId).filter(Boolean);
+    game._creditorPriorities = game._creditorOrder.map(playerId => ({ playerId, value: fundValue(game, player(game, playerId)) }));
+  }
+  if (payments.length || cell?.kind !== 'event') notice(game, { kind: 'payments', playerId: p.id, playerName: p.name, roll: die, position: p.sectorPosition, cell: cell ? { kind: cell.kind, label: cell.label, sector: landed } : null, payments, obligations: sectorDebts });
   p.fundValue = fundValue(game, p);
   recordMarketHistory(game, cell?.kind === 'market' ? 'marché' : 'dé');
   game.phase = p.jailed || !p.solvent ? 'awaitNext' : 'market';
@@ -666,11 +847,9 @@ function nextTurn(game, p) {
   if (!nextPlayer) {
     game.completedPlayers = [];
     if (!game.deck.length) { finishGame(game); return game; }
-    for (let offset = 1; offset <= game.players.length; offset += 1) {
-      const candidate = (game.starterIndex + offset) % game.players.length;
-      if (game.players[candidate].solvent) { game.starterIndex = candidate; break; }
-    }
-    game.activeIndex = game.starterIndex;
+    // Keep the opening seat as the permanent anchor. If it is insolvent,
+    // start with the first surviving seat in the same fixed table order.
+    game.activeIndex = game.players.indexOf(ordered[0]);
     game.stage = 'geography';
     game.phase = 'geography';
     // The opening cycle already has a geographic starting point. Once the
@@ -715,7 +894,15 @@ function createGame(names) {
   const starterIndex = candidates[0];
   const players = descriptors.map((entry, i) => {
     const record = { id: `p${i + 1}`, name: String(entry.name || `Joueur ${i + 1}`), bot: entry.kind === 'ai', pawn: entry.pawn, color: ['#dfb96d', '#55a9e2', '#c2cbd6', '#b18bea', '#e96b6b', '#55b999'][i], difficulty: entry.difficulty, lapStartValue: 100, capitalFlows: 0, lapStartCapitalFlows: 0, cash: 100, zone: null, sectorPosition: 0, jailed: false, prisonStage: -1, prisonWait: false, geoResolved: true, botMarketDone: false, botSectorRolled: false, solvent: true, fundValue: 100 };
-    applyNationality(record, entry.nationality);
+    record.startingMarket = entry.startingMarket;
+    record.zone = entry.startingMarket;
+    const legacyNationality = NATIONALITY_BY_ID.get(entry.nationality);
+    if (legacyNationality) {
+      record.nationality = legacyNationality.id;
+      record.nationalityName = legacyNationality.name;
+      record.nationalityFlag = legacyNationality.flag;
+    }
+    syncPlayerMarkets(record);
     return record;
   });
   const game = {
@@ -724,7 +911,7 @@ function createGame(names) {
     zoneGrades: Object.fromEntries(zones.map(z => [z.id, 'C'])),
     sectorGrades: Object.fromEntries(sectors.map(s => [s.id, 'C'])),
     companies: clone(data.companies || []).map(c => ({ ...c, id: String(c.id), zone: String(c.zone), sector: String(c.sector), holdings: {}, costBasis: {}, available: true })),
-    deck: contextDeck(), currentContext: null, boardEventDeck: shuffle(BOARD_EVENT_CARDS.map(clone)), boardEventDiscard: [], activeIndex: starterIndex, starterIndex, initiative, turnFormat: 'travel-first', rulesVersion: 3, eventTextVersion: 2, cardRulesVersion: 2, nationalityRulesVersion: 1, legacyOpening: false, stage: 'sector', phase: 'sector', cycle: 1, noticeSeq: 0, notices: [], finished: false, winnerIds: [], completedPlayers: [], log: [], started: true
+    deck: contextDeck(), currentContext: null, boardEventDeck: shuffle(BOARD_EVENT_CARDS.map(clone)), boardEventDiscard: [], activeIndex: starterIndex, starterIndex, initiative, turnFormat: 'travel-first', rulesVersion: 3, eventTextVersion: 2, cardRulesVersion: 2, marketRulesVersion: 1, legacyOpening: false, stage: 'sector', phase: 'sector', cycle: 1, noticeSeq: 0, notices: [], finished: false, winnerIds: [], completedPlayers: [], log: [], started: true
   };
   game.log.push(`${game.players[starterIndex].name} ouvre la partie (dé ${initiative[starterIndex]})`);
   game.log.push('Cycle d’ouverture : tous les indices commencent à C, sans carte Contexte.');
@@ -734,6 +921,11 @@ function createGame(names) {
 
 function applyAction(game, playerId, action, payload = {}) {
   if (!game || game.phase === 'finished') fail('La partie est terminée.');
+  if (game.pendingSettlement) {
+    settlementAction(game, playerId, action, payload);
+    game.players.forEach(syncPlayerMarkets);
+    return game;
+  }
   const p = player(game, playerId);
   if (game.players[game.activeIndex].id !== p.id) fail('Ce n’est pas votre tour.');
   if (!p.solvent && action !== 'nextTurn') fail('Ce joueur est insolvable.');
@@ -748,6 +940,14 @@ function applyAction(game, playerId, action, payload = {}) {
     default: fail(`Action inconnue : ${action}`);
   }
   if (!p.solvent && game.phase !== 'finished') game.phase = 'awaitNext';
+  if (game._settlementDebts?.length) {
+    const debts = game._settlementDebts; const order = game._creditorOrder || []; const priorities = game._creditorPriorities || [];
+    delete game._settlementDebts; delete game._creditorOrder; delete game._creditorPriorities;
+    const receiptPayments = (game.notices.at(-1)?.payments || []).filter(payment =>
+      !payment.fromId && payment.toId && payment.companyId && payment.quantity > 0);
+    continueSettlements(game, debts, game.phase, [], order, priorities, null, receiptPayments);
+  }
+  game.players.forEach(syncPlayerMarkets);
   game.stage = game.phase;
   return game;
 }
@@ -755,7 +955,7 @@ function applyAction(game, playerId, action, payload = {}) {
 function publicState(game) {
   // Upgrade old serialized rooms lazily when they are first observed.
   game.players.forEach(item => {
-    if (!item.nationality || !item.nationalityName || !item.nationalityFlag) applyNationality(item, item.nationality, item.zone);
+    syncPlayerMarkets(item);
     if (!game.legacyOpening && (game.cycle || 1) === 1 && !item.jailed) item.geoResolved = true;
     else if (item.geoResolved == null) item.geoResolved = (game.cycle || 1) === 1;
   });

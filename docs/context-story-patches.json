@@ -1,0 +1,1781 @@
+{
+  "basis": "Propositions éditoriales pour les descriptions des 100 cartes Contexte. Les récits décrivent des dynamiques de zone et de secteur; les changements d’indices restent recopiés à l’identique. Scénarios fictifs inspirés de motifs économiques documentés, sans accusation contre une société réelle.",
+  "sources": [
+    {
+      "url": "https://www.ecb.europa.eu/press/key/date/2008/html/sp08121_1.en.html",
+      "topic": "crise financière et liquidité"
+    },
+    {
+      "url": "https://www.iea.org/about/mission/history-of-the-iea",
+      "topic": "choc pétrolier de 1973–1974"
+    },
+    {
+      "url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-operations/",
+      "topic": "choc pandémique et chaîne logistique"
+    },
+    {
+      "url": "https://www.sec.gov/news/press/2008/2008-293.htm",
+      "topic": "fraude d’investissement historique"
+    },
+    {
+      "url": "https://www.societegenerale.com/en/news/newsroom/kerviel-case",
+      "topic": "positions de marché non autorisées"
+    },
+    {
+      "url": "https://competition-policy.ec.europa.eu/antitrust-and-cartels/legislation/application-article-102-tfeu_en",
+      "topic": "régulation de la concurrence"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "title": "Hausse des commandes",
+      "type": "positive",
+      "description": "En Europe, les carnets de commandes se remplissent et les fournisseurs du secteur énergie prolongent leurs équipes.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Relance des infrastructures",
+      "type": "positive",
+      "description": "Des chantiers longtemps bloqués redémarrent en Europe ; les entreprises du secteur industrie réembauchent.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Relance budgétaire",
+      "type": "positive",
+      "description": "Un nouveau budget public est voté en Europe et promet des débouchés aux acteurs du secteur santé.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Découverte énergétique",
+      "type": "positive",
+      "description": "Une découverte de ressources en Asie mobilise les banques qui financent son exploitation.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Rebond manufacturier",
+      "type": "positive",
+      "description": "Les usines d’Océanie rouvrent des lignes de production ; les prêteurs accompagnent leur reprise.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Dynamisme des marchés émergents",
+      "type": "positive",
+      "description": "De nouveaux marchés s’ouvrent en Asie et les investisseurs s’intéressent aux entreprises du secteur santé.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Croissance au-dessus des attentes",
+      "type": "positive",
+      "description": "Les comptes publiés en Océanie surprennent les analystes et relancent les projets du secteur énergie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Percée technologique",
+      "type": "positive",
+      "description": "Un laboratoire d’Asie présente une percée ; les groupes du secteur santé préparent son déploiement.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Accords énergétiques",
+      "type": "positive",
+      "description": "Un accord d’approvisionnement conclu en Europe rassure les financeurs des prochains projets.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Résultats supérieurs aux attentes",
+      "type": "positive",
+      "description": "Les entreprises d’Europe publient de meilleurs comptes ; les sociétés du secteur énergie revoient leurs prévisions.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Accord commercial majeur",
+      "type": "positive",
+      "description": "Un grand accord commercial ouvre des routes en Afrique & Moyen-Orient et facilite l’accès aux produits du secteur santé.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Succès des introductions en bourse",
+      "type": "positive",
+      "description": "De nouvelles sociétés entrent en Bourse en Europe et lèvent des fonds pour leurs activités du secteur santé.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Plan climat ambitieux",
+      "type": "positive",
+      "description": "Un plan climat est annoncé en Europe ; les banques organisent le financement de la transition.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Amélioration du crédit",
+      "type": "positive",
+      "description": "Les banques d’Europe assouplissent le crédit et les entreprises du secteur technologie relancent leurs projets.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Boom des semi-conducteurs",
+      "type": "positive",
+      "description": "Une vague de commandes de composants traverse Océanie et remplit les ateliers du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Accès élargi au financement",
+      "type": "positive",
+      "description": "De nouveaux prêts deviennent accessibles en Afrique & Moyen-Orient et les jeunes entreprises du secteur technologie accélèrent.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Baisse surprise des taux",
+      "type": "positive",
+      "description": "La banque centrale surprend Europe avec une baisse des taux ; les sociétés du secteur technologie révisent leurs plans.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Optimisme des entreprises",
+      "type": "positive",
+      "description": "Les dirigeants d’Europe annoncent davantage d’investissements et réservent des capacités dans le secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Stabilisation des devises",
+      "type": "positive",
+      "description": "Les monnaies se stabilisent en Afrique & Moyen-Orient ; les entreprises du secteur santé peuvent enfin chiffrer leurs contrats.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Cadre réglementaire favorable",
+      "type": "positive",
+      "description": "Un cadre plus lisible est adopté en Europe et les sociétés du secteur santé reprennent des projets suspendus.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Plan d'investissement public",
+      "type": "positive",
+      "description": "L’État lance un programme d’investissement en Europe et commande de nouveaux équipements au secteur énergie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Exportations agricoles dynamiques",
+      "type": "positive",
+      "description": "Les exportateurs agricoles d’Europe signent des contrats ; la demande du secteur énergie suit leur croissance.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Partenariat public-privé",
+      "type": "positive",
+      "description": "Un partenariat public-privé finance de nouveaux sites en Océanie et donne du travail au secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Appétit pour le risque",
+      "type": "positive",
+      "description": "Les investisseurs acceptent davantage de risque en Afrique & Moyen-Orient et soutiennent les paris du secteur technologie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Reprise immobilière",
+      "type": "positive",
+      "description": "Les transactions immobilières repartent en Europe ; les banques renégocient et financent les projets.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "title": "Rebond des matières premières",
+      "type": "positive",
+      "description": "Le prix des matières premières rebondit en Asie et les producteurs du secteur énergie relancent leurs forages.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Rallye boursier",
+      "type": "positive",
+      "description": "Une série d’achats entraîne la Bourse d’Asie ; les valeurs du secteur technologie concentrent les échanges.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Innovation médicale",
+      "type": "positive",
+      "description": "Une avancée médicale est annoncée en Europe ; les banques financent les essais et leur industrialisation.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Amélioration de la confiance",
+      "type": "positive",
+      "description": "Les ménages d’Afrique & Moyen-Orient reprennent confiance et les projets du secteur énergie trouvent de nouveaux clients.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Allègement fiscal",
+      "type": "positive",
+      "description": "Un allègement fiscal entre en vigueur en Océanie et libère des moyens pour les entreprises du secteur énergie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "Reprise du tourisme",
+      "type": "positive",
+      "description": "Les réservations touristiques affluent en Europe ; les services du secteur santé préparent la saison.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "title": "Flux d'investissements entrants",
+      "type": "positive",
+      "description": "Des capitaux étrangers arrivent en Océanie et les banques les orientent vers les entreprises locales.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "title": "Accélération des exportations",
+      "type": "positive",
+      "description": "Les exportateurs d’Afrique & Moyen-Orient remplissent leurs carnets ; les usines du secteur industrie augmentent leurs cadences.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "title": "Records de productivité",
+      "type": "positive",
+      "description": "Les ateliers d’Océanie produisent davantage avec les mêmes moyens et les groupes du secteur industrie investissent.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "title": "Rebond industriel",
+      "type": "positive",
+      "description": "Des chaînes de production redémarrent en Amériques, entraînant une nouvelle demande adressée au secteur énergie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "title": "Pénurie d'énergie",
+      "type": "negative",
+      "description": "Une pénurie d’électricité interrompt des sites en Europe et prive les entreprises du secteur technologie de capacité.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "title": "Récession technique",
+      "type": "negative",
+      "description": "Deux trimestres de contraction sont annoncés en Afrique & Moyen-Orient ; les commandes du secteur énergie sont reportées.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "title": "Crise industrielle",
+      "type": "negative",
+      "description": "Plusieurs usines ferment temporairement en Asie et la demande adressée au secteur énergie se grippe.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "title": "Détérioration du crédit",
+      "type": "negative",
+      "description": "Les défauts de paiement augmentent en Asie ; les banques resserrent leurs critères de crédit.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "title": "Pénuries alimentaires",
+      "type": "negative",
+      "description": "Les récoltes manquent en Afrique & Moyen-Orient ; les banques provisionnent les prêts des distributeurs fragilisés.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "title": "Effondrement sectoriel",
+      "type": "negative",
+      "description": "Une série de mauvais résultats secoue Afrique & Moyen-Orient et les investisseurs désertent les valeurs du secteur technologie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "title": "Crise climatique aiguë",
+      "type": "negative",
+      "description": "Des dégâts climatiques frappent Afrique & Moyen-Orient et interrompent des infrastructures indispensables au secteur technologie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "title": "Inflation persistante",
+      "type": "negative",
+      "description": "Les coûts de production montent en Afrique & Moyen-Orient ; les industriels du secteur industrie réduisent leurs marges.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Régime de change instable",
+      "type": "negative",
+      "description": "Une forte instabilité monétaire renchérit les importations en Europe et les achats des groupes du secteur santé.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "title": "Dérive réglementaire",
+      "type": "negative",
+      "description": "Un changement imprévu des règles en Amériques inquiète les banques et retarde leurs financements.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Fuite des capitaux",
+      "type": "negative",
+      "description": "Des investisseurs retirent leurs capitaux d’Europe et les projets du secteur énergie cherchent des fonds.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "title": "Crise immobilière",
+      "type": "negative",
+      "description": "Les ventes immobilières se figent en Asie ; les entreprises du secteur technologie repoussent leurs investissements.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "title": "Rupture logistique",
+      "type": "negative",
+      "description": "Des ports saturés retardent les livraisons en Asie et désorganisent les chaînes du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "title": "Mauvais résultats",
+      "type": "negative",
+      "description": "Les comptes publiés en Amériques déçoivent ; les groupes du secteur santé abaissent leurs objectifs.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "title": "Rappel massif de produits",
+      "type": "negative",
+      "description": "Un défaut découvert après livraison impose des rappels en Asie et arrête des lignes du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "title": "Dérive des coûts",
+      "type": "negative",
+      "description": "Les factures d’énergie et de transport gonflent en Océanie ; les marges du secteur industrie s’érodent.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "title": "Retrait des investisseurs",
+      "type": "negative",
+      "description": "Les grands fonds quittent Asie et les banques doivent trouver de nouveaux prêteurs.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "title": "Changement politique brusque",
+      "type": "negative",
+      "description": "Un changement politique soudain suspend des projets en Océanie et inquiète les producteurs du secteur énergie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "title": "Stress de liquidité",
+      "type": "negative",
+      "description": "Les banques d’Océanie peinent à se refinancer et réduisent brutalement leurs nouveaux prêts.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "title": "Confiance en berne",
+      "type": "negative",
+      "description": "Les enquêtes de confiance se dégradent en Europe ; les clients du secteur technologie reportent leurs achats.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "title": "Déficit budgétaire record",
+      "type": "negative",
+      "description": "Le déficit public atteint un record en Amériques et le financement des projets du secteur énergie devient incertain.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "title": "Hausse des taux brutale",
+      "type": "negative",
+      "description": "Une hausse brutale des taux renchérit le crédit en Amériques et pèse sur les usines du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "title": "Sanctions économiques",
+      "type": "negative",
+      "description": "De nouvelles sanctions coupent des circuits de paiement en Amériques et compliquent le travail des banques.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "title": "Choc pétrolier",
+      "type": "negative",
+      "description": "La flambée du pétrole alourdit les coûts en Europe et réduit les budgets disponibles pour le secteur technologie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "title": "Faillite bancaire",
+      "type": "negative",
+      "description": "Une banque importante vacille en Océanie ; les entreprises du secteur technologie cherchent d’urgence d’autres prêteurs.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "title": "Guerre commerciale",
+      "type": "negative",
+      "description": "Des droits de douane apparaissent en Europe et ferment des débouchés aux entreprises du secteur technologie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "title": "Chute des devises",
+      "type": "negative",
+      "description": "Une chute des devises renchérit les machines importées en Asie et bloque des usines du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "title": "Grève générale",
+      "type": "negative",
+      "description": "Une grève générale interrompt les transports en Asie et immobilise les chaînes du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "title": "Affaiblissement des exportations",
+      "type": "negative",
+      "description": "Les commandes étrangères se raréfient en Océanie ; les entreprises du secteur santé revoient leurs budgets.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "title": "Échec de négociations",
+      "type": "negative",
+      "description": "Des négociations commerciales échouent en Amériques et les industriels du secteur industrie perdent des contrats.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "title": "Cyberattaque systémique",
+      "type": "negative",
+      "description": "Une cyberattaque paralyse des réseaux en Asie et bloque des usines du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "title": "Krach boursier",
+      "type": "negative",
+      "description": "Une vague de ventes panique les opérateurs en Océanie ; même les valeurs du secteur santé sont entraînées.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "title": "Désordre politique",
+      "type": "negative",
+      "description": "Une crise politique brouille les prévisions en Océanie et retarde les investissements du secteur industrie.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "title": "Crise de la dette",
+      "type": "negative",
+      "description": "La dette publique inquiète les créanciers d’Océanie et les groupes du secteur industrie paient leur crédit plus cher.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "title": "Volatilité extrême",
+      "type": "negative",
+      "description": "Des ordres contradictoires secouent les places d’Afrique & Moyen-Orient et les producteurs du secteur énergie hésitent à investir.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "title": "Flux commerciaux stables",
+      "type": "neutral",
+      "description": "Les flux commerciaux se normalisent en Océanie et les entreprises du secteur énergie ajustent leurs stocks.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "title": "Marchés prudents",
+      "type": "neutral",
+      "description": "Les investisseurs observent les prochaines statistiques d’Asie avant de se positionner dans le secteur santé.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "title": "Volatilité contenue",
+      "type": "neutral",
+      "description": "Les séances deviennent moins agitées en Europe et les sociétés du secteur technologie retrouvent de la visibilité.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "title": "Rééquilibrage régional",
+      "type": "neutral",
+      "description": "Les portefeuilles se rééquilibrent en Afrique & Moyen-Orient ; les banques revoient leurs allocations de prêts.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "title": "Transition ordonnée",
+      "type": "neutral",
+      "description": "Une transition économique progresse sans heurt en Afrique & Moyen-Orient et les usines du secteur industrie adaptent leur calendrier.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "title": "Stabilisation des marchés",
+      "type": "neutral",
+      "description": "Après plusieurs séances tendues, les échanges se calment en Afrique & Moyen-Orient et les banques rouvrent leurs guichets.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "title": "Pause réglementaire",
+      "type": "neutral",
+      "description": "Les autorités marquent une pause réglementaire en Asie ; les producteurs du secteur énergie attendent les arbitrages.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "title": "Indicateurs contrastés",
+      "type": "neutral",
+      "description": "Des indicateurs opposés arrivent d’Amériques ; les banques attendent des données plus nettes.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "title": "Attentisme monétaire",
+      "type": "neutral",
+      "description": "La banque centrale diffère sa décision en Amériques ; les prêteurs gardent leurs conditions actuelles.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "title": "Neutralité budgétaire",
+      "type": "neutral",
+      "description": "Un budget sans surprise est adopté en Océanie et les usines du secteur industrie poursuivent leurs plans.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "title": "Détournement de fonds",
+      "type": "prison",
+      "description": "Scénario fictif inspiré des fraudes à la Ponzi révélées dans l’histoire financière : des flux clients inexpliqués déclenchent une enquête en Asie.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "title": "Opérations fictives",
+      "type": "prison",
+      "description": "Des créances sans activité économique identifiable apparaissent dans un dossier fictif de Amériques ; les auditeurs demandent des justificatifs.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "title": "Fuite d'informations confidentielles",
+      "type": "prison",
+      "description": "Un scénario fictif de fuite d’informations avant une annonce officielle conduit les autorités de Afrique & Moyen-Orient à examiner les contrôles de marché.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "title": "Soupçons d'abus de marché",
+      "type": "prison",
+      "description": "Des transactions anticipent une annonce publique en Amériques ; les autorités vérifient si les règles de marché ont été respectées.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "title": "Perte dissimulée",
+      "type": "prison",
+      "description": "Dans un cas fictif, une perte jusque-là mal documentée est réexaminée par les auditeurs d’un établissement de Amériques.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "title": "Conflit d'intérêts",
+      "type": "prison",
+      "description": "Un examen fictif de gouvernance en Afrique & Moyen-Orient met l’accent sur les conflits d’intérêts dans l’attribution de contrats.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "title": "Manipulation de marché présumée",
+      "type": "prison",
+      "description": "Des ordres coordonnés anormaux font l’objet d’une enquête fictive sur une place de Asie ; les contrôles de marché sont renforcés.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "title": "Enquête pour délit d'initié",
+      "type": "prison",
+      "description": "Des opérations réalisées avant une annonce sensible sont examinées dans un scénario fictif de délit d’initié en Amériques.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "title": "Fraude comptable révélée",
+      "type": "prison",
+      "description": "Des écarts entre pièces justificatives et écritures comptables sont découverts dans un dossier fictif de Océanie.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "title": "Blanchiment présumé",
+      "type": "prison",
+      "description": "Un scénario fictif de blanchiment conduit les autorités de Océanie à renforcer la traçabilité des paiements.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "title": "Démantèlement d'un conglomérat",
+      "type": "regulation",
+      "description": "Une étude de marché sur santé relance le débat sur la séparation d’activités dominantes.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "title": "Supervision accrue des monopoles",
+      "type": "regulation",
+      "description": "Les autorités publient une revue générale de la concurrence dans le secteur santé ; les marchés évaluent les coûts possibles de conformité.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "title": "Examen de concentration",
+      "type": "regulation",
+      "description": "Un projet de fusion dans le secteur technologie fait l’objet d’un examen réglementaire, comme dans les procédures de concentration historiques.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "title": "Garde-fous sectoriels",
+      "type": "regulation",
+      "description": "Après plusieurs crises sectorielles, de nouveaux contrôles sont proposés pour le secteur énergie.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "title": "Encadrement des acquisitions",
+      "type": "regulation",
+      "description": "Les autorités précisent les critères d’examen des acquisitions dans le secteur finance, ajoutant de l’incertitude aux projets en cours.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "title": "Durcissement des règles concurrentielles",
+      "type": "regulation",
+      "description": "Une réforme fictive durcit l’application du droit de la concurrence dans le secteur santé et pousse les acteurs à revoir leurs contrats.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "title": "Contrôle des prix",
+      "type": "regulation",
+      "description": "Un dispositif temporaire de contrôle des prix est débattu pour le secteur santé, ravivant le débat sur la protection des consommateurs.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "title": "Limitation des positions dominantes",
+      "type": "regulation",
+      "description": "Les régulateurs examinent des limites de détention dans le secteur industrie afin de réduire les risques de concentration.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "title": "Action antitrust renforcée",
+      "type": "regulation",
+      "description": "Une enquête sectorielle fictive sur finance vérifie les pratiques commerciales et les barrières à l’entrée.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "title": "Surveillance des plateformes",
+      "type": "regulation",
+      "description": "Une consultation réglementaire sur les plateformes du secteur énergie demande davantage de transparence sur l’accès au marché.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 export type Grade = "A" | "B" | "C" | "D" | "E";
 export { default as NATIONALITIES } from "./nationalities.json";
 export type ZoneId = "americas" | "europe" | "asia" | "africa" | "oceania";
+export { MARKET_IDS, isMarketId, marketFromLegacyNationality, legacyStartingMarket, diversifyStartingMarkets } from "./markets.js";
 export type SectorId =
   | "technology"
   | "finance"
@@ -18,6 +19,7 @@ export type Phase =
   | "geography"
   | "sector"
   | "market"
+  | "settlement"
   | "awaitNext"
   | "finished";
 export interface MarketEntry {
@@ -27,7 +29,9 @@ export interface MarketEntry {
 export interface SeatConfig {
   name: string;
   kind: SlotKind;
-  nationality: string;
+  startingMarket: ZoneId;
+  /** Accepted only when adapting requests from an older client. */
+  nationality?: string;
   pawn: PawnId;
   difficulty: Difficulty;
 }
@@ -37,12 +41,16 @@ export interface Player {
   bot: boolean;
   pawn: PawnId;
   color: string;
-  nationality: string;
-  nationalityName: string;
-  nationalityFlag: string;
+  startingMarket: ZoneId;
+  currentMarket: ZoneId | null;
+  /** Historical save fields, retained only when they already exist. */
+  nationality?: string;
+  nationalityName?: string;
+  nationalityFlag?: string;
   cash: number;
   fundValue: number;
   valuation?: number;
+  /** Legacy engine location, synchronized with currentMarket; "prison" is not a market. */
   zone: string | null;
   sectorPosition: number;
   position?: number;
@@ -77,6 +85,16 @@ export interface Company {
   averageBuyPrice: Record<string, number | null>;
   source?: string;
   ticker?: string;
+  country?: string;
+  logoPath?: string;
+  logoSource?: string;
+  catalogVersion?: number;
+  /** Approximate real-world scale, documented separately from normalized game prices. */
+  marketCapUSD?: number;
+  marketCapAsOf?: string | null;
+  marketCapSource?: string;
+  capCategory?: "small" | "medium" | "large";
+  economyVersion?: number;
 }
 export interface BoardCell {
   kind: "start" | "sector" | "event" | "market";
@@ -99,6 +117,8 @@ export interface Payment {
   perShare?: number;
   amount: number;
   reason?: string;
+  /** Obligation announced but not yet funded; amount contains only executed cash. */
+  dueAmount?: number;
   forcedSales?: ForcedSale[];
 }
 export interface ForcedSale {
@@ -107,6 +127,54 @@ export interface ForcedSale {
   quantity: number;
   amount?: number;
   perShare?: number;
+}
+/** Server-valued asset. cashDelta = debt - assets value; negative means creditor pays. */
+export interface SettlementAsset {
+  companyId: string;
+  companyName?: string;
+  quantity: number;
+  perShare: number;
+  value: number;
+}
+export interface SettlementDebt {
+  debtorId: string;
+  creditorId: string | null;
+  amount: number;
+  reason: string;
+  sectorId?: string;
+  sectorLabel?: string;
+  items?: Payment[];
+}
+export interface SettlementResult extends SettlementDebt {
+  cashAmount: number;
+  assets: SettlementAsset[];
+  marketSales: ForcedSale[];
+  unpaidAmount?: number;
+  cycle?: number;
+}
+/** Saved presentation baseline; never used to validate or price a transaction. */
+export interface SettlementSnapshot {
+  grades: { zone: Record<string, Grade>; sector: Record<string, Grade> };
+  companies: Record<string, { price: number; available: boolean; holdings: Record<string, number> }>;
+  players: Record<string, { cash: number; valuation: number; jailed: boolean; shares: Record<string, number> }>;
+}
+export interface PendingSettlement extends SettlementDebt {
+  id: number;
+  remainingAmount: number;
+  resumePhase: Phase;
+  decisionActorId: string;
+  status: "selectAssets" | "awaitingCreditor";
+  offer?: { assets: SettlementAsset[]; value: number; cashDelta: number };
+  debts: SettlementDebt[];
+  completed: SettlementResult[];
+  creditorOrder: string[];
+  creditorPriorities?: { playerId: string; value: number }[];
+  priorityMetric?: "fundValue" | "cash";
+  marketSales?: ForcedSale[];
+  marketOnly?: boolean;
+  receiptBefore?: SettlementSnapshot;
+  /** Bank share incomes already executed before a deferred decision. */
+  receiptPayments?: Payment[];
 }
 export interface PlayerImpact {
   playerId: string;
@@ -161,6 +229,10 @@ export interface GameNotice {
   targetedSector?: string;
   targetedZone?: string;
   cardId?: string;
+  settlement?: SettlementResult;
+  /** Final receipt for every debt of one operation, including cash and asset legs. */
+  settlements?: SettlementResult[];
+  obligations?: SettlementDebt[];
 }
 export interface ContextCard {
   id: number | string;
@@ -203,6 +275,7 @@ export interface GameView {
   cycle: number;
   activeIndex: number;
   activePlayerId: string;
+  /** Fixed seat-order anchor; insolvent seats are skipped without rotating it. */
   starterIndex: number;
   initiative: number[];
   completedPlayers: string[];
@@ -215,6 +288,8 @@ export interface GameView {
   log: string[];
   finished: boolean;
   winnerIds: string[];
+  pendingSettlement?: PendingSettlement | null;
+  settlementHistory?: SettlementResult[];
 }
 export interface GameState
   extends Omit<
@@ -230,9 +305,12 @@ export interface GameState
   eventTextVersion?: number;
   cardRulesVersion?: number;
   nationalityRulesVersion?: number;
+  marketRulesVersion?: number;
   started?: boolean;
 }
 export type GameCommand =
+  | { type: "LIQUIDATE_ASSETS" | "PROPOSE_SETTLEMENT"; assets: { companyId: string; quantity: number }[] }
+  | { type: "ACCEPT_SETTLEMENT" | "REJECT_SETTLEMENT" | "REQUIRE_CASH" }
   | { type: "STAY" }
   | { type: "MOVE"; zoneId: string }
   | { type: "ROLL" }
@@ -246,7 +324,9 @@ export interface RoomPlayer {
   kind: SlotKind;
   bot: boolean;
   pawn: PawnId;
-  nationality: string;
+  startingMarket: ZoneId;
+  /** Historical save field / old client protocol. */
+  nationality?: string;
   difficulty: Difficulty;
   color: string;
   ready: boolean;

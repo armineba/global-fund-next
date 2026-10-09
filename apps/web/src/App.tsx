@@ -1,35 +1,34 @@
-import { lazy, Suspense, useEffect, useState, type FormEvent } from "react";
+import Game from "./game/GameWorld";
+import MainMenu from "./game/MainMenu";
+import Pawn from "./game/Pawn";
+import Chat from "./game/Chat";
+import StartingMarketPicker from "./game/StartingMarketPicker";
+import { MARKET_PLACES } from "./game/marketPlaceVisuals";
+import { usePresentationSettings, setPresentationSettings } from "./presentation/settings";
+import "./game/game-world.css";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
   ArrowRight,
   Check,
   Copy,
-  Crown,
-  Dice5,
   Globe2,
-  Landmark,
-  Leaf,
-  Gem,
-  TrendingUp,
   Volume2,
   VolumeX,
   Settings2,
   X,
-  Radio,
-  Plane,
-  Shield,
   Wifi,
   ChevronRight,
-  ArrowUpRight,
   Users,
 } from "lucide-react";
 import {
   PAWNS,
-  NATIONALITIES,
+  diversifyStartingMarkets,
   type GameCommand,
   type GameView,
   type PawnId,
   type RoomView,
   type SeatConfig,
+  type ZoneId,
 } from "@global-fund/shared";
 import { formatMoney } from "@global-fund/ui";
 const BoardScene = lazy(() => import("./board/BoardScene"));
@@ -44,66 +43,13 @@ import {
 } from "./presentation/audio";
 import { useGameStore, createRoom, joinRoom, request, command } from "./store";
 import { useDialogFocus } from "./presentation/useDialogFocus";
+import { loadSetupDraft, saveSetupDraft } from "./setupDraft";
 
-const pawnIcons = {
-  lion: Crown,
-  bull: TrendingUp,
-  globe: Globe2,
-  crystal: Gem,
-  tower: Landmark,
-  leaf: Leaf,
-};
-const defaults: SeatConfig[] = [
-  {
-    name: "Apex Capital",
-    kind: "local",
-    nationality: "france",
-    pawn: "lion",
-    difficulty: "normal",
-  },
-  {
-    name: "Meridian Fund",
-    kind: "ai",
-    nationality: "united-states",
-    pawn: "bull",
-    difficulty: "normal",
-  },
+const diversifiedMarkets: ZoneId[] = [
+  "europe", "americas", "asia", "africa", "oceania", "europe",
 ];
-const nationDefaults = [
-  "france",
-  "united-states",
-  "china",
-  "nigeria",
-  "australia",
-  "brazil",
-];
-const zoneNames: Record<string, string> = {
-  americas: "Amériques",
-  europe: "Europe",
-  asia: "Asie",
-  africa: "Afrique & Moyen-Orient",
-  oceania: "Océanie",
-};
-const nation = (id: string) =>
-  NATIONALITIES.find((n) => n.id === id) ?? NATIONALITIES[0];
-const reduced = () =>
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-function Pawn({ id, color }: { id: PawnId; color?: string }) {
-  const Icon = pawnIcons[id] ?? Globe2;
-  const [failed, setFailed] = useState(false);
-  return (
-    <span className={`pawn-object pawn-${id}`} style={{ color }}>
-      {!failed && (
-        <img
-          src={`/assets/pawns/${id}.png`}
-          alt=""
-          onError={() => setFailed(true)}
-        />
-      )}
-      <Icon aria-hidden="true" className={failed ? "" : "pawn-fallback"} />
-    </span>
-  );
-}
+const marketName = (id: ZoneId) =>
+  MARKET_PLACES.find((place) => place.id === id)?.name ?? "Europe";
 function Brand() {
   return (
     <div className="brand">
@@ -120,36 +66,54 @@ function Brand() {
   );
 }
 
-function Home() {
-  const [seats, setSeats] = useState<SeatConfig[]>(defaults);
-  const [join, setJoin] = useState(
-    new URLSearchParams(location.search).get("room") || "",
-  );
-  const [name, setName] = useState("");
-  const [nationality, setNationality] = useState("france");
-  const [joinPawn, setJoinPawn] = useState<PawnId>("globe");
+function Home({ mode, onBack, onMode }: { mode: "create" | "join"; onBack: () => void; onMode: (mode: "create" | "join") => void }) {
+  const [initialDraft] = useState(() => {
+    const draft = loadSetupDraft();
+    const invitation = new URLSearchParams(location.search).get("room");
+    return invitation ? { ...draft, join: invitation.slice(0, 8) } : draft;
+  });
+  const [allSeats, setAllSeats] = useState<SeatConfig[]>(initialDraft.seats);
+  const [seatCount, setSeatCount] = useState(initialDraft.seatCount);
+  const seats = allSeats.slice(0, seatCount);
+  const [join, setJoin] = useState(initialDraft.join);
+  const [name, setName] = useState(initialDraft.name);
+  const [startingMarket, setStartingMarket] = useState<ZoneId>(initialDraft.startingMarket);
+  const [joinPawn, setJoinPawn] = useState<PawnId>(initialDraft.joinPawn);
+  const [createStep, setCreateStep] = useState<"funds" | "markets">(initialDraft.createStep);
+  const [activeHuman, setActiveHuman] = useState(initialDraft.activeHuman);
   const pending = useGameStore((s) => s.pending);
   const connected = useGameStore((s) => s.connected);
+  useEffect(() => {
+    saveSetupDraft({ seats: allSeats, seatCount, createStep, activeHuman, join, name, startingMarket, joinPawn });
+  }, [allSeats, seatCount, createStep, activeHuman, join, name, startingMarket, joinPawn]);
   const update = (index: number, patch: Partial<SeatConfig>) =>
-    setSeats((current) =>
+    setAllSeats((current) =>
       current.map((seat, i) => (i === index ? { ...seat, ...patch } : seat)),
     );
-  const resize = (count: number) =>
-    setSeats((current) =>
-      Array.from(
-        { length: count },
-        (_, i) =>
-          current[i] || {
+  const resize = (count: number) => {
+    setAllSeats((current) => Array.from(
+      { length: Math.max(count, current.length) },
+      (_, i) => current[i] || {
             name: `Fonds ${i + 1}`,
             kind: "ai",
-            nationality: nationDefaults[i],
+            startingMarket: diversifiedMarkets[i],
             pawn: PAWNS[i].id,
             difficulty: "normal",
           },
-      ),
-    );
+    ));
+    setSeatCount(count);
+  };
+  const plannedSeats = diversifyStartingMarkets(seats);
+  const humanSeats = seats.flatMap((seat, index) =>
+    seat.kind === "ai" ? [] : [{ seat, index }],
+  );
+  const activeHumanIndex = humanSeats.some(({ index }) => index === activeHuman)
+    ? activeHuman
+    : (humanSeats[0]?.index ?? 0);
+  const activeHumanSeat = seats[activeHumanIndex];
   return (
-    <main className="home-scene">
+    <main className={`home-scene home-${mode}`}>
+      <button className="setup-back outline-button" onClick={onBack}>← Retour au menu</button>
       <div className="home-art" />
       <section className="home-story">
         <span className="eyebrow">
@@ -186,33 +150,35 @@ function Home() {
         </div>
       </section>
       <section className="setup-console">
-        <div className="console-heading">
-          <div>
-            <span className="eyebrow">OUVERTURE DE SÉANCE</span>
-            <h2>Réunissez les investisseurs.</h2>
+        <div className="creation-controls">
+          <div className="console-heading">
+            <div>
+              <span className="eyebrow">
+                {createStep === "funds" ? "ÉTAPE 1/2 · CONFIGURATION" : "ÉTAPE 2/2 · IMPLANTATION"}
+              </span>
+              <h2>{createStep === "funds" ? "Configurez les fonds." : "Choisissez les places financières."}</h2>
+            </div>
+            <Users />
           </div>
-          <Users />
-        </div>
-        <p className="muted">
-          Sur cet écran, à distance ou contre des IA. Votre salon accepte les
-          trois.
-        </p>
-        <label className="seat-count">
-          Places à la table{" "}
-          <select
-            aria-label="Nombre de joueurs"
-            value={seats.length}
-            onChange={(e) => resize(Number(e.target.value))}
-          >
-            {[2, 3, 4, 5, 6].map((n) => (
-              <option key={n} value={n}>
-                {n} investisseurs
-              </option>
-            ))}
-          </select>
-        </label>
-        <div className="setup-seats">
-          {seats.map((seat, index) => (
+          {createStep === "funds" ? (
+            <div className="fund-setup-step" data-testid="setup-step-funds">
+              <p className="muted">
+                De 2 à 6 fonds humains ou IA. Réglez leurs noms, pions et difficultés.
+              </p>
+              <label className="seat-count">
+                Places à la table{" "}
+                <select
+                  aria-label="Nombre de joueurs"
+                  value={seats.length}
+                  onChange={(e) => resize(Number(e.target.value))}
+                >
+                  {[2, 3, 4, 5, 6].map((n) => (
+                    <option key={n} value={n}>{n} investisseurs</option>
+                  ))}
+                </select>
+              </label>
+              <div className="setup-seats">
+                {seats.map((seat, index) => (
             <article className="setup-seat" key={index}>
               <div className="seat-number">0{index + 1}</div>
               <div className="seat-config">
@@ -238,21 +204,8 @@ function Home() {
                     <option value="ai">IA</option>
                   </select>
                 </div>
-                <div className="seat-second-line">
-                  <select
-                    aria-label={`Nationalité du joueur ${index + 1}`}
-                    value={seat.nationality}
-                    onChange={(e) =>
-                      update(index, { nationality: e.target.value })
-                    }
-                  >
-                    {NATIONALITIES.map((n) => (
-                      <option key={n.id} value={n.id}>
-                        {n.flag} {n.name} · {zoneNames[n.zoneId]}
-                      </option>
-                    ))}
-                  </select>
-                  {seat.kind === "ai" && (
+                {seat.kind === "ai" && (
+                  <div className="seat-second-line">
                     <select
                       aria-label={`Difficulté de l’IA ${index + 1}`}
                       value={seat.difficulty}
@@ -267,8 +220,8 @@ function Home() {
                       <option value="normal">Stratège</option>
                       <option value="hard">Experte</option>
                     </select>
-                  )}
-                </div>
+                  </div>
+                )}
                 <div
                   className="pawn-picker"
                   role="radiogroup"
@@ -291,23 +244,68 @@ function Home() {
                 </div>
               </div>
             </article>
-          ))}
+                ))}
+              </div>
+              <button
+                className="gold-button start-button"
+                disabled={pending || !connected || seats.some((s) => !s.name.trim())}
+                onClick={() => setCreateStep("markets")}
+              >
+                Choisir les places financières <ArrowRight size={18} />
+              </button>
+            </div>
+          ) : (
+            <div className="market-setup-step" data-testid="setup-step-markets">
+              <div className="market-player-tabs" role="group" aria-label="Fonds humains">
+                {humanSeats.map(({ seat, index }) => (
+                  <button
+                    key={index}
+                    type="button"
+                    data-testid={`market-player-tab-${index}`}
+                    aria-pressed={activeHumanIndex === index}
+                    className={activeHumanIndex === index ? "is-active" : ""}
+                    onClick={() => setActiveHuman(index)}
+                  >
+                    <span>FONDS 0{index + 1}</span>{seat.name || `Fonds ${index + 1}`}
+                  </button>
+                ))}
+              </div>
+              {activeHumanSeat && (
+                <StartingMarketPicker
+                  value={activeHumanSeat.startingMarket}
+                  label={`Place de marché de ${activeHumanSeat.name || `Fonds ${activeHumanIndex + 1}`}`}
+                  onChange={(startingMarket) => update(activeHumanIndex, { startingMarket })}
+                />
+              )}
+              {seats.some((seat) => seat.kind === "ai") && (
+                <div className="automatic-markets" aria-label="Implantations automatiques des IA">
+                  <span>IMPLANTATIONS IA AUTOMATIQUES</span>
+                  {plannedSeats.flatMap((seat, index) => seat.kind === "ai" ? (
+                    <small key={index}>{seat.name} · {marketName(seat.startingMarket)}</small>
+                  ) : [])}
+                </div>
+              )}
+              <div className="market-step-actions">
+                <button type="button" className="outline-button" onClick={() => setCreateStep("funds")}>← Configuration des fonds</button>
+                <button
+                  className="gold-button start-button"
+                  disabled={pending || !connected || seats.some((s) => !s.name.trim())}
+                  onClick={() => void createRoom(plannedSeats)}
+                >
+                  Créer ma partie <ArrowRight size={18} />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-        <button
-          className="gold-button start-button"
-          disabled={pending || !connected || seats.some((s) => !s.name.trim())}
-          onClick={() => void createRoom(seats)}
-        >
-          Créer ma partie <ArrowRight size={18} />
-        </button>
-        <div className="join-divider">
-          <span>INVITATION PRIVÉE</span>
+        {mode === "join" && <><div className="join-divider">
+          <span>REJOINDRE UN SALON PRIVÉ</span>
         </div>
         <form
           className="join-form"
           onSubmit={(e) => {
             e.preventDefault();
-            void joinRoom(join, name, nationality, joinPawn);
+            void joinRoom(join, name, startingMarket, joinPawn);
           }}
         >
           <input
@@ -324,17 +322,11 @@ function Home() {
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <select
-            aria-label="Nationalité pour rejoindre"
-            value={nationality}
-            onChange={(e) => setNationality(e.target.value)}
-          >
-            {NATIONALITIES.map((n) => (
-              <option key={n.id} value={n.id}>
-                {n.flag} {n.name}
-              </option>
-            ))}
-          </select>
+          <StartingMarketPicker
+            value={startingMarket}
+            label="Choisissez votre place de marché"
+            onChange={setStartingMarket}
+          />
           <select
             aria-label="Pion pour rejoindre"
             value={joinPawn}
@@ -352,51 +344,10 @@ function Home() {
           >
             Rejoindre <ChevronRight size={15} />
           </button>
-        </form>
+        </form></>}
+        <button className="setup-switch" onClick={() => onMode(mode === "create" ? "join" : "create")}>{mode === "create" ? "J’ai déjà un code d’invitation →" : "Créer une nouvelle partie →"}</button>
       </section>
     </main>
-  );
-}
-
-function Chat({ room }: { room: RoomView }) {
-  const [text, setText] = useState("");
-  const submit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!text.trim()) return;
-    void request("room:chat", { roomId: room.roomId, text });
-    setText("");
-  };
-  return (
-    <section className="chat-panel">
-      <div className="panel-title">
-        <span>CHAT DU SALON</span>
-        <Radio size={13} />
-      </div>
-      <div className="chat-messages" aria-live="polite">
-        {room.messages.length ? (
-          room.messages.slice(-12).map((m) => (
-            <p key={m.id}>
-              <b>{m.name}</b>
-              <span>{m.text}</span>
-            </p>
-          ))
-        ) : (
-          <p className="muted">Votre table est prête à discuter.</p>
-        )}
-      </div>
-      <form onSubmit={submit}>
-        <input
-          aria-label="Message du salon"
-          placeholder="Écrire au salon…"
-          value={text}
-          maxLength={500}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button aria-label="Envoyer le message">
-          <ArrowUpRight size={17} />
-        </button>
-      </form>
-    </section>
   );
 }
 
@@ -421,8 +372,8 @@ function Lobby({ room }: { room: RoomView }) {
           <span className="eyebrow">SALON PRIVÉ · PRÉPARATION DU PARQUET</span>
           <h1>Le capital vous attend.</h1>
           <p className="muted">
-            Chaque fonds débute sur son marché national. L’implantation initiale
-            est gratuite.
+            Chaque fonds choisit sa place de marché initiale. L’implantation de
+            départ est gratuite.
           </p>
         </div>
         <div className="room-code">
@@ -454,11 +405,9 @@ function Lobby({ room }: { room: RoomView }) {
                 </div>
                 <Pawn id={p.pawn} color={p.color} />
                 <h3>{p.name}</h3>
-                <p>
-                  {nation(p.nationality).flag} {nation(p.nationality).name}
-                </p>
+                <p>{marketName(p.startingMarket)}</p>
                 <small>
-                  Marché de départ · {zoneNames[nation(p.nationality).zoneId]}
+                  Départ · {MARKET_PLACES.find((place) => place.id === p.startingMarket)?.city}
                 </small>
                 <div className="lobby-player-status">
                   <i className={p.ready ? "ready-dot" : ""} />
@@ -537,457 +486,10 @@ function Lobby({ room }: { room: RoomView }) {
   );
 }
 
-function Geography({
-  game,
-  onCommand,
-}: {
-  game: GameView;
-  onCommand: (c: GameCommand) => void;
-}) {
-  const dialog = useDialogFocus();
-  const player = game.players.find((p) => p.id === game.activePlayerId)!;
-  const [destination, setDestination] = useState(
-    game.zones.find((z) => z.id !== player.zone)?.id ?? "",
-  );
-  return (
-    <div
-      className="decision-backdrop"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="destination-title"
-    >
-      <section
-        ref={dialog}
-        tabIndex={-1}
-        className={`geography-scene ${player.jailed ? "justice-scene" : ""}`}
-      >
-        <div className="geography-art">
-          <div className="boarding-sign">
-            <span>GLOBAL FUND · {player.name}</span>
-            <b>
-              {player.jailed ? "AUDIENCE FINANCIÈRE" : "DÉPARTS INTERNATIONAUX"}
-            </b>
-            <small>CYCLE {game.cycle} · ACTION REQUISE</small>
-          </div>
-          {player.jailed ? <Shield size={76} /> : <Plane size={76} />}
-        </div>
-        <div className="geography-controls">
-          <span className="eyebrow">
-            {player.jailed
-              ? "JUSTICE & CONFORMITÉ"
-              : "IMPLANTATION · AVANT LE DÉ"}
-          </span>
-          <h2 id="destination-title">
-            {player.jailed
-              ? "Votre procès vous attend."
-              : "Où investirez-vous ?"}
-          </h2>
-          <p>
-            {player.jailed
-              ? "Vos participations restent valorisées, mais vos échanges et vos revenus sont suspendus. Le dé du procès décide de votre libération."
-              : `Votre fonds se trouve en ${zoneNames[player.zone ?? ""]}. Choisissez votre place de marché avant le lancer de dé.`}
-          </p>
-          {player.jailed ? (
-            <button
-              className="gold-button"
-              onClick={() => onCommand({ type: "PRISON_ROLL" })}
-            >
-              Lancer le dé du procès <Dice5 />
-            </button>
-          ) : (
-            <>
-              <button
-                className="stay-button"
-                onClick={() => onCommand({ type: "STAY" })}
-                autoFocus
-              >
-                <span>
-                  Rester en {zoneNames[player.zone ?? ""]}
-                  <small>Conserver votre marché actuel</small>
-                </span>
-                <b>0 M€</b>
-              </button>
-              <div className="destination-grid">
-                {game.zones
-                  .filter((z) => z.id !== player.zone)
-                  .map((z) => (
-                    <button
-                      key={z.id}
-                      role="radio"
-                      aria-checked={destination === z.id}
-                      className={destination === z.id ? "selected" : ""}
-                      onClick={() => setDestination(z.id)}
-                    >
-                      <span>{z.name}</span>
-                      <b className={`grade grade-${game.zoneGrades[z.id]}`}>
-                        {game.zoneGrades[z.id]}
-                      </b>
-                    </button>
-                  ))}
-              </div>
-              <button
-                className="gold-button"
-                onClick={() => onCommand({ type: "MOVE", zoneId: destination })}
-              >
-                Prendre un vol vers {zoneNames[destination]}{" "}
-                <span>
-                  1 M€ <ArrowUpRight size={15} />
-                </span>
-              </button>
-            </>
-          )}
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function usePresentationNotice(room: RoomView) {
-  const acknowledged = useGameStore((s) => s.acknowledged);
-  const notice =
-    room.game?.notices.find((n) => !acknowledged.includes(n.id)) ?? null;
-  const [ready, setReady] = useState<number | null>(null);
-  useEffect(() => {
-    if (!notice) {
-      setReady(null);
-      return;
-    }
-    const animatedRoll =
-      notice.roll ??
-      room.game?.notices.find(
-        (n) => n.id >= notice.id && n.playerId === notice.playerId && n.roll,
-      )?.roll;
-    const delay = reduced()
-      ? 0
-      : notice.action === "move"
-        ? 2900
-        : animatedRoll
-          ? animatedRoll * 220 + 1000
-          : 900;
-    const timer = setTimeout(() => setReady(notice.id), delay);
-    return () => clearTimeout(timer);
-  }, [notice?.id, room.roomId]);
-  return { notice, current: notice && ready === notice.id ? notice : null };
-}
-
-function Game({ room }: { room: RoomView }) {
-  const game = room.game!;
-  const { session, connected, pending, queue, acknowledge } = useGameStore();
-  const active = game.players.find((p) => p.id === game.activePlayerId)!;
-  const activeSlot = room.players.find((p) => p.id === active.id)!;
-  const { notice, current } = usePresentationNotice(room);
-  const controls =
-    !active.bot &&
-    (active.id === session?.playerId ||
-      (session?.playerId === room.hostId && activeSlot.kind === "local"));
-  const canAct = controls && connected && !pending && !notice && !queue.length;
-  const [viewerId, setViewerId] = useState(session?.playerId ?? active.id);
-  useEffect(() => {
-    setViewerId(controls ? active.id : (session?.playerId ?? active.id));
-  }, [game.activePlayerId, controls, session?.playerId]);
-  const send = (c: GameCommand) => {
-    void unlockAudio();
-    playCue(
-      c.type === "ROLL"
-        ? "roll"
-        : c.type.includes("SHARE")
-          ? "trade"
-          : "confirm",
-    );
-    void command(c, active.id);
-  };
-  const holdingCount = game.companies.filter(
-    (c) => (c.holdings[active.id] ?? 0) > 0,
-  ).length;
-  const phaseTitle =
-    game.phase === "geography"
-      ? "Choisir son marché"
-      : game.phase === "sector"
-        ? "Le circuit des marchés"
-        : game.phase === "market"
-          ? "Composer son portefeuille"
-          : game.phase === "finished"
-            ? "Clôture de la séance"
-            : "Passage de relais";
-  return (
-    <main className="game-scene">
-      <header className="game-heading">
-        <div>
-          <span className="eyebrow">
-            <i /> CYCLE {game.cycle} ·{" "}
-            {game.cycle === 1
-              ? "OUVERTURE À C/C"
-              : `${100 - game.contextsRemaining}/100 CONTEXTES`}
-          </span>
-          <h1>{phaseTitle}</h1>
-        </div>
-        <div className="global-session">
-          <span>{room.roomId}</span>
-          <b>
-            100 M€ <small>capital initial</small>
-          </b>
-          <button
-            className="outline-button small"
-            onClick={() =>
-              document
-                .getElementById("trading-desk")
-                ?.scrollIntoView({ behavior: reduced() ? "instant" : "smooth" })
-            }
-          >
-            Salle des marchés <ArrowRight size={14} />
-          </button>
-        </div>
-      </header>
-      <section className="economic-hud" aria-label="Notations économiques">
-        <div className="zones-hud">
-          {game.zones.map((z) => (
-            <div key={z.id}>
-              <Globe2 size={15} />
-              <span>{z.name}</span>
-              <b className={`grade grade-${game.zoneGrades[z.id]}`}>
-                {game.zoneGrades[z.id]}
-              </b>
-            </div>
-          ))}
-        </div>
-        <div className="sectors-hud">
-          {game.sectors.map((s) => (
-            <div key={s.id}>
-              <span>{s.name.split("&")[0]}</span>
-              <b className={`grade grade-${game.sectorGrades[s.id]}`}>
-                {game.sectorGrades[s.id]}
-              </b>
-            </div>
-          ))}
-        </div>
-      </section>
-      {game.cycle === 1 && (
-        <div className="opening-order" aria-label="Dés de départ">
-          <span>DÉS DE DÉPART</span>
-          {game.players.map((p, i) => (
-            <small key={p.id}>
-              <b>{p.name}</b> · {game.initiative[i]}
-              {i === game.starterIndex ? " · premier investisseur" : ""}
-            </small>
-          ))}
-        </div>
-      )}
-      {game.phase === "finished" ? (
-        <section className="results-scene">
-          <span className="eyebrow">CLÔTURE DU PARQUET MONDIAL</span>
-          <h2>
-            {game.players
-              .filter((p) => game.winnerIds.includes(p.id))
-              .map((p) => p.name)
-              .join(" & ")}{" "}
-            remporte la séance.
-          </h2>
-          {[...game.players]
-            .sort((a, b) => b.fundValue - a.fundValue)
-            .map((p, i) => (
-              <div key={p.id}>
-                <span>0{i + 1}</span>
-                <Pawn id={p.pawn} />
-                <b>{p.name}</b>
-                <strong>{formatMoney(p.fundValue)}</strong>
-              </div>
-            ))}
-          <button
-            className="gold-button"
-            onClick={() => useGameStore.getState().reset()}
-          >
-            Nouvelle partie
-          </button>
-        </section>
-      ) : (
-        <div className="parquet-layout">
-          <aside className="investor-rail">
-            <div className="panel-title">
-              <span>INVESTISSEURS</span>
-              <small>{game.players.length} FONDS</small>
-            </div>
-            {game.players.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setViewerId(p.id)}
-                className={`investor-card ${p.id === active.id ? "is-active" : ""} ${p.id === viewerId ? "inspecting" : ""} ${!p.solvent ? "insolvent" : ""}`}
-                style={{ "--player-color": p.color } as React.CSSProperties}
-              >
-                <div className="investor-name">
-                  <Pawn id={p.pawn} />
-                  <span>
-                    <b>{p.name}</b>
-                    <small>
-                      {p.nationalityFlag}{" "}
-                      {p.jailed ? "Détention" : zoneNames[p.zone ?? ""]}
-                    </small>
-                  </span>
-                  {p.id === active.id && <i />}
-                </div>
-                <div className="investor-finances">
-                  <span>
-                    Liquidités<b>{formatMoney(p.cash)}</b>
-                  </span>
-                  <span>
-                    Valeur du fonds<strong>{formatMoney(p.fundValue)}</strong>
-                  </span>
-                </div>
-              </button>
-            ))}
-          </aside>
-          <section className="board-center">
-            <BoardScene
-              game={game}
-              onRoll={() => send({ type: "ROLL" })}
-              disabled={!canAct || game.phase !== "sector"}
-              reducedMotion={reduced()}
-            />
-            <div className="board-caption">
-              <span>
-                <i /> PLACE DE MARCHÉ MONDIALE
-              </span>
-              <span>
-                52 semaines · {game.boardEventsRemaining} événements ·{" "}
-                {game.contextsRemaining} contextes
-              </span>
-            </div>
-          </section>
-          <aside className="operations-rail">
-            <div className="active-fund">
-              <span className="eyebrow">AU TOUR DE</span>
-              <Pawn id={active.pawn} />
-              <h2>{active.name}</h2>
-              <p>
-                {active.bot
-                  ? "IA en réflexion"
-                  : controls
-                    ? "Vous contrôlez ce fonds"
-                    : "Un autre investisseur joue"}
-              </p>
-              <div>
-                <span>Valeur actuelle</span>
-                <b>{formatMoney(active.fundValue)}</b>
-              </div>
-              <div>
-                <span>Participations</span>
-                <b>{holdingCount} sociétés</b>
-              </div>
-              <div>
-                <span>Position</span>
-                <b>Semaine {active.sectorPosition + 1}</b>
-              </div>
-            </div>
-            <div className="turn-actions">
-              {notice ? (
-                <div className="animation-status">
-                  <Radio />
-                  <strong>
-                    {current
-                      ? "Compte-rendu de séance"
-                      : notice.action === "move"
-                        ? "Vol en cours…"
-                        : "Le parquet s’anime…"}
-                  </strong>
-                  <small>Les commandes reprendront après le résultat.</small>
-                </div>
-              ) : game.phase === "sector" ? (
-                <button
-                  className="gold-button"
-                  disabled={!canAct}
-                  onClick={() => send({ type: "ROLL" })}
-                >
-                  Lancer le dé <Dice5 size={22} />
-                </button>
-              ) : game.phase === "market" ? (
-                <>
-                  <span className="eyebrow">MARCHÉ OUVERT</span>
-                  <p>Vous pouvez négocier en {zoneNames[active.zone ?? ""]}.</p>
-                  <button
-                    className="gold-button"
-                    disabled={!canAct}
-                    onClick={() => send({ type: "END_TURN" })}
-                  >
-                    Terminer le marché <Check size={18} />
-                  </button>
-                </>
-              ) : game.phase === "awaitNext" ? (
-                <button
-                  className="gold-button"
-                  disabled={!canAct}
-                  onClick={() => send({ type: "NEXT_TURN" })}
-                >
-                  Prochain investisseur <ArrowRight size={19} />
-                </button>
-              ) : (
-                <p>Choix de l’implantation en cours.</p>
-              )}
-            </div>
-            <div className="market-wire">
-              <div className="panel-title">
-                <span>DÉPÊCHES</span>
-                <Radio size={12} />
-              </div>
-              {game.log
-                .slice(-3)
-                .reverse()
-                .map((line, i) => (
-                  <p key={`${game.cycle}-${i}`}>{line}</p>
-                ))}
-            </div>
-          </aside>
-        </div>
-      )}
-      <section id="trading-desk" className="desk-shell">
-        <div className="desk-heading">
-          <span className="eyebrow">
-            TERMINAL FINANCIER ·{" "}
-            {game.players.find((p) => p.id === viewerId)?.name}
-          </span>
-          <span>
-            Transactions enregistrées <Shield size={12} />
-          </span>
-        </div>
-        <TradingDesk
-          game={game}
-          viewerId={viewerId}
-          canAct={canAct && viewerId === active.id}
-          onCommand={send}
-        />
-      </section>
-      <div className="game-lower">
-        <Chat room={room} />
-        <div className="session-footnote">
-          <Shield size={18} />
-          <p>
-            Votre partie est sauvegardée.
-            <br />
-            <small>
-              Conservez ce navigateur pour reprendre votre session après une
-              interruption.
-            </small>
-          </p>
-        </div>
-      </div>
-      {canAct && game.phase === "geography" && (
-        <Geography game={game} onCommand={send} />
-      )}{" "}
-      {current && (
-        <CardScene
-          notice={current}
-          game={game}
-          onClose={() => {
-            playCue("confirm");
-            acknowledge(current.id);
-          }}
-        />
-      )}
-    </main>
-  );
-}
-
 function AudioPreferences({ onClose }: { onClose: () => void }) {
   const dialog = useDialogFocus(onClose);
   const [values, setValues] = useState(getAudioSettings());
+  const presentation = usePresentationSettings();
   const update = (v: Partial<AudioSettings>) => {
     void unlockAudio();
     setValues(setAudioSettings(v));
@@ -1017,7 +519,7 @@ function AudioPreferences({ onClose }: { onClose: () => void }) {
             onChange={(e) => update({ muted: !e.target.checked })}
           />
         </label>
-        {(["master", "effects"] as const).map((channel) => (
+        {(["master", "music", "ambience", "effects"] as const).map((channel) => (
           <label key={channel}>
             <span>
               {
@@ -1041,9 +543,11 @@ function AudioPreferences({ onClose }: { onClose: () => void }) {
           </label>
         ))}
         <p className="muted">
-          Le son est facultatif. Les pistes musicales et l’ambiance seront
-          disponibles dans une prochaine version.
+          Effets de jeu locaux, son facultatif. Les canaux musique et ambiance
+          sont réservés aux futures pistes ; aucune boucle n’est jouée.
         </p>
+        <label className="mute-toggle"><span>Réduire les animations</span><input type="checkbox" checked={presentation.reducedMotion} onChange={(e) => setPresentationSettings({ reducedMotion: e.target.checked })} /></label>
+        <label><span>Qualité graphique</span><select aria-label="Qualité graphique" value={presentation.quality} onChange={(e) => setPresentationSettings({ quality: e.target.value as "high" | "medium" | "low" })}><option value="high">Haute</option><option value="medium">Moyenne</option><option value="low">Basse</option></select></label>
         <a
           className="muted"
           href="/THIRD_PARTY_NOTICES.txt"
@@ -1060,18 +564,25 @@ function AudioPreferences({ onClose }: { onClose: () => void }) {
   );
 }
 
+function Rules({ onClose }: { onClose: () => void }) {
+  const dialog = useDialogFocus(onClose);
+  return <div className="decision-backdrop" role="dialog" aria-modal="true" aria-labelledby="rules-title"><section className="settings-panel rules-panel" ref={dialog} tabIndex={-1}><button className="close-button" aria-label="Fermer les règles" onClick={onClose}><X /></button><span className="eyebrow">LE CIRCUIT DES MARCHÉS</span><h2 id="rules-title">Faire grandir votre fonds.</h2><p>2 à 6 fonds démarrent avec 100 M€. Le patrimoine est égal aux liquidités plus la valeur actuelle des participations.</p><ol><li>Ouverture : toutes les notes à C ; choisissez gratuitement la première place de marché de votre fonds. Le plus haut dé de départ commence, puis l’ordre des joueurs reste le même à chaque cycle ; les fonds insolvables sont sautés.</li><li>Dès le cycle 2, une carte Contexte commune ajuste les notes des zones et secteurs. Puis choisissez de rester gratuitement ou de voyager pour 1 M€, avant le dé.</li><li>Lancez le dé et avancez sur les 52 semaines. Sur une case sectorielle, vous payez les autres détenteurs au prorata de leurs parts. Vos propres participations ne vous rapportent rien pendant ce déplacement ; elles génèrent des revenus lorsque les autres fonds tombent sur le secteur.</li><li>Sur une case Événement, une carte distincte peut offrir une prime, imposer une vente ou déclencher une enquête. Bull, Bear et Crash modifient le marché.</li><li>Passez vos ordres dans votre zone active. Chaque société comporte cinq parts de 20 %. Le contrôle total garantit un revenu minimum C/C ; contrôler toutes les sociétés du même groupe zone/secteur garantit A/A.</li><li>Le passage au Départ apporte 20 M€ de nouveaux capitaux si la performance du tour est positive, ou retire 20 M€ si elle est négative. Une société E/E est liquidée puis revient lorsque l’une des notes s’améliore.</li></ol><p>La détention suspend le trading et les revenus. La partie se termine après le cycle de la 100e carte Contexte ou lorsqu’un seul fonds reste solvable. La valeur de fonds la plus élevée gagne.</p><button className="gold-button" onClick={onClose}>Prendre place à la table <ArrowRight size={17} /></button></section></div>;
+}
+
 export default function App() {
   const { room, connected, error, pending, session } = useGameStore();
   const [settings, setSettings] = useState(false);
   const [audio, setAudio] = useState(getAudioSettings());
   const [resumeDismissed, setResumeDismissed] = useState(false);
+  const [menuScreen, setMenuScreen] = useState<"menu" | "create" | "join">(new URLSearchParams(location.search).get("room") ? "join" : "menu");
+  const [rules, setRules] = useState(false);
   useEffect(() => {
     const gesture = () => void unlockAudio();
     window.addEventListener("pointerdown", gesture, { once: true });
     return () => window.removeEventListener("pointerdown", gesture);
   }, []);
   return (
-    <div className="app">
+    <div className={`app ${room && room.status !== "lobby" ? "is-playing" : !room && menuScreen === "menu" ? "is-menu" : ""}`}>
       <header className="topbar">
         <Brand />
         <div className="topbar-tools">
@@ -1116,7 +627,7 @@ export default function App() {
         </div>
       )}
       {!room ? (
-        <Home />
+        menuScreen === "menu" ? <MainMenu onNew={() => setMenuScreen("create")} onJoin={() => setMenuScreen("join")} onSettings={() => setSettings(true)} onRules={() => setRules(true)} onResume={session ? () => { void request("room:resume", session); } : undefined} /> : <Home mode={menuScreen} onBack={() => setMenuScreen("menu")} onMode={setMenuScreen} />
       ) : room.status === "lobby" ? (
         <Lobby room={room} />
       ) : (
@@ -1145,6 +656,7 @@ export default function App() {
           }}
         />
       )}
+      {rules && <Rules onClose={() => setRules(false)} />}
     </div>
   );
 }

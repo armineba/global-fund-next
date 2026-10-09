@@ -1,5 +1,41 @@
 # Décisions
 
+## 7 octobre 2026 — terminal, implantation et économie
+
+| Problème | Options | Décision | Raison et conséquence |
+| --- | --- | --- | --- |
+| Nationalité utilisée pour déterminer le départ | Garder le pays ; choisir directement une place | Cinq marchés explicites, placement IA diversifié côté serveur | `startingMarket` conserve l'origine ; `currentMarket` expose la position et les implantations restent historiques. Les anciens pays sont lus uniquement pour adapter les sauvegardes. |
+| Bureau changeant au tour IA ou à l'inspection | Suivre l'acteur ; suivre le fonds inspecté ; conserver l'humain client | Ville du fonds humain local/client, cinq photos de skylines licenciées et locales | Le bureau change après le voyage et un préchargement ; fondu de 500 ms. Il ne change pas à l'inspection d'un autre portefeuille. |
+| Variation de marché peu utile à une décision de vente | Variation depuis le cycle ; rentabilité du joueur | Cours + PRU + P/L %, `—` sans détention/PRU | Le PRU serveur est la référence ; aucun prix de revient n'est inventé pour une vieille sauvegarde. |
+| Les colonnes finales disparaissent sur laptop | Garder le scroll horizontal ; réduire toute la police ; compacter les colonnes | Grille minimum de 596 px et filtres en une barre, cours et résumé prioritaires | Sept colonnes visibles à 1366×768, vérifiées avec leurs bornes DOM ; le défilement interne reste possible sur écrans plus étroits. |
+| Groupes monopolistiques cachant les positions sur écran court | Supprimer les groupes ; tout faire défiler ; réserver la sélection des positions | Groupes limités à 64 px et défilables au clavier, table réservée et ticket compact | Contrôles et monopoles restent consultables ; sélectionner une autre entreprise et comprendre un ordre indisponible restent possibles. |
+| Capitalisation réelle et prix de jeu confondus | Conversion directe ; grille sans sources ; normalisation séparée | CAP sourcée en USD et catégories GF 40/200 Md, valeurs de jeu interpolées logarithmiquement | Hiérarchie crédible dans un univers de grandes sociétés ; ces catégories diffèrent des catégories financières usuelles. Grille choisie après simulations comparables. |
+| Immobilier absent en Asie et limité au Moyen-Orient | Ajouter des IDs ; remplacer deux titres | SHKP et Emaar remplacent deux lignes avec IDs conservés, nouvelles parties uniquement | 91 sociétés, industriels asiatiques conservés, sauvegardes incorporées inchangées. |
+| Lecture des variations trop brève | Ralentir chaque action ; bloquer toute variation ; distinguer les impacts | Quatre secondes pour un impact majeur, bouton de reprise ; 650 ms pour les petits impacts | Le changement reste immédiat dans le moteur ; seul le rythme de présentation change. Réduit conserve la durée de lecture. |
+| Carrousel Contexte repoussé sous le pied sur laptop | Masquer les fonds ; garder un défilement global ; compacter la composition | Héros de 104 px et vignettes plus courtes à hauteur ≤800 px | Texte, notes et premiers cours affectés restent visibles ensemble ; tous les fonds et le récit complet sont conservés. |
+| Tous les rails visibles pendant chaque animation | Cadrage global constant ; caméra liée à la phase | Suivi de pion 1,22 pendant dé/parcours/arrivée, vue globale disponible | La case et le pion deviennent lisibles sur laptop, quitte à recadrer des rails éloignés. Projection commune et mode réduit conservés. |
+| Allégations contre des sociétés réelles dans les récits | Reprendre un scandale nominatif ; scénarios historiques fictifs | 50 histoires Événement fictives à cibles dynamiques et 100 récits macro | IDs, effets et changements de notes inchangés ; sources d'inspiration et distributions documentées. |
+
+## 5 octobre 2026 — scène de jeu immersive
+
+| Problème | Options | Solution retenue et raison | Conséquence |
+| --- | --- | --- | --- |
+| Le plateau était un bloc d'une longue page | Recolorer la page ; changer la composition | Scène plein écran, plateau Pixi dominant, HUD et terminal flottants | Les transactions et analyses restent en HTML/ECharts ; le défilement se fait dans les fenêtres |
+| Perspective et figurines aplaties | Incliner toute la scène ; séparer surface et objets | Surface affine 2.5D ; coordonnées d'ancrage projetées, sprites verticaux | Ombres, villes et six figurines gardent leur volume et leur place sur le plateau |
+| Six mêmes pions d'échecs recolorés | Modèles libres disparates ; figurines originales cohérentes | Recherche CC0 documentée puis atlas originaux générés avec imagegen | Sprites locaux alpha ; pas de licence CC0 attribuée aux créations générées |
+| Carte presque invisible | Aplats vectoriels seuls ; texture nocturne réelle | Natural Earth et composite NASA Black Marble, miniature de chaque métropole | Géographie lisible, relief et lumières ; crédit NASA local |
+| Nomenclature des maquettes différente du moteur | Redistribuer les entreprises ; conserver les zones | Conservation des cinq zones du jeu validé | Les 91 entreprises, règles et sauvegardes restent compatibles ; aucune migration métier dans cette phase |
+| Feedback d'ordre avant réponse serveur | Effet au clic ; effet après confirmation | Reçu construit par différence entre snapshots confirmés | Un ordre refusé ne génère pas de confirmation ; aucun nouveau calcul métier côté client |
+| Interface entière en Canvas | Tout Pixi ; HTML partout ; séparation | Pixi pour monde/caméra/objets/effets, React pour données et fenêtres | Lisibilité, focus clavier et tableaux conservés |
+| Audio sans licence claire ou obligatoire | Streaming distant ; sons libres locaux | Effets Kenney CC0 locaux, muet par défaut, geste de déverrouillage | Canaux général/musique/ambiance/effets ; aucune boucle musicale ou de salle de marché livrée |
+| Coût du rendu logiciel | Animations permanentes ; budget adaptatif | Terrain en cache, résolution et particules selon qualité, pause hors onglet, rendu ponctuel réduit | Objectif 60 FPS sur GPU ; mesures SwiftShader documentées sans prétention d'universalité |
+| Netteté et ancrage dans la revue visuelle | Agrandir tous les objets ; affiner les surfaces | Cache de terrain à résolution 2 en qualité haute, ombres de contact et contours de relief au-dessus de la carte | Meilleure lisibilité des plaques et profondeur des villes, sans ajouter de règle ni de simulation |
+| Build supprimant des chunks pendant un test ou une partie | Écrire dans dist ; stage et release | Build isolé puis bascule atomique du lien dist, conservation des anciennes ressources hashées | Un build raté garde la version servie ; releases à nettoyer explicitement après contrôle des sessions |
+| Lecture des effets et du graphique sous les commandes | Réduire les données ; ajuster la surface de lecture | Terminal plus haut sur grands desktops, carrousel Contexte dimensionné et défilable, indications de molette | Les informations restent accessibles sans réduire les montants essentiels ; mouvements réduits respectés dans le carrousel |
+| Rendu logiciel simultané pendant les vérifications | Capturer et tester en parallèle ; séquencer les navigateurs | Captures et E2E séparés ; budget de 75 s pour le parcours distant à deux clients | Les assertions fonctionnelles restent à 10 s ; évite qu'une fermeture de navigateur lente invalide un parcours terminé |
+| Échantillon initial à 0–1 FPS sur SwiftShader | Réduire immédiatement la qualité ; comparer après chauffe | Diagnostic A/B du cache à résolutions 1/2, avec/sans MSAA, puis mesure après 15 s d'échauffement | Cache stable et ticker actif ; 6–9 FPS observés à 1920 sur le rendu logiciel. Le faible gain ne justifie pas de réduire la netteté ; 60 FPS sur GPU reste à vérifier |
+
+
 | Date | Problème et options | Décision et raison | Conséquence |
 |---|---|---|---|
 | 2026-10-04 | Refonte sur place ou projet séparé | Projet voisin autonome, comme demandé | Aucun lien d'exécution ni stockage partagé avec la référence |
@@ -16,3 +52,99 @@
 
 | 2026-10-04 | Captures continues et rendu logiciel coûteux dans les tests | Traces DOM sans screencast, rendu ponctuel en mouvements réduits et pause hors écran | Les tests gardent les assertions métier et les erreurs de console ; les animations normales ciblent 60 FPS sans garantie matérielle universelle |
 | 2026-10-04 | CLI Drizzle et versions initiales signalées par audit npm | Migrations SQL explicites via pg + Drizzle pour les requêtes ; versions Fastify static et Vitest corrigées | Pas de dépendance au CLI de génération ; audit npm à zéro vulnérabilité lors de la livraison |
+
+## Itération plateau — 6 octobre 2026
+
+| Problème | Options | Décision | Raison et conséquence |
+| --- | --- | --- | --- |
+| Projection incohérente entre surface et objets | Skew par élément ; scène 3D complète ; homographie commune | Surface Pixi tessellée avec BoardProjection/inverse, pieds et ombres communs | Conserve les assets et la carte ; supprime le cisaillement et donne une perspective de table modérée. |
+| Voyage bloque la consultation | Modal avec piège de focus ; écran séparé ; fenêtre centrale consultable | Destination conservée par GameWorld, consultation libre via terminaux | Lire le marché ne transmet aucune commande ni coût ; seuls Stay/Move valident. |
+| Les conséquences apparaissent avant la lecture | Ralentir le moteur ; serveur attendre chaque client ; chronologie de présentation | Moteur inchangé, snapshots détachés et FSM frontend, ack après conséquences | Autorité serveur préservée, file de révisions existante conservée, cartes lisibles sans révéler les valeurs trop tôt. |
+| Ordre à double validation | Switch + confirmer ; deux actions directes | Quantité puis Acheter ou Vendre | Une commande immédiate, toujours contrôlée côté serveur, boutons bloqués pendant la requête. |
+| Confusion contrôle/monopole | Couronne commune ; symboles distincts | Couronne 5/5 C/C, réseau groupe complet A/A | Les groupes partiels représentent une progression et ne changent pas la règle métier. |
+| Statistiques coupées | Réduire tous les graphiques ; fenêtre qui recouvre le HUD ; défilement interne | Analyse/Statistiques distinctes, dimensions selon surface disponible, ResizeObserver | Axes et légendes conservent un espace réel ; actions et contexte restent autour. |
+| Sociétés fictives/obsolètes et manque d’industrie en Asie | Ajouter des lignes ; migrer IDs et prix ; catalogue versionné | 91 lignes, métadonnées v2, mêmes IDs/prix/revenus, trois remplacements industriels | Les anciens états restent intacts et conservent leurs participations ; nouvelles parties adoptent v2. Les matrices montrent les écarts restants. |
+| Logos de marques | Hotlink ; imitation ; copies locales vérifiées et monogrammes | Sources officielles/Commons et fichiers locaux, provenance explicite | Domaine public de texte/formes n’efface pas le droit des marques. Aucun faux emblème et aucun CDN nécessaire. |
+
+| Rendu lent saute les phases de dé et mouvement | Rattraper toutes les échéances ; ralentir le moteur ; garantir chaque commit visuel | Une transition par callback normal, durées/epochs recalées après commit; réduit reste instantané | Le joueur voit le dé arrêté avant le pion même après un rendu coûteux. Test d’un retard de 100 secondes sans saut de phase. |
+| Copies de snapshots régénèrent une texture identique | Régénérer par référence ; comparer le contenu imprimé | Empreinte des cases, plaques, notes, cycle, résultat et sélection | Réduit le travail Pixi aux changements utiles, sans retirer les informations. |
+| Ticket masque le cours sur écran court | Tout faire défiler ; réduire tous les textes ; séparer résumé/détails/ordre | Cours et parts fixes, détails internes défilables, ticket fixe | Les actions Acheter/Vendre et la cotation restent visibles; historique accessible par défilement. |
+
+## 7 octobre 2026 — règlement et terminal compact
+
+| Problème | Options envisagées | Solution retenue / raison | Conséquence |
+| --- | --- | --- | --- |
+| Résultats disparaissent avant lecture | Délai plus long ; lecture manuelle | Résumés majeurs sans échéance, Reprendre la séance obligatoire ; mineurs 650 ms | Le joueur contrôle la lecture, y compris en animations réduites ; moteur et présentation restent séparés |
+| Double branding du terminal absorbe la hauteur | Réduire uniquement la police ; supprimer un niveau | Un seul header dans TradingDesk, callbacks plateau/voyage/fin conservés | Plus de données visibles, aucun changement de commande métier |
+| Graphiques coupés / peu lisibles | Tout faire défiler ; réserver cotation et ticket | Résumé et ordre fixes, une zone centrale défilante, historique 180–250 px (adapté laptop), grandes répartitions | ResizeObserver redimensionne ECharts ; tests des bornes réelles aux trois tailles |
+| Cash insuffisant entraîne des ventes imposées arbitraires | Vente automatique ; sélection du débiteur | Phase dédiée, actifs sélectionnés par le joueur, ventes partielles possibles | Exception toutes zones/prison limitée au règlement, achats ordinaires interdits |
+| Titres supérieurs à la dette | Interdire ; payer seulement la dette ; complément symétrique | Offre figée, cashDelta = dette − titres ; le créancier paie si négatif | Accepter exige le cash réel ; PRU du bénéficiaire au cours complet figé |
+| Créancier hors du tour actif | Attendre son tour ; changer joueur actif ; acteur de décision distinct | decisionActorId dans le règlement, vérifié serveur pour humains et IA | Le tour reste celui du débiteur ; le créancier distant décide immédiatement |
+| Concurrence et persistance | Mutation puis écriture ; état préparé sur copie | Exécution sur draft, sauvegarde avant commit/diffusion, file serveur par salon | Titre, cash et dette forment la même mutation ; révision et déduplication conservées |
+| IA débitrice répète une offre refusée | Reproposer ; liquider au marché | Après refus humain, l’IA passe en marketOnly | Évite une boucle ; elle paie avec les produits de vente et garde le surplus |
+| Brief contradictoire NAV/cash pour les créanciers | Valorisation ; cash | L’utilisateur confirme explicitement **valorisation croissante puis siège** | File et valorisations figées avant tout paiement, tests avec ordre de cash opposé |
+| Journal de paiement confond obligation et cash exécuté | Afficher la dette comme transfert ; distinguer les deux | dueAmount pour montant à financer, amount pour montant versé, reçu structuré | Aucun créancier crédité fictivement ; l’impayé apparaît avec l’insolvabilité |
+| Événement ressemble à une modal administrative | Image seule ; une de presse | GF Financial Chronicle, typographie éditoriale, illustration/récit/effets/date | Identité propre au jeu ; phrases « scénario fictif » supprimées sans changer les effets |
+| Ticker trop court ou agressif | Animation JS par frame ; bande CSS doublée | Deux groupes identiques, durée adaptée au nombre de titres, cours/historique réels | Sans re-render par frame ; pause survol/focus et statique en mouvements réduits |
+| Beaucoup de logos manquants | Hotlink ; imitation ; audit d’actifs locaux | 28 nouveaux assets actuels, statut copyright vérifié, provenance et copies locales | 47 logos actifs /91, 44 initiales restantes après retrait du lockup Telstra ancien ; aucun mapping vers une autre société |
+
+### Fraîcheur finale des marques
+
+Problème : Oracle conservait une ancienne couleur et le lockup horizontal Telstra n’était pas la marque principale actuelle. Options : conserver ; remplacer sans preuve ; vérifier et retirer si nécessaire. Décision : silhouette Oracle inchangée, rouge #C74634 conforme au guide officiel ; ancien Telstra retiré des nouvelles parties, initiales faute de ressource actuelle aux droits vérifiés. Conséquence : 47 logos actifs et 44 monogrammes, les 28 nouveaux logos sont conservés ; les sauvegardes gardent leur catalogue embarqué. Sources dans `docs/LOGO_AUDIT.md`.
+
+### Validation des formats intermédiaires
+
+Problème : les gardes initiales ciblaient le laptop 1366×768 ; la revue PNG a révélé des axes de portefeuille et des prix après Contexte masqués à 1440×900. Options : réduire tous les graphiques ; adapter la bande de hauteur intermédiaire. Décision : cotation sur une ligne et courbe de 180 px entre 801 et 950 px de hauteur ; dossier Contexte compact jusqu’à 950 px. Conséquence : contrôles de lecture du graphique, du ticket et des notes/prix Contexte étendus aux trois résolutions, puis neuf captures concernées régénérées. Les vues non affectées gardent leur provenance documentée.
+
+
+## 8 octobre 2026 — configuration persistante et temps de lecture
+
+| Problème | Options envisagées | Solution retenue / raison | Conséquence |
+| --- | --- | --- | --- |
+| Retour au menu efface une configuration | État React remonté ; brouillon navigateur ; sauvegarde serveur | Brouillon localStorage versionné, champs validés, repli si stockage indisponible ; conserver aussi les places temporairement masquées | Retour à l’accueil et rechargement retrouvent la configuration, sans modifier les sauvegardes de parties |
+| Cartes encombrées de métadonnées et de pied de page | Réduire la police ; retirer les doublons | En-tête versement avec fonds du notice, métadonnées événement retirées, aucun bandeau inférieur ; conserver Échap et les conséquences utiles | Plus de hauteur pour la lecture ; fermer la carte utilise exactement la séquence d’application existante |
+| Ajustements de cours disparaissent après un tour IA | Allonger le délai ; attendre un clic | Arrêt de MARKET_IMPACT après les notes, sans échéance, bouton Valider les cours ; animations réduites ne peuvent pas contourner cette étape | Temps de lecture identique pour humains et IA, accusé de lecture uniquement après les conséquences suivantes |
+| Survol du plateau affiche un curseur d’aide sans action utile | Ajouter des infobulles ; désactiver le survol | Suppression du hit testing Pixi et pointer-events:none sur le canvas ; exploration textuelle au clavier conservée | Aucun zoom/effet au passage de la souris, caméra automatique et commandes HTML conservées |
+
+
+## 8 octobre 2026 — correction du bilan financier après revenus
+
+| Problème | Options envisagées | Solution retenue / raison | Conséquence |
+| --- | --- | --- | --- |
+| Versement sectoriel affiche un écran de marché sans évolution | Retirer toutes les animations de marché ; supprimer seulement les étapes vides | MARKET_IMPACT uniquement en présence de variation de note/cours, faillite ou retour de société | Un revenu ordinaire révèle directement les montants et valorisations ; les vrais changements de marché restent visibles |
+| Petit bilan financier disparaît après 650 ms | Délai plus long ; validation systématique | PORTFOLIO_IMPACT sans échéance et bouton Continuer pour tous les montants | Lecture identique après humain ou IA et avec animations réduites ; accusé de lecture uniquement après clic |
+| Clic répété peut fermer l’écran suivant | Temporisation ; valider le contexte du clic | Callback vérifie l’étape et le numéro du notice affichés | Une validation du marché ne peut pas fermer le bilan financier qui vient d’apparaître |
+
+## 9 octobre 2026 — un reçu par opération
+
+- **Problème** : une fiche par créancier, suivie d’un bilan financier redondant, ralentissait la séance et pouvait donner l’impression d’un paiement sans effet sur le fonds inspecté.
+- **Options** : regrouper uniquement les notifications d’une révision dans le navigateur ; produire une synthèse côté moteur une fois la file de dettes terminée.
+- **Solution** : conserver les résultats individuels dans l’historique et `pendingSettlement.completed`, puis émettre une seule notification `settlements`. L’état de départ et les revenus bancaires accompagnent la décision sauvegardée. Le client combine annonce/reçu pour les opérations immédiates et ouvre directement le desk pour les dettes non financées.
+- **Raison** : les décisions peuvent traverser plusieurs commandes, connexions et révisions ; le moteur connaît la fin exacte de l’opération. Les droits et montants restent ceux du serveur.
+- **Conséquence** : suppression de `PORTFOLIO_IMPACT`, retour direct après Échap ou confirmation réelle du marché ; HUD financier permanent conservé. Anciens reçus et anciennes décisions sans état de départ continuent de fonctionner sans migration destructive.
+
+## 9 octobre 2026 — lecture par motif et mouvements nommés
+
+- **Problème** : les titres secondaires et les libellés débiteur/créancier répétaient l’information et compliquaient la lecture du reçu.
+- **Options** : conserver un encadré par créancier ; réunir les mouvements sous le motif qui les déclenche.
+- **Solution** : une rubrique par motif sectoriel, avec noms réels sur les lignes de cash, revenus bancaires et transferts. Le complément payé par un créancier conserve son sens réel. Total réglé sous les lignes et carrousel conservé.
+- **Raison** : la fiche explique directement la cause, puis qui paie qui et combien.
+- **Conséquence** : aucun changement aux calculs, commandes, notes ou règles de règlement ; présentation compatible avec les reçus existants.
+
+
+## 9 octobre 2026 — aucun revenu sectoriel sur ses propres participations
+
+- **Problème** : la règle versait au fonds actif un revenu de la banque pour les entreprises détenues dans le secteur de sa case d’arrivée.
+- **Options** : retirer uniquement le flux affiché ; supprimer effectivement le versement au niveau du moteur.
+- **Solution** : ignorer les parts du fonds actif lors de la construction des paiements sectoriels, avant tout calcul ou crédit de liquidités.
+- **Raison** : instruction explicite du joueur ; seul le serveur décide des flux effectifs.
+- **Conséquence** : les autres détenteurs restent payés selon leurs parts et protections C/C ou A/A. Aucun crédit propre ne finance une dette ; les dividendes Événement, ventes, liquidations et flux au Départ restent distincts. Les flux déjà enregistrés dans les sauvegardes ne sont pas annulés rétroactivement ; les prochains déplacements appliquent la nouvelle règle.
+
+
+## 9 octobre 2026 — ordre des joueurs fixe
+
+- **Problème** : le premier investisseur changeait à chaque cycle, ce qui rendait les tours difficiles à suivre.
+- **Options** : figer l’ancrage existant ; ajouter une liste d’ordre et une migration des sauvegardes.
+- **Solution** : conserver `starterIndex`, désigné par le dé initial, puis reprendre à chaque cycle le premier fonds solvable dans l’ordre circulaire des places.
+- **Raison** : instruction explicite de conserver l’ordre de départ ; l’ordre existant est déjà représenté par les places et l’ancrage.
+- **Conséquence** : aucune nouvelle donnée de sauvegarde ni permutation des sièges. Les fonds insolvables sont sautés ; les détenus conservent leur tour et leur procès. Les anciennes parties figent l’ancrage actuellement enregistré : les éventuels départages initiaux ne sont pas tous conservés, donc l’ancien gagnant n’est pas deviné et aucun tour en cours n’est rejoué. Les cartes Contexte gardent un tirage unique par cycle.

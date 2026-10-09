@@ -1,0 +1,54 @@
+# Audit visuel avant refonte
+
+Comparaison des quatre maquettes de `samples/` avec le build web servi sur le port 3191, à 1440 × 900. Les états observés couvrent l’accueil, le salon local à deux joueurs, le plateau en partie, le marché après un lancer réel et les scènes de contexte/événement/règlement. Captures de référence : [`baseline/main-menu.png`](baseline/main-menu.png), [`baseline/lobby.png`](baseline/lobby.png), [`baseline/gameplay.png`](baseline/gameplay.png), [`baseline/trading.png`](baseline/trading.png). Les captures plateau/contextes plus anciennes dans `docs/screenshots/` montrent également des versions antérieures du jeu.
+
+| Élément des maquettes | État actuel | Écart à corriger |
+|---|---|---|
+| Écran d’accueil | Écran éditorial sombre : accroche, statistiques et console de création/jointure. Typographie serif et or déjà cohérentes avec l’univers. | La maquette montre le jeu complet en vue d’ensemble, avec le plateau central et les marchés/hud visibles dès l’entrée. L’accueil actuel est une page de lancement isolée. Faire apparaître davantage l’identité du plateau et rapprocher sa composition de la maquette. |
+| Plateau | Plateau carré encadré, lisible et fonctionnel, centré sur la carte du monde avec les cinq zones en médaillons urbains. La partie garde beaucoup de contenu vertical sous le plateau. | La référence place un plateau riche, en perspective, au centre de la scène et l’intègre aux panneaux du jeu. Le plateau actuel est plat, contenu dans un grand cadre, et la table entière ne tient pas dans la vue 1440 × 900. Réduire les hauteurs mortes et rendre le plateau dominant dans la composition. |
+| Monde | Carte mondiale en aplats bleu pétrole, frontières visibles et petites liaisons lumineuses. | La maquette utilise un relief cartographique sombre, très détaillé, lumineux et texturé, avec routes dorées et villes propres à chaque région. Ajouter matière, profondeur, contraste et marqueurs régionaux. |
+| Cases | 52 cases compactes avec libellés, numéros et couleurs de catégorie ; leur structure périphérique est identifiable. | Cases petites et typographiques, avec peu de matière visuelle. La maquette leur donne épaisseur, texture, perspective et événements illustrés. Augmenter la présence graphique et l’état actif. |
+| Pions | Pions illustrés disponibles et placés sur les cases ; quelques choix de pions apparaissent au salon. | Le rendu actuel est petit et semble posé à plat. La maquette montre de grandes pièces brillantes, sculptées, avec socle, reflets et couleurs distinctives. Agrandir et détacher visuellement les pions du plateau. |
+| HUD | Bandeau de notes économiques par zone et secteur, avec grades immédiatement consultables. En jeu, plusieurs entêtes et informations se cumulent au-dessus du plateau. | La maquette condense le HUD en tuiles illustrées et plus lisibles, intégrées à la composition. Réduire l’effet de tableau de données linéaire et clarifier les priorités visuelles. |
+| Joueur | Colonne investisseurs à gauche et panneau du fonds actif à droite ; nom, pion, valeur et phase sont présents. | Les panneaux actuels sont sobres et petits. La maquette propose cartes de joueur plus fortes, emblème de fonds, indicateur actif et informations de valeur/variation plus contrastés. Renforcer la hiérarchie et l’état du joueur actif. |
+| Portefeuille | Salle des marchés distincte en dessous du plateau ; table de cotations, fiche valeur, onglets portefeuille/analyse. | Le terminal est un grand bloc sombre à bord arrondi qui nécessite de défiler sous le plateau. La maquette l’intègre à la droite ou au bas de la scène principale et montre holdings, allocation et performance en un coup d’œil. Mieux intégrer les données de portefeuille à la partie et réduire la hauteur de parcours. |
+| Trading | Le marché permet de sélectionner une valeur et passer achat/vente ; après déplacement, la phase de marché est jouable. La vue trading est sous le plateau. | La maquette présente un ordre d’échange immédiatement accessible, avec prix, quantité, total et bouton de confirmation, à côté de la valeur choisie. Rendre l’action financière plus visible et rapprocher cours, ordre et positions. |
+| Contexte | Une scène modale éditoriale présente le texte, la chaîne d’impact et les conséquences sur les notations/portefeuilles. | Le traitement est déjà proche en ton et structure, mais manque la grande image de contexte et les indicateurs/mini-graphiques illustrés des maquettes. Ajouter une image forte et mieux visualiser les effets. |
+| Event | Les événements apparaissent en scènes de présentation et s’inscrivent dans le flux de partie. | La carte illustrée de la maquette combine image, titre, récit, effet et choix d’action. Le traitement actuel est plus générique et textuel. Donner une identité visuelle et des choix plus explicites à chaque événement. |
+| Bull | Le type Bull existe dans les cases/catégories du plateau. | La case est surtout un libellé coloré, sans grand symbole haussier. Reprendre le vert lumineux, le pictogramme et la présence de carte de la maquette. |
+| Bear | Bear est identifiable sur les cases par sa couleur et son libellé. | Le symbole baissier et le rouge de crise n’ont pas le relief ni le caractère illustré de la référence. Renforcer l’icône et l’effet de danger. |
+| Crash | Une case Crash existe sur le parcours ; les crises se racontent aussi dans les scènes. | La maquette fait du crash un élément rouge proéminent avec courbe de chute, dans le plateau et dans les paquets/cartes. Uniformiser et amplifier son traitement graphique. |
+| Prison | Les écrans observés ne montrent pas de scène de prison dans ce parcours. | La maquette de contexte/événement illustre la prison par un panneau distinct, avec durée, coût de sortie et action d’attente. Vérifier que cet état existe et lui donner ce panneau dédié dans l’UI. |
+| Lobby | Salon privé fonctionnel avec code, cartes des deux fonds, chat et bouton d’ouverture du parquet. | La maquette montre les six joueurs, la sélection de pions complète, les options de partie, le résumé et un aperçu du plateau. L’écran actuel ne donne pas cette prévisualisation et n’expose pas les mêmes réglages/résumé. Rapprocher la densité et enrichir les options visibles. |
+| Typographie | Mélange réussi de grands titres serif, texte sans serif et petites capitales techniques ; certaines données sont très petites. | Proche de la marque, mais la maquette emploie des titres plus imposants et davantage de contrastes de taille sur les chiffres. Agrandir les éléments clés et préserver la lisibilité des micro-libellés. |
+| Couleur | Palette bleu nuit, cyan discret, gris bleuté et or ; notes C/D codées par couleur. | La maquette est plus contrastée : or chaud, bleu profond, vert et rouge saturés pour les mouvements financiers. Augmenter la saturation des états positifs/négatifs et mieux isoler les actions importantes. |
+| Lumière | Fond photographique sombre, halos discrets et accents dorés sur les boutons/bords. | Peu de lumière portée sur les éléments de jeu eux-mêmes. La maquette utilise des reflets, lueurs et sources chaudes sur plateau, pions, bords et panneaux. Faire rayonner les objets interactifs pour mieux guider l’œil. |
+| Profondeur | Superposition du fond, HUD, plateau encadré et cartes ; impression principalement plane. | La table de jeu de référence est en perspective avec relief, ombres, matériaux et plans successifs. Renforcer les ombres portées, épaisseurs et échelles pour donner une sensation de table physique. |
+| Animations | Capture réalisée en mode `reducedMotion`; le parcours de dés et transitions a fonctionné. | Pas d’évaluation des animations normales dans cette passe. Les maquettes suggèrent des lueurs, mouvements de jetons et transitions d’événements ; vérifier ces effets en mouvement et garder une variante réduite cohérente. |
+
+## Constat de parcours
+
+Le build existant démarre sur le port 3191. Une partie à deux joueurs locaux a été créée puis jouée : ouverture du plateau, lancer de dé, résolution des scènes de règlement et arrivée à la phase « Composer son portefeuille ». Le marché est fonctionnel, mais apparaît sous le plateau et la capture 1440 × 900 ne peut pas montrer simultanément toute la table et le terminal.
+
+Les maquettes constituent une direction visuelle nettement plus riche que l’interface actuelle. L’accueil, les scènes de contexte, les fonds sombres/or et la structure de données sont déjà de bons points d’appui. Les écarts prioritaires sont l’intégration du marché dans la scène, la présence matérielle du plateau et des pions, puis l’illustration des événements Bull/Bear/Crash/Prison.
+
+Contrôle technique : captures navigateur Playwright en local à 1440 × 900, parcours de jeu manuel automatisé sur deux fonds locaux. Aucun frontend n’a été modifié. Le build et les tests n’ont pas été relancés dans cet audit.
+
+## Résultat après refonte — 5 octobre 2026
+
+L'audit ci-dessus décrit le point de départ. Les captures finales sont dans [`screenshots/`](screenshots/) et les contrôles reproductibles dans [`docs/VISUAL_VALIDATION.md`](docs/VISUAL_VALIDATION.md).
+
+| Critère | Résultat observé |
+| --- | --- |
+| Plateau dominant | Scène Pixi plein écran, 52 plaques en perspective et table métallique ; visible entièrement à 1366×768. |
+| Carte et profondeur | Géographie réelle, texture nocturne NASA, contours en relief, villes en volume et ombres de contact. |
+| Figurines | Six silhouettes en volume, socles métalliques ; pieds projetés sur les cases et marqueurs géographiques numérotés. |
+| HUD | Instruments des cinq zones et neuf secteurs, console du fonds actif, dock des six fonds avec liquidités et valorisation. |
+| Trading et portefeuille | Terminal flottant ; prix moyen, parts libres, graphiques réels, contrôles C/C et monopoles A/A. |
+| Contexte | Illustration, récit, notes et impacts des six fonds ; carrousel d'entreprises à la molette et au toucher. |
+| Événements | Identités finance/justice/régulation ; Bull, Bear et Crash distincts, notes et pertes mises en avant. |
+| Mouvement | Caméra amortie, dé animé, parcours case par case, trajectoires de voyage ; résultats affichés après le mouvement. |
+| Retour financier | Reçu après confirmation du serveur, liquidités animées, récompense de contrôle total et de monopole. |
+| Audio et accès | Effets CC0 locaux, volumes et mute, réduction des animations ; interactions HTML et focus clavier conservés. |
+
+Deux revues indépendantes ont jugé l'ensemble identifiable comme un jeu de plateau financier. Leurs remarques ont conduit à renforcer les ombres/contours, améliorer le terminal et rendre le défilement des cartes explicite. La référence conserve davantage de relief et de lumière chaude : cet écart reste un axe de polissage, sans prétendre à une reproduction exacte ou à une qualité commerciale déjà démontrée. Les mesures logicielles du VPS ne remplacent pas une validation sur ordinateur avec GPU.

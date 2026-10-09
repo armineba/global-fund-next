@@ -1,0 +1,4 @@
+.game-world .consequence-ribbon{max-height:calc(100% - var(--center-top) - var(--center-bottom) - 30px);overflow:auto;overscroll-behavior:contain}
+.game-world .major-consequence{pointer-events:auto}
+.impact-continue{margin:15px auto 0;padding:8px 15px;font-size:11px;min-height:36px}
+@media(max-height:800px){.game-world .consequence-ribbon{padding:12px 15px}.impact-continue{margin-top:10px}}

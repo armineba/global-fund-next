@@ -17,4 +17,4 @@ export function Panel({
   return <section className={`gf-panel ${className}`}>{children}</section>;
 }
 export const formatMoney = (value: number) =>
-  `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(value)} M€`;
+  `${new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} M€`;

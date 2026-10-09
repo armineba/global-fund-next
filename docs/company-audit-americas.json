@@ -1,0 +1,922 @@
+{
+  "scope": "Americas companies in packages/game-engine/legacy/data/gameData.json",
+  "verifiedOn": "2026-10-06",
+  "catalogueModified": false,
+  "logoPolicy": "fallback monogram unless explicit reuse permission/license is found",
+  "companies": [
+    {
+      "id": "enersis",
+      "oldName": "Enersis",
+      "currentName": "Enel Chile",
+      "country": "Chili",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.enel.cl/es/conoce-enel/enel-chile.html",
+      "modification": "Nom obsolète : renommée Enel Chile S.A. en 2016; énergie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "banco-brasil",
+      "oldName": "Banco Brasil",
+      "currentName": "Banco do Brasil",
+      "country": "Brésil",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.bb.com.br/site/sobre-nos/fatos/",
+      "modification": "Nom normalisé au nom institutionnel officiel Banco do Brasil; banque confirmée.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page officielle du Banco do Brasil (« Fatos ») décrit Banco do Brasil comme une société d’économie mixte et institution bancaire.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "amx",
+      "oldName": "AMX",
+      "currentName": "América Móvil",
+      "country": "Mexique",
+      "zone": "americas",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.americamovil.com/",
+      "modification": "Nom remplacé par la marque sociale courante; télécommunications classées communication/médias.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "La page officielle América Móvil « Our Company » identifie le groupe; sa description officielle concerne les télécommunications/services mobiles.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "walmex",
+      "oldName": "Walmex",
+      "currentName": "Walmart de México y Centroamérica",
+      "country": "Mexique",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.walmex.mx/nosotros/",
+      "modification": "Nom étendu au nom officiel. Commerce de détail; catégorie agroalimentaire est un proxy imparfait du catalogue.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "mcdonald-s-corp",
+      "oldName": "McDonald's Corp",
+      "currentName": "McDonald’s Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://corporate.mcdonalds.com/corpmcd/home.html",
+      "modification": "Raison sociale normalisée; reclassée Communication & médias → Agroalimentaire.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "nike-inc",
+      "oldName": "Nike Inc",
+      "currentName": "NIKE, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://about.nike.com/en/company",
+      "modification": "Casse/forme légale normalisée; reclassée Communication & médias → Industrie (habillement/chaussure).",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "united-parcel-service",
+      "oldName": "United Parcel Service",
+      "currentName": "United Parcel Service, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "transport",
+      "verifiedSourceURL": "https://about.ups.com/us/en/our-company.html",
+      "modification": "Forme légale ajoutée; secteur transport confirmé.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "3m-co",
+      "oldName": "3M Co",
+      "currentName": "3M Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.3m.com/3M/en_US/about-3m/",
+      "modification": "Nom légal actuel normalisé; secteur industriel confirmé.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "mastercard-inc",
+      "oldName": "MasterCard Inc",
+      "currentName": "Mastercard Incorporated",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.mastercard.com/global/en/for-the-world/about-us.html",
+      "modification": "Nom/casse normalisés; reclassée Industrie → Finance (réseau et services de paiement).",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "the-boeing-company",
+      "oldName": "The Boeing Company",
+      "currentName": "The Boeing Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.boeing.com/company",
+      "modification": "Entreprise aérospatiale et manufacturière; reclassée Transports → Industrie.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "petrobras",
+      "oldName": "Petrobras",
+      "currentName": "Petróleo Brasileiro S.A. (Petrobras)",
+      "country": "Brésil",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://petrobras.com.br/quem-somos/perfil",
+      "modification": "Nom légal complet vérifié; énergie confirmée.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Le profil officiel décrit Petrobras comme société cotée intégrée dans les secteurs pétrole, gaz naturel et énergie.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "philip-morris-international",
+      "oldName": "Philip Morris International",
+      "currentName": "Philip Morris International Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.pmi.com/who-we-are/who-we-are-overview",
+      "modification": "Forme légale confirmée; tabac classé Agroalimentaire & ressources, frontière sectorielle.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "ambev",
+      "oldName": "Ambev",
+      "currentName": "Ambev S.A.",
+      "country": "Brésil",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://ri.ambev.com.br/en/faqs/",
+      "modification": "Nom légal normalisé; boissons confirmées.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "FAQ officielle Ambev: fabricant/distributeur de bière, boissons gazeuses et boissons sans alcool en Amériques.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "pepsico",
+      "oldName": "PepsiCo",
+      "currentName": "PepsiCo, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.pepsico.com/en/about",
+      "modification": "Forme légale ajoutée; alimentation/boissons confirmées.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "cisco-systems",
+      "oldName": "Cisco Systems",
+      "currentName": "Cisco Systems, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.cisco.com/site/us/en/about/index.html",
+      "modification": "Forme légale ajoutée; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "intel-corp",
+      "oldName": "Intel Corp",
+      "currentName": "Intel Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.intel.com/content/www/us/en/company-overview/company-overview.html",
+      "modification": "Nom légal normalisé; conception/fabrication de semi-conducteurs, technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/intel.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Intel_logo_2023.svg",
+        "license": "PD-textlogo/simple / domaine public (texte et formes simples)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "ibm-corp",
+      "oldName": "IBM Corp",
+      "currentName": "International Business Machines Corporation (IBM)",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.ibm.com/about?lang=en",
+      "modification": "Nom légal développé, marque usuelle conservée; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/ibm.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:IBM_logo.svg",
+        "license": "PD-textlogo / domaine public (texte et formes simples)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "visa-inc",
+      "oldName": "Visa Inc",
+      "currentName": "Visa Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://corporate.visa.com/en/about-visa/mediakits.html",
+      "modification": "Reclassée Industrie → Finance; Visa se décrit comme société technologique de paiements, choix du secteur jeu.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Kit média officiel: Visa Inc. est une entreprise technologique de paiement; les logos ne sont proposés que pour usage média.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "at-t-inc",
+      "oldName": "AT&T Inc",
+      "currentName": "AT&T Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "media",
+      "verifiedSourceURL": "https://about.att.com/ecms/dam/snrdocs/2025-annual-report-complete-annual-report.pdf",
+      "modification": "Nom actuel conservé; télécommunications/communication confirmées.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Rapport annuel officiel AT&T 2025 identifie AT&T Inc. et ses activités de communication.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "the-coca-cola-co",
+      "oldName": "The Coca-cola Co",
+      "currentName": "The Coca-Cola Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.coca-colacompany.com/about-us",
+      "modification": "Casse/nom légal normalisés; boissons confirmées.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "the-walt-disney-co",
+      "oldName": "The Walt Disney Co",
+      "currentName": "The Walt Disney Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "media",
+      "verifiedSourceURL": "https://thewaltdisneycompany.com/about/",
+      "modification": "Nom normalisé; divertissement et médias confirmés.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "oracle-corp",
+      "oldName": "Oracle Corp",
+      "currentName": "Oracle Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.oracle.com/corporate/",
+      "modification": "Nom légal normalisé; logiciels/cloud confirmés.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/oracle.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Oracle_wordmark.svg",
+        "license": "PD-textlogo / domaine public (texte simple)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "chevron-corp",
+      "oldName": "Chevron Corp",
+      "currentName": "Chevron Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.chevron.com/who-we-are",
+      "modification": "Forme légale ajoutée; énergie confirmée.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page officielle Chevron décrit la fourniture d’énergie et l’activité du groupe.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "pfizer-inc",
+      "oldName": "Pfizer Inc",
+      "currentName": "Pfizer Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.pfizer.com/about",
+      "modification": "Nom actuel confirmé; biopharmaceutique/santé confirmé.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "procter-gamble-co",
+      "oldName": "Procter & Gamble Co",
+      "currentName": "The Procter & Gamble Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://us.pg.com/who-we-are/",
+      "modification": "Nom légal normalisé; reclassée Agroalimentaire → Industrie (biens de consommation non alimentaires).",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page officielle « Who we are » décrit P&G et ses marques de produits de consommation.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "jpmorgan-chase-co",
+      "oldName": "JPMorgan Chase & Co",
+      "currentName": "JPMorgan Chase & Co.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.jpmorganchase.com/about",
+      "modification": "Ponctuation normalisée; finance confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "general-electric",
+      "oldName": "General Electric",
+      "currentName": "GE Aerospace",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.ge.com/investor-relations/spinoff-resources",
+      "modification": "General Electric n’est plus le groupe opérationnel unifié; activité aéronautique poursuivie sous GE Aerospace après séparation de GE Vernova en 2024.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page officielle GE Investor Relations confirme la scission de GE Vernova en avril 2024 et que GE Aerospace est la société restante.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "wal-mart-stores-inc",
+      "oldName": "Wal-Mart Stores Inc",
+      "currentName": "Walmart Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://corporate.walmart.com/about",
+      "modification": "Ancien nom remplacé par Walmart Inc.; commerce général incluant l’alimentaire conservé en Agroalimentaire & ressources, secteur disponible le plus proche. Walmart de México est une entité distincte.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "wells-fargo-co",
+      "oldName": "Wells Fargo & Co",
+      "currentName": "Wells Fargo & Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.wellsfargo.com/about/corporate/",
+      "modification": "Nom légal normalisé; services financiers confirmés.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "johnson-johnson",
+      "oldName": "Johnson & Johnson",
+      "currentName": "Johnson & Johnson",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.jnj.com/our-company",
+      "modification": "Nom actuel confirmé; santé/pharmacie et technologies médicales.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "microsoft-corp",
+      "oldName": "Microsoft Corp",
+      "currentName": "Microsoft Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.microsoft.com/en-us/about",
+      "modification": "Nom légal normalisé; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/microsoft.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Microsoft.svg",
+        "license": "PD-textlogo / domaine public (texte et formes géométriques simples)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "exxon-mobil-corp",
+      "oldName": "Exxon Mobil Corp",
+      "currentName": "Exxon Mobil Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://corporate.exxonmobil.com/what-we-do",
+      "modification": "Nom légal normalisé; énergie confirmée.",
+      "confiance": "moyenne",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "official_search_excerpt_only_direct_page_unavailable",
+      "evidence": {
+        "status": "official_search_result_excerpt_only",
+        "summary": "Page officielle « What we do » décrit ExxonMobil comme fournisseur d’énergie et de produits.",
+        "sourceVerified": false,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "berkshire-hathaway-inc",
+      "oldName": "Berkshire Hathaway Inc",
+      "currentName": "Berkshire Hathaway Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.berkshirehathaway.com/",
+      "modification": "Ponctuation normalisée; société holding d’investissement classée Finance.",
+      "confiance": "medium",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "alphabet-google-inc",
+      "oldName": "Alphabet (Google Inc)",
+      "currentName": "Alphabet Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://abc.xyz/",
+      "modification": "Nom mis à jour au groupe parent Alphabet Inc.; Google est sa principale filiale/activité; technologie conservée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    },
+    {
+      "id": "apple-inc",
+      "oldName": "Apple Inc",
+      "currentName": "Apple Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.apple.com/leadership/",
+      "modification": "Nom actuel confirmé; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      }
+    }
+  ]
+}

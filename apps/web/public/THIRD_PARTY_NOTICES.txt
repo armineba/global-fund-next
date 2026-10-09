@@ -388,3 +388,294 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+=== Assets de la scène immersive Global Fund ===
+NASA Earth Observatory / Black Marble 2016. Source NASA, utilisation selon les conditions NASA; aucune affiliation ni soutien suggéré.
+Source: https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/
+Kenney Board Game Pack et Interface Sounds, CC0 1.0. Kenney Vleugels / kenney.nl.
+Notices: /assets/audio/Kenney-Boardgame-License.txt et /assets/audio/Kenney-Interface-License.txt
+Polices SIL Open Font License 1.1, distribuées localement avec leurs notices:
+Inter: /assets/fonts/Inter-OFL.txt — Inter Project Authors / Rasmus Andersson
+IBM Plex Mono: /assets/fonts/IBM-Plex-Mono-OFL.txt — IBM / Mike Abbink / Bold Monday
+Cinzel: /assets/fonts/Cinzel-OFL.txt — Natanael Gama
+Cormorant Garamond: /assets/fonts/Cormorant-Garamond-OFL.txt — Christian Thalmann
+Les figurines, miniatures de villes et décors wealth sont des créations illustrées générées pour Global Fund. Elles ne sont pas attribuées à une bibliothèque CC0 tierce.
+
+Logos de sociétés (fichiers SVG locaux sous /assets/companies/logos/):
+TotalEnergies — Vulphere, vectorisé depuis le rapport officiel TotalEnergies H1 2021; Siemens — Siemens AG; SAP — SAP SE; Microsoft — Microsoft Corporation / Jason Wells; IBM — Paul Rand; Intel — Intel; Oracle — Oracle Corporation; Shell — Royal Dutch Shell; MHI — Mitsubishi; Telstra — Telstra.
+Sources et pages individuelles : /docs/company-logo-assets.json (avec les liens Commons, auteurs, sources officielles et chemins complets).
+Statut indiqué par Wikimedia Commons pour ces dix créations : domaine public au titre de PD-textlogo/PD simple shapes car limitées au texte et/ou formes simples; les pages portent aussi un avertissement Trademarked. Le domaine public en droit d'auteur ne constitue pas une autorisation de marque. Les fichiers ont été copiés sans modification dans les dossiers assets et public/assets locaux; aucune ressource distante n'est chargée.
+Les deux derniers logos remplacent des slots historiques MHI/Telstra. Les monogrammes de secours Europe sont des initiales typographiques internes à l'application, pas des logos tiers.
+
+FIVE FINANCIAL MARKET OFFICES (2026-10-06)
+
+Local copies resized/cropped to 1920x1080, WebP Q82. Combined in CSS with the existing Global Fund office interior. Original source licenses and credits follow.
+americas — New York / Manhattan: Night Manhattan skyline.jpg
+Author: Mike Sinko
+Source: https://commons.wikimedia.org/wiki/File:Night_Manhattan_skyline.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0/
+Modified local resource: apps/web/public/assets/environments/offices/americas/skyline.webp
+europe — London / Canary Wharf: Canary Wharf Panorama Night.jpg
+Author: Seb Tyler (Commons username: The european union commons)
+Source: https://commons.wikimedia.org/wiki/File:Canary_Wharf_Panorama_Night.jpg
+License: CC BY 3.0 — https://creativecommons.org/licenses/by/3.0/
+Modified local resource: apps/web/public/assets/environments/offices/europe/skyline.webp
+asia — Hong Kong / Victoria Harbour: Hong Kong Night Skyline from Lugard Road.jpg
+Author: Przemek Jaczewski (Commons username: PrzemekJaczewski)
+Source: https://commons.wikimedia.org/wiki/File:Hong_Kong_Night_Skyline_from_Lugard_Road.jpg
+License: CC BY 3.0 — https://creativecommons.org/licenses/by/3.0/
+Modified local resource: apps/web/public/assets/environments/offices/asia/skyline.webp
+africa — Dubai / Downtown: Downtown Dubai (36433881545).jpg
+Author: Edgardo W. Olivera
+Source: https://commons.wikimedia.org/wiki/File:Downtown_Dubai_(36433881545).jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0/
+Modified local resource: apps/web/public/assets/environments/offices/africa/skyline.webp
+oceania — Sydney / Harbour and CBD: Sydney Harbour night skyline.jpg
+Author: Daniel Falconer (Commons summary); J c / catsper (Flickr structured data)
+Source: https://commons.wikimedia.org/wiki/File:Sydney_Harbour_night_skyline.jpg
+License: CC BY 2.0 — https://creativecommons.org/licenses/by/2.0/
+Modified local resource: apps/web/public/assets/environments/offices/oceania/skyline.webp
+Sydney: preserve both Daniel Falconer and J c / catsper attributions from the Commons/Flickr source records.
+
+
+Supplementary company logos, accessed 2026-10-07. Identification only; trademark rights are separate.
+Alphabet Inc.: Alphabet Inc.; vectorisé par Totie — PD-textlogo; Trademarked — https://commons.wikimedia.org/wiki/File:Alphabet_Inc_Logo_2015.svg — /assets/companies/logos/alphabet.svg — Aucune; original SVG copié à l’identique.
+Cisco Systems, Inc.: Cisco — PD-textlogo; Trademarked — https://commons.wikimedia.org/wiki/File:Cisco_logo_blue_2016.svg — /assets/companies/logos/cisco.svg — Aucune; original SVG copié à l’identique.
+Toyota Motor Corporation: Toyota Motor Corporation; édition Commons par Maanshen — PD-textlogo / formes géométriques simples; Trademarked — https://commons.wikimedia.org/wiki/File:Toyota_carlogo.svg — /assets/companies/logos/toyota.svg — Aucune; original SVG copié à l’identique.
+Volkswagen AG: Volkswagen — PD-textlogo; Trademarked — https://commons.wikimedia.org/wiki/File:Volkswagen_logo_2019.svg — /assets/companies/logos/volkswagen.svg — Aucune; original SVG copié à l’identique.
+The Boeing Company: Boeing; Richard Burch Eiber — PD-textlogo; Trademarked — https://commons.wikimedia.org/wiki/File:Boeing_full_logo.svg — /assets/companies/logos/boeing.svg — Aucune; original SVG copié à l’identique.
+Pfizer Inc.: Pfizer, Team — PD-textlogo; Trademarked — https://commons.wikimedia.org/wiki/File:Pfizer_(2021).svg — /assets/companies/logos/pfizer.svg — Aucune; original SVG copié à l’identique.
+Sun Hung Kai Properties Limited: Auteur inconnu; conversion vectorielle par Marsupilami — PD-shape; Trademarked — https://commons.wikimedia.org/wiki/File:Sun_Hung_Kai_Properties_logo.svg — /assets/companies/logos/sun-hung-kai.svg — Aucune; original SVG copié à l’identique.
+Emaar Properties PJSC: Emaar Properties (orthographié “Emmar” sur Commons) — PD-textlogo / formes simples; pas d’avertissement trademark explicite sur la page Commons consultée — https://commons.wikimedia.org/wiki/File:Emaar_logo.svg — /assets/companies/logos/emaar.svg — Aucune; original SVG copié à l’identique.
+Taiwan Semiconductor Manufacturing Company Limited: Taiwan Semiconductor Manufacturing Company Limited — PD-shape / géométrie simple; Trademarked — https://commons.wikimedia.org/wiki/File:TSMC_wordmark.svg — /assets/companies/logos/tsmc.svg — Aucune; original SVG copié à l’identique.
+Komatsu Ltd.: 鉄之介; fichier actualisé par Vikassinghhhh — PD-textlogo; Trademarked — https://commons.wikimedia.org/wiki/File:Komatsu_company_logos.svg — /assets/companies/logos/komatsu.svg — Aucune; original SVG copié à l’identique.
+
+LOGOS — SETTLEMENT ITERATION 2026-10-07
+
+Visa Inc. — /assets/companies/logos/visa-2021.svg
+Author: Visa Inc.; SVG contributors Nikon1803, Gameposo, Tokyoship
+Source: https://commons.wikimedia.org/wiki/File:Visa_Inc._logo_(2021–present).svg
+Original: https://upload.wikimedia.org/wikipedia/commons/5/5c/Visa_Inc._logo_%282021%E2%80%93present%29.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Walmart Inc. — /assets/companies/logos/walmart-inc-2025.svg
+Author: Walmart
+Source: https://commons.wikimedia.org/wiki/File:Walmart_logo_(2025).svg
+Original: https://upload.wikimedia.org/wikipedia/commons/5/5b/Walmart_logo_%282025%29.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Walmart de México y Centroamérica — /assets/companies/logos/walmart-mexico-2025.svg
+Author: Walmart de México y Centroamérica
+Source: https://commons.wikimedia.org/wiki/File:Walmart_México_y_Centroamérica_logo_(2025).svg
+Original: https://upload.wikimedia.org/wikipedia/commons/c/cb/Walmart_M%C3%A9xico_y_Centroam%C3%A9rica_logo_%282025%29.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+McDonald’s Corporation — /assets/companies/logos/mcdonalds-arches.svg
+Author: McDonald's
+Source: https://commons.wikimedia.org/wiki/File:McDonald's_cutted_arches.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/f/fc/McDonald%27s_cutted_arches.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Mastercard Incorporated — /assets/companies/logos/mastercard-2019.svg
+Author: Mastercard Incorporated
+Source: https://commons.wikimedia.org/wiki/File:Mastercard_2019_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Chevron Corporation — /assets/companies/logos/chevron.svg
+Author: Chevron Corporation
+Source: https://commons.wikimedia.org/wiki/File:Chevron_Logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/8/86/Chevron_Logo.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+3M Company — /assets/companies/logos/3m.svg
+Author: Stephen Dunne, Siegel & Gale; 3M
+Source: https://commons.wikimedia.org/wiki/File:3M_wordmark.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/1/15/3M_wordmark.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+The Procter & Gamble Company — /assets/companies/logos/procter-gamble.svg
+Author: Procter & Gamble
+Source: https://commons.wikimedia.org/wiki/File:Procter_&_Gamble_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/8/85/Procter_%26_Gamble_logo.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Wells Fargo & Company — /assets/companies/logos/wells-fargo-2020.svg
+Author: Wells Fargo
+Source: https://commons.wikimedia.org/wiki/File:Wells_Fargo_Logo_(2020).svg
+Original: https://upload.wikimedia.org/wikipedia/commons/e/e2/Wells_Fargo_Logo_%282020%29.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+AstraZeneca PLC — /assets/companies/logos/astrazeneca.svg
+Author: AstraZeneca plc
+Source: https://commons.wikimedia.org/wiki/File:Astrazeneca_text_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/7/74/Astrazeneca_text_logo.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+L’Oréal S.A. — /assets/companies/logos/loreal.svg
+Author: L’Oréal
+Source: https://commons.wikimedia.org/wiki/File:L'Oréal_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/9/9d/L%27Or%C3%A9al_logo.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Novartis AG — /assets/companies/logos/novartis-2023.svg
+Author: Novartis
+Source: https://commons.wikimedia.org/wiki/File:Novartis-Logo-2023.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/7/7c/Novartis-Logo-2023.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Sanofi — /assets/companies/logos/sanofi-2022.svg
+Author: Sanofi
+Source: https://commons.wikimedia.org/wiki/File:Sanofi-2022.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/f/f5/Sanofi-2022.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Industria de Diseño Textil, S.A. (Inditex) — /assets/companies/logos/inditex.svg
+Author: Inditex
+Source: https://commons.wikimedia.org/wiki/File:Inditex_logo_black.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/3/35/Inditex_logo_black.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+British American Tobacco p.l.c. — /assets/companies/logos/bat-2020.svg
+Author: Unknown author (Commons); file sourced from BAT.com
+Source: https://commons.wikimedia.org/wiki/File:Bat_logo20.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/b/b0/Bat_logo20.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+LVMH Moët Hennessy Louis Vuitton SE — /assets/companies/logos/lvmh.svg
+Author: LVMH; SVG conversion by Marsupilami
+Source: https://commons.wikimedia.org/wiki/File:LVMH_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/b/b1/LVMH_logo.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Nestlé S.A. — /assets/companies/logos/nestle-wordmark-2024.svg
+Author: Société des Produits Nestlé S.A.
+Source: https://commons.wikimedia.org/wiki/File:Nestlé_textlogo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/b/bf/Nestl%C3%A9_textlogo.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+Bayer AG — /assets/companies/logos/bayer-2018.svg
+Author: Bayer AG
+Source: https://commons.wikimedia.org/wiki/File:Logo_Bayer.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/f/f7/Logo_Bayer.svg
+Copyright: PD-textlogo (Wikimedia Commons); Trademarked
+Use/rights: Commons marks the SVG as public domain for copyright because it is text/simple geometry. The trademark remains separate and is not granted by this copyright status.
+Changes: Downloaded from the original Wikimedia Commons SVG and copied unchanged to both local asset directories; filename changed only.
+
+PT Bank Central Asia Tbk — /assets/companies/logos/bca.svg
+Author: PT Bank Central Asia Tbk
+Source: https://commons.wikimedia.org/wiki/File:Bank_Central_Asia_(with_slogan).svg
+Original: https://upload.wikimedia.org/wikipedia/commons/b/b8/Bank_Central_Asia_%28with_slogan%29.svg
+Copyright: PD-textlogo, simple text/geometric logo, as tagged on Commons
+Use/rights: Commons marks the logo as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+Qatar National Bank — /assets/companies/logos/qnb.svg
+Author: QNB Group
+Source: https://commons.wikimedia.org/wiki/File:QNB_Logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/8/8f/QNB_Logo.svg
+Copyright: PD-textlogo, simple text/geometric logo, as tagged on Commons
+Use/rights: Commons marks the logo as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+Samsung Electronics Co., Ltd. — /assets/companies/logos/samsung-electronics.svg
+Author: Samsung
+Source: https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/b/b4/Samsung_wordmark.svg
+Copyright: PD-textlogo, simple text logo, as tagged on Commons
+Use/rights: Commons marks the wordmark as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+CSL Limited — /assets/companies/logos/csl.svg
+Author: CSL Limited
+Source: https://commons.wikimedia.org/wiki/File:CSL_Limited_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/8/8d/CSL_Limited_logo.svg
+Copyright: PD-textlogo, simple text logo, as tagged on Commons
+Use/rights: Commons marks the logo as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+Alibaba Group Holding Limited — /assets/companies/logos/alibaba.svg
+Author: Alibaba Group Holding Limited
+Source: https://commons.wikimedia.org/wiki/File:Alibaba_en_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/4/41/Alibaba_en_logo.svg
+Copyright: PD-textlogo, English text-only logo, as tagged on Commons
+Use/rights: Commons marks the wordmark as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+Industrial and Commercial Bank of China Limited — /assets/companies/logos/icbc.svg
+Author: ICBC Co., Ltd.
+Source: https://commons.wikimedia.org/wiki/File:ICBC_China_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/3/3f/ICBC_China_logo.svg
+Copyright: PD-shape, simple geometry, as tagged on Commons
+Use/rights: Commons marks the logo as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+Ping An Insurance (Group) Company of China, Ltd. — /assets/companies/logos/ping-an.svg
+Author: Ping An Insurance
+Source: https://commons.wikimedia.org/wiki/File:Ping_An_Logo_(2022).svg
+Original: https://upload.wikimedia.org/wikipedia/commons/7/7d/Ping_An_Logo_%282022%29.svg
+Copyright: PD-textlogo, simple text/geometric logo, as tagged on Commons
+Use/rights: Commons marks the logo as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+MTN Group Limited — /assets/companies/logos/mtn.svg
+Author: MTN
+Source: https://commons.wikimedia.org/wiki/File:MTN_2022_logo.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/2/2a/MTN_2022_logo.svg
+Copyright: PD-textlogo, simple text logo, as tagged on Commons
+Use/rights: Commons marks the logo as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons; no external resources or executable SVG content.
+
+Qantas Airways — /assets/companies/logos/qantas-wordmark.svg
+Author: Qantas Airways Limited
+Source: https://commons.wikimedia.org/wiki/File:Qantas_wordmark_2016.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/c/c5/Qantas_wordmark_2016.svg
+Copyright: PD-shape, simple wordmark, as tagged on Commons
+Use/rights: Commons marks the wordmark as trademarked; included only as company identification.
+Changes: Downloaded unchanged from Commons. Wordmark only; no kangaroo emblem. No external resources or executable SVG content.
+
+Tencent Holdings Limited — /assets/companies/logos/tencent.png
+Author: Tencent
+Source: https://commons.wikimedia.org/wiki/File:Tencent_logo_2017.svg
+Original: https://upload.wikimedia.org/wikipedia/commons/6/6a/Tencent_logo_2017.svg
+Copyright: PD-textlogo, simple text/geometric logo, as tagged on Commons
+Use/rights: Commons marks the logo as trademarked; included only as company identification.
+Changes: Extracted the embedded PNG bytes unchanged from the Commons SVG data:image/png payload into a standalone local PNG; no recompression.
+
+Logo freshness follow-up — 2026-10-07:
+Oracle PD wordmark shape verified against official Redwood Brand Style Guide 2024, pp. 8/17; recolored only from #ff0000 to #C74634. Source: https://www.oracle.com/hr/a/ocom/docs/oracle-brand-guidelines.pdf
+Telstra historical horizontal SVG is no longer mapped to new games. The current standalone T mark lacks a verified reusable copyright basis; typographic initials are used. No current Telstra image imported.

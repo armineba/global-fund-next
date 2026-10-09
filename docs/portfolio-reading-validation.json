@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-08T21:54:01.789742+00:00",
+  "release": ".releases/2026-10-08T21-46-37-199Z-373474",
+  "unitTests": {
+    "passed": 123,
+    "files": 9
+  },
+  "browserScenarios": [
+    "Contexte avec réelles variations : animation/validation de marché conservée",
+    "Revenu IA de 1 M€ en animations normales : aucun MARKET_IMPACT, bilan visible après 35 s simulées, Continuer requis",
+    "Même scénario en animations réduites"
+  ],
+  "commands": [
+    "npm run build",
+    "npm test",
+    "npm run test:e2e -- tests/e2e/financial-reading.spec.ts tests/e2e/board-game.spec.ts --grep \"petit revenu IA|Échap applique\"",
+    "npm run test:e2e -- tests/e2e/financial-reading.spec.ts"
+  ],
+  "harnessCorrection": "pauseAt cible désormais une date future pour éviter une avance vers le passé ; les deux scénarios de revenu passent après correction.",
+  "screenshots": [
+    {
+      "path": "screenshots/current/income-reading-no-preference.png",
+      "sha256": "5482381801bba59706d70d0aecb7824338a682eacedc52b618114ff72348ebf2",
+      "capturedAt": "2026-10-08T21:51:17.624467+00:00"
+    },
+    {
+      "path": "screenshots/current/income-reading-reduce.png",
+      "sha256": "2360fffd3dea2ac8115431bc0aadea74140e78a64f901ddd9def43a91b455351",
+      "capturedAt": "2026-10-08T21:51:24.665402+00:00"
+    }
+  ]
+}

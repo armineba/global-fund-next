@@ -1,0 +1,88 @@
+# Développer sur Mac et livrer sur le VPS
+
+Ce dépôt est public : GitHub Actions peut donc récupérer le code sans clé de lecture du dépôt. Le workflow **CI** exécute les tests unitaires, le build et les tests Playwright avant toute livraison. Le workflow **Deploy VPS** démarre uniquement après la réussite d’un workflow CI déclenché par un push sur `main`; une CI de pull request ne peut pas déployer.
+
+Le VPS est `213.199.40.67`, accessible en SSH sur le port 22 sous le compte `codex`. GitHub transmet uniquement le SHA du commit testé à une clé dédiée, limitée côté serveur à la commande `deploy <sha40>`. Le serveur récupère le code public depuis GitHub. Il n’y a donc pas besoin de clé GitHub de lecture dans les secrets Actions.
+
+## Première installation sur Mac
+
+Installez Node.js 22.12 ou plus récent et Git. Clonez le dépôt public :
+
+```sh
+git clone https://github.com/mattmofr/global-fund-next.git
+cd global-fund-next
+npm ci
+cp -n .env.example .env
+npm run dev
+```
+
+Ouvrez <http://localhost:5174>. Le fichier `.env` est local et ignoré par Git. Pour pousser vos changements, connectez votre compte GitHub par la méthode déjà configurée sur votre Mac. Si GitHub CLI est installé, `gh auth login` est une option; il n’est pas nécessaire pour lancer le jeu localement.
+
+## Envoyer un changement
+
+Travaillez dans le clone Mac, exécutez localement les vérifications utiles, puis commitez et poussez sur `main` :
+
+```sh
+git pull --ff-only
+git status --short
+git add <fichiers-voulus>
+git commit -m "Décrire le changement"
+git push origin main
+```
+
+N’ajoutez pas `.env`, des sauvegardes, des données de `runtime/` ou des secrets. Une PR vers `main` déclenche les tests CI, sans livraison. Un push direct ou un merge sur `main` déclenche d’abord la CI; si elle réussit, Actions demande au VPS de livrer le SHA précis testé. Si un commit plus récent est déjà sur `main` avant l’activation, le serveur ignore cette ancienne livraison.
+
+## Configurer GitHub Actions
+
+Dans **Settings → Environments → production**, les variables et secrets suivants configurent le déploiement :
+
+| Nom | Type | Valeur |
+| --- | --- | --- |
+| `VPS_HOST` | Variable | `213.199.40.67` |
+| `VPS_USER` | Variable | `codex` |
+| `VPS_PORT` | Variable | `22` |
+| `VPS_SSH_PRIVATE_KEY` | Secret | Clé privée dédiée au déploiement, dont la clé publique VPS est autorisée avec la commande forcée `ssh-deploy.sh` |
+| `VPS_KNOWN_HOSTS` | Secret | Entrée `known_hosts` vérifiée pour l’adresse et le port du VPS |
+
+Obtenez et vérifiez l’empreinte de la clé d’hôte par un canal de confiance avant de renseigner `VPS_KNOWN_HOSTS`; n’acceptez pas une empreinte affichée sans vérification. Ne réutilisez pas une clé personnelle. La clé dédiée ne doit permettre que `deploy <sha40>` et le workflow vérifie l’hôte strictement avec `StrictHostKeyChecking=yes`.
+
+Le workflow attend exactement le nom CI `CI`. Gardez ce nom stable ou mettez à jour le filtre `workflow_run` du workflow de déploiement en même temps. Il vérifie également que le workflow réussi vient d’un push sur `main` dans ce dépôt, et ne lance aucun code de pull request sur le VPS.
+
+## Ce que fait une livraison
+
+Le checkout de développement historique `/home/codex/projects/global-fund-next` reste séparé et n’est pas utilisé comme répertoire de production. Le script serveur crée une release dans `/home/codex/deployments/global-fund-next/releases/<sha40>` puis fait pointer `current` vers elle. Chaque release reçoit des liens vers la configuration `.env` et le stockage `runtime` originaux, qui restent hors de Git. Les ressources web hashées de la release précédente sont conservées pour les navigateurs déjà ouverts.
+
+Le serveur prépare et construit la release avant l’activation. Juste avant le redémarrage et l’exécution de la migration idempotente par systemd, il effectue un `pg_dump` PostgreSQL. Si la sauvegarde échoue, le déploiement s’arrête avant l’activation. Après le redémarrage, le script vérifie le service et `/health`, puis l’URL publique. En cas d’échec pendant l’activation, il remet `current` sur la release précédente et redémarre le service.
+
+La sauvegarde protège les données, mais le déploiement ne restaure pas automatiquement la base si une migration a déjà modifié son schéma. Une restauration de base est une opération distincte à décider et à effectuer avec précaution; le retour de version du code ne l’annule pas.
+
+Les releases et sauvegardes sont conservées sous `/home/codex/deployments/global-fund-next/`. Sur le VPS, elles nécessitent une politique de rétention et de vérification des sauvegardes; ne supprimez pas `current`, `previous-release`, le stockage `runtime` ou les seules sauvegardes disponibles.
+
+## Vérifier ou annuler une livraison
+
+Consultez l’exécution **Deploy VPS** dans l’onglet Actions. Sur le VPS, vérifiez le service et la santé HTTP :
+
+```sh
+sudo systemctl status global-fund-next.service
+curl -fsS https://global-fund-next.213.199.40.67.sslip.io/health
+sudo journalctl -u global-fund-next.service -n 50
+```
+
+Pour annuler une livraison, arrêtez d’abord les exécutions de déploiement Actions afin qu’aucune ne change `current` pendant le retour. Connectez-vous au VPS, puis exécutez le bloc ci-dessous. Le verrou `flock` sérialise le retour avec le script de livraison. Il remet le code sur la dernière release enregistrée comme précédente et redémarre systemd; il ne restaure pas PostgreSQL.
+
+```sh
+flock /home/codex/deployments/global-fund-next/deploy.lock bash -c '
+  set -euo pipefail
+  root=/home/codex/deployments/global-fund-next
+  previous=$(cat "$root/previous-release")
+  test -d "$previous"
+  temporary=$(mktemp -d "$root/.rollback.XXXXXX")
+  trap '\''rm -rf "$temporary"'\'' EXIT
+  ln -s "$previous" "$temporary/current"
+  mv -Tf "$temporary/current" "$root/current"
+  sudo -n /usr/bin/systemctl restart global-fund-next.service
+  curl --fail --silent --show-error --max-time 15 https://global-fund-next.213.199.40.67.sslip.io/health
+'
+```
+
+Si le retour échoue, consultez `journalctl` et gardez la sauvegarde associée à la livraison. Une restauration PostgreSQL ne doit être faite qu’après avoir choisi explicitement le dump correspondant et évalué les écritures enregistrées depuis la migration.

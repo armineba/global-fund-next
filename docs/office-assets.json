@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-10-06",
+  "processing": {
+    "format": "WebP",
+    "dimensions": "1920x1080",
+    "quality": 82,
+    "crop": "center cover",
+    "note": "Source images were resized/cropped and recompressed locally. Attribution and license requirements still apply."
+  },
+  "assets": [
+    {
+      "region": "americas",
+      "city": "New York / Manhattan",
+      "path": "assets/environments/offices/americas/skyline.webp",
+      "publicPath": "apps/web/public/assets/environments/offices/americas/skyline.webp",
+      "sourceTitle": "Night Manhattan skyline.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Night_Manhattan_skyline.jpg",
+      "sourceFileUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Night_Manhattan_skyline.jpg",
+      "author": "Mike Sinko",
+      "sourceDate": "2018-08-22",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "modifiedAt": "2026-10-06",
+      "sizeBytes": 199860,
+      "sha256": "02daa0af480d75ef39d679ea5b0f93a577a5c3c13b4401035cea1fe021b4603f"
+    },
+    {
+      "region": "europe",
+      "city": "London / Canary Wharf",
+      "path": "assets/environments/offices/europe/skyline.webp",
+      "publicPath": "apps/web/public/assets/environments/offices/europe/skyline.webp",
+      "sourceTitle": "Canary Wharf Panorama Night.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Canary_Wharf_Panorama_Night.jpg",
+      "sourceFileUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Canary_Wharf_Panorama_Night.jpg",
+      "author": "Seb Tyler (Commons username: The european union commons)",
+      "sourceDate": "2008-08-11",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "modifiedAt": "2026-10-06",
+      "sizeBytes": 232912,
+      "sha256": "7a8371f21c1f5985d3085945ebedaabd9a46136b7f6a3a9b11d85fd10c10de75"
+    },
+    {
+      "region": "asia",
+      "city": "Hong Kong / Victoria Harbour",
+      "path": "assets/environments/offices/asia/skyline.webp",
+      "publicPath": "apps/web/public/assets/environments/offices/asia/skyline.webp",
+      "sourceTitle": "Hong Kong Night Skyline from Lugard Road.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Night_Skyline_from_Lugard_Road.jpg",
+      "sourceFileUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Hong_Kong_Night_Skyline_from_Lugard_Road.jpg",
+      "author": "Przemek Jaczewski (Commons username: PrzemekJaczewski)",
+      "sourceDate": "2016-05-18",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "modifiedAt": "2026-10-06",
+      "sizeBytes": 417470,
+      "sha256": "6ee686bae85e23c6014b74bded82ff19812d7cb77f97060b99b7e164cb9933b9"
+    },
+    {
+      "region": "africa",
+      "city": "Dubai / Downtown",
+      "path": "assets/environments/offices/africa/skyline.webp",
+      "publicPath": "apps/web/public/assets/environments/offices/africa/skyline.webp",
+      "sourceTitle": "Downtown Dubai (36433881545).jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Downtown_Dubai_(36433881545).jpg",
+      "sourceFileUrl": "https://upload.wikimedia.org/wikipedia/commons/1/19/Downtown_Dubai_%2836433881545%29.jpg",
+      "downloadVariantUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Downtown_Dubai_%2836433881545%29.jpg/1920px-Downtown_Dubai_%2836433881545%29.jpg",
+      "author": "Edgardo W. Olivera",
+      "sourceDate": "2017-06-03",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "modifiedAt": "2026-10-06",
+      "sizeBytes": 285942,
+      "sha256": "690abba82db31c0ebc336cb572589f48938d2cb6328cefe845bd0c881f71d5c2"
+    },
+    {
+      "region": "oceania",
+      "city": "Sydney / Harbour and CBD",
+      "path": "assets/environments/offices/oceania/skyline.webp",
+      "publicPath": "apps/web/public/assets/environments/offices/oceania/skyline.webp",
+      "sourceTitle": "Sydney Harbour night skyline.jpg",
+      "sourcePageUrl": "https://commons.wikimedia.org/wiki/File:Sydney_Harbour_night_skyline.jpg",
+      "sourceFileUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Sydney_Harbour_night_skyline.jpg",
+      "author": "Daniel Falconer (Commons summary); J c / catsper (Flickr structured data)",
+      "sourceDate": "2005-05-28",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "modifiedAt": "2026-10-06",
+      "sizeBytes": 185958,
+      "sha256": "ede08fc639b6e19873b55323581a7d30294a457416b4f1198eafb7e479fe6ea0"
+    }
+  ]
+}

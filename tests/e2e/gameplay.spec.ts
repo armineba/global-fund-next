@@ -12,7 +12,9 @@ function watchErrors(page: Page) {
 async function enterLobby(page: Page, secondSeat: "local" | "remote") {
   await page.goto("/");
   await expect(page.getByText("Serveur connecté")).toBeVisible();
+  await page.getByRole("button", { name: /NOUVELLE PARTIE/ }).click();
   await page.getByLabel("Type du joueur 2").selectOption(secondSeat);
+  await page.getByRole("button", { name: /Choisir les places (?:financières|de marché)/ }).click();
   await page.getByRole("button", { name: "Créer ma partie" }).click();
   await expect(
     page.getByRole("heading", { name: "Le capital vous attend." }),
@@ -29,19 +31,83 @@ async function openParquet(page: Page) {
 }
 
 async function closeNotices(page: Page) {
-  const dialog = page.getByRole("dialog");
-  const close = dialog.getByRole("button", { name: "Fermer cette scène" });
-  // A landing can produce both a board event and a payment notice.
-  for (
-    let i = 0;
-    i < 4 && (await close.isVisible().catch(() => false));
-    i += 1
-  ) {
-    await close.click();
+  const card = page.locator(".cs-scene");
+  const world = page.locator(".game-world");
+  const impactContinue = page.locator(".impact-continue");
+  const settledStages = /^(TRAVEL_DECISION|WAITING_FOR_DICE|TRADING|TURN_END)$/;
+  // A notice can be followed by another card or by a visible impact pass.
+  // Wait through those frames so callers don't race the next card or busy flag.
+  for (let i = 0; i < 12; i += 1) {
+    await expect.poll(async () =>
+      (await card.isVisible().catch(() => false)) ||
+      (await impactContinue.isVisible().catch(() => false)) ||
+      settledStages.test((await world.getAttribute("data-presentation-stage")) ?? ""),
+    ).toBeTruthy();
+    if (await impactContinue.isVisible().catch(() => false)) await impactContinue.click();
+    else if (await card.isVisible().catch(() => false)) await card.getByRole("button", { name: "Continuer et appliquer les conséquences" }).click();
+    else break;
   }
+  await expect(world).toHaveAttribute("data-presentation-stage", settledStages);
+  await expect(world).not.toHaveAttribute("data-effects-started", "true");
 }
 
 test.describe("Parcours jouables", () => {
+  test("les conséquences attendent le dé et le déplacement en animation normale", async ({ browser }) => {
+    const context = await browser.newContext({ reducedMotion: "no-preference", viewport: { width: 1440, height: 900 } });
+    const page = await context.newPage();
+    const errors = watchErrors(page);
+    try {
+      await enterLobby(page, "local");
+      await openParquet(page);
+      await expect(page.locator(".fund-board-canvas")).toHaveAttribute("data-scene-ready", "true");
+      await page.evaluate(() => {
+        const timing = { clickedAt: 0, sceneAfterMs: null as number | null };
+        const tracked = window as unknown as { presentationTiming: typeof timing; presentationFrames: { stage: string; dice: string; pawn: string }[] };
+        tracked.presentationTiming = timing;
+        tracked.presentationFrames = [];
+        document.querySelector(".action-dice")!.addEventListener("click", () => { timing.clickedAt = performance.now(); }, { once: true });
+        const world = document.querySelector(".game-world")!;
+        const record = () => {
+          const board = document.querySelector(".fund-board");
+          const frame = { stage: world.getAttribute("data-presentation-stage") ?? "", dice: board?.getAttribute("data-dice-state") ?? "", pawn: board?.getAttribute("data-pawn-state") ?? "" };
+          if (!tracked.presentationFrames.some((item) => item.stage === frame.stage && item.dice === frame.dice && item.pawn === frame.pawn)) tracked.presentationFrames.push(frame);
+        };
+        record();
+        const observer = new MutationObserver(() => {
+          record();
+          if (timing.clickedAt && document.querySelector(".cs-scene")) {
+            timing.sceneAfterMs = performance.now() - timing.clickedAt;
+            observer.disconnect();
+          }
+        });
+        observer.observe(world, { childList: true, subtree: true, attributes: true, attributeFilter: ["data-presentation-stage", "data-dice-state", "data-pawn-state"] });
+      });
+      await page.locator(".turn-actions").getByRole("button", { name: "Lancer le dé" }).click();
+      await expect(page.locator(".cs-scene")).toBeVisible({ timeout: 25_000 });
+      const elapsed = await page.evaluate(() => (window as unknown as { presentationTiming: { sceneAfterMs: number | null } }).presentationTiming.sceneAfterMs);
+      // La carte attend obligatoirement le dé et le déplacement.
+      expect(elapsed).not.toBeNull();
+      expect(elapsed!).toBeGreaterThanOrEqual(1000);
+      const sequence = await page.evaluate(() => (window as unknown as { presentationFrames: { stage: string; dice: string; pawn: string }[] }).presentationFrames);
+      const stages = sequence.map((frame) => frame.stage);
+      expect(stages).toContain("DICE_ROLLING");
+      expect(stages).toContain("DICE_RESULT");
+      expect(stages).toContain("PAWN_MOVING");
+      expect(stages.indexOf("DICE_ROLLING")).toBeLessThan(stages.indexOf("DICE_RESULT"));
+      expect(stages.indexOf("DICE_RESULT")).toBeLessThan(stages.indexOf("PAWN_MOVING"));
+      expect(sequence.find((frame) => frame.stage === "DICE_ROLLING")?.dice).toBe("rolling");
+      const diceResult = sequence.find((frame) => frame.stage === "DICE_RESULT");
+      expect(diceResult?.dice).toBe("stopped");
+      expect(diceResult?.pawn).not.toBe("moving");
+      expect(sequence.find((frame) => frame.stage === "PAWN_MOVING")?.dice).toBe("stopped");
+      expect(sequence.find((frame) => frame.stage === "PAWN_MOVING")?.pawn).toBe("moving");
+      await closeNotices(page);
+      expect(errors).toEqual([]);
+    } finally {
+      await context.close();
+    }
+  });
+
   test("deux humains sur le même écran jouent le premier tour et passent la main", async ({
     page,
   }) => {
@@ -50,6 +116,24 @@ test.describe("Parcours jouables", () => {
     await openParquet(page);
 
     const firstInvestor = await page.locator(".active-fund h2").innerText();
+    // Une touche Espace dans un contrôle du terminal doit activer ce contrôle,
+    // sans déclencher le dé du plateau derrière la fenêtre flottante.
+    await page.locator(".world-tools").getByRole("button", { name: /Marché/ }).click();
+    const terminalTab = page.locator(".td-tabs").getByRole("button", { name: "Marché", exact: true });
+    await terminalTab.focus();
+    await page.keyboard.press("Space");
+    await expect(page.getByRole("heading", { name: "Le circuit des marchés" })).toBeVisible();
+    await expect(page.locator(".cs-scene")).toHaveCount(0);
+    await page.keyboard.press("Escape");
+    await expect(page.locator(".floating-terminal")).toHaveCount(0);
+    // Les raccourcis de console fonctionnent aussi après restauration du
+    // focus sur un bouton du HUD ; Espace garde son comportement natif.
+    await page.keyboard.press("p");
+    await expect(page.locator(".td-tabs button.active")).toContainText("Portefeuille");
+    await page.keyboard.press("Escape");
+    await page.keyboard.press("m");
+    await expect(page.locator(".td-tabs button.active")).toHaveText("Marché");
+    await page.keyboard.press("Escape");
     await page
       .locator(".turn-actions")
       .getByRole("button", { name: "Lancer le dé" })
@@ -58,19 +142,19 @@ test.describe("Parcours jouables", () => {
     const notice = page.getByRole("dialog");
     await expect(notice).toBeVisible();
     await expect(
-      notice.getByRole("button", { name: "Fermer cette scène" }),
+      notice.getByRole("button", { name: "Continuer et appliquer les conséquences" }),
     ).toBeVisible();
     await closeNotices(page);
     await expect(
       page.getByRole("heading", { name: "Composer son portefeuille" }),
     ).toBeVisible();
 
-    const buy = page
-      .locator(".td-focus")
-      .getByRole("button", { name: /Acheter/ });
-    await expect(buy).toBeEnabled();
-    await buy.click();
-    await expect(page.getByText(/1\/5 détenues/).first()).toBeVisible();
+      const buy = page
+        .locator(".td-focus")
+        .getByRole("button", { name: "Acheter", exact: true });
+      await expect(buy).toBeEnabled();
+      await buy.click();
+      await expect(page.locator(".td-focus .td-quote > div").nth(3).locator("strong")).toHaveText(/^1\s*\/\s*5$/);
 
     await page.getByRole("button", { name: "Terminer le marché" }).click();
     await expect(
@@ -84,6 +168,8 @@ test.describe("Parcours jouables", () => {
   test("un salon distant synchronise état prêt, lancement et reconnexion après rechargement", async ({
     browser,
   }) => {
+    // Deux clients WebGL rendus par SwiftShader sur le serveur de test.
+    test.setTimeout(75_000);
     const hostContext = await browser.newContext({ reducedMotion: "reduce" });
     const remoteContext = await browser.newContext({ reducedMotion: "reduce" });
     const host = await hostContext.newPage();
@@ -99,6 +185,7 @@ test.describe("Parcours jouables", () => {
 
       await remote.goto("/");
       await expect(remote.getByText("Serveur connecté")).toBeVisible();
+      await remote.getByRole("button", { name: /REJOINDRE/ }).click();
       await remote.getByLabel("Code du salon").fill(code);
       await remote.getByLabel("Nom pour rejoindre").fill("Meridian invité");
       await remote.getByRole("button", { name: "Rejoindre" }).click();
@@ -163,6 +250,7 @@ test.describe("Parcours jouables", () => {
           .locator(".investor-card")
           .filter({ hasText: activeName })
           .click();
+        await client.locator(".world-tools").getByRole("button", { name: /Marché/ }).click();
       }
 
       const companyName = (
@@ -170,10 +258,25 @@ test.describe("Parcours jouables", () => {
       ).trim();
       const buy = actor
         .locator(".td-focus")
-        .getByRole("button", { name: /Acheter/ });
+        .getByRole("button", { name: "Acheter", exact: true });
       await expect(buy).toBeEnabled();
+      // Observer le retour transitoire dès le clic, même si le rendu logiciel
+      // retarde ensuite la réponse du pilote Playwright.
+      await actor.evaluate(() => {
+        const tracked = window as Window & { observedTradeReceipt?: string };
+        tracked.observedTradeReceipt = "";
+        const observer = new MutationObserver(() => {
+          const receipt = document.querySelector(".trade-receipt");
+          if (receipt) {
+            tracked.observedTradeReceipt = receipt.textContent ?? "";
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+      });
       await buy.click();
-      await expect(actor.locator(".td-focus")).toContainText("1 / 5 parts");
+      await expect(actor.locator(".td-focus .td-quote > div").nth(3).locator("strong")).toHaveText(/^1\s*\/\s*5$/);
+      await expect.poll(() => actor.evaluate(() => (window as Window & { observedTradeReceipt?: string }).observedTradeReceipt ?? "")).toContain("ACHAT VALIDÉ");
       const cashAfterTrade = await actor
         .locator(".td-capital strong")
         .innerText();
@@ -185,8 +288,8 @@ test.describe("Parcours jouables", () => {
       );
       await expect(host.locator(".td-focus h2")).toHaveText(companyName);
       await expect(remote.locator(".td-focus h2")).toHaveText(companyName);
-      await expect(host.locator(".td-focus")).toContainText("1 / 5 parts");
-      await expect(remote.locator(".td-focus")).toContainText("1 / 5 parts");
+      await expect(host.locator(".td-focus .td-quote > div").nth(3).locator("strong")).toHaveText(/^1\s*\/\s*5$/);
+      await expect(remote.locator(".td-focus .td-quote > div").nth(3).locator("strong")).toHaveText(/^1\s*\/\s*5$/);
 
       await remote.reload();
       await expect(remote.getByText("Serveur connecté")).toBeVisible();
@@ -194,10 +297,11 @@ test.describe("Parcours jouables", () => {
         .locator(".investor-card")
         .filter({ hasText: activeName })
         .click();
+      await remote.locator(".world-tools").getByRole("button", { name: /Marché/ }).click();
       await expect(remote.locator(".td-capital strong")).toHaveText(
         cashAfterTrade,
       );
-      await expect(remote.locator(".td-focus")).toContainText("1 / 5 parts");
+      await expect(remote.locator(".td-focus .td-quote > div").nth(3).locator("strong")).toHaveText(/^1\s*\/\s*5$/);
       expect([...hostErrors, ...remoteErrors]).toEqual([]);
     } finally {
       await remoteContext.close();
@@ -224,7 +328,7 @@ test.describe("Parcours jouables", () => {
       const dialog = page.getByRole("dialog");
       await expect(dialog).toBeVisible();
       const closeNotice = dialog.getByRole("button", {
-        name: "Fermer cette scène",
+        name: "Continuer et appliquer les conséquences",
       });
       await expect(closeNotice).toBeVisible();
       await expect(closeNotice).toBeInViewport();

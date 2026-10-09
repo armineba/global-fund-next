@@ -18,3 +18,268 @@
 @media(prefers-reduced-motion:reduce){.cs-backdrop,.cs-scene{animation:none}.cs-close,.cs-dots span,.cs-footer button{transition:none}.cs-rail{scroll-behavior:auto!important}}
 
 .cs-dots{max-width:100%;overflow:hidden}
+
+/* Cinematic event cards: keep the board visible as a dark stage around the dossier. */
+.cs-backdrop{background:rgba(2,5,9,.76);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.cs-scene{width:min(1280px,100%);height:min(920px,calc(100dvh - 30px));border-color:rgba(216,184,121,.46);box-shadow:0 38px 130px rgba(0,0,0,.78),0 0 0 5px rgba(4,9,15,.42),inset 0 1px rgba(255,255,255,.06)}
+.cs-hero{min-height:260px;padding:48px clamp(28px,5vw,76px) 34px;background-position:center 44%;background-size:cover}
+.is-context .cs-hero{min-height:330px;background-position:center 44%}
+.is-event .cs-hero{min-height:278px;padding-right:190px}
+.cs-hero:after{content:"";position:absolute;z-index:-1;inset:12px;border:1px solid rgba(226,196,135,.11);pointer-events:none}
+.cs-hero-copy{position:relative;z-index:1}
+.cs-hero h1{text-shadow:0 3px 22px rgba(0,0,0,.72)}
+.cs-hero p{color:#d5d8d9;text-shadow:0 2px 10px rgba(0,0,0,.9)}
+.cs-family-label{display:flex;align-items:center;gap:8px;margin-top:18px;color:#f0dba9;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.cs-family-label>span{display:grid;place-items:center;width:23px;height:23px;border:1px solid currentColor;font-size:14px}
+.family-label-justice{color:#e8c786}.family-label-regulation{color:#8fc5e1}.family-label-premium{color:#7ed3a7}.family-label-bull{color:#65e1ad}.family-label-bear,.family-label-crash{color:#f0807e}
+.is-bull{--gold:#6be1aa;--line:rgba(83,218,158,.25)}.is-bear,.is-crash{--gold:#e88080;--line:rgba(226,107,112,.27)}
+.is-bull .cs-event-seal{color:#65e1ad}.is-bear .cs-event-seal,.is-crash .cs-event-seal{color:#f0807e}
+.family-justice{--gold:#e5c47f;--line:rgba(229,196,127,.3)}.family-regulation{--gold:#7fc6e7;--line:rgba(112,188,230,.3)}.family-premium{--gold:#7ed3a7;--line:rgba(66,217,163,.25)}
+.cs-content{padding-left:clamp(28px,5vw,76px);padding-right:clamp(28px,5vw,76px)}
+.cs-content.is-intro>.cs-section,.cs-content.is-intro>.cs-companies,.cs-content.is-intro>.cs-target-banner{opacity:0;transform:translateY(14px);animation:cs-impact-in .58s cubic-bezier(.2,.75,.25,1) forwards}
+.cs-content.is-intro>.cs-section:nth-child(1){animation-delay:.2s}.cs-content.is-intro>.cs-section:nth-child(2){animation-delay:.72s}.cs-content.is-intro>.cs-section:nth-child(3){animation-delay:1.24s}.cs-content.is-intro>.cs-section:nth-child(4){animation-delay:1.76s}.cs-content.is-intro>.cs-companies,.cs-content.is-intro>.cs-target-banner{animation-delay:2.12s}
+.cs-content.is-revealed>.cs-section,.cs-content.is-revealed>.cs-companies,.cs-content.is-revealed>.cs-target-banner{opacity:1;transform:none}
+.cs-cascade{background:linear-gradient(100deg,rgba(216,184,121,.1),rgba(255,255,255,.025) 65%);border-color:rgba(216,184,121,.28)}
+.cs-grade-row,.cs-impact,.cs-company-outcomes article,.cs-capital-grid div{background-color:rgba(12,20,28,.6)}
+.cs-company{box-shadow:0 9px 26px rgba(0,0,0,.2)}
+.cs-company-art{min-height:142px}
+.cs-justice-brief{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;margin-top:10px;padding:20px;background:linear-gradient(110deg,rgba(102,65,31,.22),rgba(13,20,27,.8));border:1px solid rgba(224,187,116,.37)}
+.cs-justice-mark{display:grid;place-items:center;width:42px;height:42px;color:#f0d18c;border:1px solid rgba(240,209,140,.5);font-size:22px}
+.cs-justice-brief .cs-kicker{margin:0 0 7px}.cs-justice-brief strong{color:#f0e5c8;font-size:14px;font-weight:500}.cs-justice-brief p{max-width:850px;margin:8px 0 0;color:#bfc5c9;font-size:12px;line-height:1.65}
+.cs-footer{background:rgba(4,8,13,.88)}
+@keyframes cs-impact-in{to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){.cs-backdrop{backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}.cs-scene{height:100dvh;border:0}.cs-hero{min-height:250px;padding:64px 22px 25px}.is-context .cs-hero{min-height:270px}.is-event .cs-hero{min-height:248px;padding-right:94px}.cs-content{padding:0 22px 22px}.cs-justice-brief{grid-template-columns:34px 1fr;gap:11px;padding:14px}.cs-justice-mark{width:32px;height:32px;font-size:17px}}
+@media(prefers-reduced-motion:reduce){.cs-content.is-intro>.cs-section,.cs-content.is-intro>.cs-companies,.cs-content.is-intro>.cs-target-banner{opacity:1;transform:none;animation:none}}
+.reduce-motion .cs-backdrop,.reduce-motion.cs-scene,.reduce-motion .cs-content.is-intro>.cs-section,.reduce-motion .cs-content.is-intro>.cs-companies,.reduce-motion .cs-content.is-intro>.cs-target-banner{animation:none;opacity:1;transform:none}
+
+/* Le dossier de conjoncture montre la cause, les indices et les valeurs à la fois. */
+@media(min-width:1001px){.is-context .cs-hero{min-height:246px;padding:30px 42px 24px}.is-context .cs-hero h1{font-size:42px}.is-context .cs-hero p{max-width:790px;margin-top:12px;line-height:1.6}.is-context .cs-content{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:minmax(160px,1fr) 242px;column-gap:24px;padding:10px 42px 12px;overflow:hidden}.is-context .cs-content>.cs-section{min-height:0;overflow:auto;padding:12px 0;scrollbar-width:thin}.is-context .cs-section-heading{margin-bottom:10px}.is-context .cs-section h2{font-size:20px}.is-context .cs-cascade{padding:11px;gap:7px}.is-context .cs-cascade div strong{font-size:10px}.is-context .cs-cascade div span{font-size:7px}.is-context .cs-grade-row{grid-template-columns:50px minmax(90px,1fr) 75px;min-height:43px;gap:8px}.is-context .cs-grade-row .cs-delta{display:none}.is-context .cs-grade-row>strong{font-size:11px}.is-context .cs-impact-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.is-context .cs-impact{padding:9px 7px}.is-context .cs-impact-name{font-size:10px}.is-context .cs-impact div{font-size:8px}.is-context .cs-impact div strong{font-size:10px}.is-context .cs-content>.cs-companies{grid-column:1/-1;min-height:0;overflow:hidden;padding:8px 0 0}.is-context .cs-companies .cs-section-heading{margin-bottom:8px}.is-context .cs-company{flex-basis:220px}.is-context .cs-company-art{height:84px;min-height:84px;padding:10px}.is-context .cs-company-name{font-size:17px}.is-context .cs-company-data{padding:10px;gap:4px}.is-context .cs-rail{padding-bottom:6px}.is-context .cs-companies h2{font-size:20px}.is-context .cs-companies .cs-kicker{margin-bottom:4px}}
+.cs-market-grades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.cs-market-grades>div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;background:#18263499;border:1px solid var(--line);font-size:11px}.cs-market-funds{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:14px}.cs-market-funds>div{display:flex;flex-direction:column;gap:9px;padding:12px 10px;background:#08141ee8;border:1px solid var(--line);font-size:10px}.cs-market-funds b{font-size:15px}.is-crash .cs-hero{box-shadow:inset 0 -2px #f16e7b88}.is-bull .cs-hero{box-shadow:inset 0 -2px #58d79e88}.is-bear .cs-hero{box-shadow:inset 0 -2px #e5a47888}
+@media(max-width:700px){.cs-market-grades{grid-template-columns:1fr}.cs-market-funds{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cs-content{min-height:0;scrollbar-color:#9d8555 #0c1219;scrollbar-width:auto}.cs-rail{position:relative}.cs-scroll-hint{color:#b6aa92;font-size:10px;letter-spacing:.025em}
+@media(min-width:1001px){.is-context .cs-content{grid-template-rows:minmax(150px,1fr) minmax(0,280px)}.is-context .cs-content>.cs-companies{overflow:auto;scrollbar-width:thin}}
+
+/* Embedded scenes live inside the playable board window. The surrounding HUD stays interactive. */
+.cs-backdrop.is-embedded{position:absolute;inset:var(--center-top,200px) var(--center-right,300px) var(--center-bottom,168px) var(--center-left,24px);z-index:30;display:grid;place-items:center;padding:0;background:rgba(2,7,12,.46);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);animation:cs-fade-in .2s ease-out}
+.cs-backdrop.is-embedded .cs-scene{width:min(1120px,100%);height:100%;min-height:0;border:1px solid rgba(212,183,122,.42);box-shadow:0 18px 60px rgba(0,0,0,.65),inset 0 1px rgba(255,255,255,.05);animation:cs-rise .2s ease-out}
+.cs-backdrop.is-embedded .cs-hero{min-height:190px;padding:30px clamp(20px,3vw,44px) 22px}
+.cs-backdrop.is-embedded .is-context .cs-hero{min-height:206px}
+.cs-backdrop.is-embedded .cs-content{display:block;flex:1 1 0;min-height:0;overflow:auto;padding:0 clamp(20px,3vw,44px) 18px;}
+.cs-backdrop.is-embedded .cs-content>.cs-section{overflow:visible}
+.cs-backdrop.is-embedded .cs-footer{min-height:54px;padding:10px clamp(20px,3vw,44px);}
+.cs-backdrop.is-embedded .cs-company-logo{position:absolute;top:11px;right:12px;max-width:80px;max-height:34px;object-fit:contain;filter:drop-shadow(0 2px 5px #000b)}
+.cs-backdrop.is-embedded .cs-company-art{padding-right:98px}
+.cs-backdrop.is-embedded .cs-close{top:12px;right:12px}
+@media(max-width:650px){.cs-backdrop.is-embedded .cs-scene{width:100%;height:100%;border:1px solid rgba(212,183,122,.42)}.cs-backdrop.is-embedded .cs-hero,.cs-backdrop.is-embedded .is-context .cs-hero{min-height:150px;padding:42px 18px 16px}.cs-backdrop.is-embedded .cs-hero h1{font-size:clamp(24px,7vw,34px)}.cs-backdrop.is-embedded .cs-hero p{font-size:11px;line-height:1.45;margin-top:8px}.cs-backdrop.is-embedded .cs-content{padding:0 18px 12px}.cs-backdrop.is-embedded .cs-footer{min-height:48px;padding:8px 14px}.cs-backdrop.is-embedded .cs-footer>span{font-size:6px}.cs-backdrop.is-embedded .cs-footer button{padding:8px 10px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.cs-backdrop.is-embedded,.cs-backdrop.is-embedded .cs-scene{animation:none;transition:none}}
+.cs-backdrop.is-embedded.reduce-motion,.cs-backdrop.is-embedded.reduce-motion .cs-scene{animation:none;transition:none}
+.cs-scene.reduce-motion{animation:none}
+.cs-footer-preview{display:flex;flex:1;flex-direction:column;gap:3px;min-width:0;padding:0 8px;border-left:1px solid rgba(207,178,119,.24)}
+.cs-footer-preview strong{color:#e5c987;font-size:8px;letter-spacing:.14em;white-space:nowrap}
+.cs-footer-preview small{color:#aeb8bf;font-size:9px;line-height:1.25;letter-spacing:.01em}
+@media(max-width:650px){.cs-backdrop.is-embedded .cs-footer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 8px;min-height:70px}.cs-backdrop.is-embedded .cs-footer>span:first-child,.cs-backdrop.is-embedded .cs-scroll-hint{display:none}.cs-backdrop.is-embedded .cs-footer-preview{grid-column:1;grid-row:1;padding-left:0;border-left:0}.cs-backdrop.is-embedded .cs-footer-preview strong{font-size:7px}.cs-backdrop.is-embedded .cs-footer-preview small{font-size:7px}.cs-backdrop.is-embedded .cs-footer button{grid-column:2;grid-row:1}}
+@media(max-width:700px){.cs-scroll-hint{display:none}}
+
+/* Laptop cards prioritize the story and its market impacts over the decorative masthead. */
+.cs-backdrop.is-embedded .cs-scene{width:min(1120px,100%)}
+.cs-backdrop.is-embedded .cs-hero{min-height:142px;padding:14px 30px 14px}
+.cs-backdrop.is-embedded .cs-hero h1{font-size:clamp(20px,1.6vw,22px);line-height:1.18;letter-spacing:0}
+.cs-backdrop.is-embedded .cs-hero-copy{max-width:none}
+.cs-backdrop.is-embedded .cs-kicker{margin-bottom:5px;font-size:8px;letter-spacing:.14em}
+.cs-backdrop.is-embedded .cs-hero p{max-width:780px;margin-top:7px;font-size:11px;line-height:1.45}
+.cs-backdrop.is-embedded .cs-event-effect,.cs-backdrop.is-embedded .cs-event-target,.cs-backdrop.is-embedded .cs-event-condition{display:flex;align-items:baseline;gap:7px;margin:5px 0 0;color:#e4d5b2;font-size:9px;line-height:1.3}
+.cs-backdrop.is-embedded .cs-event-effect b,.cs-backdrop.is-embedded .cs-event-target b,.cs-backdrop.is-embedded .cs-event-condition b{flex:none;color:#d8b879;font-size:7px;letter-spacing:.13em}
+.cs-backdrop.is-embedded .cs-event-target{color:#d2dce0}
+.cs-backdrop.is-embedded .cs-event-condition{color:#efdcae}
+.cs-backdrop.is-embedded .cs-family-label{margin-top:7px;font-size:7px}
+.cs-backdrop.is-embedded .cs-family-label>span{width:17px;height:17px;font-size:10px}
+.cs-backdrop.is-embedded .cs-event-seal{right:26px;bottom:24px;width:60px;height:60px}
+.cs-backdrop.is-embedded .cs-event-seal>span{font-size:15px}
+.cs-backdrop.is-embedded .cs-event-seal small{font-size:6px}
+.cs-backdrop.is-embedded .is-context .cs-hero{display:grid;grid-template-columns:minmax(180px,30%) minmax(0,1fr);gap:20px;min-height:154px;padding:12px 30px 12px}
+.cs-backdrop.is-embedded .cs-context-art{align-self:stretch;min-height:0;border:1px solid rgba(216,184,121,.2);background:linear-gradient(180deg,rgba(5,10,18,.08),rgba(5,10,18,.3)),url("/assets/scenes/context-market.webp") center 44%/cover;box-shadow:inset 0 0 35px rgba(2,6,10,.38)}
+.cs-backdrop.is-embedded .is-context .cs-hero-copy{align-self:center;padding-right:38px}
+.cs-backdrop.is-embedded .is-context .cs-hero h1{max-width:650px;font-size:clamp(19px,1.6vw,22px)}
+.cs-backdrop.is-embedded .is-context .cs-hero p{max-width:700px;margin-top:6px;font-size:11px;line-height:1.42}
+.cs-backdrop.is-embedded .is-context .cs-player-tag{display:none}
+.cs-backdrop.is-embedded .cs-story-full{margin-top:5px;color:#c1cbd0;font-size:9px}
+.cs-backdrop.is-embedded .cs-story-full summary{width:max-content;color:#e2c98f;cursor:pointer}
+.cs-backdrop.is-embedded .cs-story-full p{margin:5px 0 0;max-height:90px;overflow:auto}
+.cs-backdrop.is-embedded .is-context .cs-content{display:flex;flex-direction:column;gap:6px;overflow:auto;padding:0 24px 8px}
+.cs-backdrop.is-embedded .is-context .cs-content>.cs-section{flex:none;min-height:0;padding:8px 0 6px;overflow:visible}
+.cs-backdrop.is-embedded .is-context .cs-section-heading{margin:0 0 6px}
+.cs-backdrop.is-embedded .is-context .cs-section-heading .cs-kicker{margin:0 0 2px;font-size:7px}
+.cs-backdrop.is-embedded .is-context .cs-section h2{font-size:15px}
+.cs-backdrop.is-embedded .is-context .cs-grade-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:4px;margin-top:0;border:0}
+.cs-backdrop.is-embedded .is-context .cs-grade-row{grid-template-columns:38px minmax(0,1fr) auto;gap:5px;min-height:27px;padding:3px 5px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.065)}
+.cs-backdrop.is-embedded .is-context .cs-grade-row .cs-scope{font-size:6px;letter-spacing:.08em}
+.cs-backdrop.is-embedded .is-context .cs-grade-row>strong{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cs-backdrop.is-embedded .is-context .cs-grade-row .cs-grade-transition{gap:4px;font-size:9px}
+.cs-backdrop.is-embedded .is-context .cs-grade-row .cs-grade{width:18px;height:18px;font-size:11px}
+.cs-backdrop.is-embedded .is-context .cs-grade-row .cs-delta{display:none}
+.cs-backdrop.is-embedded .is-context .cs-cascade{display:none}
+.cs-backdrop.is-embedded .is-context .cs-impact-grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:5px}
+.cs-backdrop.is-embedded .is-context .cs-impact{padding:6px 8px}
+.cs-backdrop.is-embedded .is-context .cs-impact-name{margin-bottom:4px;font-size:9px}
+.cs-backdrop.is-embedded .is-context .cs-impact>div{padding-top:3px;font-size:8px}
+.cs-backdrop.is-embedded .is-context .cs-impact>div strong{font-size:9px}
+.cs-backdrop.is-embedded .is-context .cs-content>.cs-companies{padding:5px 0 0;overflow:visible}
+.cs-backdrop.is-embedded .is-context .cs-companies .cs-section-heading{margin-bottom:5px}
+.cs-backdrop.is-embedded .is-context .cs-companies h2{font-size:15px}
+.cs-backdrop.is-embedded .is-context .cs-company{flex-basis:190px}
+.cs-backdrop.is-embedded .is-context .cs-company-art{height:58px;min-height:58px;padding:6px}
+.cs-backdrop.is-embedded .is-context .cs-company-name{font-size:13px}
+.cs-backdrop.is-embedded .is-context .cs-company-data{padding:6px 8px;font-size:8px}
+.cs-backdrop.is-embedded .is-event .cs-hero{min-height:145px;padding:14px 28px}
+.cs-backdrop.is-embedded .is-event .cs-hero-copy{max-width:calc(100% - 72px);padding-right:0}
+.cs-backdrop.is-embedded .is-event .cs-hero h1{max-width:680px;font-size:clamp(20px,1.65vw,23px)}
+.cs-backdrop.is-embedded .is-event .cs-target-banner{display:none}
+.cs-backdrop.is-embedded .is-event .cs-hero{padding-top:39px}
+.cs-backdrop.is-embedded .is-event .cs-hero:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.34;background-image:repeating-linear-gradient(0deg,rgba(235,219,180,.075) 0 1px,transparent 1px 5px),radial-gradient(ellipse at 82% 20%,rgba(232,207,154,.16),transparent 48%);mix-blend-mode:screen}
+.cs-newspaper-meta{position:absolute;z-index:2;top:10px;left:30px;right:108px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 0 5px;color:#e8ddc3;border-bottom:1px solid rgba(235,218,177,.42);font:8px Georgia,serif;letter-spacing:.11em;text-transform:uppercase}
+.cs-newspaper-meta strong{font:700 10px Georgia,serif;letter-spacing:.13em;color:#f2e4c4}
+.cs-newspaper-meta span{font:7px ui-monospace,monospace;letter-spacing:.1em;color:#cfbf9e}
+.cs-settlement-receipt{max-width:780px;padding:12px 14px;background:linear-gradient(110deg,rgba(216,184,121,.09),rgba(7,15,23,.74));border:1px solid rgba(216,184,121,.26)}
+.cs-settlement-parties{display:flex;align-items:center;gap:10px;color:#e8d8b6;font-size:11px}
+.cs-settlement-parties>span{color:#d2b576}
+.cs-settlement-reason{margin:5px 0 9px;color:#bfc9ce;font-size:9px;line-height:1.4}
+.cs-settlement-assets{display:grid;gap:4px;padding:0 0 7px}
+.cs-settlement-assets>div,.cs-settlement-cash,.cs-settlement-total{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:9px}
+.cs-settlement-assets>div{color:#c2cbd0}
+.cs-settlement-assets strong,.cs-settlement-cash strong{color:#eee7d8;font-weight:600;white-space:nowrap}
+.cs-settlement-cash{padding-top:7px;border-top:1px solid rgba(255,255,255,.1);color:#d8c89f}
+.cs-settlement-total{margin-top:7px;padding-top:7px;border-top:1px solid rgba(216,184,121,.28);color:#eddaa9;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.cs-settlement-total strong{font-size:12px;color:#f4e1ae}
+.cs-settlement-unpaid{margin:7px 0 0;color:#f0988e;font-size:9px}
+.cs-obligation-list{border-top:1px solid rgba(216,184,121,.22)}
+.cs-obligation{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 7px;border-bottom:1px solid rgba(255,255,255,.08)}
+.cs-obligation>div{display:grid;gap:3px;min-width:0}
+.cs-obligation strong{color:#e5d6b7;font-size:11px;font-weight:500}
+.cs-obligation small{color:#9da7b0;font-size:9px;line-height:1.3}
+.cs-obligation>b{flex:none;color:#eee7d8;font-size:12px;font-weight:500}
+.cs-obligation-total{display:flex;align-items:center;justify-content:space-between;padding:9px 7px;color:#e8d6ac;border-bottom:1px solid rgba(216,184,121,.25);font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+.cs-obligation-total strong{color:#f4e1ae;font-size:12px}
+.cs-executed-heading{margin:14px 0 7px;color:#c8b987;font-size:8px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.cs-payment-values{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.cs-payment-values span{display:grid;justify-items:end;gap:2px}
+.cs-payment-values small{color:#9da7b0;font-size:7px;letter-spacing:.1em;text-transform:uppercase}
+.cs-payment-values b{font-size:11px;font-weight:500}
+.cs-global-totals{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin-bottom:10px;padding:8px;background:rgba(216,184,121,.07);border:1px solid rgba(216,184,121,.22)}
+.cs-global-totals>div{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:4px 6px;color:#aeb6bb;font-size:8px;line-height:1.25}
+.cs-global-totals strong{color:#f0e2c3;font-size:10px;font-weight:600;white-space:nowrap}
+.cs-global-totals .is-unpaid,.cs-global-totals .is-unpaid strong{color:#ef9a91}
+.cs-settlement-results{display:grid;gap:7px}
+.cs-settlement-results>.cs-settlement-receipt{display:grid;gap:8px}
+.cs-settlement-heading{margin:0;padding-bottom:7px;color:#e8d8b6;font:400 17px Georgia,'Times New Roman',serif;border-bottom:1px solid rgba(216,184,121,.2)}
+.cs-settlement-cash-row{display:grid;gap:4px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.cs-settlement-cash-row:last-child{border-bottom:0}
+.cs-settlement-results .cs-payment-list{display:grid;gap:4px;margin-top:2px}
+.cs-global-totals{margin:10px 0 0}
+.cs-settlement-results .cs-settlement-receipt{max-width:none;padding:9px 11px}
+.cs-settlement-results .cs-settlement-reason{margin:3px 0 6px}
+.cs-settlement-results .cs-settlement-assets{gap:2px;padding-bottom:5px}
+.cs-settlement-results .cs-settlement-assets>div,.cs-settlement-results .cs-settlement-cash,.cs-settlement-results .cs-settlement-total{font-size:8px}
+.cs-settlement-results .cs-settlement-cash,.cs-settlement-results .cs-settlement-total{padding-top:5px;margin-top:4px}
+.cs-backdrop.is-embedded .cs-global-totals{grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;margin-bottom:6px;padding:4px}
+.cs-backdrop.is-embedded .cs-global-totals>div{display:grid;gap:3px;padding:3px;font-size:7px}
+.cs-backdrop.is-embedded .cs-global-totals strong{font-size:8px}
+.cs-backdrop.is-embedded .cs-settlement-results{gap:4px}
+.cs-backdrop.is-embedded .cs-settlement-results .cs-settlement-receipt{padding:6px 8px}
+.cs-backdrop.is-embedded .cs-settlement-results .cs-settlement-reason{margin:2px 0 4px}
+@media(max-width:760px){.cs-backdrop.is-embedded .cs-global-totals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cs-backdrop.is-embedded .cs-footer{min-height:58px;padding:7px 22px}
+.cs-backdrop.is-embedded .cs-footer-preview{gap:2px}
+.cs-backdrop.is-embedded .cs-footer-preview strong{font-size:7px}
+.cs-backdrop.is-embedded .cs-footer-preview small{font-size:8px}
+@media(max-width:1000px){.cs-backdrop.is-embedded .is-context .cs-hero{grid-template-columns:26% minmax(0,1fr);gap:12px;padding:10px 18px}.cs-backdrop.is-embedded .cs-content{padding:0 18px 7px}}
+
+/* Keep the cause, grades and first company prices together on short and mid-height desktops. */
+@media(max-height:950px) and (min-width:1001px){
+  .cs-backdrop.is-embedded .is-context .cs-hero{min-height:104px;padding:8px 18px;gap:16px}
+  .cs-backdrop.is-embedded .is-context .cs-content{padding:0 18px 5px;gap:4px}
+  .cs-backdrop.is-embedded .is-context .cs-content>.cs-section{padding:5px 0 4px}
+  .cs-backdrop.is-embedded .is-context .cs-section-heading{margin-bottom:4px}
+  .cs-backdrop.is-embedded .is-context .cs-content .cs-section-heading .cs-kicker{display:none}
+  .cs-backdrop.is-embedded .is-context .cs-section h2,
+  .cs-backdrop.is-embedded .is-context .cs-companies h2{font-size:14px}
+  .cs-backdrop.is-embedded .is-context .cs-impact{padding:4px 6px}
+  .cs-backdrop.is-embedded .is-context .cs-impact-name{margin-bottom:2px}
+  .cs-backdrop.is-embedded .is-context .cs-impact>div{padding-top:2px}
+  .cs-backdrop.is-embedded .is-context .cs-company-art{height:38px;min-height:38px;padding:5px 6px}
+  .cs-backdrop.is-embedded .is-context .cs-company-name{font-size:12px}
+  .cs-backdrop.is-embedded .is-context .cs-company-sector{font-size:6px;padding:2px 3px}
+  .cs-backdrop.is-embedded .is-context .cs-company-data{gap:3px;padding:5px 6px}
+  .cs-backdrop.is-embedded .is-context .cs-company-income{padding-top:4px}
+  .cs-backdrop.is-embedded .is-context .cs-footer{min-height:50px;padding:6px 18px}
+  .cs-backdrop.is-embedded .is-context .cs-footer button{padding:10px 14px;font-size:12px}
+}
+@media(max-width:650px){.cs-backdrop.is-embedded .cs-hero{min-height:130px;padding:34px 16px 12px}.cs-backdrop.is-embedded .is-context .cs-hero{grid-template-columns:24% minmax(0,1fr);gap:9px;min-height:130px;padding:8px 14px}.cs-backdrop.is-embedded .is-context .cs-hero h1{font-size:18px}.cs-backdrop.is-embedded .is-context .cs-hero p{font-size:9px}.cs-backdrop.is-embedded .cs-story-full{font-size:8px}.cs-backdrop.is-embedded .cs-event-condition{max-width:100%;font-size:8px}.cs-backdrop.is-embedded .cs-content{padding:0 14px 7px}.cs-backdrop.is-embedded .is-context .cs-content{padding:0 14px 7px}.cs-backdrop.is-embedded .is-context .cs-grade-list{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-backdrop.is-embedded .is-context .cs-grade-row{grid-template-columns:30px minmax(0,1fr) auto;gap:3px;padding:2px}.cs-backdrop.is-embedded .is-context .cs-grade-row>strong{font-size:8px}.cs-backdrop.is-embedded .is-event .cs-hero-copy{max-width:100%}.cs-backdrop.is-embedded .cs-event-seal{display:none}}
+@media(max-width:650px){.cs-backdrop.is-embedded .is-event .cs-hero{padding-top:40px}.cs-backdrop.is-embedded .cs-newspaper-meta{top:9px;left:16px;right:54px;gap:6px;font-size:6px}.cs-backdrop.is-embedded .cs-newspaper-meta strong{font-size:8px}.cs-backdrop.is-embedded .cs-newspaper-meta span{font-size:6px}.cs-settlement-receipt{padding:9px}.cs-settlement-assets>div,.cs-settlement-cash,.cs-settlement-total{font-size:8px}}
+
+/* Ordinary event cards are printed newspaper sheets held inside the dark terminal frame. */
+.cs-backdrop .cs-scene.is-editorial{--ink:#1d2528;--ink-muted:#565a57;--print-red:#783f35;padding:7px;gap:0;color:var(--ink);background:linear-gradient(145deg,#36434b,#101820 72%);border:2px solid #65717a;box-shadow:0 30px 80px rgba(0,0,0,.8),inset 0 1px rgba(255,255,255,.22),inset 0 -2px rgba(0,0,0,.72)}
+.cs-backdrop .cs-scene.is-editorial:before{z-index:5;top:1px;left:8px;right:8px;height:2px;background:linear-gradient(90deg,transparent,#aeb6b8,#f6f0de,#9ca8aa,transparent);opacity:.76}
+.cs-backdrop .cs-scene.is-editorial .cs-close{top:12px;right:12px;padding:4px 7px;color:#243039;background:#eee8d8;border:1px solid rgba(35,43,46,.45);box-shadow:0 2px 5px #0003}
+.cs-backdrop .cs-scene.is-editorial .cs-close small{color:#465056}
+.cs-backdrop .cs-scene.is-editorial .cs-close:hover,.cs-backdrop .cs-scene.is-editorial .cs-close:focus-visible{color:#fff;background:#773d35;border-color:#773d35}
+.cs-backdrop .cs-scene.is-editorial .cs-close:hover small,.cs-backdrop .cs-scene.is-editorial .cs-close:focus-visible small{color:#fff}
+.cs-backdrop .cs-scene.is-editorial .cs-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,29%);grid-template-rows:1fr;align-items:stretch;gap:20px;min-height:clamp(198px,29dvh,232px);padding:55px 24px 15px;background-color:#eee9db;background-image:repeating-linear-gradient(0deg,rgba(69,59,43,.035) 0 1px,transparent 1px 5px),radial-gradient(ellipse at 12% 5%,rgba(255,255,255,.7),transparent 58%);border-bottom:1px solid rgba(38,42,39,.42)}
+.cs-backdrop .cs-scene.is-editorial .cs-hero:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;background-image:repeating-linear-gradient(90deg,rgba(76,64,44,.027) 0 1px,transparent 1px 4px),radial-gradient(ellipse at 78% 88%,rgba(110,88,55,.08),transparent 56%)}
+.cs-backdrop .cs-scene.is-editorial .cs-hero:after{z-index:0;inset:5px;border:1px solid rgba(75,65,48,.16)}
+.cs-backdrop .cs-scene.is-editorial .cs-newspaper-meta{top:13px;left:24px;right:76px;display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:0 0 7px;color:#252a28;border-top:3px double rgba(33,39,38,.74);border-bottom:3px double rgba(33,39,38,.74);text-transform:uppercase}
+.cs-backdrop .cs-scene.is-editorial .cs-newspaper-meta strong{font:900 clamp(16px,1.65vw,22px)/1 Georgia,'Times New Roman',serif;letter-spacing:.055em;color:#1c2222}
+.cs-backdrop .cs-scene.is-editorial .cs-newspaper-meta span{font:700 9px/1.2 ui-monospace,monospace;letter-spacing:.08em;color:#4b514c}
+.cs-backdrop .cs-scene.is-editorial .cs-hero-copy{position:relative;z-index:1;grid-column:1;grid-row:1;align-self:end;max-width:none;padding:0}
+.cs-backdrop .cs-scene.is-editorial .cs-kicker{margin:0 0 7px;color:var(--print-red);font-size:8px;letter-spacing:.19em}
+.cs-backdrop .cs-scene.is-editorial .cs-hero h1{max-width:690px;color:#171c1d;font:bold clamp(25px,2.3vw,34px)/1.03 Georgia,'Times New Roman',serif;letter-spacing:-.025em;text-shadow:none}
+.cs-backdrop .cs-scene.is-editorial .cs-hero p{max-width:760px;margin:8px 0 0;color:#343a39;font:12px/1.42 Georgia,'Times New Roman',serif;text-shadow:none}
+.cs-backdrop .cs-scene.is-editorial .cs-hero p.cs-event-effect{margin-top:8px;padding-top:6px;color:#273029;border-top:1px solid rgba(46,51,46,.27);font:600 10px/1.35 Inter,Arial,sans-serif}
+.cs-backdrop .cs-scene.is-editorial .cs-event-effect b,.cs-backdrop .cs-scene.is-editorial .cs-event-target b,.cs-backdrop .cs-scene.is-editorial .cs-event-condition b{color:var(--print-red);font-size:7px;letter-spacing:.14em}
+.cs-backdrop .cs-scene.is-editorial .cs-event-target,.cs-backdrop .cs-scene.is-editorial .cs-event-condition{display:flex;align-items:baseline;gap:7px;margin:5px 0 0;color:#273029;font-size:9px;line-height:1.3}
+.cs-backdrop .cs-scene.is-editorial .cs-press-illustration{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:stretch;min-height:128px;display:flex;align-items:flex-end;padding:10px;background-color:#b4ad9b;background-position:center;background-size:cover;border:1px solid rgba(34,39,38,.58);box-shadow:0 2px 6px rgba(28,30,28,.19),inset 0 0 0 4px rgba(241,235,219,.7);filter:sepia(.12) saturate(.78)}
+.cs-backdrop .cs-scene.is-editorial .cs-press-illustration span{max-width:100%;padding:4px 6px;color:#f7f1e3;background:rgba(22,28,29,.79);font:700 7px/1.25 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}
+.cs-backdrop .cs-scene.is-editorial .cs-family-label{gap:6px;margin-top:7px;color:#5f4437;font-size:7px;letter-spacing:.13em}
+.cs-backdrop .cs-scene.is-editorial .cs-family-label>span{width:16px;height:16px;border-color:rgba(107,64,51,.62);font-size:10px}
+.cs-backdrop .cs-scene.is-editorial .cs-player-tag{margin-top:7px;color:#555952;font-size:8px}
+.cs-backdrop .cs-scene.is-editorial .cs-player-tag i{width:6px;height:6px;box-shadow:none}
+.cs-backdrop .cs-scene.is-editorial .cs-event-seal{display:none}
+.cs-backdrop .cs-scene.is-editorial .cs-content{flex:1 1 0;min-height:0;padding:0 24px 12px;color:var(--ink);background-color:#eee9db;background-image:repeating-linear-gradient(0deg,rgba(69,59,43,.027) 0 1px,transparent 1px 6px);scrollbar-color:#897e68 #e2dccd}
+.cs-backdrop .cs-scene.is-editorial .cs-section{padding:12px 0;border-color:rgba(49,52,48,.19)}
+.cs-backdrop .cs-scene.is-editorial .cs-section h2{color:#222827;font-size:18px}
+.cs-backdrop .cs-scene.is-editorial .cs-section-heading{margin-bottom:8px}
+.cs-backdrop .cs-scene.is-editorial .cs-section-heading .cs-kicker{margin-bottom:3px;color:#7b493b}
+.cs-backdrop .cs-scene.is-editorial .cs-effects li{padding:8px 2px;color:#292f2d;font-size:11px;line-height:1.42;border-color:rgba(49,52,48,.15)}
+.cs-backdrop .cs-scene.is-editorial .cs-effect-mark{width:18px;height:18px;color:#7b493b;border-color:rgba(123,73,59,.44);font-size:11px}
+.cs-backdrop .cs-scene.is-editorial .cs-muted{color:#515753;font-size:11px}
+.cs-backdrop .cs-scene.is-editorial .cs-outcomes{border-color:rgba(54,57,52,.2)}
+.cs-backdrop .cs-scene.is-editorial .cs-outcome,.cs-backdrop .cs-scene.is-editorial .cs-company-outcomes article{color:#28302e;background:rgba(255,255,255,.36);border-color:rgba(54,57,52,.2)}
+.cs-backdrop .cs-scene.is-editorial .cs-outcome-values,.cs-backdrop .cs-scene.is-editorial .cs-outcome-values span,.cs-backdrop .cs-scene.is-editorial .cs-company-outcomes article span{color:#515753}
+.cs-backdrop .cs-scene.is-editorial .cs-outcome-values b,.cs-backdrop .cs-scene.is-editorial .cs-company-outcomes article strong{color:#202625}
+.cs-backdrop .cs-scene.is-editorial .positive{color:#21633d!important}.cs-backdrop .cs-scene.is-editorial .negative{color:#8b302c!important}
+.cs-backdrop .cs-scene.is-editorial .cs-target-banner{min-height:68px;margin-top:10px;padding:10px 14px;border-color:rgba(70,58,43,.35)}
+.cs-backdrop .cs-scene.is-editorial .cs-footer{flex:none;min-height:48px;padding:7px 24px;color:#313735;background:#e2dccb;border-top:1px solid rgba(43,47,44,.35)}
+.cs-backdrop .cs-scene.is-editorial .cs-footer>span{color:#515753}
+.cs-backdrop .cs-scene.is-editorial .cs-footer-preview{border-color:rgba(55,59,54,.25)}
+.cs-backdrop .cs-scene.is-editorial .cs-footer-preview strong{color:#70483c}
+.cs-backdrop .cs-scene.is-editorial .cs-footer-preview small,.cs-backdrop .cs-scene.is-editorial .cs-scroll-hint{color:#515753}
+.cs-backdrop .cs-scene.is-editorial .cs-footer button{padding:9px 13px;color:#f5f0e3;background:#3d474b;border:1px solid #263033}
+.cs-backdrop .cs-scene.is-editorial .cs-footer button:hover,.cs-backdrop .cs-scene.is-editorial .cs-footer button:focus-visible{color:white;background:#713e34;border-color:#713e34;outline:2px solid rgba(113,62,52,.35);outline-offset:2px}
+.cs-backdrop .cs-scene.is-payments .cs-kicker{max-width:100%;font-size:8px;line-height:1.35;letter-spacing:.12em}
+.cs-backdrop.is-embedded .is-context .cs-company-logo{top:3px;right:3px;max-width:32px;max-height:18px;padding:2px 3px;background:#f2eee3;border:1px solid rgba(28,35,37,.25);box-shadow:0 1px 3px #0005;filter:none;object-fit:contain}
+.cs-backdrop.is-embedded .is-context .cs-company-name{max-width:calc(100% - 40px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cs-backdrop.is-embedded .is-editorial .cs-target-banner{display:none}
+@media(max-width:760px){.cs-backdrop .cs-scene.is-editorial{padding:0;border-width:1px}.cs-backdrop .cs-scene.is-editorial .cs-hero{grid-template-columns:minmax(0,1fr) 28%;gap:10px;min-height:190px;padding:48px 15px 12px}.cs-backdrop .cs-scene.is-editorial .cs-newspaper-meta{left:15px;right:55px;gap:6px}.cs-backdrop .cs-scene.is-editorial .cs-newspaper-meta strong{font-size:14px}.cs-backdrop .cs-scene.is-editorial .cs-newspaper-meta span{font-size:6px}.cs-backdrop .cs-scene.is-editorial .cs-hero h1{font-size:clamp(22px,6vw,29px)}.cs-backdrop .cs-scene.is-editorial .cs-hero p{font-size:10px}.cs-backdrop .cs-scene.is-editorial .cs-press-illustration{min-height:100px;padding:5px}.cs-backdrop .cs-scene.is-editorial .cs-content{padding:0 15px 8px}.cs-backdrop .cs-scene.is-editorial .cs-footer{min-height:48px;padding:6px 12px}}
+@media(max-width:480px){.cs-backdrop .cs-scene.is-editorial .cs-hero{grid-template-columns:minmax(0,1fr);min-height:0;gap:9px}.cs-backdrop .cs-scene.is-editorial .cs-press-illustration{grid-column:1;grid-row:2;min-height:80px;max-height:95px}.cs-backdrop .cs-scene.is-editorial .cs-hero-copy{grid-column:1;grid-row:1}.cs-backdrop .cs-scene.is-editorial .cs-newspaper-meta span{display:none}}
+
+/* Global receipts keep financial figures readable on a laptop. */
+.cs-backdrop.is-embedded .cs-global-totals>div{font-size:9px}
+.cs-backdrop.is-embedded .cs-global-totals strong{font-size:12px}
+.cs-backdrop.is-embedded .cs-settlement-results .cs-settlement-parties{font-size:12px}
+.cs-backdrop.is-embedded .cs-settlement-results .cs-settlement-reason{font-size:10px}
+.cs-backdrop.is-embedded .cs-settlement-results .cs-settlement-assets>div,.cs-backdrop.is-embedded .cs-settlement-results .cs-settlement-cash,.cs-backdrop.is-embedded .cs-settlement-results .cs-settlement-total{font-size:11px}
+
+/* One cause, named movements, then the operation total. */
+.cs-settlement-cash-row .cs-settlement-cash{border-top:0;padding-top:0}
+.cs-backdrop .is-payments .cs-global-totals{grid-template-columns:1fr}
+.cs-backdrop .is-payments .cs-global-totals>div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 8px}
+.cs-backdrop .is-payments .cs-settlement-heading{margin:0;font-size:15px;line-height:1.4}

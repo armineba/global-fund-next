@@ -1,0 +1,3325 @@
+{
+  "scope": "All 91 catalog slots",
+  "verifiedOn": "2026-10-06",
+  "catalogueModified": true,
+  "catalogVersion": 2,
+  "companies": [
+    {
+      "id": "enersis",
+      "oldName": "Enersis",
+      "currentName": "Enel Chile",
+      "country": "Chili",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.enel.cl/es/conoce-enel/enel-chile.html",
+      "modification": "Nom obsolète : renommée Enel Chile S.A. en 2016; énergie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "marketCapUSD": 6000000000.0,
+      "capCategory": "small",
+      "marketCapSource": "https://stockanalysis.com/stocks/enic/market-cap/",
+      "marketCapAsOf": "2026-10-06",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "banco-brasil",
+      "oldName": "Banco Brasil",
+      "currentName": "Banco do Brasil",
+      "country": "Brésil",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://ri.bb.com.br/en/faq/ownership/",
+      "modification": "Nom normalisé au nom institutionnel officiel Banco do Brasil; banque confirmée.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "La page IR officielle identifie Banco do Brasil S.A. comme société cotée contrôlée par l’État et organisée comme banque multiple; elle cite explicitement la Constitution brésilienne. Cela confirme le nom, le pays et finance.",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 40.0,
+      "baseIncome": 10.0,
+      "priorEvidence": {
+        "url": "https://www.bb.com.br/site/sobre-nos/fatos/",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page officielle du Banco do Brasil (« Fatos ») décrit Banco do Brasil comme une société d’économie mixte et institution bancaire.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 30000000000.0,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/banco-do-brasil/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "amx",
+      "oldName": "AMX",
+      "currentName": "América Móvil",
+      "country": "Mexique",
+      "zone": "americas",
+      "sector": "media",
+      "verifiedSourceURL": "https://sustainability.americamovil.com/portal/su/pdf/Annual-Report-20F-2024.pdf",
+      "modification": "Nom remplacé par la marque sociale courante; télécommunications classées communication/médias.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "Le 20-F 2024 identifie América Móvil, S.A.B. de C.V., société constituée au Mexique, avec siège exécutif à Mexico; le rapport décrit des services de télécommunications et une activité mobile, fixe, haut débit et TV payante. Mexique et catégorie media (télécommunications) sont donc justifiés.",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 50.0,
+      "baseIncome": 10.0,
+      "priorEvidence": {
+        "url": "https://www.americamovil.com/",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "La page officielle América Móvil « Our Company » identifie le groupe; sa description officielle concerne les télécommunications/services mobiles.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 67000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/america-movil/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "walmex",
+      "oldName": "Walmex",
+      "currentName": "Walmart de México y Centroamérica",
+      "country": "Mexique",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.walmex.mx/nosotros/",
+      "modification": "Nom étendu au nom officiel. Commerce de détail; catégorie agroalimentaire est un proxy imparfait du catalogue.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 60.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 46000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/walmex/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "mcdonald-s-corp",
+      "oldName": "McDonald's Corp",
+      "currentName": "McDonald’s Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://corporate.mcdonalds.com/corpmcd/home.html",
+      "modification": "Raison sociale normalisée; reclassée Communication & médias → Agroalimentaire.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 90.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 160000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/mcdonald/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "nike-inc",
+      "oldName": "Nike Inc",
+      "currentName": "NIKE, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://about.nike.com/en/company",
+      "modification": "Casse/forme légale normalisée; reclassée Communication & médias → Industrie (habillement/chaussure).",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 90.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 50000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/nike/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "united-parcel-service",
+      "oldName": "United Parcel Service",
+      "currentName": "United Parcel Service, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "transport",
+      "verifiedSourceURL": "https://about.ups.com/us/en/our-company.html",
+      "modification": "Forme légale ajoutée; secteur transport confirmé.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 90.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 79000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/ups/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "3m-co",
+      "oldName": "3M Co",
+      "currentName": "3M Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.3m.com/3M/en_US/about-3m/",
+      "modification": "Nom légal actuel normalisé; secteur industriel confirmé.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 84000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/3m/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "mastercard-inc",
+      "oldName": "MasterCard Inc",
+      "currentName": "Mastercard Incorporated",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.mastercard.com/global/en/for-the-world/about-us.html",
+      "modification": "Nom/casse normalisés; reclassée Industrie → Finance (réseau et services de paiement).",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 480000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/mastercard/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "the-boeing-company",
+      "oldName": "The Boeing Company",
+      "currentName": "The Boeing Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.boeing.com/company",
+      "modification": "Entreprise aérospatiale et manufacturière; reclassée Transports → Industrie.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 150000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/boeing/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "petrobras",
+      "oldName": "Petrobras",
+      "currentName": "Petróleo Brasileiro S.A. (Petrobras)",
+      "country": "Brésil",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://petrobras.com.br/quem-somos/perfil",
+      "modification": "Nom légal complet vérifié; énergie confirmée.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "La page officielle Perfil nomme Petrobras/Petróleo Brasileiro S.A. comme société brésilienne cotée et décrit son activité intégrée de pétrole, gaz naturel et énergie; confirme Brésil et energy.",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 110.0,
+      "baseIncome": 20.0,
+      "priorEvidence": {
+        "url": "https://petrobras.com.br/quem-somos/perfil",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Le profil officiel décrit Petrobras comme société cotée intégrée dans les secteurs pétrole, gaz naturel et énergie.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 160000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/petrobras/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "philip-morris-international",
+      "oldName": "Philip Morris International",
+      "currentName": "Philip Morris International Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.pmi.com/who-we-are/who-we-are-overview",
+      "modification": "Forme légale confirmée; tabac classé Agroalimentaire & ressources, frontière sectorielle.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 120.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 300000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/philip-morris/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "ambev",
+      "oldName": "Ambev",
+      "currentName": "Ambev S.A.",
+      "country": "Brésil",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.sec.gov/Archives/edgar/data/1565025/0001292814-26-000640-index.html",
+      "modification": "Nom légal normalisé; boissons confirmées.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "L’index EDGAR de son 20-F 2025 identifie AMBEV S.A. (filer), adresse commerciale et postale à São Paulo, Brazil, et SIC 2080 Beverages / Manufacturing; confirme le nom, pays et activité boissons, cohérente avec agrifood.",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 130.0,
+      "baseIncome": 30.0,
+      "priorEvidence": {
+        "url": "https://ri.ambev.com.br/en/faqs/",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "FAQ officielle Ambev: fabricant/distributeur de bière, boissons gazeuses et boissons sans alcool en Amériques.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 50000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/ambev/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "pepsico",
+      "oldName": "PepsiCo",
+      "currentName": "PepsiCo, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.pepsico.com/en/about",
+      "modification": "Forme légale ajoutée; alimentation/boissons confirmées.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 140.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 170000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/pepsico/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "cisco-systems",
+      "oldName": "Cisco Systems",
+      "currentName": "Cisco Systems, Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.cisco.com/site/us/en/about/index.html",
+      "modification": "Forme légale ajoutée; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 140.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 460000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/cisco/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "intel-corp",
+      "oldName": "Intel Corp",
+      "currentName": "Intel Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.intel.com/content/www/us/en/company-overview/company-overview.html",
+      "modification": "Nom légal normalisé; conception/fabrication de semi-conducteurs, technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/intel.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Intel_logo_2023.svg",
+        "license": "PD-textlogo/simple / domaine public (texte et formes simples)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 150.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 610000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/intel/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "ibm-corp",
+      "oldName": "IBM Corp",
+      "currentName": "International Business Machines Corporation (IBM)",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.ibm.com/about?lang=en",
+      "modification": "Nom légal développé, marque usuelle conservée; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/ibm.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:IBM_logo.svg",
+        "license": "PD-textlogo / domaine public (texte et formes simples)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 160.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 210000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/ibm/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "visa-inc",
+      "oldName": "Visa Inc",
+      "currentName": "Visa Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000045/v-20251231.htm",
+      "modification": "Reclassée Industrie → Finance; Visa se décrit comme société technologique de paiements, choix du secteur jeu.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "Le 10-K 2025 identifie Visa Inc. comme entreprise mondiale de technologie de paiement, exploitant VisaNet, et précise explicitement que Visa n’est pas une institution financière. Le pays États-Unis est confirmé par l’en-tête SEC; finance reste la catégorie de jeu la plus proche pour un réseau de paiements, pas une classification réglementaire.",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 160.0,
+      "baseIncome": 10.0,
+      "priorEvidence": {
+        "url": "https://corporate.visa.com/en/about-visa/mediakits.html",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Kit média officiel: Visa Inc. est une entreprise technologique de paiement; les logos ne sont proposés que pour usage média.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 690000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/visa/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "at-t-inc",
+      "oldName": "AT&T Inc",
+      "currentName": "AT&T Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "media",
+      "verifiedSourceURL": "https://investors.att.com/~/media/Files/A/ATT-IR-V2/financial-reports/annual-reports/2025/2025-annual-report-complete.pdf",
+      "modification": "Nom actuel conservé; télécommunications/communication confirmées.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "Le rapport annuel 2025 identifie l’émetteur comme AT&T Inc., donne son siège à Dallas, Texas, et décrit le secteur Communications avec services télécoms et réseau. Confirme nom, États-Unis et catégorie media (télécommunications).",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 170.0,
+      "baseIncome": 20.0,
+      "priorEvidence": {
+        "url": "https://about.att.com/ecms/dam/snrdocs/2025-annual-report-complete-annual-report.pdf",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Rapport annuel officiel AT&T 2025 identifie AT&T Inc. et ses activités de communication.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 170000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/att/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "the-coca-cola-co",
+      "oldName": "The Coca-cola Co",
+      "currentName": "The Coca-Cola Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.coca-colacompany.com/about-us",
+      "modification": "Casse/nom légal normalisés; boissons confirmées.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 180.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 370000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/coca-cola/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "the-walt-disney-co",
+      "oldName": "The Walt Disney Co",
+      "currentName": "The Walt Disney Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "media",
+      "verifiedSourceURL": "https://thewaltdisneycompany.com/about/",
+      "modification": "Nom normalisé; divertissement et médias confirmés.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 180.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 180000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/walt-disney/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "oracle-corp",
+      "oldName": "Oracle Corp",
+      "currentName": "Oracle Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.oracle.com/corporate/",
+      "modification": "Nom légal normalisé; logiciels/cloud confirmés.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/oracle.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Oracle_wordmark.svg",
+        "license": "PD-textlogo / domaine public (texte simple)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 190.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 430000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/oracle/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "chevron-corp",
+      "oldName": "Chevron Corp",
+      "currentName": "Chevron Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/0000093410-26-000078-index.html",
+      "modification": "Forme légale ajoutée; énergie confirmée.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "L’index EDGAR du 10-K 2025 identifie Chevron Corp, siège commercial à Houston, Texas, et SIC 2911 Petroleum Refining, rattaché par la SEC à Energy & Transportation; confirme nom, pays et classement energy.",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 200.0,
+      "baseIncome": 40.0,
+      "priorEvidence": {
+        "url": "https://www.chevron.com/who-we-are",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page officielle Chevron décrit la fourniture d’énergie et l’activité du groupe.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 410000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/chevron/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "pfizer-inc",
+      "oldName": "Pfizer Inc",
+      "currentName": "Pfizer Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.pfizer.com/about",
+      "modification": "Nom actuel confirmé; biopharmaceutique/santé confirmé.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 210.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 160000000000.0,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/pfizer/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "procter-gamble-co",
+      "oldName": "Procter & Gamble Co",
+      "currentName": "The Procter & Gamble Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm",
+      "modification": "Nom légal normalisé; reclassée Agroalimentaire → Industrie (biens de consommation non alimentaires).",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "Le 10-K 2025 nomme The Procter & Gamble Company, précise Cincinnati (Ohio) et l’État d’incorporation Ohio; décrit P&G comme entreprise mondiale de produits de consommation. Confirme États-Unis et industry comme catégorie de biens de consommation.",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 220.0,
+      "baseIncome": 30.0,
+      "priorEvidence": {
+        "url": "https://us.pg.com/who-we-are/",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page officielle « Who we are » décrit P&G et ses marques de produits de consommation.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 340000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/procter-and-gamble/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "jpmorgan-chase-co",
+      "oldName": "JPMorgan Chase & Co",
+      "currentName": "JPMorgan Chase & Co.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.jpmorganchase.com/about",
+      "modification": "Ponctuation normalisée; finance confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 230.0,
+      "baseIncome": 40.0,
+      "marketCapUSD": 880000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/jp-morgan-chase/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "general-electric",
+      "oldName": "General Electric",
+      "currentName": "GE Aerospace",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.geaerospace.com/investor-relations/annual-report",
+      "modification": "General Electric n’est plus le groupe opérationnel unifié; activité aéronautique poursuivie sous GE Aerospace après séparation de GE Vernova en 2024.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "La page officielle du rapport annuel 2025 identifie GE Aerospace comme entreprise indépendante lancée en 2024 et décrit ses moteurs et systèmes aéronautiques; elle situe une usine à Terre Haute, Indiana. Le 10-K précise le siège exécutif à Evendale, Ohio. Confirme le nom courant, pays États-Unis et industry (aérospatiale).",
+        "corroboratingSourceURL": "https://www.sec.gov/Archives/edgar/data/40545/000004054526000008/ge-20251231.htm",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 250.0,
+      "baseIncome": 30.0,
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "general-electric"
+      ],
+      "legacyNameAliases": [
+        "General Electric"
+      ],
+      "priorEvidence": {
+        "url": "https://www.ge.com/investor-relations/spinoff-resources",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page officielle GE Investor Relations confirme la scission de GE Vernova en avril 2024 et que GE Aerospace est la société restante.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 320000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/general-electric/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "wal-mart-stores-inc",
+      "oldName": "Wal-Mart Stores Inc",
+      "currentName": "Walmart Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://corporate.walmart.com/about",
+      "modification": "Ancien nom remplacé par Walmart Inc.; commerce général incluant l’alimentaire conservé en Agroalimentaire & ressources, secteur disponible le plus proche. Walmart de México est une entité distincte.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 260.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 830000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/walmart/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "wells-fargo-co",
+      "oldName": "Wells Fargo & Co",
+      "currentName": "Wells Fargo & Company",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.wellsfargo.com/about/corporate/",
+      "modification": "Nom légal normalisé; services financiers confirmés.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 280.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 250000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/wells-fargo/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "johnson-johnson",
+      "oldName": "Johnson & Johnson",
+      "currentName": "Johnson & Johnson",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.jnj.com/our-company",
+      "modification": "Nom actuel confirmé; santé/pharmacie et technologies médicales.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 280.0,
+      "baseIncome": 40.0,
+      "marketCapUSD": 610000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/johnson-and-johnson/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "microsoft-corp",
+      "oldName": "Microsoft Corp",
+      "currentName": "Microsoft Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.microsoft.com/en-us/about",
+      "modification": "Nom légal normalisé; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/microsoft.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Microsoft.svg",
+        "license": "PD-textlogo / domaine public (texte et formes géométriques simples)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 330.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 3800000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/microsoft/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "exxon-mobil-corp",
+      "oldName": "Exxon Mobil Corp",
+      "currentName": "Exxon Mobil Corporation",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.sec.gov/Archives/edgar/data/34088/000003408826000078/xom-20260527.htm",
+      "modification": "Nom légal normalisé; énergie confirmée.",
+      "confiance": "élevée (source primaire consultée)",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "Le 8-K SEC du 27 mai 2026 identifie Exxon Mobil Corporation, son incorporation au New Jersey et ses bureaux principaux au Texas; cela confirme nom et pays États-Unis. L’activité énergétique est décrite sur la page corporate What we do, consultée directement; la catégorie energy est cohérente avec les activités énergie/pétrole et gaz.",
+        "corroboratingSourceURL": "https://corporate.exxonmobil.com/what-we-do",
+        "retrievalMethodStatus": "direct_page_content_accessed"
+      },
+      "basePrice": 350.0,
+      "baseIncome": 50.0,
+      "priorEvidence": {
+        "url": "https://corporate.exxonmobil.com/what-we-do",
+        "evidence": {
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page officielle « What we do » décrit ExxonMobil comme fournisseur d’énergie et de produits.",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06"
+        }
+      },
+      "marketCapUSD": 670000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/exxon-mobil/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "berkshire-hathaway-inc",
+      "oldName": "Berkshire Hathaway Inc",
+      "currentName": "Berkshire Hathaway Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.berkshirehathaway.com/",
+      "modification": "Ponctuation normalisée; société holding d’investissement classée Finance.",
+      "confiance": "medium",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 350.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 1100000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/berkshire-hathaway/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "alphabet-google-inc",
+      "oldName": "Alphabet (Google Inc)",
+      "currentName": "Alphabet Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://abc.xyz/",
+      "modification": "Nom mis à jour au groupe parent Alphabet Inc.; Google est sa principale filiale/activité; technologie conservée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 400.0,
+      "baseIncome": 60.0,
+      "marketCapUSD": 4200000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/usd/alphabet-google/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "apple-inc",
+      "oldName": "Apple Inc",
+      "currentName": "Apple Inc.",
+      "country": "États-Unis",
+      "zone": "americas",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.apple.com/leadership/",
+      "modification": "Nom actuel confirmé; technologie confirmée.",
+      "confiance": "high",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "Aucun fichier de marque téléchargé : la source officielle consultée ne fournit pas une licence ouverte ou une autorisation générale de réutilisation dans le jeu. Utiliser le monogramme généré par l’interface."
+      },
+      "retrievalDate": "2026-10-06",
+      "verificationStatus": "verified_official_page_consulted",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "Official company page content was opened and consulted to verify the current identity and stated business activity; sector mapping is the audit recommendation.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "basePrice": 700.0,
+      "baseIncome": 110.0,
+      "marketCapUSD": 4900000000000.0,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/apple/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "sabmiller-plc",
+      "oldName": "Sabmiller PLC",
+      "currentName": "Heineken N.V.",
+      "country": "Pays-Bas",
+      "zone": "europe",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.theheinekencompany.com/newsroom/heineken-nv-reports-2025-full-year-results/",
+      "modification": "SABMiller no longer exists as an independent company. Replace this obsolete market slot with the separate Dutch brewer HEINEKEN; this is a substitution, not a succession claim.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page identifies Heineken N.V. and describes current beer company/results; not a claim of SABMiller succession.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 80.0,
+      "baseIncome": 16.0,
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "sabmiller-plc"
+      ],
+      "legacyNameAliases": [
+        "Sabmiller PLC"
+      ],
+      "marketCapUSD": 44000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/heineken/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "vodafone-group-plc",
+      "oldName": "Vodafone Group PLC",
+      "currentName": "Vodafone Group Plc",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.vodafone.com/our-company",
+      "modification": "Current style; telecommunications.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official company page identifies current Vodafone and mobile/internet services.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 90.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 39000000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/vodafone/marketcap/",
+      "marketCapAsOf": "2026-10-05",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "astrazeneca-plc",
+      "oldName": "AstraZeneca PLC",
+      "currentName": "AstraZeneca PLC",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.astrazeneca.com/our-company.html",
+      "modification": "Current style; biopharmaceutical company.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page describes AstraZeneca as a science-led pharmaceutical business.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 90.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 260000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/astrazeneca/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "siemens-ag",
+      "oldName": "Siemens AG",
+      "currentName": "Siemens AG",
+      "country": "Allemagne",
+      "zone": "europe",
+      "sector": "industry",
+      "verifiedSourceURL": "https://press.siemens.com/global/en/article/press-materials-siemens-ag",
+      "modification": "Current style retained.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official press page identifies Siemens AG, Berlin and Munich, and a technology company.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/siemens.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Siemens_AG_logo.svg",
+        "license": "PD-textlogo / domaine public (texte simple)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "basePrice": 90.0,
+      "baseIncome": 18.0,
+      "marketCapUSD": 240000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/siemens/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "sap",
+      "oldName": "SAP",
+      "currentName": "SAP SE",
+      "country": "Allemagne",
+      "zone": "europe",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.sap.com/about/company.html",
+      "modification": "Current legal name is SAP SE.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page identifies SAP SE board and enterprise applications/business AI.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/sap.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:SAP_2011_logo.svg",
+        "license": "PD-textlogo / domaine public (texte et formes simples)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "basePrice": 90.0,
+      "baseIncome": 17.0,
+      "marketCapUSD": 240000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/sap/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "lvmh-sa",
+      "oldName": "LVMH SA",
+      "currentName": "LVMH Moët Hennessy Louis Vuitton SE",
+      "country": "France",
+      "zone": "europe",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.lvmh.com/en/our-group",
+      "modification": "Luxury goods, not media; industry is nearest available category.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page calls LVMH a luxury goods group.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 90.0,
+      "baseIncome": 16.0,
+      "marketCapUSD": 210000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/lvmh/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "british-american-tobacco-plc",
+      "oldName": "British American Tobacco PLC",
+      "currentName": "British American Tobacco p.l.c.",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.bat.com/who-we-are/our-business",
+      "modification": "Tobacco/nicotine consumer goods, not agrofood; industry is nearest available category.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page describes BAT as a consumer goods business focused on tobacco/nicotine.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 100.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 120000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/british-american-tobacco/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "daimler-ag",
+      "oldName": "Daimler AG",
+      "currentName": "Mercedes-Benz Group AG",
+      "country": "Allemagne",
+      "zone": "europe",
+      "sector": "transport",
+      "verifiedSourceURL": "https://group.mercedes-benz.com/company/news/daimler-becomes-mercedes-benz-group.html",
+      "modification": "Daimler AG was renamed Mercedes-Benz Group AG effective 2022-02-01.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official 2022 announcement says Daimler AG became Mercedes-Benz Group AG on 1 February 2022.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 43000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/mercedes-benz-group/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "inditex-s-a",
+      "oldName": "Inditex S.A",
+      "currentName": "Industria de Diseño Textil, S.A. (Inditex)",
+      "country": "Espagne",
+      "zone": "europe",
+      "sector": "industry",
+      "verifiedSourceURL": "https://static.inditex.com/annual_report_2016/en/annual-accounts/consolidated-directors-report/",
+      "modification": "Fashion retail, not media; industry is nearest available category.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official report describes Inditex as fashion group and fashion retailer.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 190000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/inditex/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "l-oreal-sa",
+      "oldName": "L'Oréal SA",
+      "currentName": "L’Oréal S.A.",
+      "country": "France",
+      "zone": "europe",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.loreal.com/en/groupe/",
+      "modification": "Cosmetics and beauty, not agrofood; industry is nearest available category.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official group page describes L’Oréal as beauty-sector company; official finance registration identifies French S.A.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 220000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/l-oreal/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "glaxosmithkline-plc",
+      "oldName": "GlaxoSmithkline PLC",
+      "currentName": "GSK plc",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.gsk.com/en-gb/company/governance/",
+      "modification": "Current company name and styling.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official governance page offers GSK company-name/address records and annual reports.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 110.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 94000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/glaxo-smith-kline/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "banco-santander-s-a",
+      "oldName": "Banco Santander S.A.",
+      "currentName": "Banco Santander, S.A.",
+      "country": "Espagne",
+      "zone": "europe",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.santander.com/en/about-us",
+      "modification": "Current legal styling; banking.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page describes Santander as global retail bank and identifies Banco Santander S.A. headquarters in Madrid, Spain.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 110.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 200000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/santander/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "total-sa",
+      "oldName": "Total SA",
+      "currentName": "TotalEnergies SE",
+      "country": "France",
+      "zone": "europe",
+      "sector": "energy",
+      "verifiedSourceURL": "https://totalenergies.com/group/identity",
+      "modification": "Total SA renamed TotalEnergies SE; identity page confirms energy activity.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official identity page identifies TotalEnergies as integrated energy company; page history traces origin as Compagnie française des pétroles.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/totalenergies.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:TotalEnergies_wordmark_(2021-present).svg",
+        "license": "PD-textlogo / domaine public (texte simple)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "basePrice": 120.0,
+      "baseIncome": 40.0,
+      "marketCapUSD": 190000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/totalenergies/marketcap/",
+      "marketCapAsOf": "2026-10-05",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "volkswagen-ag",
+      "oldName": "Volkswagen AG",
+      "currentName": "Volkswagen AG",
+      "country": "Allemagne",
+      "zone": "europe",
+      "sector": "transport",
+      "verifiedSourceURL": "https://www.volkswagen-group.com/en/imprint-15695",
+      "modification": "Current styling retained.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official imprint names Volkswagen AG, German-law corporation headquartered in Wolfsburg.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 120.0,
+      "baseIncome": 40.0,
+      "marketCapUSD": 38000000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/volkswagen/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "bp-plc",
+      "oldName": "BP PLC",
+      "currentName": "BP p.l.c.",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.bp.com/en/global/bp-trading-and-shipping.html",
+      "modification": "Current legal styling.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official BP page describes its energy solutions and transition to integrated energy company; URL supplied by source search.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 120.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 110000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/bp/marketcap/",
+      "marketCapAsOf": "2026-10-05",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "bayer-ag",
+      "oldName": "Bayer AG",
+      "currentName": "Bayer AG",
+      "country": "Allemagne",
+      "zone": "europe",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.bayer.com/en/science",
+      "modification": "Life sciences group; health is nearest available category.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official Bayer page describes core Life Science competencies in health care and agriculture.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 120.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 55000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/bayer/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "unilever-nv",
+      "oldName": "Unilever NV",
+      "currentName": "Unilever PLC",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.unilever.com/news/press-and-media/press-releases/2020/completion-of-unilevers-unification/",
+      "modification": "Unilever N.V. ceased to exist in 2020 after unification; PLC is the parent.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official release says Unilever N.V. ceased to exist on 29 November 2020 and PLC shares admitted for trading.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 120.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 130000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/unilever/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "sanofi",
+      "oldName": "Sanofi",
+      "currentName": "Sanofi",
+      "country": "France",
+      "zone": "europe",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.sanofi.com/en/our-company",
+      "modification": "Current name retained.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page identifies Sanofi and describes medicines and vaccines.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 130.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 95000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/sanofi/marketcap/",
+      "marketCapAsOf": "2026-10-05",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "hsbc-holdings-plc",
+      "oldName": "HSBC Holdings PLC",
+      "currentName": "HSBC Holdings plc",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.hsbc.com/investors/investing-in-hsbc/group-structure",
+      "modification": "Current legal style; incorporated in England.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page says HSBC Holdings plc is principal holding company incorporated in England and describes financial services.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 160.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 330000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/hsbc/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "royal-dutch-shell",
+      "oldName": "Royal Dutch Shell",
+      "currentName": "Shell plc",
+      "country": "Royaume-Uni",
+      "zone": "europe",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.shell.com/who-we-are.html",
+      "modification": "Royal Dutch Shell changed its name to Shell plc in 2022.",
+      "confiance": "élevée",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page names Shell plc in legal note and describes energy/petrochemical group.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/shell.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Shell_wordmark_2019.svg",
+        "license": "PD-textlogo / domaine public (texte simple)",
+        "trademark": "Oui — avertissement Trademarked explicite sur Commons",
+        "retrievedDate": "2026-10-06"
+      },
+      "basePrice": 190.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 280000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/shell/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "anheuser-busch",
+      "oldName": "Anheuser-Busch",
+      "currentName": "Anheuser-Busch InBev SA/NV",
+      "country": "Belgique",
+      "zone": "europe",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.ab-inbev.com/about-us/our-heritage",
+      "modification": "Represent the Belgian global parent rather than its US subsidiary/brand.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official heritage page says AB InBev combined with SABMiller in 2016; preserve separate original Belgian group entry.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 200.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 150000000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/anheuser-busch-inbev/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "nestle",
+      "oldName": "Nestlé",
+      "currentName": "Nestlé S.A.",
+      "country": "Suisse",
+      "zone": "europe",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.nestle.com/about",
+      "modification": "Current legal styling.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page describes Nestlé as food and beverage company.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 230.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 230000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/nestle/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "novartis",
+      "oldName": "Novartis",
+      "currentName": "Novartis AG",
+      "country": "Suisse",
+      "zone": "europe",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.novartis.com/about",
+      "modification": "Current legal styling.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page describes Novartis as innovative medicines company.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 230.0,
+      "baseIncome": 40.0,
+      "marketCapUSD": 270000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/novartis/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "roche",
+      "oldName": "Roche",
+      "currentName": "Roche Holding AG",
+      "country": "Suisse",
+      "zone": "europe",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.roche.com/about",
+      "modification": "Current legal name; healthcare, pharmaceuticals and diagnostics.",
+      "confiance": "moyenne",
+      "retrievalDate": "2026-10-06",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "summary": "official page describes Roche healthcare company and states founded in Basel, Switzerland.",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 230.0,
+      "baseIncome": 40.0,
+      "marketCapUSD": 340000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/roche/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "orascom-construction-industries",
+      "oldName": "Orascom Construction Industries",
+      "currentName": "Orascom Construction PLC",
+      "country": "Égypte",
+      "zone": "africa",
+      "sector": "realestate",
+      "verifiedSourceURL": "https://orascom.com/",
+      "modification": "Le nom « Orascom Construction Industries » est historique; mettre à jour le nom affiché vers Orascom Construction (si cette entité est celle visée). Le pays est Égypte; le secteur immobilier/infrastructure est acceptable.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "La page présente Orascom Construction PLC comme entrepreneur mondial de génie civil/construction, avec infrastructure, industrie et commerce; activités MENA, Afrique, États-Unis. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "marketCapUSD": 1750000000,
+      "capCategory": "small",
+      "marketCapSource": "https://stockanalysis.com/quote/adx/ORAS/market-cap/",
+      "marketCapAsOf": "2026-10-06",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "tata-motors",
+      "oldName": "Tata Motors",
+      "currentName": "Tata Motors Limited",
+      "country": "Inde",
+      "zone": "asia",
+      "sector": "transport",
+      "verifiedSourceURL": "https://nsearchives.nseindia.com/corporate/TMLCOMMERCIAL_01082026142609_nsebsesalesigned.pdf",
+      "modification": "Société réelle; nom officiel de groupe désormais Tata Motors Limited; pays Inde et secteur Transport cohérents. Le catalogue v2 désigne explicitement la société CV post-scission Tata Motors Limited (ex-TML Commercial Vehicles); les anciens états incorporés restent inchangés.",
+      "confiance": "élevée (publication réglementaire NSE consultée)",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "checkedDate": "2026-10-06",
+        "summary": "Publication officielle de Tata Motors Limited déposée sur NSE, 1 août 2026, deux pages directement lues. Identifie la société anciennement TML Commercial Vehicles Limited, renommée le 29 octobre 2025; décrit les utilitaires, pick-ups, camions et bus, son rattachement indien et ses implantations. Confirme le choix du fabricant commercial CV, distinct de Tata Motors Passenger Vehicles après la scission; le secteur transport du jeu reste conservé."
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "priorEvidence": {
+        "url": "https://www.tatamotors.com/organisation/about-us/",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Le site officiel « About us » décrit Tata Motors comme constructeur automobile indien et fournisseur de solutions de mobilité. The current displayed name follows the official corporate style on this source.",
+          "sourceVerified": false
+        }
+      },
+      "followupSourceURL": "https://cv.tatamotors.com/assets/cv/files/AnnualReportFY26.pdf",
+      "marketCapUSD": 18000000000,
+      "capCategory": "small",
+      "marketCapSource": "https://www.nseindia.com/get-quote/equity/TMCV/Tata-Motors",
+      "marketCapAsOf": "2026-09-24",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "maroc-telecom",
+      "oldName": "Maroc Telecom",
+      "currentName": "Maroc Telecom",
+      "country": "Maroc",
+      "zone": "africa",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.iam.ma/groupe-maroc-telecom",
+      "modification": "Société réelle; normaliser en Maroc Telecom (Itissalat Al-Maghrib); secteur Communication & médias cohérent.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Le portail institutionnel comporte les rubriques groupe, publications financières et événements Maroc Telecom/Itissalat Al-Maghrib.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "marketCapUSD": 8610000000,
+      "capCategory": "small",
+      "marketCapSource": "https://www.zonebourse.com/cours/action/MAROC-TELECOM-5274/valorisation/",
+      "marketCapAsOf": "2026-10-06",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "bank-central-asia",
+      "oldName": "Bank Central Asia",
+      "currentName": "PT Bank Central Asia Tbk",
+      "country": "Indonésie",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.bca.co.id/en/tentang-bca",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page About BCA; affiche siège à Jakarta et indicateurs d’activité bancaire (actifs, prêts, branches, comptes). The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 20.0,
+      "baseIncome": 7.0,
+      "marketCapUSD": 45020000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/bank-central-asia/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "astra-international",
+      "oldName": "Astra International",
+      "currentName": "FANUC Corporation",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.fanuc.co.jp/en/profile/profile/",
+      "modification": "Source officielle: profil FANUC et activité d’automatisation industrielle, robots et machines-outils. Recommandation de remplacement sectoriel.",
+      "confiance": "élevée pour le candidat de remplacement; moyenne pour la ligne antérieure où indiqué dans replacementProposal.beforeEvidence",
+      "replacementProposal": {
+        "before": {
+          "name": "Astra International",
+          "country": "Indonésie",
+          "sector": {
+            "gazprom": "energy",
+            "china-construction-bank-corp": "realestate",
+            "astra-international": "transport"
+          },
+          "basePrice": 30,
+          "baseIncome": 10
+        },
+        "after": {
+          "name": "FANUC Corporation",
+          "country": "Japon",
+          "sector": "industry",
+          "basePrice": 30,
+          "baseIncome": 10
+        },
+        "pricePreserved": true,
+        "beforeEvidence": {
+          "verifiedSourceURL": "https://www.astra.co.id/about-astra",
+          "status": "direct_page_content_accessed",
+          "sourceVerified": true,
+          "checkedDate": "2026-10-06",
+          "summary": "Page officielle décrit PT Astra International Tbk (Indonésie) et ses métiers automobile, finance, équipements lourds/mines."
+        }
+      },
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Le profil officiel présente PT Astra International Tbk et ses secteurs automobile, services financiers et équipements lourds/mines.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 36370000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/fanuc/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "industries-qatar",
+      "oldName": "Industries Qatar",
+      "currentName": "Emaar Properties PJSC",
+      "country": "Émirats arabes unis (Dubaï)",
+      "zone": "africa",
+      "sector": "realestate",
+      "verifiedSourceURL": "https://www.emaar.com/en/investor-relations/emaar-properties-pjsc",
+      "modification": "Replaced Industries Qatar with listed real-estate issuer Emaar Properties PJSC; stable legacy ID, count91 preserved.",
+      "confiance": "élevée",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "accessedAt": "2026-10-06",
+        "text": "CompaniesMarketCap reports $27.57B in October 2026. Emaar’s investor page describes its property development, investment, malls, hospitality and other property activities; DFM company page confirms EMAAR listing.",
+        "listingSourceURL": "https://www.dfm.ae/the-exchange/market-information/company/emaar"
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 27570000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/emaar-properties/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "mtn-group",
+      "oldName": "MTN group",
+      "currentName": "MTN Group Limited",
+      "country": "Afrique du Sud",
+      "zone": "africa",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.mtn.com/about/",
+      "modification": "Société réelle; normaliser la casse en MTN Group; pays Afrique du Sud et secteur Communication & médias valides.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page institutionnelle MTN: fondée en Afrique du Sud, opérateur et solutions numériques en Afrique et Moyen-Orient. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 22880000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/mtn-group/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "qatar-national-bank",
+      "oldName": "Qatar National Bank",
+      "currentName": "Qatar National Bank",
+      "country": "Qatar",
+      "zone": "africa",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.qnb.com/sites/qnb/qnbglobal/page/en/englobalaboutus.html",
+      "modification": "Société réelle; le nom d’usage de groupe est QNB Group (Qatar National Bank Q.P.S.C.); secteur Finance valide.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page institutionnelle « About Us » décrit QNB et son développement au Qatar; la FAQ confirme raison sociale et banque.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 39400000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/qnb-qatar-national-bank/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "sasol",
+      "oldName": "SASOL",
+      "currentName": "Sasol Limited",
+      "country": "Afrique du Sud",
+      "zone": "africa",
+      "sector": "energy",
+      "verifiedSourceURL": "https://sasol.com/who-we-are/about-us",
+      "modification": "Société réelle; utiliser Sasol Limited; activité énergie et produits chimiques, secteur Énergie acceptable.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page institutionnelle décrit Sasol comme groupe mondial de produits chimiques et d’énergie, société cotée en Afrique du Sud. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "marketCapUSD": 9410000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/sasol/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "taiwan-semiconductor-manufacturing",
+      "oldName": "Taiwan Semiconductor Manufacturing",
+      "currentName": "Taiwan Semiconductor Manufacturing Company Limited",
+      "country": "Taïwan",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.tsmc.com/english/aboutTSMC",
+      "modification": "Société réelle; afficher TSMC (Taiwan Semiconductor Manufacturing Company Limited) est plus juste que la raison sociale tronquée.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page About TSMC: fonderie de semi-conducteurs fondée en 1987; installations majeures à Taïwan. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 90.0,
+      "baseIncome": 15.0,
+      "marketCapUSD": 2452000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/tsmc/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "gazprom",
+      "oldName": "Gazprom",
+      "currentName": "Mitsubishi Heavy Industries (MHI)",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.mhi.com/company/overview/profile",
+      "modification": "Source officielle: page de profil MHI; société établie au Japon et activités affichées en énergie, infrastructures, systèmes industriels, aéronautique/défense. Recommandation de remplacement sectoriel.",
+      "confiance": "élevée pour le candidat de remplacement; moyenne pour la ligne antérieure où indiqué dans replacementProposal.beforeEvidence",
+      "replacementProposal": {
+        "before": {
+          "name": "Gazprom",
+          "country": "Russie",
+          "sector": {
+            "gazprom": "energy",
+            "china-construction-bank-corp": "realestate",
+            "astra-international": "transport"
+          },
+          "basePrice": 100,
+          "baseIncome": 50
+        },
+        "after": {
+          "name": "Mitsubishi Heavy Industries (MHI)",
+          "country": "Japon",
+          "sector": "industry",
+          "basePrice": 100,
+          "baseIncome": 50
+        },
+        "pricePreserved": true,
+        "beforeEvidence": {
+          "verifiedSourceURL": "https://www.gazprom.com/about/",
+          "status": "direct_access_unavailable_search_excerpt_only",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06",
+          "summary": "Résultat officiel Gazprom: PJSC Gazprom, société énergétique russe; page descriptive non ouverte directement par le navigateur web."
+        }
+      },
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Résultat de recherche officiel « About Gazprom » confirme PJSC Gazprom et activité énergétique; son URL bloque l’ouverture directe.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/gazprom.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Mitsubishi_heavyindustries_mhi_logo.svg",
+        "license": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+        "trademark": "Commons page expressly notes it may remain trademark-protected; the copyright license is not a trademark permission. Use only as a source-marked company logo in the proposed replacement context.",
+        "retrievedDate": "2026-10-06"
+      },
+      "basePrice": 100.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 80480000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/mitsubishi-heavy-industries/marketcap",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "ping-an-insurance-group-co-of-china-ltd",
+      "oldName": "Ping An Insurance Group Co of China Ltd",
+      "currentName": "Ping An Insurance (Group) Company of China, Ltd.",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://group.pingan.com/about_us/who_we_are.html",
+      "modification": "Société réelle; nom affiché à normaliser en Ping An Insurance (Group) Company of China, Ltd.; secteur Finance valide.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page officielle « Who We Are » qualifie Ping An de groupe financier intégré chinois, centré finance, santé et soins aux aînés. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 110.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 143920000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/ping-an-insurance/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "sinopec",
+      "oldName": "Sinopec",
+      "currentName": "China Petroleum & Chemical Corporation (Sinopec)",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0322/2026032200057.pdf",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée (source primaire consultée)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "summary": "Downloaded the official 2025 annual report PDF and read its extracted text. The definitions identify “Sinopec Corp.” as China Petroleum & Chemical Corporation. The Company status section says it is registered and headquartered in Beijing, People’s Republic of China. It states that the company took over crude oil and natural gas exploration, development and production, refining, chemicals, and related sales and marketing. This directly supports the name, country and Energy classification.",
+        "retrievalMethodStatus": "official_annual_report_downloaded_and_text_extracted"
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 120.0,
+      "baseIncome": 20.0,
+      "priorEvidence": {
+        "url": "https://www.sinopecgroup.com/u/cms/jtyw/202603/22203315gxqf.pdf",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page officielle Sinopec Corp. avec profil société et adresse Beijing; résultat d’indexation officielle confirme Chine Petroleum & Chemical Corporation. Ouverture directe limitée. The current displayed name follows the official corporate style on this source.",
+          "sourceVerified": false
+        }
+      },
+      "marketCapUSD": 95240000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/sinopec/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "toyota-motor",
+      "oldName": "Toyota Motor",
+      "currentName": "Toyota Motor Corporation",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "transport",
+      "verifiedSourceURL": "https://global.toyota/en/company/",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page de l’entreprise officielle Toyota Motor Corporation, liens vers profil et activités mondiales du constructeur. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 180.0,
+      "baseIncome": 30.0,
+      "marketCapUSD": 218030000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/toyota/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "tencent-holdings-ltd",
+      "oldName": "Tencent Holdings Ltd",
+      "currentName": "Tencent Holdings Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.tencent.com/en-us/about.html",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page « Who we are » de Tencent décrit son activité de services et produits technologiques/internet. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 180.0,
+      "baseIncome": 20.0,
+      "marketCapUSD": 479740000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/tencent/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "agricultural-bank-of-china",
+      "oldName": "Agricultural bank of China",
+      "currentName": "Sun Hung Kai Properties Limited",
+      "country": "Hong Kong",
+      "zone": "asia",
+      "sector": "realestate",
+      "verifiedSourceURL": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/2025102200125.pdf",
+      "modification": "Replaced Agricultural Bank of China Limited with listed real-estate issuer Sun Hung Kai Properties Limited; stable legacy ID, count91 preserved.",
+      "confiance": "élevée (source primaire consultée)",
+      "evidence": {
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "accessedAt": "2026-10-06",
+        "text": "CompaniesMarketCap reports $38.55B in October 2026 and classifies it as real estate. HKEX filing confirms listed identity/ticker 0016.",
+        "listingSourceURL": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1022/2025102200125.pdf"
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 190.0,
+      "baseIncome": 30.0,
+      "priorEvidence": {
+        "url": "https://www.abchina.com/en/investor-relations/company-overview/",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page officielle About ABC et Company Overview: banque commerciale chinoise et fournisseur de services financiers intégrés. The current displayed name follows the official corporate style on this source.",
+          "sourceVerified": false
+        }
+      },
+      "marketCapUSD": 38550000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/sun-hung-kai-properties/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "alibaba-group-holding",
+      "oldName": "Alibaba Group Holding",
+      "currentName": "Alibaba Group Holding Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://www.alibabagroup.com/en-US/about-alibaba",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page officielle Introduction to Alibaba Group expose l’identité et les activités du groupe technologique/commerce numérique. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 200.0,
+      "baseIncome": 40.0,
+      "marketCapUSD": 275640000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/alibaba/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "bank-of-china-ltd",
+      "oldName": "Bank of China Ltd",
+      "currentName": "Bank of China Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.boc.cn/en/aboutboc/ab1/200809/t20080901_1601737.html",
+      "modification": "Société réelle; normaliser en Bank of China Limited; secteur Finance valide.",
+      "confiance": "élevée (source primaire consultée)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "summary": "The opened official Bank of China Introduction names Bank of China and describes it as a Chinese commercial bank established in 1912. The page lists commercial and personal banking, financial markets and other financial services. This directly supports the current name, China and Finance classification.",
+        "retrievalMethodStatus": "direct_official_page_content_accessed"
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 200.0,
+      "baseIncome": 40.0,
+      "priorEvidence": {
+        "url": "https://www.boc.cn/en/aboutboc/ab1/200809/t20080901_1601737.html",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Présentation institutionnelle de Bank of China: banque commerciale et services financiers; entité chinoise cotée. The current displayed name follows the official corporate style on this source.",
+          "sourceVerified": false
+        }
+      },
+      "marketCapUSD": 323950000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/bank-of-china/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "china-construction-bank-corp",
+      "oldName": "China Construction Bank Corp",
+      "currentName": "Komatsu Ltd.",
+      "country": "Japon",
+      "zone": "asia",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.komatsu.com/en-us/about",
+      "modification": "Source officielle: Komatsu présente ses machines pour construction, mines, foresterie et équipements industriels. Recommandation de remplacement sectoriel.",
+      "confiance": "élevée pour le candidat de remplacement; moyenne pour la ligne antérieure où indiqué dans replacementProposal.beforeEvidence",
+      "replacementProposal": {
+        "before": {
+          "name": "China Construction Bank Corp",
+          "country": "Chine",
+          "sector": {
+            "gazprom": "energy",
+            "china-construction-bank-corp": "realestate",
+            "astra-international": "transport"
+          },
+          "basePrice": 210,
+          "baseIncome": 50
+        },
+        "after": {
+          "name": "Komatsu Ltd.",
+          "country": "Japon",
+          "sector": "industry",
+          "basePrice": 210,
+          "baseIncome": 50
+        },
+        "pricePreserved": true,
+        "beforeEvidence": {
+          "verifiedSourceURL": "https://www.ccb.com/en/newinvestor/overview.html",
+          "status": "direct_access_unavailable_search_excerpt_only",
+          "sourceVerified": false,
+          "checkedDate": "2026-10-06",
+          "summary": "Résultat officiel CCB identifie China Construction Bank Corporation, siège Beijing, banque commerciale; source corroborée via extrait indexé officiel."
+        }
+      },
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "La page Komatsu confirme société et fabrication de machines de construction/mines; remplace CCB dans la proposition et change le secteur vers Industrie.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 210.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 43630000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/komatsu/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "samsung-electronics-co-ltd",
+      "oldName": "Samsung Electronics Co Ltd",
+      "currentName": "Samsung Electronics Co., Ltd.",
+      "country": "Corée du Sud",
+      "zone": "asia",
+      "sector": "technology",
+      "verifiedSourceURL": "https://images.samsung.com/is/content/samsung/assets/global/ir/docs/Samsung_Electronics_Sustainability_Report_2025_ENG.pdf",
+      "modification": "Société réelle; normaliser en Samsung Electronics Co., Ltd.; pays Corée du Sud.",
+      "confiance": "élevée (source primaire consultée)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "summary": "Downloaded Samsung Electronics’ official 2025 Sustainability Report PDF and read its extracted text. “About Us” identifies Samsung Electronics Co., Ltd. The “About Our Organization” section says its DX Division produces and sells smartphones, network systems, computers, TVs and home appliances, while its DS Division produces and sells semiconductor components. The report’s corporate locations material identifies the Republic of Korea. This directly supports the company name, South Korea and Electronics classification.",
+        "retrievalMethodStatus": "official_sustainability_report_downloaded_and_text_extracted"
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 210.0,
+      "baseIncome": 40.0,
+      "priorEvidence": {
+        "url": "https://www.samsung.com/global/ir/governance-csr/articles-of-incorporation/",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Articles d’incorporation officiels donnent le nom Samsung Electronics Co., Ltd.; société coréenne de l’électronique. The current displayed name follows the official corporate style on this source.",
+          "sourceVerified": false
+        }
+      },
+      "marketCapUSD": 1334000000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/samsung/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "china-mobile-ltd",
+      "oldName": "China Mobile Ltd",
+      "currentName": "China Mobile Limited",
+      "country": "Hong Kong (RAS de Chine)",
+      "zone": "asia",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.chinamobileltd.com/en/ir/reports/ir2025.pdf",
+      "modification": "Société réelle constituée à Hong Kong et opérant en Chine continentale; pays à préciser comme Hong Kong (RAS de Chine) pour l’entité cotée. Secteur Communication & médias valide.",
+      "confiance": "élevée (source primaire consultée)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "summary": "Downloaded China Mobile Limited’s official 2025 interim report PDF and read its extracted text. The Corporate Profile names China Mobile Limited, says it was incorporated in Hong Kong on 3 September 1997, and describes voice, data, broadband, dedicated lines, IDC, cloud computing and IoT services. The company information note says its principal activities are telecommunications and information related services in mainland China and Hong Kong and gives its registered office in Hong Kong. This directly supports the name, Hong Kong (SAR of China) and Communication & media classification.",
+        "retrievalMethodStatus": "official_interim_report_downloaded_and_text_extracted"
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 270.0,
+      "baseIncome": 50.0,
+      "priorEvidence": {
+        "url": "https://www.chinamobileltd.com/en/about/overview.php",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Présentation officielle China Mobile Limited: société constituée à Hong Kong, opérateur télécom en Chine continentale et Hong Kong. The current displayed name follows the official corporate style on this source.",
+          "sourceVerified": false
+        }
+      },
+      "marketCapUSD": 218030000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/china-mobile/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "icbc-ltd",
+      "oldName": "ICBC Ltd",
+      "currentName": "Industrial and Commercial Bank of China Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.icbc-ltd.com/ICBCLtd/About%20Us/Introduction/",
+      "modification": "Société réelle; normaliser en Industrial and Commercial Bank of China Limited (ICBC); secteur Finance valide.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Profil officiel ICBC: grande banque commerciale chinoise, activités et présentation institutionnelle. The current displayed name follows the official corporate style on this source.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 270.0,
+      "baseIncome": 50.0,
+      "marketCapUSD": 338600000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/icbc/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "petrochina-co-ltd",
+      "oldName": "PetroChina Co Ltd",
+      "currentName": "PetroChina Company Limited",
+      "country": "Chine",
+      "zone": "asia",
+      "sector": "energy",
+      "verifiedSourceURL": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0423/2026042301797.pdf",
+      "modification": "Société existante confirmée par la source officielle; nom, pays et secteur cohérents à ce niveau d’audit.",
+      "confiance": "élevée (source primaire consultée)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "summary": "The opened 2025 annual report, Corporate Profile (PDF page 4), gives the English legal name PetroChina Company Limited and Beijing, PRC addresses. It describes oil and gas exploration, production, transportation and sales, refining, petrochemicals and new energy. This directly supports the current name, China and Energy classification.",
+        "retrievalMethodStatus": "direct_official_annual_report_content_accessed"
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 330.0,
+      "baseIncome": 70.0,
+      "priorEvidence": {
+        "url": "https://www.petrochina.com.cn/ptr/ndbg/202605/c734755cc9764eb5ba8628aac4e3230c/files/c7e4f2a5e9aa4c9eacafb02ff2367d78.pdf",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Annual report officiel identifie PetroChina Company Limited, siège à Pékin, société chinoise d’exploration/production pétrole et gaz. The current displayed name follows the official corporate style on this source.",
+          "sourceVerified": false
+        }
+      },
+      "marketCapUSD": 225520000000,
+      "capCategory": "large",
+      "marketCapSource": "https://companiesmarketcap.com/petro-china/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "pacifica-minerals",
+      "oldName": "Pacifica Minerals",
+      "currentName": "Woolworths Group Limited",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "agrifood",
+      "verifiedSourceURL": "https://www.woolworthsgroup.com.au/content/dam/wwg/sustainability/reports/f25/Woolworths%20Group%20Annual%20Report%202025%20.pdf",
+      "modification": "Remplacement proposé du nom fictif par Woolworths Group Limited, détaillant alimentaire australien. Nom, pays et secteur proposés correspondent à la source.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Annual Report officiel: Woolworths Group est un détaillant australien et néo-zélandais de produits alimentaires et du quotidien; son activité alimentaire justifie Agroalimentaire.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 45,
+      "baseIncome": 9,
+      "marketCapUSD": 34240000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/woolworths-group/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "southern-cross-energy",
+      "oldName": "Southern Cross Energy",
+      "currentName": "Origin Energy",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "energy",
+      "verifiedSourceURL": "https://announcements.asx.com.au/asxpdf/20250731/pdf/06mbvc7zhqzrh7.pdf",
+      "modification": "Remplacer le nom fictif par Origin Energy.",
+      "confiance": "élevée (source primaire consultée)",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "sourceVerified": true,
+        "summary": "The opened ASX June 2025 Quarterly Report names Origin Energy Limited and gives its registered office in Sydney, Australia. It reports Integrated Gas and Energy Markets segments, including LNG, electricity, natural gas and renewable/storage projects. This directly supports the current name Origin Energy, Australia and Energy classification.",
+        "retrievalMethodStatus": "direct_official_exchange_filing_content_accessed"
+      },
+      "verificationStatus": "verified_primary_source_content_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 70,
+      "baseIncome": 14,
+      "priorEvidence": {
+        "url": "https://www.originenergy.com.au/about/",
+        "evidence": {
+          "checkedDate": "2026-10-06",
+          "status": "official_search_result_excerpt_only",
+          "summary": "Page About Origin: Origin Energy fournit énergie, solaire, LPG et services liés à production, gaz et renouvelables.",
+          "sourceVerified": false
+        }
+      },
+      "marketCapUSD": 13150000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/origin-energy/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "coral-reef-health",
+      "oldName": "Coral Reef Health",
+      "currentName": "CSL Limited",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "health",
+      "verifiedSourceURL": "https://www.csl.com/we-are-csl",
+      "modification": "Remplacer le nom fictif par CSL Limited.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page CSL: entreprise biotechnologique fondée en Australie, médicaments et vaccins; correspond à Santé.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 55,
+      "baseIncome": 11,
+      "marketCapUSD": 58500000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/csl/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "pacific-link",
+      "oldName": "Pacific Link",
+      "currentName": "Telstra Group",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "media",
+      "verifiedSourceURL": "https://www.telstra.com.au/aboutus",
+      "modification": "Remplacer le nom fictif par Telstra Group.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page About Telstra identifie l’opérateur télécom australien; correspond à Communication & médias.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "local-commons-svg",
+        "assetPath": "/assets/companies/logos/pacific-link.svg",
+        "provenance": "https://commons.wikimedia.org/wiki/File:Telstra_logo_(horizontal_variant).svg",
+        "license": "Public domain, PD-textlogo (simple geometric/text logo; below originality threshold).",
+        "trademark": "Commons page expressly notes trademark restrictions can apply; this is copyright status, not trademark authorization. Use only as a source-marked company logo in the proposed replacement context.",
+        "retrievedDate": "2026-10-06"
+      },
+      "basePrice": 60,
+      "baseIncome": 12,
+      "marketCapUSD": 37410000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/telstra/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "harbour-infrastructure",
+      "oldName": "Harbour Infrastructure",
+      "currentName": "Goodman Group",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "realestate",
+      "verifiedSourceURL": "https://au.goodman.com/about-goodman/about-us",
+      "modification": "Remplacer le nom fictif par Goodman Group.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page Goodman Australia: propriétaire/développeur/gestionnaire d’immobilier logistique et centres de données.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 80,
+      "baseIncome": 16,
+      "marketCapUSD": 37480000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/goodman/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "oceanic-air",
+      "oldName": "Oceanic Air",
+      "currentName": "Qantas Airways",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "transport",
+      "verifiedSourceURL": "https://www.qantas.com/corporate/about-us",
+      "modification": "Remplacer le nom fictif par Qantas Airways.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page Qantas Group: principale activité de transport de passagers et fret, compagnie aérienne australienne.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 50,
+      "baseIncome": 10,
+      "marketCapUSD": 9570000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/qantas-airways/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "southpoint-finance",
+      "oldName": "Southpoint Finance",
+      "currentName": "Commonwealth Bank of Australia",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "finance",
+      "verifiedSourceURL": "https://www.commbank.com.au/about-us.html",
+      "modification": "Remplacer le nom fictif par Commonwealth Bank of Australia (CommBank).",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page CommBank: banque australienne parmi les plus grandes; services de banque de détail et commerciale.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 65,
+      "baseIncome": 13,
+      "marketCapUSD": 177350000000,
+      "capCategory": "medium",
+      "marketCapSource": "https://companiesmarketcap.com/commonwealth-bank/marketcap/",
+      "marketCapAsOf": "2026-10",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "reef-data-systems",
+      "oldName": "Reef Data Systems",
+      "currentName": "WiseTech Global Limited",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "technology",
+      "verifiedSourceURL": "https://wisetechglobal.com/media/w15p1uve/wtc-1h25-app-4d-and-financial-report.pdf",
+      "modification": "Remplace la marque Atlassian comme slot australien logiciel: son parent a été domicilié au Delaware en 2022; WiseTech Global est une société australienne avec siège/adresse déclarée à Sydney et produit des logiciels logistiques. Pays ici attribué selon l’origine et le centre opérationnel australien, pas selon le lieu d’incorporation seul.",
+      "confiance": "élevée",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Le rapport intermédiaire officiel identifie WiseTech Global Limited, adresse Unit 3a, 72 O’Riordan Street, Alexandria NSW 2015, et activité de développement/fourniture de logiciels à l’industrie logistique mondiale. Pour comparaison historique, l’Atlassian SEC Form 10-K 2022 indique une société Delaware: https://www.sec.gov/Archives/edgar/data/1650372/000165037222000071/team-20221003.htm. La zone/pays WiseTech suit l’ancrage opérationnel et le siège australien.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 55,
+      "baseIncome": 11,
+      "marketCapUSD": 7550000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/wisetech-global/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    },
+    {
+      "id": "austral-manufacturing",
+      "oldName": "Austral Manufacturing",
+      "currentName": "Fortescue",
+      "country": "Australie",
+      "zone": "oceania",
+      "sector": "industry",
+      "verifiedSourceURL": "https://www.fortescue.com/en/about-fortescue",
+      "modification": "Remplacement proposé par Fortescue, groupe australien de mines et métaux; classer en Industrie plutôt qu’en fabrication généraliste.",
+      "confiance": "élevée pour l’existence; moyenne pour l’ajustement sectoriel",
+      "evidence": {
+        "checkedDate": "2026-10-06",
+        "status": "direct_page_content_accessed",
+        "summary": "Page Fortescue: groupe minier/métaux australien; minerai de fer, métaux et énergie. Classement Industrie recommandé.",
+        "sourceVerified": true
+      },
+      "verificationStatus": "verified_official_page_consulted",
+      "retrievalDate": "2026-10-06",
+      "logo": {
+        "status": "fallback-monogram",
+        "assetPath": null,
+        "provenance": null,
+        "license": null,
+        "reason": "No downloadable asset with explicit reusable license documented in the audit."
+      },
+      "basePrice": 45,
+      "baseIncome": 9,
+      "marketCapUSD": 37020000000,
+      "capCategory": "small",
+      "marketCapSource": "https://companiesmarketcap.com/fortescue/marketcap/",
+      "marketCapAsOf": "2026-09",
+      "capConsultedAt": "2026-10-06"
+    }
+  ],
+  "legacyReplacements": [
+    {
+      "id": "sabmiller-plc",
+      "legacyIdAliases": [
+        "sabmiller-plc"
+      ],
+      "oldName": "Sabmiller PLC",
+      "currentName": "Heineken N.V.",
+      "basePrice": 80.0,
+      "baseIncome": 16.0
+    },
+    {
+      "id": "general-electric",
+      "legacyIdAliases": [
+        "general-electric"
+      ],
+      "oldName": "General Electric",
+      "currentName": "GE Aerospace",
+      "basePrice": 250.0,
+      "baseIncome": 30.0
+    }
+  ],
+  "evidenceFollowupDate": "2026-10-06"
+}

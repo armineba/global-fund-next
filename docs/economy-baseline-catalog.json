@@ -1,0 +1,3220 @@
+{
+  "zones": [
+    {
+      "id": "americas",
+      "name": "Amériques",
+      "short": "AMER"
+    },
+    {
+      "id": "europe",
+      "name": "Europe",
+      "short": "EURO"
+    },
+    {
+      "id": "asia",
+      "name": "Asie",
+      "short": "ASIE"
+    },
+    {
+      "id": "africa",
+      "name": "Afrique & Moyen-Orient",
+      "short": "AFMO"
+    },
+    {
+      "id": "oceania",
+      "name": "Océanie",
+      "short": "OCEA"
+    }
+  ],
+  "sectors": [
+    {
+      "id": "technology",
+      "name": "Technologie",
+      "short": "TECH"
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "short": "FIN"
+    },
+    {
+      "id": "industry",
+      "name": "Industrie",
+      "short": "IND"
+    },
+    {
+      "id": "health",
+      "name": "Santé",
+      "short": "SANTÉ"
+    },
+    {
+      "id": "energy",
+      "name": "Énergie",
+      "short": "ÉNER"
+    },
+    {
+      "id": "realestate",
+      "name": "Immobilier & infrastructures",
+      "short": "IMMO"
+    },
+    {
+      "id": "agrifood",
+      "name": "Agroalimentaire & ressources",
+      "short": "AGRO"
+    },
+    {
+      "id": "media",
+      "name": "Communication & médias",
+      "short": "MÉDIA"
+    },
+    {
+      "id": "transport",
+      "name": "Transports & logistique",
+      "short": "TRANS"
+    }
+  ],
+  "companies": [
+    {
+      "id": "orascom-construction-industries",
+      "name": "Orascom Construction PLC",
+      "zone": "africa",
+      "sector": "realestate",
+      "country": "Égypte",
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "source": "classeur"
+    },
+    {
+      "id": "tata-motors",
+      "name": "Tata Motors Limited",
+      "zone": "asia",
+      "sector": "transport",
+      "country": "Inde",
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "source": "classeur"
+    },
+    {
+      "id": "maroc-telecom",
+      "name": "Maroc Telecom",
+      "zone": "africa",
+      "sector": "media",
+      "country": "Maroc",
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "source": "classeur"
+    },
+    {
+      "id": "enersis",
+      "name": "Enel Chile",
+      "zone": "americas",
+      "sector": "energy",
+      "country": "Chili",
+      "basePrice": 5.0,
+      "baseIncome": 5.0,
+      "source": "classeur"
+    },
+    {
+      "id": "bank-central-asia",
+      "name": "PT Bank Central Asia Tbk",
+      "zone": "asia",
+      "sector": "finance",
+      "country": "Indonésie",
+      "basePrice": 20.0,
+      "baseIncome": 7.0,
+      "source": "classeur"
+    },
+    {
+      "id": "astra-international",
+      "name": "FANUC Corporation",
+      "zone": "asia",
+      "sector": "industry",
+      "country": "Japon",
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "astra-international"
+      ],
+      "legacyNameAliases": [
+        "Astra International"
+      ],
+      "catalogSourceURL": "https://www.fanuc.co.jp/en/profile/profile/"
+    },
+    {
+      "id": "industries-qatar",
+      "name": "Industries Qatar",
+      "zone": "africa",
+      "sector": "industry",
+      "country": "Qatar",
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "mtn-group",
+      "name": "MTN Group Limited",
+      "zone": "africa",
+      "sector": "media",
+      "country": "Afrique du Sud",
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "qatar-national-bank",
+      "name": "Qatar National Bank",
+      "zone": "africa",
+      "sector": "finance",
+      "country": "Qatar",
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "sasol",
+      "name": "Sasol Limited",
+      "zone": "africa",
+      "sector": "energy",
+      "country": "Afrique du Sud",
+      "basePrice": 30.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "banco-brasil",
+      "name": "Banco do Brasil",
+      "zone": "americas",
+      "sector": "finance",
+      "country": "Brésil",
+      "basePrice": 40.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "amx",
+      "name": "América Móvil",
+      "zone": "americas",
+      "sector": "media",
+      "country": "Mexique",
+      "basePrice": 50.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "walmex",
+      "name": "Walmart de México y Centroamérica",
+      "zone": "americas",
+      "sector": "agrifood",
+      "country": "Mexique",
+      "basePrice": 60.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "sabmiller-plc",
+      "name": "Heineken N.V.",
+      "zone": "europe",
+      "sector": "agrifood",
+      "country": "Pays-Bas",
+      "basePrice": 80.0,
+      "baseIncome": 16.0,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "sabmiller-plc"
+      ],
+      "legacyNameAliases": [
+        "Sabmiller PLC"
+      ],
+      "catalogSourceURL": "https://www.theheinekencompany.com/newsroom/heineken-nv-reports-2025-full-year-results/"
+    },
+    {
+      "id": "vodafone-group-plc",
+      "name": "Vodafone Group Plc",
+      "zone": "europe",
+      "sector": "media",
+      "country": "Royaume-Uni",
+      "basePrice": 90.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "mcdonald-s-corp",
+      "name": "McDonald’s Corporation",
+      "zone": "americas",
+      "sector": "agrifood",
+      "country": "États-Unis",
+      "basePrice": 90.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "astrazeneca-plc",
+      "name": "AstraZeneca PLC",
+      "zone": "europe",
+      "sector": "health",
+      "country": "Royaume-Uni",
+      "basePrice": 90.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "siemens-ag",
+      "name": "Siemens AG",
+      "zone": "europe",
+      "sector": "industry",
+      "country": "Allemagne",
+      "basePrice": 90.0,
+      "baseIncome": 18.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/siemens.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Siemens_AG_logo.svg"
+    },
+    {
+      "id": "sap",
+      "name": "SAP SE",
+      "zone": "europe",
+      "sector": "technology",
+      "country": "Allemagne",
+      "basePrice": 90.0,
+      "baseIncome": 17.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/sap.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:SAP_2011_logo.svg"
+    },
+    {
+      "id": "lvmh-sa",
+      "name": "LVMH Moët Hennessy Louis Vuitton SE",
+      "zone": "europe",
+      "sector": "industry",
+      "country": "France",
+      "basePrice": 90.0,
+      "baseIncome": 16.0,
+      "source": "classeur"
+    },
+    {
+      "id": "taiwan-semiconductor-manufacturing",
+      "name": "Taiwan Semiconductor Manufacturing Company Limited",
+      "zone": "asia",
+      "sector": "technology",
+      "country": "Taïwan",
+      "basePrice": 90.0,
+      "baseIncome": 15.0,
+      "source": "classeur"
+    },
+    {
+      "id": "nike-inc",
+      "name": "NIKE, Inc.",
+      "zone": "americas",
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 90.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "united-parcel-service",
+      "name": "United Parcel Service, Inc.",
+      "zone": "americas",
+      "sector": "transport",
+      "country": "États-Unis",
+      "basePrice": 90.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "gazprom",
+      "name": "Mitsubishi Heavy Industries (MHI)",
+      "zone": "asia",
+      "sector": "industry",
+      "country": "Japon",
+      "basePrice": 100.0,
+      "baseIncome": 50.0,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "gazprom"
+      ],
+      "legacyNameAliases": [
+        "Gazprom"
+      ],
+      "catalogSourceURL": "https://www.mhi.com/company/overview/profile",
+      "logoPath": "/assets/companies/logos/gazprom.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Mitsubishi_heavyindustries_mhi_logo.svg"
+    },
+    {
+      "id": "british-american-tobacco-plc",
+      "name": "British American Tobacco p.l.c.",
+      "zone": "europe",
+      "sector": "industry",
+      "country": "Royaume-Uni",
+      "basePrice": 100.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "3m-co",
+      "name": "3M Company",
+      "zone": "americas",
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "mastercard-inc",
+      "name": "Mastercard Incorporated",
+      "zone": "americas",
+      "sector": "finance",
+      "country": "États-Unis",
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "the-boeing-company",
+      "name": "The Boeing Company",
+      "zone": "americas",
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "daimler-ag",
+      "name": "Mercedes-Benz Group AG",
+      "zone": "europe",
+      "sector": "transport",
+      "country": "Allemagne",
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "inditex-s-a",
+      "name": "Industria de Diseño Textil, S.A. (Inditex)",
+      "zone": "europe",
+      "sector": "industry",
+      "country": "Espagne",
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "l-oreal-sa",
+      "name": "L’Oréal S.A.",
+      "zone": "europe",
+      "sector": "industry",
+      "country": "France",
+      "basePrice": 100.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "glaxosmithkline-plc",
+      "name": "GSK plc",
+      "zone": "europe",
+      "sector": "health",
+      "country": "Royaume-Uni",
+      "basePrice": 110.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "petrobras",
+      "name": "Petróleo Brasileiro S.A. (Petrobras)",
+      "zone": "americas",
+      "sector": "energy",
+      "country": "Brésil",
+      "basePrice": 110.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "ping-an-insurance-group-co-of-china-ltd",
+      "name": "Ping An Insurance (Group) Company of China, Ltd.",
+      "zone": "asia",
+      "sector": "finance",
+      "country": "Chine",
+      "basePrice": 110.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "banco-santander-s-a",
+      "name": "Banco Santander, S.A.",
+      "zone": "europe",
+      "sector": "finance",
+      "country": "Espagne",
+      "basePrice": 110.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "total-sa",
+      "name": "TotalEnergies SE",
+      "zone": "europe",
+      "sector": "energy",
+      "country": "France",
+      "basePrice": 120.0,
+      "baseIncome": 40.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/totalenergies.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:TotalEnergies_wordmark_(2021-present).svg"
+    },
+    {
+      "id": "volkswagen-ag",
+      "name": "Volkswagen AG",
+      "zone": "europe",
+      "sector": "transport",
+      "country": "Allemagne",
+      "basePrice": 120.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "bp-plc",
+      "name": "BP p.l.c.",
+      "zone": "europe",
+      "sector": "energy",
+      "country": "Royaume-Uni",
+      "basePrice": 120.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "philip-morris-international",
+      "name": "Philip Morris International Inc.",
+      "zone": "americas",
+      "sector": "agrifood",
+      "country": "États-Unis",
+      "basePrice": 120.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "bayer-ag",
+      "name": "Bayer AG",
+      "zone": "europe",
+      "sector": "health",
+      "country": "Allemagne",
+      "basePrice": 120.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "sinopec",
+      "name": "China Petroleum & Chemical Corporation (Sinopec)",
+      "zone": "asia",
+      "sector": "energy",
+      "country": "Chine",
+      "basePrice": 120.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "unilever-nv",
+      "name": "Unilever PLC",
+      "zone": "europe",
+      "sector": "agrifood",
+      "country": "Royaume-Uni",
+      "basePrice": 120.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "ambev",
+      "name": "Ambev S.A.",
+      "zone": "americas",
+      "sector": "agrifood",
+      "country": "Brésil",
+      "basePrice": 130.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "sanofi",
+      "name": "Sanofi",
+      "zone": "europe",
+      "sector": "health",
+      "country": "France",
+      "basePrice": 130.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "pepsico",
+      "name": "PepsiCo, Inc.",
+      "zone": "americas",
+      "sector": "agrifood",
+      "country": "États-Unis",
+      "basePrice": 140.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "cisco-systems",
+      "name": "Cisco Systems, Inc.",
+      "zone": "americas",
+      "sector": "technology",
+      "country": "États-Unis",
+      "basePrice": 140.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "intel-corp",
+      "name": "Intel Corporation",
+      "zone": "americas",
+      "sector": "technology",
+      "country": "États-Unis",
+      "basePrice": 150.0,
+      "baseIncome": 20.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/intel.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Intel_logo_2023.svg"
+    },
+    {
+      "id": "hsbc-holdings-plc",
+      "name": "HSBC Holdings plc",
+      "zone": "europe",
+      "sector": "finance",
+      "country": "Royaume-Uni",
+      "basePrice": 160.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "ibm-corp",
+      "name": "International Business Machines Corporation (IBM)",
+      "zone": "americas",
+      "sector": "technology",
+      "country": "États-Unis",
+      "basePrice": 160.0,
+      "baseIncome": 30.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/ibm.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:IBM_logo.svg"
+    },
+    {
+      "id": "visa-inc",
+      "name": "Visa Inc.",
+      "zone": "americas",
+      "sector": "finance",
+      "country": "États-Unis",
+      "basePrice": 160.0,
+      "baseIncome": 10.0,
+      "source": "classeur"
+    },
+    {
+      "id": "at-t-inc",
+      "name": "AT&T Inc.",
+      "zone": "americas",
+      "sector": "media",
+      "country": "États-Unis",
+      "basePrice": 170.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "the-coca-cola-co",
+      "name": "The Coca-Cola Company",
+      "zone": "americas",
+      "sector": "agrifood",
+      "country": "États-Unis",
+      "basePrice": 180.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "toyota-motor",
+      "name": "Toyota Motor Corporation",
+      "zone": "asia",
+      "sector": "transport",
+      "country": "Japon",
+      "basePrice": 180.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "the-walt-disney-co",
+      "name": "The Walt Disney Company",
+      "zone": "americas",
+      "sector": "media",
+      "country": "États-Unis",
+      "basePrice": 180.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "tencent-holdings-ltd",
+      "name": "Tencent Holdings Limited",
+      "zone": "asia",
+      "sector": "technology",
+      "country": "Chine",
+      "basePrice": 180.0,
+      "baseIncome": 20.0,
+      "source": "classeur"
+    },
+    {
+      "id": "royal-dutch-shell",
+      "name": "Shell plc",
+      "zone": "europe",
+      "sector": "energy",
+      "country": "Royaume-Uni",
+      "basePrice": 190.0,
+      "baseIncome": 50.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/shell.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Shell_wordmark_2019.svg"
+    },
+    {
+      "id": "agricultural-bank-of-china",
+      "name": "Agricultural Bank of China Limited",
+      "zone": "asia",
+      "sector": "finance",
+      "country": "Chine",
+      "basePrice": 190.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "oracle-corp",
+      "name": "Oracle Corporation",
+      "zone": "americas",
+      "sector": "technology",
+      "country": "États-Unis",
+      "basePrice": 190.0,
+      "baseIncome": 30.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/oracle.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Oracle_wordmark.svg"
+    },
+    {
+      "id": "alibaba-group-holding",
+      "name": "Alibaba Group Holding Limited",
+      "zone": "asia",
+      "sector": "technology",
+      "country": "Chine",
+      "basePrice": 200.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "bank-of-china-ltd",
+      "name": "Bank of China Limited",
+      "zone": "asia",
+      "sector": "finance",
+      "country": "Chine",
+      "basePrice": 200.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "chevron-corp",
+      "name": "Chevron Corporation",
+      "zone": "americas",
+      "sector": "energy",
+      "country": "États-Unis",
+      "basePrice": 200.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "anheuser-busch",
+      "name": "Anheuser-Busch InBev SA/NV",
+      "zone": "europe",
+      "sector": "agrifood",
+      "country": "Belgique",
+      "basePrice": 200.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "china-construction-bank-corp",
+      "name": "Komatsu Ltd.",
+      "zone": "asia",
+      "sector": "industry",
+      "country": "Japon",
+      "basePrice": 210.0,
+      "baseIncome": 50.0,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "china-construction-bank-corp"
+      ],
+      "legacyNameAliases": [
+        "China Construction Bank Corp"
+      ],
+      "catalogSourceURL": "https://www.komatsu.com/en-us/about"
+    },
+    {
+      "id": "samsung-electronics-co-ltd",
+      "name": "Samsung Electronics Co., Ltd.",
+      "zone": "asia",
+      "sector": "technology",
+      "country": "Corée du Sud",
+      "basePrice": 210.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "pfizer-inc",
+      "name": "Pfizer Inc.",
+      "zone": "americas",
+      "sector": "health",
+      "country": "États-Unis",
+      "basePrice": 210.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "procter-gamble-co",
+      "name": "The Procter & Gamble Company",
+      "zone": "americas",
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 220.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "nestle",
+      "name": "Nestlé S.A.",
+      "zone": "europe",
+      "sector": "agrifood",
+      "country": "Suisse",
+      "basePrice": 230.0,
+      "baseIncome": 50.0,
+      "source": "classeur"
+    },
+    {
+      "id": "novartis",
+      "name": "Novartis AG",
+      "zone": "europe",
+      "sector": "health",
+      "country": "Suisse",
+      "basePrice": 230.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "jpmorgan-chase-co",
+      "name": "JPMorgan Chase & Co.",
+      "zone": "americas",
+      "sector": "finance",
+      "country": "États-Unis",
+      "basePrice": 230.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "roche",
+      "name": "Roche Holding AG",
+      "zone": "europe",
+      "sector": "health",
+      "country": "Suisse",
+      "basePrice": 230.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "general-electric",
+      "name": "GE Aerospace",
+      "zone": "americas",
+      "sector": "industry",
+      "country": "États-Unis",
+      "basePrice": 250.0,
+      "baseIncome": 30.0,
+      "source": "classeur",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "general-electric"
+      ],
+      "legacyNameAliases": [
+        "General Electric"
+      ],
+      "catalogSourceURL": "https://www.ge.com/investor-relations/spinoff-resources"
+    },
+    {
+      "id": "wal-mart-stores-inc",
+      "name": "Walmart Inc.",
+      "zone": "americas",
+      "sector": "agrifood",
+      "country": "États-Unis",
+      "basePrice": 260.0,
+      "baseIncome": 30.0,
+      "source": "classeur"
+    },
+    {
+      "id": "china-mobile-ltd",
+      "name": "China Mobile Limited",
+      "zone": "asia",
+      "sector": "media",
+      "country": "Hong Kong (RAS de Chine)",
+      "basePrice": 270.0,
+      "baseIncome": 50.0,
+      "source": "classeur"
+    },
+    {
+      "id": "icbc-ltd",
+      "name": "Industrial and Commercial Bank of China Limited",
+      "zone": "asia",
+      "sector": "finance",
+      "country": "Chine",
+      "basePrice": 270.0,
+      "baseIncome": 50.0,
+      "source": "classeur"
+    },
+    {
+      "id": "wells-fargo-co",
+      "name": "Wells Fargo & Company",
+      "zone": "americas",
+      "sector": "finance",
+      "country": "États-Unis",
+      "basePrice": 280.0,
+      "baseIncome": 50.0,
+      "source": "classeur"
+    },
+    {
+      "id": "johnson-johnson",
+      "name": "Johnson & Johnson",
+      "zone": "americas",
+      "sector": "health",
+      "country": "États-Unis",
+      "basePrice": 280.0,
+      "baseIncome": 40.0,
+      "source": "classeur"
+    },
+    {
+      "id": "petrochina-co-ltd",
+      "name": "PetroChina Company Limited",
+      "zone": "asia",
+      "sector": "energy",
+      "country": "Chine",
+      "basePrice": 330.0,
+      "baseIncome": 70.0,
+      "source": "classeur"
+    },
+    {
+      "id": "microsoft-corp",
+      "name": "Microsoft Corporation",
+      "zone": "americas",
+      "sector": "technology",
+      "country": "États-Unis",
+      "basePrice": 330.0,
+      "baseIncome": 50.0,
+      "source": "classeur",
+      "logoPath": "/assets/companies/logos/microsoft.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Microsoft.svg"
+    },
+    {
+      "id": "exxon-mobil-corp",
+      "name": "Exxon Mobil Corporation",
+      "zone": "americas",
+      "sector": "energy",
+      "country": "États-Unis",
+      "basePrice": 350.0,
+      "baseIncome": 50.0,
+      "source": "classeur"
+    },
+    {
+      "id": "berkshire-hathaway-inc",
+      "name": "Berkshire Hathaway Inc.",
+      "zone": "americas",
+      "sector": "finance",
+      "country": "États-Unis",
+      "basePrice": 350.0,
+      "baseIncome": 50.0,
+      "source": "classeur"
+    },
+    {
+      "id": "alphabet-google-inc",
+      "name": "Alphabet Inc.",
+      "zone": "americas",
+      "sector": "technology",
+      "country": "États-Unis",
+      "basePrice": 400.0,
+      "baseIncome": 60.0,
+      "source": "classeur"
+    },
+    {
+      "id": "apple-inc",
+      "name": "Apple Inc.",
+      "zone": "americas",
+      "sector": "technology",
+      "country": "États-Unis",
+      "basePrice": 700.0,
+      "baseIncome": 110.0,
+      "source": "classeur"
+    },
+    {
+      "id": "pacifica-minerals",
+      "name": "Woolworths Group Limited",
+      "zone": "oceania",
+      "sector": "agrifood",
+      "country": "Australie",
+      "basePrice": 45,
+      "baseIncome": 9,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "pacifica-minerals"
+      ],
+      "legacyNameAliases": [
+        "Pacifica Minerals"
+      ],
+      "catalogSourceURL": "https://www.woolworthsgroup.com.au/content/dam/wwg/sustainability/reports/f25/Woolworths%20Group%20Annual%20Report%202025%20.pdf"
+    },
+    {
+      "id": "southern-cross-energy",
+      "name": "Origin Energy",
+      "zone": "oceania",
+      "sector": "energy",
+      "country": "Australie",
+      "basePrice": 70,
+      "baseIncome": 14,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "southern-cross-energy"
+      ],
+      "legacyNameAliases": [
+        "Southern Cross Energy"
+      ],
+      "catalogSourceURL": "https://www.originenergy.com.au/about/"
+    },
+    {
+      "id": "coral-reef-health",
+      "name": "CSL Limited",
+      "zone": "oceania",
+      "sector": "health",
+      "country": "Australie",
+      "basePrice": 55,
+      "baseIncome": 11,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "coral-reef-health"
+      ],
+      "legacyNameAliases": [
+        "Coral Reef Health"
+      ],
+      "catalogSourceURL": "https://www.csl.com/we-are-csl"
+    },
+    {
+      "id": "pacific-link",
+      "name": "Telstra Group",
+      "zone": "oceania",
+      "sector": "media",
+      "country": "Australie",
+      "basePrice": 60,
+      "baseIncome": 12,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "pacific-link"
+      ],
+      "legacyNameAliases": [
+        "Pacific Link"
+      ],
+      "catalogSourceURL": "https://www.telstra.com.au/aboutus",
+      "logoPath": "/assets/companies/logos/pacific-link.svg",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Telstra_logo_(horizontal_variant).svg"
+    },
+    {
+      "id": "harbour-infrastructure",
+      "name": "Goodman Group",
+      "zone": "oceania",
+      "sector": "realestate",
+      "country": "Australie",
+      "basePrice": 80,
+      "baseIncome": 16,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "harbour-infrastructure"
+      ],
+      "legacyNameAliases": [
+        "Harbour Infrastructure"
+      ],
+      "catalogSourceURL": "https://au.goodman.com/about-goodman/about-us"
+    },
+    {
+      "id": "oceanic-air",
+      "name": "Qantas Airways",
+      "zone": "oceania",
+      "sector": "transport",
+      "country": "Australie",
+      "basePrice": 50,
+      "baseIncome": 10,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "oceanic-air"
+      ],
+      "legacyNameAliases": [
+        "Oceanic Air"
+      ],
+      "catalogSourceURL": "https://www.qantas.com/corporate/about-us"
+    },
+    {
+      "id": "southpoint-finance",
+      "name": "Commonwealth Bank of Australia",
+      "zone": "oceania",
+      "sector": "finance",
+      "country": "Australie",
+      "basePrice": 65,
+      "baseIncome": 13,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "southpoint-finance"
+      ],
+      "legacyNameAliases": [
+        "Southpoint Finance"
+      ],
+      "catalogSourceURL": "https://www.commbank.com.au/about-us.html"
+    },
+    {
+      "id": "reef-data-systems",
+      "name": "WiseTech Global Limited",
+      "zone": "oceania",
+      "sector": "technology",
+      "country": "Australie",
+      "basePrice": 55,
+      "baseIncome": 11,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "reef-data-systems"
+      ],
+      "legacyNameAliases": [
+        "Reef Data Systems"
+      ],
+      "catalogSourceURL": "https://wisetechglobal.com/media/w15p1uve/wtc-1h25-app-4d-and-financial-report.pdf"
+    },
+    {
+      "id": "austral-manufacturing",
+      "name": "Fortescue",
+      "zone": "oceania",
+      "sector": "industry",
+      "country": "Australie",
+      "basePrice": 45,
+      "baseIncome": 9,
+      "source": "jeu",
+      "catalogVersion": 2,
+      "legacyIdAliases": [
+        "austral-manufacturing"
+      ],
+      "legacyNameAliases": [
+        "Austral Manufacturing"
+      ],
+      "catalogSourceURL": "https://www.fortescue.com/en/about-fortescue"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "type": "positive",
+      "title": "Hausse des commandes",
+      "description": "Hausse des commandes. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Énergie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "positive",
+      "title": "Relance des infrastructures",
+      "description": "Relance des infrastructures. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Industrie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "positive",
+      "title": "Relance budgétaire",
+      "description": "Relance budgétaire. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → B; Secteur Santé → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "positive",
+      "title": "Découverte énergétique",
+      "description": "Découverte énergétique. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Asie → B; Secteur Finance → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "positive",
+      "title": "Rebond manufacturier",
+      "description": "Rebond manufacturier. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Océanie → A; Secteur Finance → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "positive",
+      "title": "Dynamisme des marchés émergents",
+      "description": "Dynamisme des marchés émergents. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Asie → B; Secteur Santé → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "positive",
+      "title": "Croissance au-dessus des attentes",
+      "description": "Croissance au-dessus des attentes. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Océanie → A; Secteur Énergie → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "positive",
+      "title": "Percée technologique",
+      "description": "Percée technologique. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Asie → B; Secteur Santé → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "positive",
+      "title": "Accords énergétiques",
+      "description": "Accords énergétiques. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Finance → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "positive",
+      "title": "Résultats supérieurs aux attentes",
+      "description": "Résultats supérieurs aux attentes. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → B; Secteur Énergie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "positive",
+      "title": "Accord commercial majeur",
+      "description": "Accord commercial majeur. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Afrique → B; Secteur Santé → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "positive",
+      "title": "Succès des introductions en bourse",
+      "description": "Succès des introductions en bourse. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Santé → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "positive",
+      "title": "Plan climat ambitieux",
+      "description": "Plan climat ambitieux. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Finance → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "positive",
+      "title": "Amélioration du crédit",
+      "description": "Amélioration du crédit. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Technologie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "positive",
+      "title": "Boom des semi-conducteurs",
+      "description": "Boom des semi-conducteurs. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Océanie → B; Secteur Industrie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "positive",
+      "title": "Accès élargi au financement",
+      "description": "Accès élargi au financement. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Afrique → A; Secteur Technologie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "positive",
+      "title": "Baisse surprise des taux",
+      "description": "Baisse surprise des taux. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Technologie → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "positive",
+      "title": "Optimisme des entreprises",
+      "description": "Optimisme des entreprises. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → B; Secteur Industrie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "positive",
+      "title": "Stabilisation des devises",
+      "description": "Stabilisation des devises. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Afrique → B; Secteur Santé → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "positive",
+      "title": "Cadre réglementaire favorable",
+      "description": "Cadre réglementaire favorable. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Santé → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "positive",
+      "title": "Plan d'investissement public",
+      "description": "Plan d'investissement public. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → B; Secteur Énergie → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "positive",
+      "title": "Exportations agricoles dynamiques",
+      "description": "Exportations agricoles dynamiques. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → B; Secteur Énergie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "positive",
+      "title": "Partenariat public-privé",
+      "description": "Partenariat public-privé. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Océanie → A; Secteur Industrie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "positive",
+      "title": "Appétit pour le risque",
+      "description": "Appétit pour le risque. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Océanie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Afrique → A; Secteur Technologie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "positive",
+      "title": "Reprise immobilière",
+      "description": "Reprise immobilière. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → B; Secteur Finance → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "positive",
+      "title": "Rebond des matières premières",
+      "description": "Rebond des matières premières. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Asie → B; Secteur Énergie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "positive",
+      "title": "Rallye boursier",
+      "description": "Rallye boursier. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Asie → A; Secteur Technologie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "positive",
+      "title": "Innovation médicale",
+      "description": "Innovation médicale. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → A; Secteur Finance → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "positive",
+      "title": "Amélioration de la confiance",
+      "description": "Amélioration de la confiance. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur énergie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Afrique → A; Secteur Énergie → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "positive",
+      "title": "Allègement fiscal",
+      "description": "Allègement fiscal. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur technologie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Océanie → A; Secteur Énergie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "positive",
+      "title": "Reprise du tourisme",
+      "description": "Reprise du tourisme. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Europe → B; Secteur Santé → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "positive",
+      "title": "Flux d'investissements entrants",
+      "description": "Flux d'investissements entrants. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Afrique, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur finance bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Océanie → A; Secteur Finance → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "positive",
+      "title": "Accélération des exportations",
+      "description": "Accélération des exportations. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Amériques, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur industrie bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Afrique → A; Secteur Industrie → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "A"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "positive",
+      "title": "Records de productivité",
+      "description": "Records de productivité. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Asie, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Océanie → B; Secteur Industrie → B.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "positive",
+      "title": "Rebond industriel",
+      "description": "Rebond industriel. Les marchés réagissent positivement, avec une hausse des volumes et des révisions à la hausse des prévisions. Dans la zone Europe, les indices gagnent du terrain et la confiance des entreprises s'améliore. Le secteur santé bénéficie d'annonces d'investissements et d'un carnet de commandes mieux orienté. Les économistes anticipent un soutien durable à l'activité.",
+      "effect": "Zone Amériques → B; Secteur Énergie → A.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "B"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "A"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "negative",
+      "title": "Pénurie d'énergie",
+      "description": "Pénurie d'énergie. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Europe → D; Secteur Technologie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "type": "negative",
+      "title": "Récession technique",
+      "description": "Récession technique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Afrique → E; Secteur Énergie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "negative",
+      "title": "Crise industrielle",
+      "description": "Crise industrielle. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → E; Secteur Énergie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "negative",
+      "title": "Détérioration du crédit",
+      "description": "Détérioration du crédit. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → D; Secteur Finance → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "negative",
+      "title": "Pénuries alimentaires",
+      "description": "Pénuries alimentaires. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Afrique → E; Secteur Finance → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "negative",
+      "title": "Effondrement sectoriel",
+      "description": "Effondrement sectoriel. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Afrique → E; Secteur Technologie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "negative",
+      "title": "Crise climatique aiguë",
+      "description": "Crise climatique aiguë. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Afrique → E; Secteur Technologie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "negative",
+      "title": "Inflation persistante",
+      "description": "Inflation persistante. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Afrique → D; Secteur Industrie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "negative",
+      "title": "Régime de change instable",
+      "description": "Régime de change instable. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Europe → E; Secteur Santé → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "negative",
+      "title": "Dérive réglementaire",
+      "description": "Dérive réglementaire. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Amériques → D; Secteur Finance → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "type": "negative",
+      "title": "Fuite des capitaux",
+      "description": "Fuite des capitaux. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Europe → E; Secteur Énergie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "type": "negative",
+      "title": "Crise immobilière",
+      "description": "Crise immobilière. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → D; Secteur Technologie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "type": "negative",
+      "title": "Rupture logistique",
+      "description": "Rupture logistique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → D; Secteur Industrie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "type": "negative",
+      "title": "Mauvais résultats",
+      "description": "Mauvais résultats. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Amériques → E; Secteur Santé → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "negative",
+      "title": "Rappel massif de produits",
+      "description": "Rappel massif de produits. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → E; Secteur Industrie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "type": "negative",
+      "title": "Dérive des coûts",
+      "description": "Dérive des coûts. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → E; Secteur Industrie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "type": "negative",
+      "title": "Retrait des investisseurs",
+      "description": "Retrait des investisseurs. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → E; Secteur Finance → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "type": "negative",
+      "title": "Changement politique brusque",
+      "description": "Changement politique brusque. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → E; Secteur Énergie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "type": "negative",
+      "title": "Stress de liquidité",
+      "description": "Stress de liquidité. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → E; Secteur Finance → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "type": "negative",
+      "title": "Confiance en berne",
+      "description": "Confiance en berne. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Europe → D; Secteur Technologie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "type": "negative",
+      "title": "Déficit budgétaire record",
+      "description": "Déficit budgétaire record. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Amériques → E; Secteur Énergie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "type": "negative",
+      "title": "Hausse des taux brutale",
+      "description": "Hausse des taux brutale. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Amériques → E; Secteur Industrie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "type": "negative",
+      "title": "Sanctions économiques",
+      "description": "Sanctions économiques. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Amériques → E; Secteur Finance → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "type": "negative",
+      "title": "Choc pétrolier",
+      "description": "Choc pétrolier. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Europe → E; Secteur Technologie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "type": "negative",
+      "title": "Faillite bancaire",
+      "description": "Faillite bancaire. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → D; Secteur Technologie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "type": "negative",
+      "title": "Guerre commerciale",
+      "description": "Guerre commerciale. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Europe → E; Secteur Technologie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "type": "negative",
+      "title": "Chute des devises",
+      "description": "Chute des devises. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → D; Secteur Industrie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "type": "negative",
+      "title": "Grève générale",
+      "description": "Grève générale. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → E; Secteur Industrie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "type": "negative",
+      "title": "Affaiblissement des exportations",
+      "description": "Affaiblissement des exportations. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Asie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur industrie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → E; Secteur Santé → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "type": "negative",
+      "title": "Échec de négociations",
+      "description": "Échec de négociations. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Amériques → E; Secteur Industrie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "type": "negative",
+      "title": "Cyberattaque systémique",
+      "description": "Cyberattaque systémique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur technologie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Asie → D; Secteur Industrie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "type": "negative",
+      "title": "Krach boursier",
+      "description": "Krach boursier. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Océanie, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur énergie enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → D; Secteur Santé → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "type": "negative",
+      "title": "Désordre politique",
+      "description": "Désordre politique. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Afrique, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → D; Secteur Industrie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "type": "negative",
+      "title": "Crise de la dette",
+      "description": "Crise de la dette. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Amériques, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur finance enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Océanie → E; Secteur Industrie → D.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "type": "negative",
+      "title": "Volatilité extrême",
+      "description": "Volatilité extrême. Les actifs risqués reculent fortement tandis que les spreads de crédit s'élargissent. Dans la zone Europe, la production se contracte et les perspectives de bénéfices se dégradent. Le secteur santé enregistre des avertissements sur résultats et un recul des valorisations. Les autorités monétaires évoquent une surveillance accrue des conditions financières.",
+      "effect": "Zone Afrique → D; Secteur Énergie → E.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "D"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "type": "neutral",
+      "title": "Flux commerciaux stables",
+      "description": "Flux commerciaux stables. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Amériques, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur industrie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Océanie → C; Secteur Énergie → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "type": "neutral",
+      "title": "Marchés prudents",
+      "description": "Marchés prudents. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Europe, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur énergie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Asie → C; Secteur Santé → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "type": "neutral",
+      "title": "Volatilité contenue",
+      "description": "Volatilité contenue. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Afrique, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Europe → C; Secteur Technologie → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "europe",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "type": "neutral",
+      "title": "Rééquilibrage régional",
+      "description": "Rééquilibrage régional. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Océanie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Afrique → C; Secteur Finance → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "type": "neutral",
+      "title": "Transition ordonnée",
+      "description": "Transition ordonnée. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Afrique, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur technologie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Afrique → C; Secteur Industrie → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "type": "neutral",
+      "title": "Stabilisation des marchés",
+      "description": "Stabilisation des marchés. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Asie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Afrique → C; Secteur Finance → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "type": "neutral",
+      "title": "Pause réglementaire",
+      "description": "Pause réglementaire. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Amériques, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur industrie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Asie → C; Secteur Énergie → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "type": "neutral",
+      "title": "Indicateurs contrastés",
+      "description": "Indicateurs contrastés. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Asie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur énergie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Amériques → C; Secteur Finance → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "type": "neutral",
+      "title": "Attentisme monétaire",
+      "description": "Attentisme monétaire. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Océanie, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur finance évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Amériques → C; Secteur Finance → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "type": "neutral",
+      "title": "Neutralité budgétaire",
+      "description": "Neutralité budgétaire. Les opérateurs de marché restent prudents en attendant de nouveaux signaux macroéconomiques. Dans la zone Europe, la volatilité reste maîtrisée et les flux demeurent équilibrés. Le secteur énergie évolue sans tendance marquée, soutenu par des fondamentaux réguliers. Les prochains indicateurs guideront la trajectoire des marchés.",
+      "effect": "Zone Océanie → C; Secteur Industrie → C.",
+      "changes": [
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "C"
+        },
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "type": "prison",
+      "title": "Détournement de fonds",
+      "description": "Détournement de fonds. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Asie → E.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "type": "prison",
+      "title": "Opérations fictives",
+      "description": "Opérations fictives. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Amériques → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "type": "prison",
+      "title": "Fuite d'informations confidentielles",
+      "description": "Fuite d'informations confidentielles. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Afrique → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "type": "prison",
+      "title": "Soupçons d'abus de marché",
+      "description": "Soupçons d'abus de marché. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Amériques → E.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "type": "prison",
+      "title": "Perte dissimulée",
+      "description": "Perte dissimulée. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Amériques → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "type": "prison",
+      "title": "Conflit d'intérêts",
+      "description": "Conflit d'intérêts. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Afrique → E.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "africa",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "type": "prison",
+      "title": "Manipulation de marché présumée",
+      "description": "Manipulation de marché présumée. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Asie → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "asia",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "type": "prison",
+      "title": "Enquête pour délit d'initié",
+      "description": "Enquête pour délit d'initié. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → E; Zone Amériques → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "E"
+        },
+        {
+          "scope": "zone",
+          "id": "americas",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "type": "prison",
+      "title": "Fraude comptable révélée",
+      "description": "Fraude comptable révélée. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Océanie → E.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "E"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "type": "prison",
+      "title": "Blanchiment présumé",
+      "description": "Blanchiment présumé. Les autorités annoncent l'arrestation d'un dirigeant pour des opérations irrégulières sur instruments dérivés. L'enquête, menée par plusieurs régulateurs, provoque une forte nervosité dans le secteur financier. Les appels à des contrôles renforcés et à une gouvernance stricte se multiplient.",
+      "effect": "Le joueur qui tire cette carte va en prison. Secteur Finance → D; Zone Océanie → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        },
+        {
+          "scope": "zone",
+          "id": "oceania",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "type": "regulation",
+      "title": "Démantèlement d'un conglomérat",
+      "description": "Démantèlement d'un conglomérat. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "type": "regulation",
+      "title": "Supervision accrue des monopoles",
+      "description": "Supervision accrue des monopoles. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "type": "regulation",
+      "title": "Examen de concentration",
+      "description": "Examen de concentration. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Technologie → C.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "technology",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "type": "regulation",
+      "title": "Garde-fous sectoriels",
+      "description": "Garde-fous sectoriels. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Énergie → B.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "type": "regulation",
+      "title": "Encadrement des acquisitions",
+      "description": "Encadrement des acquisitions. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Finance → C.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "type": "regulation",
+      "title": "Durcissement des règles concurrentielles",
+      "description": "Durcissement des règles concurrentielles. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → C.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "type": "regulation",
+      "title": "Contrôle des prix",
+      "description": "Contrôle des prix. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Santé → C.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "health",
+          "grade": "C"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "type": "regulation",
+      "title": "Limitation des positions dominantes",
+      "description": "Limitation des positions dominantes. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Industrie → B.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "industry",
+          "grade": "B"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "type": "regulation",
+      "title": "Action antitrust renforcée",
+      "description": "Action antitrust renforcée. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Finance → D.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "finance",
+          "grade": "D"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "type": "regulation",
+      "title": "Surveillance des plateformes",
+      "description": "Surveillance des plateformes. Les autorités de la concurrence initient une action ciblée contre des positions jugées excessives. Les groupes concernés devront céder certains actifs et adapter leur stratégie. Les marchés saluent la visibilité réglementaire accrue, malgré les coûts d'ajustement attendus.",
+      "effect": "Tous les joueurs en monopole sectoriel doivent céder des entreprises pour repasser sous 50 %. Secteur Énergie → B.",
+      "changes": [
+        {
+          "scope": "sector",
+          "id": "energy",
+          "grade": "B"
+        }
+      ]
+    }
+  ],
+  "board": [
+    {
+      "kind": "start",
+      "label": "Départ"
+    },
+    {
+      "kind": "sector",
+      "sector": "transport",
+      "label": "Transports"
+    },
+    {
+      "kind": "sector",
+      "sector": "agrifood",
+      "label": "Agroalimentaire"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "energy",
+      "label": "Énergie"
+    },
+    {
+      "kind": "sector",
+      "sector": "transport",
+      "label": "Transports & logistique"
+    },
+    {
+      "kind": "sector",
+      "sector": "industry",
+      "label": "Industrie"
+    },
+    {
+      "kind": "sector",
+      "sector": "health",
+      "label": "Santé"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "finance",
+      "label": "Finance"
+    },
+    {
+      "kind": "sector",
+      "sector": "technology",
+      "label": "Technologie"
+    },
+    {
+      "kind": "sector",
+      "sector": "media",
+      "label": "Communication"
+    },
+    {
+      "kind": "sector",
+      "sector": "realestate",
+      "label": "Immobilier & infrastructures"
+    },
+    {
+      "kind": "market",
+      "label": "Bull Market"
+    },
+    {
+      "kind": "sector",
+      "sector": "realestate",
+      "label": "Immobilier"
+    },
+    {
+      "kind": "sector",
+      "sector": "agrifood",
+      "label": "Agroalimentaire"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "energy",
+      "label": "Énergie"
+    },
+    {
+      "kind": "sector",
+      "sector": "industry",
+      "label": "Industrie"
+    },
+    {
+      "kind": "sector",
+      "sector": "media",
+      "label": "Communication & médias"
+    },
+    {
+      "kind": "sector",
+      "sector": "health",
+      "label": "Santé"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "finance",
+      "label": "Finance"
+    },
+    {
+      "kind": "sector",
+      "sector": "technology",
+      "label": "Technologie"
+    },
+    {
+      "kind": "sector",
+      "sector": "media",
+      "label": "Communication"
+    },
+    {
+      "kind": "market",
+      "label": "Market Crash"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "transport",
+      "label": "Transports"
+    },
+    {
+      "kind": "sector",
+      "sector": "agrifood",
+      "label": "Agroalimentaire"
+    },
+    {
+      "kind": "sector",
+      "sector": "energy",
+      "label": "Énergie"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "industry",
+      "label": "Industrie"
+    },
+    {
+      "kind": "sector",
+      "sector": "realestate",
+      "label": "Immobilier & infrastructures"
+    },
+    {
+      "kind": "sector",
+      "sector": "health",
+      "label": "Santé"
+    },
+    {
+      "kind": "sector",
+      "sector": "finance",
+      "label": "Finance"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "technology",
+      "label": "Technologie"
+    },
+    {
+      "kind": "sector",
+      "sector": "realestate",
+      "label": "Immobilier"
+    },
+    {
+      "kind": "market",
+      "label": "Bear Market"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "transport",
+      "label": "Transports"
+    },
+    {
+      "kind": "sector",
+      "sector": "agrifood",
+      "label": "Agroalimentaire"
+    },
+    {
+      "kind": "sector",
+      "sector": "energy",
+      "label": "Énergie"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "industry",
+      "label": "Industrie"
+    },
+    {
+      "kind": "sector",
+      "sector": "finance",
+      "label": "Finance"
+    },
+    {
+      "kind": "sector",
+      "sector": "health",
+      "label": "Santé"
+    },
+    {
+      "kind": "sector",
+      "sector": "finance",
+      "label": "Finance"
+    },
+    {
+      "kind": "event",
+      "label": "Événement"
+    },
+    {
+      "kind": "sector",
+      "sector": "technology",
+      "label": "Technologie"
+    },
+    {
+      "kind": "sector",
+      "sector": "technology",
+      "label": "Technologie"
+    },
+    {
+      "kind": "sector",
+      "sector": "media",
+      "label": "Communication"
+    }
+  ]
+}

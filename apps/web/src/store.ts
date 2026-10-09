@@ -7,6 +7,7 @@ import type {
   RoomView,
   SeatConfig,
   Session,
+  ZoneId,
 } from "@global-fund/shared";
 
 const SESSION_KEY = "global-fund-next:session";
@@ -150,13 +151,13 @@ export const createRoom = (seats: SeatConfig[]) =>
 export const joinRoom = (
   roomId: string,
   name: string,
-  nationality: string,
+  startingMarket: ZoneId,
   pawn: SeatConfig["pawn"],
 ) =>
   request("room:join", {
     roomId: roomId.trim().toUpperCase(),
     name,
-    nationality,
+    startingMarket,
     pawn,
   });
 export function command(command: GameCommand, playerId: string) {

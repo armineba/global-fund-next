@@ -1,0 +1,15 @@
+/* The same office materials frame five licensed, identifiable financial skylines. */
+.game-world .room-depth.market-office{background:none;filter:none;transform:none;overflow:hidden;transition:none}
+.office-pane{position:absolute;inset:0;overflow:hidden;background:#14212d}
+.office-skyline{position:absolute;inset:0 0 22%;background-size:cover;background-position:center 46%;filter:brightness(.95) contrast(1.05) saturate(.72);transform:scale(1.015)}
+.office-window-grid{position:absolute;inset:0 0 22%;background:repeating-linear-gradient(90deg,transparent 0 calc(20% - 9px),#071321c9 calc(20% - 9px) calc(20% - 3px),#bda46b33 calc(20% - 3px) 20%);box-shadow:inset 30px 0 40px #02091077,inset -30px 0 40px #02091077;pointer-events:none}
+.office-interior{position:absolute;inset:0;background:url('/assets/scenes/wealth/tower.webp') center bottom/cover no-repeat;mask-image:linear-gradient(180deg,transparent 0 50%,#0004 62%,#000 76%);filter:brightness(.95) saturate(.8)}
+.office-exposure{position:absolute;inset:0;background:linear-gradient(180deg,#08172644 0%,#06131d15 30%,#06131d22 65%,#02091288 100%)}
+.office-leaving{animation:office-fade-out .5s ease-in-out forwards;pointer-events:none}
+.game-world .room-vignette{background:radial-gradient(ellipse at 47% 45%,transparent 30%,#03080f44 90%),linear-gradient(180deg,#030b142b,transparent 35%,#03080f66 100%)}
+.game-world.wealth-distressed .office-interior{filter:brightness(.8) saturate(.5)}
+.game-world.wealth-gold .office-exposure,.game-world.wealth-world .office-exposure{background:linear-gradient(180deg,#9776411a,transparent 50%,#02091288)}
+.game-world.world-detained .room-vignette{background:repeating-linear-gradient(90deg,#0004 0 3px,transparent 3px 100px),radial-gradient(ellipse,transparent,#0d061977 95%)}
+@keyframes office-fade-out{to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.office-leaving{animation:none;display:none}.office-skyline{transform:none}}
+.motion-reduced .office-leaving{display:none}

@@ -84,26 +84,26 @@ const STORIES = [
   'Des indicateurs opposés arrivent d’{zone} ; les banques attendent des données plus nettes.',
   'La banque centrale diffère sa décision en {zone} ; les prêteurs gardent leurs conditions actuelles.',
   'Un budget sans surprise est adopté en {zone} et les usines de {sector} poursuivent leurs plans.',
-  'Des virements destinés à des clients disparaissent des comptes d’une banque d’{zone} ; les enquêteurs remontent la piste.',
-  'Des prêts sans emprunteurs réels figurent dans les livres d’une banque d’{zone} ; une enquête est ouverte.',
-  'Un dossier confidentiel quitte une salle de marché d’{zone} avant l’annonce officielle ; les régulateurs enquêtent.',
-  'Des ordres passés juste avant une annonce en {zone} intriguent les autorités de marché.',
-  'Une banque d’{zone} aurait caché une perte majeure dans une filiale ; les comptes sont saisis.',
-  'Un dirigeant d’une banque d’{zone} aurait favorisé une société qu’il contrôlait ; les autorités examinent les contrats.',
-  'Des ordres coordonnés semblent avoir artificiellement gonflé un cours en {zone} ; les régulateurs recherchent leurs auteurs.',
-  'Des achats suspects précèdent une annonce sensible en {zone} ; les enquêteurs soupçonnent un délit d’initié.',
-  'Des écritures falsifiées apparaissent dans les comptes d’une banque d’{zone} ; la brigade financière intervient.',
-  'Des transferts opaques passent par une banque d’{zone} ; les enquêteurs soupçonnent un blanchiment de capitaux.',
-  'Les autorités examinent la structure d’un grand groupe de {sector} ; ses concurrents anticipent une nouvelle répartition du marché.',
-  'Les régulateurs passent au crible les groupes dominants de {sector} ; les investisseurs évaluent les risques pour leurs marges.',
-  'Une autorité examine la concentration de {sector} ; les projets de fusion restent suspendus à son avis.',
-  'De nouveaux garde-fous sont annoncés pour {sector} ; les entreprises revoient leurs prévisions de conformité.',
-  'Les acquisitions dans {sector} sont désormais surveillées ; les investisseurs attendent les décisions des autorités.',
-  'Le droit de la concurrence se durcit dans {sector} ; plusieurs groupes révisent leurs stratégies commerciales.',
-  'Un contrôle des prix est annoncé dans {sector} ; les entreprises calculent l’effet possible sur leurs marges.',
-  'Les autorités étudient un plafond de détention dans {sector} ; les fonds concentrés évaluent leur exposition.',
-  'Une enquête antitrust vise {sector} ; les grands actionnaires se préparent à de possibles changements.',
-  'La surveillance des plateformes liées à {sector} s’intensifie ; les entreprises adaptent leurs prévisions.',
+  'Des flux clients inexpliqués déclenchent une enquête en {zone}, sur fond de soupçons rappelant des fraudes pyramidales documentées.',
+  'Des créances sans activité économique identifiable apparaissent dans un dossier de {zone} ; les auditeurs demandent des justificatifs.',
+  'Une fuite d’informations avant une annonce officielle conduit les autorités de {zone} à examiner les contrôles de marché.',
+  'Des transactions anticipent une annonce publique en {zone} ; les autorités vérifient si les règles de marché ont été respectées.',
+  'Une perte jusque-là mal documentée est réexaminée par les auditeurs d’un établissement de {zone}.',
+  'Un examen de gouvernance en {zone} met l’accent sur les conflits d’intérêts dans l’attribution de contrats.',
+  'Des ordres coordonnés anormaux font l’objet d’une enquête sur une place de {zone} ; les contrôles de marché sont renforcés.',
+  'Des opérations réalisées avant une annonce sensible sont examinées dans une enquête pour délit d’initié en {zone}.',
+  'Des écarts entre pièces justificatives et écritures comptables sont découverts dans un dossier de {zone}.',
+  'Une enquête sur des soupçons de blanchiment conduit les autorités de {zone} à renforcer la traçabilité des paiements.',
+  'Une étude de marché sur {sector} relance le débat sur la séparation d’activités dominantes.',
+  'Les autorités publient une revue générale de la concurrence dans {sector} ; les marchés évaluent les coûts possibles de conformité.',
+  'Un projet de fusion dans {sector} fait l’objet d’un examen réglementaire, comme dans les procédures de concentration historiques.',
+  'Après plusieurs crises sectorielles, de nouveaux contrôles sont proposés pour {sector}.',
+  'Les autorités précisent les critères d’examen des acquisitions dans {sector}, ajoutant de l’incertitude aux projets en cours.',
+  'Une réforme durcit l’application du droit de la concurrence dans {sector} et pousse les acteurs à revoir leurs contrats.',
+  'Un dispositif temporaire de contrôle des prix est débattu pour {sector}, ravivant le débat sur la protection des consommateurs.',
+  'Les régulateurs examinent des limites de détention dans {sector} afin de réduire les risques de concentration.',
+  'Une enquête sectorielle sur {sector} vérifie les pratiques commerciales et les barrières à l’entrée.',
+  'Une consultation réglementaire sur les plateformes de {sector} demande davantage de transparence sur l’accès au marché.',
 ];
 
 function eventPremise(event, zoneName, sectorName) {
@@ -114,7 +114,13 @@ function eventPremise(event, zoneName, sectorName) {
       ? `La nouvelle « ${title} » circule sur les marchés et attire l’attention des investisseurs.`
       : `La nouvelle « ${title} » circule en ${zoneName} et attire l’attention des investisseurs de ${sectorName}.`;
   }
-  return template.replaceAll('{zone}', zoneName).replaceAll('{sector}', sectorName);
+  const sector = String(sectorName || 'ce secteur').toLocaleLowerCase('fr-FR');
+  const sectorAwareTemplate = template
+    .replaceAll('de {sector}', 'du secteur {sector}')
+    .replaceAll('dans {sector}', 'dans le secteur {sector}')
+    .replaceAll('pour {sector}', 'pour le secteur {sector}')
+    .replaceAll('à {sector}', 'au secteur {sector}');
+  return sectorAwareTemplate.replaceAll('{zone}', zoneName).replaceAll('{sector}', sector);
 }
 
 module.exports = { eventPremise };

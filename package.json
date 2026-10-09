@@ -17,6 +17,8 @@
     "start": "npm run start -w @global-fund/server",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "capture:visuals": "tsx scripts/capture-visuals.ts",
+    "capture:settlement": "tsx scripts/capture-settlement.ts",
     "simulate": "tsx scripts/simulate.ts",
     "db:migrate": "npm run db:migrate -w @global-fund/server"
   },

@@ -1,0 +1,34 @@
+{
+  "method": "Compare full 180-point history to last-two-point retention after each public executeCommand. SHA-256 fingerprints of every resulting phase/cycle/zoneGrades/sectorGrades/players/companies, command sequences, full final state apart from marketHistory, and last complete history point must match. Three easy/normal/hard AI funds are included in each seed.",
+  "scenario": "conservative",
+  "capThresholdsUSD": {
+    "medium": 40000000000,
+    "large": 200000000000
+  },
+  "results": [
+    {
+      "seed": 20261006,
+      "cycles": 64,
+      "commands": 724,
+      "fullSeconds": 13.263360273,
+      "trimmedSeconds": 7.697187141,
+      "identical": true
+    },
+    {
+      "seed": 20261007,
+      "cycles": 76,
+      "commands": 763,
+      "fullSeconds": 14.575801539,
+      "trimmedSeconds": 8.28371265,
+      "identical": true
+    },
+    {
+      "seed": 20261008,
+      "cycles": 64,
+      "commands": 674,
+      "fullSeconds": 11.293468427,
+      "trimmedSeconds": 7.601518545,
+      "identical": true
+    }
+  ]
+}

@@ -6,7 +6,9 @@ import type {
   GameCommand,
   GameState,
   SeatConfig,
+  Player,
 } from "@global-fund/shared";
+import { MARKET_IDS } from "@global-fund/shared";
 import {
   chooseAiCommand,
   createGame,
@@ -23,14 +25,14 @@ const seats: SeatConfig[] = [
   {
     name: "Alice",
     kind: "local",
-    nationality: "france",
+    startingMarket: "europe",
     pawn: "lion",
     difficulty: "normal",
   },
   {
     name: "Bob",
     kind: "ai",
-    nationality: "japan",
+    startingMarket: "asia",
     pawn: "bull",
     difficulty: "hard",
   },
@@ -41,6 +43,16 @@ const act = (state: GameState, command: GameCommand) =>
 const copy = <T>(value: T): T => structuredClone(value);
 function game(): GameState {
   return createGame(seats);
+}
+function turnSeats(count: number): SeatConfig[] {
+  const pawns = ["lion", "bull", "globe", "crystal", "tower", "leaf"] as const;
+  return Array.from({ length: count }, (_, index) => ({
+    name: `Player ${index + 1}`,
+    kind: "local",
+    startingMarket: MARKET_IDS[index % MARKET_IDS.length],
+    pawn: pawns[index]!,
+    difficulty: "normal",
+  }));
 }
 function die(value = 1): void {
   vi.spyOn(Math, "random").mockReturnValue((value - 0.5) / 6);
@@ -85,6 +97,84 @@ const eventCard = (
 afterEach(() => vi.restoreAllMocks());
 
 describe("dataset and opening", () => {
+  it.each([2, 3, 4, 5, 6])("keeps the initiative starter's seat order fixed across cycles (%i players)", (count) => {
+    let roll = 0;
+    vi.spyOn(Math, "random").mockImplementation(() => {
+      const current = roll++;
+      if (current < count - 1) return 0;
+      if (current === count - 1) return 0.999;
+      return 0.5;
+    });
+    let state = createGame(turnSeats(count));
+    const starter = count - 1;
+    expect(state.initiative).toEqual([...Array(count - 1).fill(1), 6]);
+    expect(state.starterIndex).toBe(starter);
+    expect(state.activeIndex).toBe(starter);
+    const order = Array.from({ length: count }, (_, offset) =>
+      state.players[(starter + offset) % count].id,
+    );
+    const originalStarter = state.starterIndex;
+    const contextsAtStart = state.deck.length;
+    expect(state.currentContext).toBeNull();
+
+    for (let cycle = 1; cycle <= 3; cycle += 1) {
+      const visited: string[] = [];
+      for (let turn = 0; turn < count; turn += 1) {
+        visited.push(active(state).id);
+        state.phase = "awaitNext";
+        state = act(state, { type: "NEXT_TURN" });
+      }
+      expect(visited).toEqual(order);
+      expect(state.starterIndex).toBe(originalStarter);
+      if (cycle < 3) expect(state.cycle).toBe(cycle + 1);
+      expect(state.deck.length).toBe(contextsAtStart - cycle);
+    }
+  });
+
+  it("preserves fixed seat order through a saved JSON state", () => {
+    let state = createGame(turnSeats(4));
+    state.starterIndex = 2;
+    state.activeIndex = 2;
+    const order = [2, 3, 0, 1].map((index) => state.players[index].id);
+    state.phase = "awaitNext";
+    state = act(state, { type: "NEXT_TURN" });
+    state = JSON.parse(JSON.stringify(state)) as GameState;
+    expect(state.starterIndex).toBe(2);
+    expect(state.players[state.activeIndex].id).toBe(order[1]);
+    for (const expectedId of order.slice(1)) {
+      expect(active(state).id).toBe(expectedId);
+      state.phase = "awaitNext";
+      state = act(state, { type: "NEXT_TURN" });
+    }
+    expect(active(state).id).toBe(order[0]);
+    expect(state.starterIndex).toBe(2);
+  });
+
+  it("skips a bankrupt initial starter while retaining the remaining seat order", () => {
+    const state = createGame(turnSeats(4));
+    state.starterIndex = 2;
+    state.activeIndex = 2;
+    const bankrupt = state.players[2];
+    bankrupt.cash = 0;
+    bankrupt.solvent = false;
+    const expected = [3, 0, 1].map((index) => state.players[index].id);
+    state.phase = "awaitNext";
+    let next = act(state, { type: "NEXT_TURN" });
+    expect(next.activeIndex).toBe(3);
+    const visited = [active(next).id];
+    next.phase = "awaitNext";
+    next = act(next, { type: "NEXT_TURN" });
+    visited.push(active(next).id);
+    next.phase = "awaitNext";
+    next = act(next, { type: "NEXT_TURN" });
+    visited.push(active(next).id);
+    expect(visited).toEqual(expected);
+    next.phase = "awaitNext";
+    next = act(next, { type: "NEXT_TURN" });
+    expect(next.starterIndex).toBe(2);
+    expect(next.activeIndex).toBe(3);
+  });
+
   it("has 52 balanced board cells, 50 distinct incidents, 100 Contexts and 91 companies", () => {
     const state = game();
     expect(state.board).toHaveLength(52);
@@ -107,7 +197,7 @@ describe("dataset and opening", () => {
     );
     expect(state.board.filter((cell) => cell.kind === "start")).toHaveLength(1);
   });
-  it("places nationalities for free at C and skips geography during the opening cycle", () => {
+  it("places funds on their chosen market for free at C and skips geography during the opening cycle", () => {
     let state = game();
     expect(state.phase).toBe("sector");
     expect(state.currentContext).toBeNull();
@@ -116,6 +206,8 @@ describe("dataset and opening", () => {
       "asia",
     ]);
     expect(state.players.map((player) => player.cash)).toEqual([100, 100]);
+    expect(state.players.map((player) => player.currentMarket)).toEqual(["europe", "asia"]);
+    expect(state.players.every((player) => !Object.hasOwn(player, "nationality"))).toBe(true);
     expect(
       Object.values(state.zoneGrades).every((grade) => grade === "C"),
     ).toBe(true);
@@ -141,17 +233,79 @@ describe("dataset and opening", () => {
     expect(state.phase).toBe("sector");
     expect(state.cycle).toBe(1);
     expect(state.currentContext).toBeNull();
-    expect(state.players.map((player) => player.nationality)).toEqual([
-      "france",
-      "japan",
+    expect(state.players.map((player) => player.startingMarket)).toEqual([
+      "europe",
+      "asia",
     ]);
   });
   it("rejects invalid setup descriptors", () => {
     expect(() => createGame([seats[0]])).toThrow();
     expect(() =>
-      createGame([{ ...seats[0], nationality: "unknown" }, seats[1]]),
+      createGame([{ ...seats[0], startingMarket: "mea" as SeatConfig["startingMarket"] }, seats[1]]),
     ).toThrow();
     expect(() => createGame([{ ...seats[0], name: " " }, seats[1]])).toThrow();
+  });
+  it.each(MARKET_IDS)("opens a human fund in %s without inventing a country", (startingMarket) => {
+    const state = createGame([{ ...seats[0], startingMarket }, { ...seats[1], kind: "local" }]);
+    expect(state.players[0]).toMatchObject({ startingMarket, currentMarket: startingMarket, zone: startingMarket, cash: 100 });
+    expect(state.players[0]).not.toHaveProperty("nationality");
+  });
+  it("diversifies repeated AI placements while preserving human choices", () => {
+    const state = createGame([
+      seats[0],
+      ...Array.from({ length: 5 }, (_, index) => ({ ...seats[1], name: `AI ${index}`, startingMarket: "europe" as const })),
+    ]);
+    expect(state.players[0].startingMarket).toBe("europe");
+    expect(new Set(state.players.map((player) => player.startingMarket)).size).toBe(5);
+    expect(new Set(state.players.filter((player) => player.bot).map((player) => player.startingMarket)).size).toBe(5);
+    expect(state.players.every((player) => player.cash === 100)).toBe(true);
+  });
+  it("reads real legacy nationality IDs and rejects invalid explicit markets without fallback", () => {
+    const { startingMarket: _market, ...oldSeat } = seats[0];
+    const state = createGame([{ ...oldSeat, nationality: "france" }, seats[1]]);
+    expect(state.players[0]).toMatchObject({ startingMarket: "europe", currentMarket: "europe", nationality: "france" });
+    expect(() => createGame([{ ...seats[0], startingMarket: "mea" as SeatConfig["startingMarket"], nationality: "france" }, seats[1]])).toThrow();
+  });
+  it("upgrades old placements without changing saved location, holdings, catalog, cash, or phase", () => {
+    const state = game();
+    const first = state.players[0];
+    first.nationality = "france";
+    first.zone = "oceania";
+    first.cash = 73.25;
+    delete (first as Partial<Player>).startingMarket;
+    delete (first as Partial<Player>).currentMarket;
+    const second = state.players[1];
+    second.nationality = "unknown-country";
+    second.zone = "africa";
+    delete (second as Partial<Player>).startingMarket;
+    delete (second as Partial<Player>).currentMarket;
+    state.companies[0].holdings[first.id] = 2;
+    const before = copy(state);
+    const view = getGameView(state);
+    expect(view.players[0]).toMatchObject({ startingMarket: "europe", currentMarket: "oceania", zone: "oceania", cash: 73.25, nationality: "france" });
+    expect(view.players[1]).toMatchObject({ startingMarket: "africa", currentMarket: "africa", nationality: "unknown-country" });
+    expect(view.companies.map((company) => [company.id, company.zone, company.basePrice, company.baseIncome, company.holdings])).toEqual(
+      before.companies.map((company) => [company.id, company.zone, company.basePrice, company.baseIncome, company.holdings]),
+    );
+    expect(view.phase).toBe(before.phase);
+    expect(view.zoneGrades).toEqual(before.zoneGrades);
+    expect(state).toEqual(before);
+  });
+  it("exposes detention as no current market and restores the previous market", () => {
+    const state = game();
+    const player = active(state);
+    player.previousZone = "oceania";
+    player.zone = "prison";
+    player.jailed = true;
+    player.prisonStage = 2;
+    player.geoResolved = false;
+    state.phase = "geography";
+    state.stage = "geography";
+    expect(getGameView(state).players[state.activeIndex].currentMarket).toBeNull();
+    die();
+    const next = act(state, { type: "PRISON_ROLL" });
+    expect(active(next)).toMatchObject({ currentMarket: "oceania", zone: "oceania", jailed: false });
+    expect(active(next).startingMarket).toBe(player.startingMarket);
   });
 });
 
@@ -169,12 +323,13 @@ describe("travel before the die and phase gates", () => {
     expect(state.currentContext?.id).toBe("travel-context");
     expect(() => act(state, { type: "ROLL" })).toThrow();
     expect(() => act(state, { type: "END_TURN" })).toThrow();
-    const nationality = active(state).nationality;
+    const startingMarket = active(state).startingMarket;
     const before = active(state).cash;
     const destination = active(state).zone === "europe" ? "asia" : "europe";
     state = act(state, { type: "MOVE", zoneId: destination });
     expect(active(state).cash).toBe(before - 1);
-    expect(active(state).nationality).toBe(nationality);
+    expect(active(state).startingMarket).toBe(startingMarket);
+    expect(active(state).currentMarket).toBe(destination);
     expect(active(state).zone).toBe(destination);
     expect(state.phase).toBe("sector");
     expect(() => act(state, { type: "STAY" })).toThrow();
@@ -219,10 +374,12 @@ describe("trades, prices and ownership income", () => {
   it("prices each 20% share from both factors and retains weighted cost basis on partial sales", () => {
     let state = game();
     state.phase = "market";
-    const selected = state.companies.find(
-      (company) => company.zone === active(state).zone,
-    )!;
-    expect(priceFor(selected, state)).toBeCloseTo(selected.basePrice / 5);
+    // This accounting scenario needs two affordable buys; catalog order is not a price order.
+    const selected = state.companies
+      .filter((company) => company.zone === active(state).zone)
+      .sort((left, right) => priceFor(left, state) - priceFor(right, state))[0];
+    const openingPrice = priceFor(selected, state);
+    expect(openingPrice).toBeCloseTo(Math.round(selected.basePrice / 5 * 100) / 100);
     state = act(state, {
       type: "BUY_SHARE",
       companyId: selected.id,
@@ -240,7 +397,7 @@ describe("trades, prices and ownership income", () => {
       quantity: 1,
     });
     const average =
-      Math.round(((selected.basePrice / 5 + high) / 2) * 100) / 100;
+      Math.round(((openingPrice + high) / 2) * 100) / 100;
     expect(
       getGameView(state).companies.find(
         (company) => company.id === selected.id,
@@ -292,6 +449,76 @@ describe("trades, prices and ownership income", () => {
     expect(incomeForHolder(group[0], state, player.id)).toBeCloseTo(
       Math.round((group[0].baseIncome / 5) * 2.25 * 100) / 100,
     );
+  });
+  it.each([1, 5])("does not pay the active fund for its own %i sector shares", (quantity) => {
+    const initial = game();
+    const investor = active(initial);
+    const company = initial.companies[0];
+    holding(initial, company, investor.id, quantity);
+    expect(incomeForHolder(company, initial, investor.id)).toBeGreaterThan(0);
+    const valueBefore = fundValue(initial, investor);
+    const state = land(initial, initial.board.findIndex(cell => cell.sector === company.sector));
+    expect(active(state).cash).toBe(100);
+    expect(fundValue(state, active(state))).toBeCloseTo(valueBefore);
+    expect(state.companies.find(item => item.id === company.id)!.holdings[investor.id]).toBe(quantity);
+    expect(state.notices.flatMap(notice => notice.payments ?? [])).toEqual([]);
+    expect(state.pendingSettlement).toBeUndefined();
+    expect(state.phase).toBe("market");
+  });
+  it("keeps monopoly income for other turns but never pays it on the owner's sector landing", () => {
+    const initial = game();
+    const investor = active(initial);
+    const company = initial.companies.find(candidate => initial.companies.filter(item => item.zone === candidate.zone && item.sector === candidate.sector).length > 1)!;
+    const group = initial.companies.filter(item => item.zone === company.zone && item.sector === company.sector);
+    group.forEach(item => holding(initial, item, investor.id, 5));
+    initial.zoneGrades[company.zone] = "E";
+    initial.sectorGrades[company.sector] = "D";
+    expect(ownsMonopoly(initial, investor, company)).toBe(true);
+    expect(incomeForHolder(company, initial, investor.id)).toBeCloseTo(Math.round(company.baseIncome / 5 * 2.25 * 100) / 100);
+    const valueBefore = fundValue(initial, investor);
+    const state = land(initial, initial.board.findIndex(cell => cell.sector === company.sector));
+    expect(active(state).cash).toBe(100);
+    expect(fundValue(state, active(state))).toBeCloseTo(valueBefore);
+    expect(state.notices.flatMap(notice => notice.payments ?? [])).toEqual([]);
+    expect(state.phase).toBe("market");
+    // The same holdings still receive their protected income from another fund.
+    state.activeIndex = state.players.findIndex(player => player.id !== investor.id);
+    active(state).cash = 10_000;
+    const due = group.reduce((sum, item) => sum + Math.round(5 * incomeForHolder(item, state, investor.id) * 100) / 100, 0);
+    const paid = land(state, state.board.findIndex(cell => cell.sector === company.sector));
+    expect(paid.players.find(player => player.id === investor.id)!.cash).toBeCloseTo(100 + due);
+    expect(active(paid).cash).toBeCloseTo(10_000 - due);
+  });
+  it("pays only other holders when both funds own shares of the landed sector", () => {
+    const initial = game();
+    const payer = active(initial);
+    const recipient = initial.players.find(player => player.id !== payer.id)!;
+    const company = initial.companies[0];
+    company.baseIncome = 50;
+    holding(initial, company, payer.id, 1);
+    holding(initial, company, recipient.id, 2);
+    const state = land(initial, initial.board.findIndex(cell => cell.sector === company.sector));
+    expect(active(state).cash).toBe(80);
+    expect(state.players.find(player => player.id === recipient.id)!.cash).toBe(120);
+    expect(state.notices.flatMap(notice => notice.payments ?? [])).toEqual([
+      expect.objectContaining({ fromId: payer.id, toId: recipient.id, companyId: company.id, amount: 20 }),
+    ]);
+  });
+  it("does not use a phantom self-income to fund a sector debt", () => {
+    const initial = game();
+    const payer = active(initial);
+    const recipient = initial.players.find(player => player.id !== payer.id)!;
+    const company = initial.companies[0];
+    company.baseIncome = 50;
+    holding(initial, company, payer.id, 1);
+    holding(initial, company, recipient.id, 2);
+    payer.cash = 10;
+    const state = land(initial, initial.board.findIndex(cell => cell.sector === company.sector));
+    expect(active(state).cash).toBe(10);
+    expect(state.players.find(player => player.id === recipient.id)!.cash).toBe(100);
+    expect(state.phase).toBe("settlement");
+    expect(state.pendingSettlement).toMatchObject({ debtorId: payer.id, creditorId: recipient.id, amount: 20 });
+    expect(state.notices.flatMap(notice => notice.payments ?? []).some(payment => payment.fromId === null && payment.toId === payer.id)).toBe(false);
   });
   it("never exceeds five issued shares and rejects out-of-zone or insufficient-cash trades", () => {
     const state = game();
@@ -359,21 +586,25 @@ describe("Start performance excludes capital flows", () => {
     expect(active(state).lapPerformance).toBe(0);
     expect(active(state).cash).toBe(135);
   });
-  it("withdraws through forced sales and records the baseline after payment", () => {
+  it("lets the player select forced sales and records the baseline after payment", () => {
     const initial = game();
     const player = active(initial);
     const company = initial.companies[0];
     holding(initial, company, player.id, 5);
     player.cash = 0;
     player.lapStartValue = fundValue(initial, player) + 5;
-    const state = land(initial, 0);
+    const pending = land(initial, 0);
+    expect(pending.phase).toBe("settlement");
+    expect(pending.companies[0].holdings[player.id]).toBe(5);
+    const quantity = Math.ceil(20 / priceFor(pending.companies[0], pending));
+    const state = executeCommand(pending, player.id, { type: "LIQUIDATE_ASSETS", assets: [{ companyId: company.id, quantity }] });
     expect(active(state).lapPerformance).toBe(-5);
     expect(state.companies[0].holdings[player.id] ?? 0).toBeLessThan(5);
     expect(active(state).lapStartValue).toBe(fundValue(state, active(state)));
     expect(
       state.notices
         .flatMap((notice) => notice.payments ?? [])
-        .find((payment) => payment.reason === "Performance au Départ")
+        .find((payment) => payment.reason === "Performance au Départ" && payment.amount > 0)
         ?.forcedSales?.length,
     ).toBeGreaterThan(0);
   });
@@ -531,7 +762,7 @@ describe("prison and suspended income", () => {
       .filter((item) => item.id !== player.id)
       .map((item) => item.id);
     state = act(state, { type: "NEXT_TURN" });
-    // The other seat starts the new cycle; finish its turn to return to the prisoner.
+    // Complete the other seat's turn to return to the prisoner.
     if (active(state).id !== player.id) {
       state.phase = "awaitNext";
       state = act(state, { type: "NEXT_TURN" });
@@ -686,7 +917,7 @@ describe("authority and atomic transitions", () => {
       {
         name: "Easy",
         kind: "ai",
-        nationality: "united-states",
+        startingMarket: "americas",
         pawn: "globe",
         difficulty: "easy",
       },

@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-08T22:24:49.050278+00:00",
+  "release": ".releases/2026-10-08T22-21-12-441Z-380069",
+  "unitTests": {
+    "passed": 123,
+    "files": 9,
+    "log": "/tmp/gf-global-settlement-unit-final.log"
+  },
+  "browserTests": {
+    "distinctPassed": 9,
+    "fullSuiteRun": false,
+    "logs": [
+      "/tmp/gf-global-settlement-e2e.log",
+      "/tmp/gf-global-settlement-final-e2e.log",
+      "/tmp/gf-global-settlement-two-decisions.log"
+    ],
+    "note": "Initial normal-motion failure was a frozen HUD tween in the fake-clock harness; corrected and rerun. Financial/ownership/payment assertions retained."
+  },
+  "scenarios": [
+    "AI 1 M€ bank income, normal/reduced motion, manual card reading then direct idle, no market or financial ribbon",
+    "Actual Context changes keep manual market confirmation, then direct travel phase",
+    "Two cash creditors: one card, bank income once, both IDs acknowledged",
+    "Paid creditor plus negotiated share transfer: one final receipt after reconnection",
+    "Two financing decisions: direct desk continuation, selection cleared, one final receipt",
+    "Below/equal/above-debt offers preserve cash direction",
+    "Insufficient creditor cash blocks acceptance; reject and require-cash work",
+    "Market liquidation and frozen ascending NAV creditor priority"
+  ],
+  "captures": [
+    "screenshots/current/global-cash-settlement.png",
+    "screenshots/current/global-negotiated-settlement.png",
+    "screenshots/current/income-direct-no-preference.png",
+    "screenshots/current/income-direct-reduce.png",
+    "screenshots/settlement-validation/1920x1080/payment-card.png",
+    "screenshots/settlement-validation/1440x900/payment-card.png",
+    "screenshots/settlement-validation/1366x768/payment-card.png"
+  ],
+  "build": {
+    "typecheck": "passed",
+    "production": "passed",
+    "publicIndexMatches": true
+  },
+  "deployment": {
+    "url": "https://global-fund-next.213.199.40.67.sslip.io/",
+    "health": "ok",
+    "nextService": "active",
+    "historicalService": "active",
+    "databaseBackup": "runtime/backups/global-settlement-oct9.dump",
+    "backupListVerified": true
+  },
+  "referenceIntegrity": {
+    "checkedAt": "2026-10-08T22:21:50.184155+00:00",
+    "historicalSources": {
+      "checked": 157,
+      "changed": []
+    },
+    "historicalInfrastructure": {
+      "checked": 2,
+      "changed": []
+    }
+  }
+}

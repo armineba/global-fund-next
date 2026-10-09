@@ -1,0 +1,89 @@
+[
+  {
+    "id": "tata-motors",
+    "sourceURL": "https://nsearchives.nseindia.com/corporate/TMLCOMMERCIAL_01082026142609_nsebsesalesigned.pdf",
+    "evidence": {
+      "status": "direct_page_content_accessed",
+      "sourceVerified": true,
+      "checkedDate": "2026-10-06",
+      "summary": "Publication officielle de Tata Motors Limited déposée sur NSE, 1 août 2026, deux pages directement lues. Identifie la société anciennement TML Commercial Vehicles Limited, renommée le 29 octobre 2025; décrit les utilitaires, pick-ups, camions et bus, son rattachement indien et ses implantations. Confirme le choix du fabricant commercial CV, distinct de Tata Motors Passenger Vehicles après la scission; le secteur transport du jeu reste conservé."
+    },
+    "earlierAttempt": {
+      "checkedDate": "2026-10-06",
+      "status": "official_company_pdf_direct_fetch_403_and_exchange_pdf_is_different_demerger_entity",
+      "sourceVerified": false,
+      "summary": "The official Tata Motors FY2025-26 Commercial Vehicles annual report URL returned HTTP 403 on direct download, so its contents were not read. An accessible NSE-hosted 2025-26 annual report was downloaded, but it is for Tata Motors Passenger Vehicles Limited (formerly Tata Motors Limited), the separate passenger-vehicle demerger entity, and does not establish the current Tata Motors Limited commercial-vehicle entity in this audit. No claim is marked source-verified from that mismatched report. Retain the earlier official search excerpt as an unverified lead only.",
+      "countryStatus": "India is supported by the company’s official description as an Indian vehicle manufacturer, but direct source fetch failed; not directly verified in this follow-up."
+    }
+  },
+  {
+    "id": "sinopec",
+    "sourceURL": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0322/2026032200057.pdf",
+    "evidence": {
+      "checkedDate": "2026-10-06",
+      "status": "official_annual_report_downloaded_and_text_extracted",
+      "sourceVerified": true,
+      "summary": "Downloaded the official 2025 annual report PDF and read its extracted text. The definitions identify “Sinopec Corp.” as China Petroleum & Chemical Corporation. The Company status section says it is registered and headquartered in Beijing, People’s Republic of China. It states that the company took over crude oil and natural gas exploration, development and production, refining, chemicals, and related sales and marketing. This directly supports the name, country and Energy classification."
+    }
+  },
+  {
+    "id": "agricultural-bank-of-china",
+    "sourceURL": "https://www.abchina.com/en/investor-relations/company-overview/",
+    "evidence": {
+      "checkedDate": "2026-10-06",
+      "status": "direct_official_page_content_accessed",
+      "sourceVerified": true,
+      "summary": "The opened official page is titled Company Overview and identifies Agricultural Bank of China. It states that the Bank is a major integrated financial-services provider in China, describes corporate and retail banking, treasury and asset-management services, and confirms listings in Shanghai and Hong Kong. This directly supports the current name, country China and Finance sector."
+    }
+  },
+  {
+    "id": "bank-of-china-ltd",
+    "sourceURL": "https://www.boc.cn/en/aboutboc/ab1/200809/t20080901_1601737.html",
+    "evidence": {
+      "checkedDate": "2026-10-06",
+      "status": "direct_official_page_content_accessed",
+      "sourceVerified": true,
+      "summary": "The opened official Bank of China Introduction names Bank of China and describes it as a Chinese commercial bank established in 1912. The page lists commercial and personal banking, financial markets and other financial services. This directly supports the current name, China and Finance classification."
+    }
+  },
+  {
+    "id": "samsung-electronics-co-ltd",
+    "sourceURL": "https://images.samsung.com/is/content/samsung/assets/global/ir/docs/Samsung_Electronics_Sustainability_Report_2025_ENG.pdf",
+    "evidence": {
+      "checkedDate": "2026-10-06",
+      "status": "official_sustainability_report_downloaded_and_text_extracted",
+      "sourceVerified": true,
+      "summary": "Downloaded Samsung Electronics’ official 2025 Sustainability Report PDF and read its extracted text. “About Us” identifies Samsung Electronics Co., Ltd. The “About Our Organization” section says its DX Division produces and sells smartphones, network systems, computers, TVs and home appliances, while its DS Division produces and sells semiconductor components. The report’s corporate locations material identifies the Republic of Korea. This directly supports the company name, South Korea and Electronics classification."
+    }
+  },
+  {
+    "id": "china-mobile-ltd",
+    "sourceURL": "https://www.chinamobileltd.com/en/ir/reports/ir2025.pdf",
+    "evidence": {
+      "checkedDate": "2026-10-06",
+      "status": "official_interim_report_downloaded_and_text_extracted",
+      "sourceVerified": true,
+      "summary": "Downloaded China Mobile Limited’s official 2025 interim report PDF and read its extracted text. The Corporate Profile names China Mobile Limited, says it was incorporated in Hong Kong on 3 September 1997, and describes voice, data, broadband, dedicated lines, IDC, cloud computing and IoT services. The company information note says its principal activities are telecommunications and information related services in mainland China and Hong Kong and gives its registered office in Hong Kong. This directly supports the name, Hong Kong (SAR of China) and Communication & media classification."
+    }
+  },
+  {
+    "id": "petrochina-co-ltd",
+    "sourceURL": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0423/2026042301797.pdf",
+    "evidence": {
+      "checkedDate": "2026-10-06",
+      "status": "direct_official_annual_report_content_accessed",
+      "sourceVerified": true,
+      "summary": "The opened 2025 annual report, Corporate Profile (PDF page 4), gives the English legal name PetroChina Company Limited and Beijing, PRC addresses. It describes oil and gas exploration, production, transportation and sales, refining, petrochemicals and new energy. This directly supports the current name, China and Energy classification."
+    }
+  },
+  {
+    "id": "southern-cross-energy",
+    "sourceURL": "https://announcements.asx.com.au/asxpdf/20250731/pdf/06mbvc7zhqzrh7.pdf",
+    "evidence": {
+      "checkedDate": "2026-10-06",
+      "status": "direct_official_exchange_filing_content_accessed",
+      "sourceVerified": true,
+      "summary": "The opened ASX June 2025 Quarterly Report names Origin Energy Limited and gives its registered office in Sydney, Australia. It reports Integrated Gas and Energy Markets segments, including LNG, electricity, natural gas and renewable/storage projects. This directly supports the current name Origin Energy, Australia and Energy classification."
+    }
+  }
+]

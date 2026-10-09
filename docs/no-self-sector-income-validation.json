@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-09T16:52:48.379531+00:00",
+  "rule": "No bank/market income for the active fund's own shares on sector landing. Other holders are paid under existing rules.",
+  "release": "apps/web/.releases/2026-10-09T16-48-22-069Z-412895",
+  "unitTests": {
+    "passed": 128,
+    "files": 9,
+    "log": "/tmp/gf-no-self-sector-unit.log"
+  },
+  "browserTests": {
+    "distinctPassed": 5,
+    "fullSuiteRun": false,
+    "logs": [
+      "/tmp/gf-no-self-sector-e2e.log",
+      "/tmp/gf-no-self-sector-e2e-final.log"
+    ],
+    "note": "Initial run passed both AI cases and consecutive decisions. Cash/reconnect cases were corrected for an absent bank-payment element and explicit starting cash, then passed on rerun."
+  },
+  "build": {
+    "typecheck": "passed",
+    "production": "passed",
+    "publicIndexMatches": true,
+    "indexSha256": "46f2aa8e9a8f0eee016612059686c5f177c142b2745f7dc74bc1fbebf21511a2"
+  },
+  "captures": [
+    {
+      "path": "screenshots/current/global-cash-settlement.png",
+      "sha256": "69efbb020fb12176505fb9a085e2da77e07a370a6136534d28cd38efe2db655f",
+      "release": "apps/web/.releases/2026-10-09T16-48-22-069Z-412895"
+    },
+    {
+      "path": "screenshots/current/global-negotiated-settlement.png",
+      "sha256": "eef015f560e0831e05f339db9d826f9cf8bf94132112ff486099ac89e451af74",
+      "release": "apps/web/.releases/2026-10-09T16-48-22-069Z-412895"
+    },
+    {
+      "path": "screenshots/current/income-direct-no-preference.png",
+      "sha256": "5c499e5a35be8582a62b692061ae05433405d74a1db2bb47291446bcd2ec0798",
+      "release": "apps/web/.releases/2026-10-09T16-48-22-069Z-412895"
+    },
+    {
+      "path": "screenshots/current/income-direct-reduce.png",
+      "sha256": "534afd5e8ded51273f179316cbe4b9ae720caf8c05213292dda2f0eaca836f8c",
+      "release": "apps/web/.releases/2026-10-09T16-48-22-069Z-412895"
+    }
+  ],
+  "deployment": {
+    "url": "https://global-fund-next.213.199.40.67.sslip.io/",
+    "health": "ok",
+    "nextService": "active",
+    "historicalService": "active",
+    "serverRestarted": true,
+    "databaseBackup": "runtime/backups/no-self-sector-income-oct9.dump",
+    "backupBytes": 507744,
+    "backupListVerified": true
+  },
+  "referenceIntegrity": {
+    "checkedAt": "2026-10-09T16:51:09.964681+00:00",
+    "historicalSources": {
+      "checked": 157,
+      "changed": []
+    },
+    "historicalInfrastructure": {
+      "checked": 2,
+      "changed": []
+    }
+  },
+  "compatibility": "No schema migration or retroactive cash adjustment. Already executed legacy payments remain historical; future rolls use the new rule.",
+  "review": "Engine reviewed independently; unit cases include partial/full ownership, monopoly and another payer, mixed holders, and lack of phantom debt funding. Historical receipts retain their renderer."
+}

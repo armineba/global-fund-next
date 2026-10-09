@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Crown, Network } from "lucide-react";
 import * as echarts from "echarts/core";
 import { LineChart, PieChart } from "echarts/charts";
 import {
@@ -17,6 +18,8 @@ import type {
   HistoryPoint,
   Player,
 } from "@global-fund/shared";
+import AnimatedMoney from "../presentation/AnimatedMoney";
+import { profitLossPercent, sortTradingRows, type TradingSortDirection, type TradingSortKey } from "./tradingSort";
 import "./trading-desk.css";
 
 echarts.use([
@@ -35,8 +38,14 @@ type Props = {
   viewerId: string;
   canAct: boolean;
   onCommand: (command: GameCommand) => void;
+  browseZone?: string;
+  onBrowseZoneChange?: (zoneId: string) => void;
+  initialTab?: Tab;
+  onClose?: () => void;
+  onEndTurn?: () => void;
+  onReturnTravel?: () => void;
 };
-type Tab = "market" | "portfolio" | "analysis";
+type Tab = "market" | "portfolio" | "analysis" | "statistics";
 type RatingScope = "zone" | "sector";
 const money = (value: number) =>
   `${new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} M€`;
@@ -46,6 +55,8 @@ const catalogName = (items: { id: string; name: string }[], id: string) =>
   items.find((item) => item.id === id)?.name ?? id;
 const holding = (company: Company, viewerId: string) =>
   amount(company.holdings?.[viewerId]);
+const formatPercent = (value: number) =>
+  `${value >= 0 ? "+" : "−"}${new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(Math.abs(value))} %`;
 
 function Chart({
   option,
@@ -58,21 +69,34 @@ function Chart({
 }) {
   const host = useRef<HTMLDivElement>(null);
   const chart = useRef<ECharts | null>(null);
+  const optionRef = useRef(option);
+  useEffect(() => { optionRef.current = option; }, [option]);
   useEffect(() => {
     if (!host.current) return;
-    const instance = echarts.init(host.current, undefined, {
-      renderer: "canvas",
+    let instance: ECharts | null = null;
+    let observer: ResizeObserver | null = null;
+    let frame = 0;
+    let resizeFrame = 0;
+    const resize = () => {
+      if (resizeFrame) cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => instance?.resize());
+    };
+    frame = requestAnimationFrame(() => {
+      if (!host.current) return;
+      instance = echarts.init(host.current, undefined, { renderer: "canvas" });
+      instance.setOption({ ...optionRef.current, aria: { enabled: true } }, true);
+      chart.current = instance;
+      observer = new ResizeObserver(resize);
+      observer.observe(host.current);
+      window.addEventListener("resize", resize);
+      resize();
     });
-    instance.setOption({ aria: { enabled: true } });
-    chart.current = instance;
-    const resize = () => instance.resize();
-    const observer = new ResizeObserver(resize);
-    observer.observe(host.current);
-    window.addEventListener("resize", resize);
     return () => {
-      observer.disconnect();
+      cancelAnimationFrame(frame);
+      if (resizeFrame) cancelAnimationFrame(resizeFrame);
+      observer?.disconnect();
       window.removeEventListener("resize", resize);
-      instance.dispose();
+      instance?.dispose();
       chart.current = null;
     };
   }, []);
@@ -91,9 +115,10 @@ function Chart({
 
 function priceSeries(history: HistoryPoint[], companyId: string) {
   return history
+    .filter((point) => Number.isFinite(point.prices?.[companyId]))
     .map((point) => ({
       label: point.label || `Cycle ${point.cycle}`,
-      price: amount(point.prices?.[companyId]),
+      price: point.prices[companyId],
     }))
     .filter((point) => point.price >= 0);
 }
@@ -103,34 +128,76 @@ export default function TradingDesk({
   viewerId,
   canAct,
   onCommand,
+  browseZone,
+  onBrowseZoneChange,
+  initialTab = "market",
+  onClose,
+  onEndTurn,
+  onReturnTravel,
 }: Props) {
   const viewer = game.players.find((player) => player.id === viewerId) as
     | Player
     | undefined;
-  const [tab, setTab] = useState<Tab>("market");
+  const [tab, setTab] = useState<Tab>(initialTab);
   const [selectedId, setSelectedId] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [filter, setFilter] = useState("all");
+  const [capFilter, setCapFilter] = useState<"all" | "small" | "medium" | "large">("all");
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState<{ key: TradingSortKey; direction: TradingSortDirection }>({ key: "company", direction: "ascending" });
   const [ratingScope, setRatingScope] = useState<RatingScope>("zone");
   const activeZone = viewer?.zone ?? "";
+  const selectedZone = game.phase === "geography" ? browseZone ?? activeZone : activeZone;
   const selected =
     game.companies.find((company) => company.id === selectedId) ?? null;
   const companies = useMemo(() => {
     const source =
       tab === "portfolio"
         ? game.companies.filter((company) => holding(company, viewerId) > 0)
-        : game.companies.filter((company) => company.zone === activeZone);
+        : game.companies.filter((company) => company.zone === selectedZone);
     return source
       .filter((company) => filter === "all" || company.sector === filter)
+      .filter((company) => capFilter === "all" || company.capCategory === capFilter)
+      .filter((company) => {
+        const query = search.trim().toLocaleLowerCase("fr-FR");
+        return !query || [company.name, company.ticker, company.country]
+          .some((value) => value?.toLocaleLowerCase("fr-FR").includes(query));
+      })
       .slice()
       .sort((a, b) => a.name.localeCompare(b.name));
-  }, [game.companies, tab, viewerId, activeZone, filter]);
+  }, [game.companies, tab, viewerId, selectedZone, filter, capFilter, search]);
+  const sortedCompanies = useMemo(() => {
+    const rows = companies.map((company) => {
+      const held = holding(company, viewerId);
+      const average = company.averageBuyPrice?.[viewerId];
+      return {
+        id: company.id,
+        name: company.name,
+        sector: catalogName(game.sectors, company.sector),
+        capitalization: company.capCategory ?? null,
+        price: amount(company.price),
+        profitLoss: profitLossPercent(amount(company.price), average, held),
+        held,
+        available: amount(company.sharesAvailable),
+        company,
+      };
+    });
+    return sortTradingRows(rows, sort.key, sort.direction).map((row) => row.company);
+  }, [companies, game.sectors, sort, viewerId]);
   useEffect(() => {
+    if (tab === "statistics") {
+      if (!game.companies.some((company) => company.id === selectedId))
+        setSelectedId(game.companies[0]?.id ?? "");
+      return;
+    }
     if (!companies.some((company) => company.id === selectedId))
       setSelectedId(companies[0]?.id ?? "");
-  }, [companies, selectedId]);
+  }, [companies, game.companies, selectedId, tab]);
   const held = selected ? holding(selected, viewerId) : 0;
   const average = selected?.averageBuyPrice?.[viewerId] ?? null;
+  const selectedProfitLoss = selected
+    ? profitLossPercent(amount(selected.price), average, held)
+    : null;
   const buyTotal = amount(selected?.price) * quantity;
   const canTrade = Boolean(
     selected &&
@@ -170,13 +237,15 @@ export default function TradingDesk({
     if (side === "SELL_SHARE" && quantity > held) return;
     onCommand({ type: side, companyId: selected.id, quantity });
   };
+  const buyDisabled = !canTrade || !selected || quantity > selected.sharesAvailable || buyTotal > amount(viewer?.cash);
+  const sellDisabled = !canTrade || quantity > held;
   const history = selected ? priceSeries(game.marketHistory, selected.id) : [];
   const marketOption = useMemo<EChartsOption>(() => {
     const values = selected ? priceSeries(game.marketHistory, selected.id) : [];
     const up = values.length > 1 && values.at(-1)!.price >= values[0].price;
     return {
       animation: false,
-      grid: { left: 4, right: 12, top: 12, bottom: 28 },
+      grid: { left: 42, right: 14, top: 14, bottom: 38, containLabel: true },
       tooltip: {
         trigger: "axis",
         valueFormatter: (v) => `${Number(v).toFixed(2)} M€`,
@@ -185,7 +254,7 @@ export default function TradingDesk({
         type: "category",
         data: values.map((v) => v.label),
         boundaryGap: false,
-        axisLabel: { color: "#858a8d", fontSize: 10, hideOverlap: true },
+        axisLabel: { color: "#a9bdc9", fontSize: 9, hideOverlap: true, margin: 10 },
         axisLine: { lineStyle: { color: "#343a39" } },
         axisTick: { show: false },
       },
@@ -193,8 +262,9 @@ export default function TradingDesk({
         type: "value",
         scale: true,
         axisLabel: {
-          color: "#858a8d",
-          fontSize: 10,
+          color: "#a9bdc9",
+          fontSize: 9,
+          margin: 10,
           formatter: (v: number) => `${v} M€`,
         },
         splitLine: { lineStyle: { color: "#292f2e" } },
@@ -235,15 +305,21 @@ export default function TradingDesk({
     animation: false,
     tooltip: { trigger: "item", valueFormatter: (v) => money(Number(v)) },
     legend: {
-      bottom: 0,
-      textStyle: { color: "#a4aaa7", fontSize: 10 },
-      itemWidth: 8,
-      itemHeight: 8,
+      type: "scroll",
+      bottom: 2,
+      left: 10,
+      right: 10,
+      textStyle: { color: "#c3d0d6", fontSize: 10 },
+      pageTextStyle: { color: "#a9bdc9" },
+      pageIconSize: 10,
+      itemWidth: 10,
+      itemHeight: 10,
+      itemGap: 12,
     },
     series: [
       {
         type: "pie",
-        radius: ["53%", "76%"],
+        radius: ["56%", "82%"],
         center: ["50%", "43%"],
         label: { show: false },
         itemStyle: { borderColor: "#141a19", borderWidth: 3 },
@@ -304,6 +380,13 @@ export default function TradingDesk({
     return [...groups.values()];
   }, [game.companies, viewerId]);
   const fullGroups = ownershipGroups.filter((group) => group.complete);
+  const portfolioGroups = ownershipGroups
+    .map((group) => ({
+      ...group,
+      companies: group.companies.filter((company) => holding(company, viewerId) > 0),
+    }))
+    .filter((group) => group.companies.length > 0)
+    .sort((a, b) => `${a.zone}:${a.sector}`.localeCompare(`${b.zone}:${b.sector}`));
   const selectedGroup = selected
     ? ownershipGroups.find(
         (group) =>
@@ -321,7 +404,7 @@ export default function TradingDesk({
   const navOption = useMemo<EChartsOption>(
     () => ({
       animation: false,
-      grid: { left: 8, right: 12, top: 16, bottom: 28 },
+      grid: { left: 42, right: 16, top: 14, bottom: 38, containLabel: true },
       tooltip: {
         trigger: "axis",
         valueFormatter: (value) => money(Number(value)),
@@ -330,7 +413,7 @@ export default function TradingDesk({
         type: "category",
         data: navHistory.map((point) => point.label),
         boundaryGap: false,
-        axisLabel: { color: "#858a8d", fontSize: 10, hideOverlap: true },
+        axisLabel: { color: "#a9bdc9", fontSize: 9, hideOverlap: true, margin: 10 },
         axisLine: { lineStyle: { color: "#343a39" } },
         axisTick: { show: false },
       },
@@ -338,8 +421,9 @@ export default function TradingDesk({
         type: "value",
         scale: true,
         axisLabel: {
-          color: "#858a8d",
-          fontSize: 10,
+          color: "#a9bdc9",
+          fontSize: 9,
+          margin: 10,
           formatter: (value: number) => `${value} M€`,
         },
         splitLine: { lineStyle: { color: "#292f2e" } },
@@ -374,7 +458,7 @@ export default function TradingDesk({
         "#70aeb0",
         "#b9ad91",
       ],
-      grid: { left: 30, right: 12, top: 32, bottom: 30 },
+      grid: { left: 42, right: 18, top: 52, bottom: 42, containLabel: true },
       tooltip: {
         trigger: "axis",
         valueFormatter: (value) =>
@@ -382,18 +466,20 @@ export default function TradingDesk({
       },
       legend: {
         type: "scroll",
-        top: 0,
-        textStyle: { color: "#a4aaa7", fontSize: 9 },
-        pageTextStyle: { color: "#a4aaa7" },
-        itemWidth: 9,
-        itemHeight: 9,
+        top: 4,
+        left: 4,
+        right: 4,
+        textStyle: { color: "#a9bdc9", fontSize: 8 },
+        pageTextStyle: { color: "#a9bdc9" },
+        itemWidth: 8,
+        itemHeight: 8,
       },
       xAxis: {
         type: "category",
         data: game.marketHistory.map(
           (point) => point.label || `C${point.cycle}`,
         ),
-        axisLabel: { color: "#858a8d", fontSize: 9, hideOverlap: true },
+        axisLabel: { color: "#a9bdc9", fontSize: 8, hideOverlap: true, margin: 9 },
         axisLine: { lineStyle: { color: "#343a39" } },
         axisTick: { show: false },
       },
@@ -432,22 +518,23 @@ export default function TradingDesk({
     <section className="trading-desk" aria-label="Salle des marchés">
       <header className="td-header">
         <div>
-          <span className="td-eyebrow">
-            GLOBAL FUND <i /> MARCHÉ
-          </span>
-          <h1>Salle des marchés</h1>
-          <p>
-            Arbitrez vos positions avec une lecture claire du cours, du risque
-            et du capital.
-          </p>
+          <h1>{tab === "portfolio" ? "PORTEFEUILLE" : `TRADING — ${catalogName(game.zones, selectedZone).toUpperCase() || "ZONE À DÉFINIR"}`}</h1>
+          <p>Cycle {game.cycle}</p>
         </div>
         <div className="td-capital">
-          <span>TRÉSORERIE DISPONIBLE</span>
-          <strong>{money(amount(viewer?.cash))}</strong>
-          <small>
-            Cycle {game.cycle} <i />{" "}
-            {catalogName(game.zones, activeZone) || "Zone non définie"}
-          </small>
+          <span>CASH</span>
+          <strong><AnimatedMoney value={amount(viewer?.cash)} /></strong>
+        </div>
+        <div className="td-header-actions">
+          {game.phase === "market" && canAct && onEndTurn && (
+            <button type="button" onClick={onEndTurn} aria-label="Terminer le marché" title="Terminer le marché">Terminer</button>
+          )}
+          {game.phase === "geography" && onReturnTravel && (
+            <button type="button" onClick={onReturnTravel} aria-label="Retour à la décision de voyage" title="Retour à la décision de voyage">Voyage</button>
+          )}
+          {onClose && (
+            <button type="button" onClick={onClose} aria-label="Retour au plateau" title="Retour au plateau">×</button>
+          )}
         </div>
       </header>
       <nav className="td-tabs" aria-label="Vues du marché">
@@ -456,6 +543,7 @@ export default function TradingDesk({
             ["market", "Marché"],
             ["portfolio", "Portefeuille"],
             ["analysis", "Analyse"],
+            ["statistics", "Statistiques"],
           ] as [Tab, string][]
         ).map(([id, label]) => (
           <button
@@ -496,56 +584,6 @@ export default function TradingDesk({
               />
             ) : (
               <p className="td-empty">Aucune position à analyser.</p>
-            )}
-          </article>
-          <article className="td-card td-nav-history">
-            <span className="td-eyebrow">VALEUR DU FONDS</span>
-            <h2>Historique de la valeur liquidative</h2>
-            {navHistory.length > 1 ? (
-              <Chart
-                option={navOption}
-                label={`Valeur du fonds : ${navHistory.map((point) => `${point.label}, ${money(point.value)}`).join("; ")}`}
-              />
-            ) : (
-              <p className="td-empty">
-                {navHistory.length === 1
-                  ? `Un relevé réel : ${money(navHistory[0].value)}`
-                  : "Aucun historique de valeur n’est encore enregistré."}
-              </p>
-            )}
-          </article>
-          <article className="td-card td-rating-history">
-            <span className="td-eyebrow">FONDAMENTAUX</span>
-            <h2>Évolution des notations</h2>
-            <div
-              className="td-rating-tabs"
-              role="group"
-              aria-label="Groupe de notations"
-            >
-              <button
-                className={ratingScope === "zone" ? "active" : ""}
-                onClick={() => setRatingScope("zone")}
-              >
-                Zones
-              </button>
-              <button
-                className={ratingScope === "sector" ? "active" : ""}
-                onClick={() => setRatingScope("sector")}
-              >
-                Secteurs
-              </button>
-            </div>
-            {game.marketHistory.length > 1 ? (
-              <Chart
-                option={ratingOption}
-                label={`Historique des notations par ${ratingScope === "zone" ? "zone" : "secteur"} : ${ratingCatalog.map((item) => `${item.name}, ${game.marketHistory.map((point) => point[ratingKey]?.[item.id] ?? "aucun relevé").join(", ")}`).join("; ")}`}
-              />
-            ) : (
-              <p className="td-empty">
-                {game.marketHistory.length === 1
-                  ? "Un seul relevé réel ; l’évolution apparaîtra après les prochains mouvements."
-                  : "Aucun historique de notation n’est encore enregistré."}
-              </p>
             )}
           </article>
           <article className="td-card td-ownership">
@@ -594,116 +632,188 @@ export default function TradingDesk({
             )}
           </article>
         </div>
+      ) : tab === "statistics" ? (
+        <div className="td-statistics">
+          <article className="td-card td-nav-history">
+            <span className="td-eyebrow">VALEUR DU FONDS</span>
+            <h2>Historique de la valeur liquidative</h2>
+            {navHistory.length > 1 ? <Chart option={navOption} label={`Historique NAV : ${navHistory.map((p) => `${p.label} ${money(p.value)}`).join("; ")}`} /> : <p className="td-empty">{navHistory.length ? `Un relevé réel : ${money(navHistory[0].value)}` : "Aucun historique de valeur enregistré."}</p>}
+          </article>
+          <article className="td-card td-rating-history">
+            <span className="td-eyebrow">FONDAMENTAUX</span><h2>Évolution des notations</h2>
+            <div className="td-rating-tabs" role="group" aria-label="Groupe de notations">
+              <button className={ratingScope === "zone" ? "active" : ""} onClick={() => setRatingScope("zone")}>Zones</button>
+              <button className={ratingScope === "sector" ? "active" : ""} onClick={() => setRatingScope("sector")}>Secteurs</button>
+            </div>
+            {game.marketHistory.length > 1 ? <Chart option={ratingOption} label={`Historique des notations par ${ratingScope === "zone" ? "zone" : "secteur"}`} /> : <p className="td-empty">Historique insuffisant pour afficher une évolution.</p>}
+          </article>
+          <article className="td-card td-nav-history td-company-history">
+            <span className="td-eyebrow">COTATIONS HISTORIQUES</span><h2>Historique des cours</h2>
+            <label className="td-filter"><span className="sr-only">Entreprise à analyser</span><select value={selected?.id ?? ""} onChange={(event) => setSelectedId(event.target.value)}>{game.companies.map((company) => <option key={company.id} value={company.id}>{company.name} · {catalogName(game.zones, company.zone)}</option>)}</select></label>
+            {history.length > 1 ? <Chart option={marketOption} label={`Historique de ${selected?.name ?? "l’entreprise"} : ${history.map((p) => `${p.label} ${money(p.price)}`).join("; ")}`} /> : <p className="td-empty">{history.length ? `Un relevé réel : ${money(history[0].price)}` : "Aucun historique de cours pour cette société."}</p>}
+          </article>
+        </div>
       ) : (
         <div className="td-workspace">
-          <section className="td-card td-list">
+          <section className={`td-card td-list ${tab === "portfolio" ? "is-portfolio" : ""}`}>
             <div className="td-list-head">
               <div>
                 <span className="td-eyebrow">
                   {tab === "portfolio"
                     ? "VOS POSITIONS"
-                    : `COTATIONS · ${catalogName(game.zones, activeZone).toUpperCase()}`}
+                    : `COTATIONS · ${catalogName(game.zones, selectedZone).toUpperCase()}`}
                 </span>
                 <strong>
                   {companies.length.toString().padStart(2, "0")}{" "}
                   <small>lignes</small>
                 </strong>
               </div>
-              <label className="td-filter">
-                <span className="sr-only">Filtrer par secteur</span>
-                <select
-                  value={filter}
-                  onChange={(event) => setFilter(event.target.value)}
-                >
-                  <option value="all">Tous les secteurs</option>
-                  {game.sectors.map((sector) => (
-                    <option key={sector.id} value={sector.id}>
-                      {sector.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <div className="td-market-filters">
+                <label className="td-search">
+                  <span className="sr-only">Rechercher une entreprise</span>
+                  <input type="search" aria-label="Rechercher une entreprise" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Entreprise, ticker, pays" />
+                </label>
+                {game.phase === "geography" && onBrowseZoneChange && <label className="td-filter"><span className="sr-only">Zone à consulter</span><select value={selectedZone} onChange={(event) => onBrowseZoneChange(event.target.value)}>{game.zones.map((zone) => <option key={zone.id} value={zone.id}>{zone.name}{zone.id === activeZone ? " · position" : ""}</option>)}</select></label>}
+                <label className="td-filter">
+                  <span className="sr-only">Filtrer par secteur</span>
+                  <select value={filter} onChange={(event) => setFilter(event.target.value)}>
+                    <option value="all">Tous les secteurs</option>
+                    {game.sectors.map((sector) => <option key={sector.id} value={sector.id}>{sector.name}</option>)}
+                  </select>
+                </label>
+                <label className="td-filter">
+                  <span className="sr-only">Filtrer par taille de capitalisation</span>
+                  <select value={capFilter} onChange={(event) => setCapFilter(event.target.value as typeof capFilter)}>
+                    <option value="all">Tous</option>
+                    <option value="small">Small Cap</option>
+                    <option value="medium">Medium Cap</option>
+                    <option value="large">Large Cap</option>
+                  </select>
+                </label>
+              </div>
             </div>
-            <div className="td-column-head">
-              <span>ACTIF</span>
-              <span>SECTEUR</span>
-              <span>COURS</span>
-              <span>DISP. / POSITION</span>
-              <span>PRIX MOYEN</span>
-            </div>
-            <div className="td-rows">
-              {companies.map((company) => {
+            {tab === "portfolio" && <section className="td-portfolio-groups" tabIndex={0} aria-label="Groupes de contrôle par zone et secteur">{portfolioGroups.map((group) => { const controlled = group.companies.filter((company) => holding(company, viewerId) === 5).length; const total = game.companies.filter((company) => company.zone === group.zone && company.sector === group.sector).length; const complete = controlled === total && total > 0; return <article className={`td-portfolio-group ${complete ? "complete" : ""}`} key={`${group.zone}:${group.sector}`}><header>{complete && <Network size={14} aria-label="Monopole" />}<strong>{catalogName(game.zones, group.zone)} · {catalogName(game.sectors, group.sector)}</strong><small>{controlled}/{total} contrôlées</small></header><div className="td-group-companies">{group.companies.map((company) => <span key={company.id} title={`${company.name} : ${holding(company, viewerId)}/5 parts`}>{company.name}<b>{holding(company, viewerId)}/5</b><i><i style={{width:`${holding(company, viewerId) * 20}%`}} /></i></span>)}</div><footer>{complete ? <><Network size={11} /> Monopole · revenu minimum A/A</> : <><span className="td-progress-symbol" aria-hidden="true">◌</span> Parts détenues · seuil 5/5 pour C/C</>}</footer></article>; })}</section>}
+            <div className="td-table-scroll">
+              <div className="td-column-head">
+                {([
+                  ["company", "ENTREPRISE", "entreprise", undefined],
+                  ["sector", "SECTEUR", "secteur", undefined],
+                  ["capitalization", "CAP", "catégorie de capitalisation : Small Cap, Medium Cap ou Large Cap", "Taille de l’entreprise : Small Cap, Medium Cap ou Large Cap"],
+                  ["price", "COURS", "cours actuel par part", undefined],
+                  ["profitLoss", "P/L", "plus-value ou moins-value en pourcentage par rapport au prix moyen d’achat", "P/L = (cours actuel / prix moyen − 1) × 100 ; tiret si PRU inconnu ou aucune part détenue"],
+                  ["held", "DÉTENUES", "parts détenues", undefined],
+                  ["available", "DISPONIBLES", "parts disponibles", undefined],
+                ] as const).map(([key, label, accessibleLabel, tooltip]) => (
+                  <span
+                    key={key}
+                    className="td-column"
+                    role="columnheader"
+                    aria-sort={sort.key === key ? sort.direction : "none"}
+                  >
+                    <button
+                      type="button"
+                      className="td-sort-button"
+                      title={tooltip}
+                      aria-label={`Trier par ${accessibleLabel}, ordre ${sort.key === key && sort.direction === "ascending" ? "décroissant" : "croissant"}`}
+                      onClick={() => setSort((current) => ({
+                        key,
+                        direction: current.key === key && current.direction === "ascending" ? "descending" : "ascending",
+                      }))}
+                    >
+                      {label}{sort.key === key && <span className="td-sort-indicator" aria-hidden="true">{sort.direction === "ascending" ? " ↑" : " ↓"}</span>}{key === "capitalization" && <small className="td-sort-help">Small · Medium · Large</small>}
+                    </button>
+                  </span>
+                ))}
+              </div>
+              <div className="td-rows">
+              {sortedCompanies.map((company) => {
                 const shares = holding(company, viewerId);
                 const avg = company.averageBuyPrice?.[viewerId];
+                const profitLoss = profitLossPercent(amount(company.price), avg, shares);
+                const monopoly = fullGroups.some(group => group.zone === company.zone && group.sector === company.sector);
                 return (
                   <button
                     key={company.id}
-                    className={`td-row ${selected?.id === company.id ? "selected" : ""}`}
+                    className={`td-row ${selected?.id === company.id ? "selected" : ""} ${shares === 5 ? "has-control" : ""} ${monopoly ? "has-monopoly" : ""}`}
                     onClick={() => {
                       setSelectedId(company.id);
                       setQuantity(1);
                     }}
                   >
                     <span className="td-name">
-                      <i>{company.name.slice(0, 2).toUpperCase()}</i>
+                      <i className="td-company-photo"><span>{company.name.slice(0, 2).toUpperCase()}</span>{company.logoPath && <img key={company.logoPath} src={company.logoPath} alt="" onError={(event) => { event.currentTarget.style.display = "none"; }} />}</i>
                       <b>
-                        {company.name}
+                        {shares === 5 && <span className="td-control-tooltip" title="5/5 parts · revenu minimum C/C"><Crown className="td-control-mark" size={12} aria-label="Contrôle total" /></span>}{company.name}
                         <small>
-                          {company.ticker || company.id.toUpperCase()}
+                          {company.ticker || company.id.toUpperCase()}{company.country ? ` · ${company.country}` : ""}
                         </small>
                       </b>
                     </span>
                     <span className="td-sector">
                       {catalogName(game.sectors, company.sector)}
+                      {shares === 5 && <em className="td-row-bonus">{monopoly && <Network size={10} aria-label="Monopole" />}{monopoly ? "MONOPOLE · A/A" : "100 % · C/C"}</em>}
                     </span>
-                    <span className="td-price">{money(company.price)}</span>
-                    <span className="td-holding">
-                      <b>
-                        {company.sharesAvailable}
-                        <small> / 5 libres</small>
-                      </b>
-                      <i>{shares}/5 détenues</i>
-                    </span>
-                    <span className="td-average">
-                      {avg == null ? "—" : money(avg)}
-                    </span>
+                    <span className={`td-cap-category ${company.capCategory ?? "unknown"}`} title={company.capCategory ? `${company.capCategory[0].toUpperCase()}${company.capCategory.slice(1)} Cap` : "Catégorie de taille inconnue"}>{company.capCategory?.toUpperCase() ?? "—"}</span>
+                    <span className="td-price"><b><AnimatedMoney value={amount(company.price)} /></b></span>
+                    <span className={`td-profit-loss ${profitLoss == null ? "unknown" : profitLoss >= 0 ? "positive" : "negative"}`}>{profitLoss == null ? "—" : formatPercent(profitLoss)}</span>
+                    <span className="td-held">{shares}<small> / 5 parts</small></span>
+                    <span className="td-available">{company.sharesAvailable}<small> / 5 parts</small></span>
                   </button>
                 );
               })}
               {!companies.length && (
                 <p className="td-empty">
-                  {tab === "portfolio"
+                  {search.trim()
+                    ? "Aucune entreprise ne correspond à cette recherche."
+                    : tab === "portfolio"
                     ? "Aucune position dans votre portefeuille."
                     : "Aucune entreprise dans cette zone."}
                 </p>
               )}
+              </div>
             </div>
           </section>
           <aside className="td-card td-focus">
             {selected ? (
               <>
+                <div className="td-focus-summary">
                 <div className="td-focus-top">
                   <div>
                     <span className="td-eyebrow">FICHE VALEUR</span>
-                    <h2>{selected.name}</h2>
+                    <h2 title={selected.name}>{selected.name}</h2>
                     <p>
-                      {catalogName(game.sectors, selected.sector)} <i />{" "}
+                      {catalogName(game.sectors, selected.sector)}{selected.country ? ` · ${selected.country}` : ""} <i />{" "}
                       {catalogName(game.zones, selected.zone)}
                     </p>
                   </div>
-                  <span className="td-monogram">
-                    {selected.name.slice(0, 2).toUpperCase()}
+                  <span className="td-monogram td-company-photo">
+                    <span>{selected.name.slice(0, 2).toUpperCase()}</span>{selected.logoPath && <img key={selected.logoPath} src={selected.logoPath} alt="" onError={(event) => { event.currentTarget.style.display = "none"; }} />}
                   </span>
                 </div>
-                <div
-                  className="td-sector-art"
-                  style={{
-                    backgroundImage: `linear-gradient(90deg, rgba(13,19,18,.88), rgba(13,19,18,.15)), url(/assets/scenes/sector-${selected.sector}.webp)`,
-                  }}
-                >
-                  <span>SECTEUR</span>
-                  <b>{catalogName(game.sectors, selected.sector)}</b>
+                <div className="td-quote">
+                  <div>
+                    <span title="Cours actuel d’une part">COURS</span>
+                    <strong><AnimatedMoney value={amount(selected.price)} /></strong>
+                  </div>
+                  <div>
+                    <span title="Prix moyen d’achat par part">PRU</span>
+                    <strong>{average == null ? "—" : money(average)}</strong>
+                  </div>
+                  <div>
+                    <span title="Plus ou moins-value latente par rapport au prix moyen d’achat">P/L</span>
+                    <strong className={selectedProfitLoss == null ? "unknown" : selectedProfitLoss >= 0 ? "positive" : "negative"}>{selectedProfitLoss == null ? "—" : formatPercent(selectedProfitLoss)}</strong>
+                  </div>
+                  <div>
+                    <span>PARTS DÉTENUES</span>
+                    <strong>{held} <small>/ 5</small></strong>
+                  </div>
+                  <div>
+                    <span title="Valorisation actuelle de cette participation">VALEUR</span>
+                    <strong>{money(amount(selected.price) * held)}</strong>
+                  </div>
                 </div>
+                </div>
+                <div className="td-focus-details">
                 <div className="td-ownership-badges">
                   {held >= 5 && (
                     <span className="td-rule-badge">
@@ -716,18 +826,6 @@ export default function TradingDesk({
                       {catalogName(game.sectors, selectedGroup.sector)} · A/A
                     </span>
                   )}
-                </div>
-                <div className="td-quote">
-                  <div>
-                    <span>COURS ACTUEL</span>
-                    <strong>{money(selected.price)}</strong>
-                  </div>
-                  <div>
-                    <span>VOTRE POSITION</span>
-                    <strong>
-                      {held} <small>/ 5 parts</small>
-                    </strong>
-                  </div>
                 </div>
                 <div className="td-chart-title">
                   <span>HISTORIQUE DU COURS</span>
@@ -750,58 +848,25 @@ export default function TradingDesk({
                       : "L’historique se construit au fil des mouvements réels du marché."}
                   </div>
                 )}
-                <div className="td-cost">
-                  <span>PRIX MOYEN D’ACHAT</span>
-                  <b>{average == null ? "Aucune position" : money(average)}</b>
-                  <small>
-                    {average == null
-                      ? ""
-                      : `${selected.price >= average ? "+" : "−"}${money(Math.abs(selected.price - average))} par part vs. cours`}
-                  </small>
                 </div>
-                <div className="td-trade">
-                  <div className="td-quantity">
-                    <button
-                      aria-label="Réduire la quantité"
-                      onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    >
-                      −
-                    </button>
-                    <span>
-                      <b>{quantity}</b>
-                      <small>parts</small>
-                    </span>
-                    <button
-                      aria-label="Augmenter la quantité"
-                      onClick={() => setQuantity((q) => Math.min(5, q + 1))}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div className="td-trade-buttons">
-                    <button
-                      className="td-sell"
-                      disabled={!canTrade || quantity > held}
-                      onClick={() => trade("SELL_SHARE")}
-                    >
-                      Vendre
-                    </button>
-                    <button
-                      className="td-buy"
-                      disabled={
-                        !canTrade ||
-                        quantity > selected.sharesAvailable ||
-                        buyTotal > amount(viewer?.cash)
-                      }
-                      onClick={() => trade("BUY_SHARE")}
-                    >
-                      Acheter <small>{money(buyTotal)}</small>
-                    </button>
+                <div className="td-focus-order">
+                <div className="td-order-ticket">
+                  <div className="td-order-quantity-label">QUANTITÉ · {money(amount(selected.price))} / PART</div>
+                  <div className="td-trade">
+                    <div className="td-quantity">
+                      <button aria-label="Réduire la quantité" disabled={quantity <= 1} onClick={() => setQuantity((q) => Math.max(1, q - 1))}>−</button>
+                      <span><b>{quantity}</b><small>parts</small></span>
+                      <button aria-label="Augmenter la quantité" disabled={quantity >= 5} onClick={() => setQuantity((q) => Math.min(5, q + 1))}>+</button>
+                    </div>
+                    <div className="td-trade-buttons">
+                      <div className="td-direct-order"><button className="td-buy" aria-label="Acheter" disabled={buyDisabled} onClick={() => trade("BUY_SHARE")}>Acheter</button><small>Montant <b>{money(buyTotal)}</b></small></div>
+                      <div className="td-direct-order"><button className="td-sell" aria-label="Vendre" disabled={sellDisabled} onClick={() => trade("SELL_SHARE")}>Vendre</button><small>Montant <b>{money(buyTotal)}</b></small></div>
+                    </div>
                   </div>
                 </div>
                 {disabledReason && (
                   <p className="td-disabled-reason" role="status">
-                    {disabledReason}
+                    {game.phase === "geography" ? "Consultation libre pendant la décision de voyage. Les ordres restent disponibles en phase Marché." : disabledReason}
                   </p>
                 )}
                 {canTrade && quantity > selected.sharesAvailable && (
@@ -814,6 +879,7 @@ export default function TradingDesk({
                     Trésorerie insuffisante pour cet ordre.
                   </p>
                 )}
+                </div>
               </>
             ) : (
               <div className="td-no-selection">

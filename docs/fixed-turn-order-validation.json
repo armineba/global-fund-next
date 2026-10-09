@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-09T17:16:52.045891+00:00",
+  "rule": "Initial initiative winner and cyclic seat order stay fixed for every cycle; insolvent seats are skipped without rotating the anchor.",
+  "release": "apps/web/.releases/2026-10-09T17-13-48-975Z-418940",
+  "unitTests": {
+    "passed": 135,
+    "files": 9,
+    "log": "/tmp/gf-fixed-turn-order-unit.log"
+  },
+  "browserTests": {
+    "distinctPassed": 2,
+    "fullSuiteRun": false,
+    "log": "/tmp/gf-fixed-turn-order-e2e.log",
+    "assertion": "Both browser paths verify the same first fund starts cycle 2 after Context reading/confirmation; another fund plays the intervening turn."
+  },
+  "build": {
+    "typecheck": "passed",
+    "production": "passed",
+    "publicIndexMatches": true,
+    "indexSha256": "7209012ba1ed9335c860dee0d9dafe7ff78dbab16e8235effd8f37037619c13e"
+  },
+  "deployment": {
+    "url": "https://global-fund-next.213.199.40.67.sslip.io/",
+    "health": "ok",
+    "nextService": "active",
+    "historicalService": "active",
+    "serverRestarted": true,
+    "databaseBackup": "runtime/backups/fixed-turn-order-oct9.dump",
+    "backupBytes": 528362,
+    "backupListVerified": true
+  },
+  "referenceIntegrity": {
+    "checkedAt": "2026-10-09T17:15:17.233642+00:00",
+    "historicalSources": {
+      "checked": 157,
+      "changed": []
+    },
+    "historicalInfrastructure": {
+      "checked": 2,
+      "changed": []
+    }
+  },
+  "saveCompatibility": "No schema migration. Legacy saves freeze their currently persisted starter anchor and keep the current turn; unrecorded initial tie-break results are not inferred.",
+  "review": "Independent engine review found no concrete phase, Context, detention, endgame or save regression. Parameterized tests use actual controlled highest opening die for 2..6 seats over three cycles; additional cases cover JSON resume and bankrupt starter."
+}

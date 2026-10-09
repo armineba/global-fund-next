@@ -1,0 +1,44 @@
+{
+  "method": "Three short deterministic replays stopped at the first Large purchase, using the final selected economy and the same seed; no full 100-game batch repeated.",
+  "cases": [
+    {
+      "seed": 20261027,
+      "cycle": 6,
+      "difficulty": "hard",
+      "company": "Industrial and Commercial Bank of China Limited",
+      "zoneGrade": "D",
+      "sectorGrade": "E",
+      "ccSharePrice": 141.274,
+      "sharePrice": 52.98,
+      "cash": 84.12,
+      "nav": 106.69,
+      "quantity": 1
+    },
+    {
+      "seed": 20261073,
+      "cycle": 6,
+      "difficulty": "normal",
+      "company": "International Business Machines Corporation (IBM)",
+      "zoneGrade": "C",
+      "sectorGrade": "E",
+      "ccSharePrice": 112.898,
+      "sharePrice": 56.45,
+      "cash": 91.95,
+      "nav": 141.84,
+      "quantity": 1
+    },
+    {
+      "seed": 20261096,
+      "cycle": 7,
+      "difficulty": "easy",
+      "company": "SAP SE",
+      "zoneGrade": "A",
+      "sectorGrade": "E",
+      "ccSharePrice": 120.83,
+      "sharePrice": 90.62,
+      "cash": 136.92,
+      "nav": 136.92,
+      "quantity": 1
+    }
+  ]
+}

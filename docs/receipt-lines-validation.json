@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-08T22:36:23.460025+00:00",
+  "scope": "Presentation only: reason headings, named movements, single global total, retained company carousel.",
+  "release": "apps/web/.releases/2026-10-08T22-32-55-887Z-381966",
+  "unitTests": {
+    "passed": 123,
+    "files": 9,
+    "log": "/tmp/gf-receipt-lines-unit.log"
+  },
+  "browserTests": {
+    "distinctPassed": 3,
+    "fullSuiteRun": false,
+    "logs": [
+      "/tmp/gf-receipt-lines-e2e.log",
+      "/tmp/gf-receipt-lines-final-e2e.log"
+    ],
+    "note": "All three passed on the first presentation release; the cash case was rerun after final removal of repeated per-result subtotals."
+  },
+  "captures": [
+    {
+      "path": "screenshots/current/global-cash-settlement.png",
+      "sha256": "7dec1e577318ae0c3b47290b2a3c9197acad0ce61676cc34fd42a02111301efa",
+      "release": "apps/web/.releases/2026-10-08T22-32-55-887Z-381966"
+    },
+    {
+      "path": "screenshots/settlement-validation/1920x1080/payment-card.png",
+      "sha256": "0c09becbac42931ef30dbbbd7fe85920ac3ec29947043687a74a4ae74ee7299a",
+      "release": "apps/web/.releases/2026-10-08T22-32-55-887Z-381966"
+    },
+    {
+      "path": "screenshots/settlement-validation/1440x900/payment-card.png",
+      "sha256": "3f6bdd494eb9c0d4808973bb8e2678df96a5fab74a3a4591abed85a554d4b2ab",
+      "release": "apps/web/.releases/2026-10-08T22-32-55-887Z-381966"
+    },
+    {
+      "path": "screenshots/settlement-validation/1366x768/payment-card.png",
+      "sha256": "d48e4956f335830a54374add1832001bf5b35c6a5cc776e639d901f995dd986a",
+      "release": "apps/web/.releases/2026-10-08T22-32-55-887Z-381966"
+    }
+  ],
+  "build": {
+    "production": "passed",
+    "typecheck": "passed",
+    "publicIndexMatches": true,
+    "indexSha256": "81bc516158170df7eae23b2b0a206cea78429ac01cfd12de0ae25887c65b3a60"
+  },
+  "deployment": {
+    "url": "https://global-fund-next.213.199.40.67.sslip.io/",
+    "health": "ok",
+    "nextService": "active",
+    "historicalService": "active"
+  },
+  "referenceIntegrity": {
+    "checkedAt": "2026-10-08T22:35:59.589708+00:00",
+    "historicalSources": {
+      "checked": 157,
+      "changed": []
+    },
+    "historicalInfrastructure": {
+      "checked": 2,
+      "changed": []
+    }
+  },
+  "review": "Root screenshot review and independent read-only worker review completed. The carousel remains below the total, inside the existing vertically scrollable details."
+}
