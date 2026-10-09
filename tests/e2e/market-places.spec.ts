@@ -155,10 +155,28 @@ test.describe("Places de marché et bureaux", () => {
     const initialPlayer = await office.getAttribute("data-office-player");
     await expect(office).toHaveAttribute("data-current-market", "asia");
     await page.getByRole("radio", { name: "Choisir Europe" }).click();
+    await page.evaluate(() => {
+      const world = document.querySelector(".game-world");
+      if (!world) throw new Error("Game world is missing before travel.");
+      const tracked = window as Window & { travelMarketsDuringResolution?: string[] };
+      tracked.travelMarketsDuringResolution = [];
+      let capturedResolution = false;
+      const observer = new MutationObserver(() => {
+        const stage = world.getAttribute("data-presentation-stage");
+        if (stage !== "TRAVEL_RESOLUTION") {
+          if (capturedResolution) observer.disconnect();
+          return;
+        }
+        capturedResolution = true;
+        const market = document.querySelector(".market-office")?.getAttribute("data-current-market");
+        if (market) tracked.travelMarketsDuringResolution!.push(market);
+      });
+      observer.observe(world, { attributes: true, attributeFilter: ["data-presentation-stage"] });
+    });
     await page.getByRole("button", { name: "Voyager vers Europe" }).click();
-    await expect(world).toHaveAttribute("data-presentation-stage", "TRAVEL_RESOLUTION");
-    await expect(office).toHaveAttribute("data-current-market", "asia");
+    await expect.poll(() => page.evaluate(() => (window as Window & { travelMarketsDuringResolution?: string[] }).travelMarketsDuringResolution ?? [])).toContain("asia");
     await expect(world).not.toHaveAttribute("data-presentation-stage", "TRAVEL_RESOLUTION", { timeout: 10_000 });
+    await expect(world).toHaveAttribute("data-presentation-stage", "CARD_READING");
     await expect(office).toHaveAttribute("data-current-market", "europe");
     await expect(office).toHaveAttribute("data-office-city", "Londres");
     await expect(office.locator(".office-leaving")).toHaveCount(0);

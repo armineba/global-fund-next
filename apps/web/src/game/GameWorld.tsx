@@ -225,7 +225,7 @@ export default function GameWorld({ room }: { room: RoomView }) {
     </section>
     <div className="board-world" aria-label="Plateau mondial">
       <Suspense fallback={<div className="world-loading"><Globe2 /><span>Installation de la table des marchés…</span></div>}>
-        <BoardScene game={visual.boardGame!} timeline={visual.timeline} onRoll={() => send({ type: "ROLL" })} disabled={!canAct || game.phase !== "sector"} reducedMotion={reducedMotion} quality={quality} focusZone={overview ? null : focusedZone ?? (terminal ? browseZone : undefined)} overview={overview} presentation={presentation} />
+        <BoardScene game={visual.boardGame!} timeline={visual.timeline} stage={presentationStage} onRoll={() => send({ type: "ROLL" })} disabled={!canAct || game.phase !== "sector"} reducedMotion={reducedMotion} quality={quality} focusZone={overview ? null : focusedZone ?? (terminal ? browseZone : undefined)} overview={overview} presentation={presentation} />
       </Suspense>
     </div>
     <div className="board-coordinate"><span>52 SEMAINES / 91 ENTREPRISES</span><button className="hud-icon" aria-label="Vue globale du plateau" onClick={() => { setOverview(!overview); setFocusedZone(null); }} aria-pressed={overview}><Maximize2 size={14} /></button></div>

@@ -6,17 +6,28 @@ Le VPS est `213.199.40.67`, accessible en SSH sur le port 22 sous le compte `cod
 
 ## Première installation sur Mac
 
-Installez Node.js 22.12 ou plus récent et Git. Clonez le dépôt public :
+Installez [Node.js](https://nodejs.org/en/download) 22.12 ou plus récent et Git. Clonez le dépôt public :
 
 ```sh
 git clone https://github.com/mattmofr/global-fund-next.git
 cd global-fund-next
+git config user.name mattmofr
+git config user.email 60547926+mattmofr@users.noreply.github.com
 npm ci
 cp -n .env.example .env
 npm run dev
 ```
 
-Ouvrez <http://localhost:5174>. Le fichier `.env` est local et ignoré par Git. Pour pousser vos changements, connectez votre compte GitHub par la méthode déjà configurée sur votre Mac. Si GitHub CLI est installé, `gh auth login` est une option; il n’est pas nécessaire pour lancer le jeu localement.
+Ouvrez <http://localhost:5174>. Le fichier `.env` est local et ignoré par Git. Les deux commandes `git config` définissent l'auteur des commits uniquement pour ce clone et utilisent l'adresse GitHub qui masque votre e-mail personnel.
+
+Pour pousser depuis le Terminal, installez [GitHub CLI pour Mac](https://github.com/cli/cli#installation), puis connectez votre compte dans le navigateur :
+
+```sh
+gh auth login --hostname github.com --git-protocol https --web
+gh auth setup-git
+```
+
+Vous pouvez conserver votre méthode d'authentification Git existante si elle fonctionne déjà sur votre Mac. GitHub CLI n'est pas nécessaire pour lancer le jeu localement.
 
 ## Envoyer un changement
 
