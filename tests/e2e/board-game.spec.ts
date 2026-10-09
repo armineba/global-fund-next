@@ -29,6 +29,23 @@ async function enterLocalGame(page: Page) {
   await expect(page.locator(".fund-board-canvas")).toHaveAttribute("data-scene-ready", "true");
 }
 
+async function installMarketMovingContextFixture(page: Page) {
+  const roomId = await page.evaluate(() => {
+    const session = JSON.parse(localStorage.getItem("global-fund-next:session") || "null") as { roomId?: string } | null;
+    if (!session?.roomId) throw new Error("A test room session is required.");
+    return session.roomId;
+  });
+  const response = await page.evaluate(async roomId => {
+    const result = await fetch("/__test/context-fixture", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ roomId }),
+    });
+    return { ok: result.ok, status: result.status };
+  }, roomId);
+  expect(response.ok, `Context fixture route returned ${response.status}`).toBeTruthy();
+}
+
 async function continueCardsUntilSettled(page: Page) {
   const world = page.locator(".game-world");
   const card = page.locator(".cs-scene");
@@ -48,7 +65,7 @@ async function continueCardsUntilSettled(page: Page) {
   await expect(world).not.toHaveAttribute("data-effects-started", "true");
 }
 
-async function reachSecondCycleContext(page: Page) {
+async function reachSecondCycleContext(page: Page, beforeContext?: () => Promise<void>) {
   const firstInvestor = await page.locator(".active-fund h2").innerText();
   for (let turn = 0; turn < 2; turn += 1) {
     await expect(page.locator(".game-world")).toHaveAttribute("data-presentation-stage", "WAITING_FOR_DICE");
@@ -64,6 +81,7 @@ async function reachSecondCycleContext(page: Page) {
     await expect(page.locator(".game-world")).toHaveAttribute("data-presentation-stage", "TRADING");
     await page.getByRole("button", { name: "Terminer le marché" }).click();
     await expect(page.locator(".game-world")).toHaveAttribute("data-presentation-stage", "TURN_END");
+    if (turn === 1 && beforeContext) await beforeContext();
     await page.locator(".turn-actions").getByRole("button", { name: "Prochain investisseur" }).click();
   }
   await expect(page.locator(".cs-scene.is-context")).toBeVisible({ timeout: 30_000 });
@@ -136,7 +154,7 @@ test.describe("Expérience du plateau", () => {
     const page = await context.newPage();
     try {
       await enterLocalGame(page);
-      const firstInvestor = await reachSecondCycleContext(page);
+      const firstInvestor = await reachSecondCycleContext(page, () => installMarketMovingContextFixture(page));
       const world = page.locator(".game-world");
       await expect(world).toHaveAttribute("data-presentation-stage", "CARD_READING");
       await expect(world).toHaveAttribute("data-effects-started", "false");
