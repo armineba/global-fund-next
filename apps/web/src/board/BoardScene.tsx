@@ -72,18 +72,9 @@ type Presentation = "context" | "event" | "bull" | "bear" | "crash" | null;
 type Geometry = { type: string; coordinates: number[][][] | number[][][][] };
 type LandData = { features: { geometry: Geometry }[] };
 
-export interface BoardSceneProps {
-  game: GameView;
-  onRoll?: () => void;
-  disabled?: boolean;
-  reducedMotion?: boolean;
-  focusZone?: string | null;
-  quality?: Quality;
-  presentation?: Presentation;
-  overview?: boolean;
-  timeline?: BoardTimeline | null;
-  stage?: PresentationStage;
-}
+// Legacy 2D board kept until the 3D scene replaces this module; it accepts the shared contract.
+export type { BoardSceneProps } from "./types";
+import type { BoardSceneProps } from "./types";
 export const cellRect = boardCellRect;
 const cellPoint = boardCellPoint;
 function projectedEllipse(g: Graphics, x: number, y: number, rx: number, ry: number, origin: Point = {x:0,y:0}) {
