@@ -1,15 +1,44 @@
-/* The same office materials frame five licensed, identifiable financial skylines. */
-.game-world .room-depth.market-office{background:none;filter:none;transform:none;overflow:hidden;transition:none}
-.office-pane{position:absolute;inset:0;overflow:hidden;background:#14212d}
-.office-skyline{position:absolute;inset:0 0 22%;background-size:cover;background-position:center 46%;filter:brightness(.95) contrast(1.05) saturate(.72);transform:scale(1.015)}
-.office-window-grid{position:absolute;inset:0 0 22%;background:repeating-linear-gradient(90deg,transparent 0 calc(20% - 9px),#071321c9 calc(20% - 9px) calc(20% - 3px),#bda46b33 calc(20% - 3px) 20%);box-shadow:inset 30px 0 40px #02091077,inset -30px 0 40px #02091077;pointer-events:none}
-.office-interior{position:absolute;inset:0;background:url('/assets/scenes/wealth/tower.webp') center bottom/cover no-repeat;mask-image:linear-gradient(180deg,transparent 0 50%,#0004 62%,#000 76%);filter:brightness(.95) saturate(.8)}
-.office-exposure{position:absolute;inset:0;background:linear-gradient(180deg,#08172644 0%,#06131d15 30%,#06131d22 65%,#02091288 100%)}
-.office-leaving{animation:office-fade-out .5s ease-in-out forwards;pointer-events:none}
-.game-world .room-vignette{background:radial-gradient(ellipse at 47% 45%,transparent 30%,#03080f44 90%),linear-gradient(180deg,#030b142b,transparent 35%,#03080f66 100%)}
-.game-world.wealth-distressed .office-interior{filter:brightness(.8) saturate(.5)}
-.game-world.wealth-gold .office-exposure,.game-world.wealth-world .office-exposure{background:linear-gradient(180deg,#9776411a,transparent 50%,#02091288)}
-.game-world.world-detained .room-vignette{background:repeating-linear-gradient(90deg,#0004 0 3px,transparent 3px 100px),radial-gradient(ellipse,transparent,#0d061977 95%)}
-@keyframes office-fade-out{to{opacity:0}}
-@media(prefers-reduced-motion:reduce){.office-leaving{animation:none;display:none}.office-skyline{transform:none}}
-.motion-reduced .office-leaving{display:none}
+/* The office window behind the transparent 3D canvas: one licensed night
+   skyline per financial city, darkened, softly defocused and vignetted. */
+.game-world .market-office {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--ink-950);
+}
+.game-world .office-pane { position: absolute; inset: 0; overflow: hidden; }
+.game-world .office-skyline {
+  position: absolute;
+  inset: -28px;
+  background-size: cover;
+  background-position: center 42%;
+  filter: blur(4px) brightness(0.52) saturate(0.7) contrast(1.06);
+  transform: scale(1.03);
+}
+/* Night grade: deep ink at the floor so the table settles, cooler sky above. */
+.game-world .office-grade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 10, 18, 0.5) 0%, rgba(6, 10, 18, 0.12) 30%, rgba(5, 8, 13, 0.34) 62%, rgba(4, 6, 10, 0.94) 100%),
+    linear-gradient(90deg, rgba(4, 6, 10, 0.55), transparent 28%, transparent 72%, rgba(4, 6, 10, 0.55));
+}
+/* Warm lamplight pooled where the board sits. */
+.game-world .office-glow { position: absolute; inset: 0; background: radial-gradient(58% 44% at 50% 60%, rgba(210, 173, 102, 0.1), transparent 70%); }
+.game-world .office-vignette { position: absolute; inset: 0; background: radial-gradient(125% 105% at 50% 48%, transparent 44%, rgba(2, 3, 6, 0.74) 100%); }
+.game-world .office-leaving { animation: office-fade-out 550ms var(--ease-in-out) forwards; }
+@keyframes office-fade-out { to { opacity: 0; } }
+
+/* Prestige: a discreet change of light only. */
+.game-world.wealth-distressed .office-skyline { filter: blur(4px) brightness(0.4) saturate(0.35) contrast(1.04); }
+.game-world.wealth-distressed .office-glow { opacity: 0.45; }
+.game-world.wealth-floor .office-glow { background: radial-gradient(60% 46% at 50% 60%, rgba(226, 196, 134, 0.13), transparent 70%); }
+.game-world.wealth-gold .office-glow, .game-world.wealth-world .office-glow { background: radial-gradient(64% 50% at 50% 60%, rgba(226, 196, 134, 0.17), transparent 72%); }
+.game-world.wealth-gold .office-skyline, .game-world.wealth-world .office-skyline { filter: blur(4px) brightness(0.56) saturate(0.82) sepia(0.12) contrast(1.06); }
+/* Active fund under judicial control: colder, slightly rubis-edged. */
+.game-world.world-detained .office-vignette { background: radial-gradient(125% 105% at 50% 48%, transparent 40%, rgba(30, 6, 14, 0.78) 100%); }
+
+@media (prefers-reduced-motion: reduce) { .game-world .office-leaving { animation: none; display: none; } }
+.game-world.motion-reduced .office-leaving { display: none; }

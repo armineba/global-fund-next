@@ -1,46 +1,694 @@
-.settlement-desk{position:fixed;z-index:60;inset:55px 0 0;display:flex;flex-direction:column;gap:12px;overflow:auto;padding:20px clamp(18px,3vw,46px) 24px;background:radial-gradient(ellipse at 50% -25%,#244052 0,#0b1c29 48%,#07111b 100%);color:#e9e4d8;font-family:Inter,Arial,sans-serif;scrollbar-color:#92794c #091722;scrollbar-width:thin}.sd-topbar{min-height:32px;display:flex;align-items:center;gap:20px;padding-bottom:11px;border-bottom:1px solid #d2b4763b;font:9px var(--font-data);letter-spacing:.11em;color:#afbdc2}.sd-brand{display:flex;align-items:center;gap:9px;color:#efdfba}.sd-brand>i{display:grid;place-items:center;width:28px;height:28px;border:1px solid #c7a76b75;color:#d9bd82}.sd-brand b{color:#a9b8bc;font-weight:400}.sd-status{display:flex;align-items:center;gap:7px;color:#d4c49d}.sd-status>i{width:6px;height:6px;border-radius:50%;background:#b2a373}.sd-status>i.live{background:#66d9ae;box-shadow:0 0 9px #66d9ae77}.sd-status>i.waiting{background:#e7b871}.sd-cycle{margin-left:auto}.sd-cycle b{color:#b89a61;padding:0 5px}.sd-cause{position:relative;display:grid;grid-template-columns:32px minmax(130px,190px) 1fr;align-items:center;gap:12px;min-height:62px;padding:10px 15px;background:linear-gradient(90deg,#192d38d9,#0c1c28c7);border:1px solid #c6a76250;border-left:2px solid #d4b577}.sd-cause-mark{width:29px;height:29px;display:grid;place-items:center;border:1px solid #d4b57764;color:#dfc288}.sd-cause>div:nth-child(2){display:flex;flex-direction:column;gap:4px}.sd-cause small,.sd-section-heading small,.sd-party>small,.sd-obligation>small{font:8px var(--font-data);letter-spacing:.1em;color:#aabcc1}.sd-cause strong{font:14px var(--font-display);letter-spacing:.05em;color:#f0dcad}.sd-cause-flow{display:flex;align-items:center;gap:8px;font:8px var(--font-data);letter-spacing:.06em;color:#bcc9c9}.sd-cause-flow svg{color:#bba068}.sd-cause p{position:absolute;right:15px;bottom:5px;margin:0;max-width:38%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#9caeb4;font-size:9px}.sd-ledger{display:grid;grid-template-columns:1fr 44px 1.1fr 44px 1fr;align-items:center;min-height:83px;padding:12px 16px;background:#071520cc;border:1px solid #b9c2c21e}.sd-party,.sd-obligation{display:flex;flex-direction:column;gap:5px;min-width:0}.sd-party strong{font:18px var(--font-display);color:#eee3ce;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sd-party span{font:10px var(--font-data);color:#9fb1b6}.sd-obligation{align-items:center;text-align:center}.sd-obligation strong{font:22px var(--font-data);color:#efcf8d}.sd-obligation span{font-size:9px;color:#c4aa79}.sd-party-creditor{text-align:right;align-items:flex-end}.sd-ledger-arrow{display:grid;place-items:center;color:#c5a76f}.sd-priority{display:flex;align-items:center;gap:18px;padding:6px 11px;background:#0a1a24a8;border:1px solid #b8aa8521}.sd-priority>span{min-width:130px;font:8px var(--font-data);letter-spacing:.08em;color:#d4c08f}.sd-priority>span small{display:block;margin-top:4px;font:8px Inter;color:#869ba1;letter-spacing:0}.sd-priority>div{display:flex;flex:1;gap:7px;overflow:auto}.sd-priority>div>span{display:flex;align-items:center;gap:7px;white-space:nowrap;padding:5px 8px;border:1px solid #cad0ca1a;font-size:9px;color:#9baeb1}.sd-priority>div>span.current{border-color:#c8a8648c;color:#f0dfb8;background:#302b1f55}.sd-priority>div>span>b{font:9px var(--font-data);color:#d2b576}.sd-priority>div>span small{font:8px var(--font-data);color:#a6b7b9}.sd-main{display:flex;flex:1;flex-direction:column;min-height:220px;padding:14px 16px 12px;background:linear-gradient(135deg,#0d202d,#091721);border:1px solid #9eaaad2b;box-shadow:0 12px 34px #0003}.sd-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.sd-section-heading>div{display:flex;flex-direction:column;gap:3px}.sd-section-heading h1{margin:0;font:20px var(--font-display);font-weight:500;color:#f0e3c5}.sd-section-heading>span{display:flex;align-items:center;gap:7px;font:8px var(--font-data);letter-spacing:.06em;color:#b5c4c5}.sd-table-wrap{flex:1;min-height:100px;overflow:auto;border:1px solid #bfcaca1e;scrollbar-color:#756341 #0a1923;scrollbar-width:thin}.sd-assets-table{width:100%;border-collapse:collapse;min-width:720px;font-size:10px}.sd-assets-table thead{position:sticky;top:0;z-index:1;background:#142937;color:#9eafb1}.sd-assets-table th{height:29px;padding:0 11px;text-align:left;font:8px var(--font-data);font-weight:400;letter-spacing:.07em;border-bottom:1px solid #c5a9643a}.sd-assets-table td{height:43px;padding:5px 11px;border-bottom:1px solid #b6c2c21a;color:#c1cecd;font:10px var(--font-data)}.sd-assets-table tr:last-child td{border-bottom:0}.sd-assets-table tbody tr{background:#0a1b26a8}.sd-assets-table tbody tr:nth-child(even){background:#10232e99}.sd-assets-table tbody tr.selected{background:#192c32;border-left:2px solid #d3b674}.sd-assets-table td:first-child{font:11px Inter;color:#e8e3d5}.sd-assets-table td:first-child strong{font-weight:600}.sd-assets-table td>small{display:block;margin-top:3px;font:8px var(--font-data);color:#82989e}.sd-assets-table td:nth-child(2){font:9px Inter}.sd-assets-table td:nth-child(2) small{font:8px Inter}.sd-assets-table td:last-child{font-weight:600;color:#9aabad}.sd-assets-table td:last-child.sd-value-selected{color:#e7cf99}.sd-quantity{display:flex;align-items:center;gap:8px}.sd-quantity button{width:24px;height:23px;padding:0;border:1px solid #bdab7660;background:#132733;color:#e6d09c;font-size:15px;line-height:1}.sd-quantity button:disabled{opacity:.32;cursor:not-allowed}.sd-quantity b{min-width:16px;text-align:center;color:#eeddb5;font:11px var(--font-data)}.sd-empty{text-align:center!important;color:#97a9ac!important}.sd-selection-footer,.sd-decision-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:11px}.sd-estimate{display:flex;flex-wrap:wrap;align-items:center;gap:5px 18px;max-width:52%}.sd-estimate>span{display:flex;align-items:center;gap:8px;font:8px var(--font-data);color:#a7b6b7}.sd-estimate>span b{font-size:11px;color:#e3d1a5}.sd-estimate>small{flex-basis:100%;font-size:8px;color:#82979c}.sd-actions{display:flex;justify-content:flex-end;gap:7px}.sd-actions button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:37px;padding:0 12px;border-radius:2px;font:9px Inter;font-weight:650;white-space:nowrap}.sd-primary{border:1px solid #e0c284;background:linear-gradient(120deg,#b39455,#d5b878);color:#101923;box-shadow:inset 0 1px #f7e7b45c}.sd-primary:hover:not(:disabled){background:#e4cb94}.sd-secondary{border:1px solid #98a9a94a;background:#10232e;color:#d1dbd7}.sd-secondary:hover:not(:disabled){border-color:#ceb477;color:#ead8ae}.sd-actions button:disabled{opacity:.38;cursor:not-allowed}.sd-hint{margin:7px 0 0;color:#c0a975;font-size:9px}.sd-waiting{display:flex;align-items:center;justify-content:center;gap:10px;flex:1;min-height:120px;color:#a6b7ba;font-size:12px}.sd-waiting svg{color:#d5b87e}.sd-waiting b{color:#eddbb0}.sd-offer-main{flex:1}.sd-frozen{color:#8dceb4!important}.sd-offer-card{display:grid;grid-template-columns:1.35fr 1fr;min-height:150px;border:1px solid #bdc8c326;background:#091924}.sd-offer-assets{padding:15px 18px}.sd-offer-assets>small,.sd-decision-footer>div>small{display:block;margin-bottom:10px;font:8px var(--font-data);letter-spacing:.09em;color:#9aafb2}.sd-offer-assets>div{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #b8c2bd1a}.sd-offer-assets>div:last-child{border-bottom:0}.sd-offer-assets>div>span{display:grid;grid-template-columns:20px auto;align-items:center;gap:3px 8px}.sd-offer-assets>div svg{grid-row:span 2;color:#c3a66c}.sd-offer-assets>div b{font-size:11px;color:#e8e4d7}.sd-offer-assets>div small{font:8px var(--font-data);color:#94a7aa}.sd-offer-assets>div>strong{font:13px var(--font-data);color:#e0cb98}.sd-offer-assets p{color:#98a9ab;font-size:10px}.sd-offer-math{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px 20px;border-left:1px solid #bac6c21b;background:#10232e}.sd-offer-math>span{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#a6b5b5;font-size:10px}.sd-offer-math>span b{font:12px var(--font-data);color:#e2e0d3}.sd-offer-math>span.sd-net{padding-top:8px;border-top:1px solid #c3b07944;color:#dbca9f}.sd-offer-math>span.sd-net b{font-size:16px;color:#efd18f}.sd-offer-math>small{color:#8ea1a5;font-size:8px}.sd-cash-warning{display:flex;align-items:center;gap:8px;margin:9px 0 0;padding:8px 10px;border:1px solid #a64b557a;background:#411c2473;color:#f1a6a0;font-size:9px}.sd-decision-footer{margin-top:auto}.sd-decision-footer>div>strong{font:16px var(--font-data);color:#e0ce9e}.sd-handoff{display:flex;align-items:center;justify-content:center;gap:7px;min-height:27px;color:#9caeb1;font-size:9px}.sd-handoff svg{color:#c5a66d}.sd-handoff b{color:#ead6a6}
-@media(max-height:760px) and (min-width:801px){.settlement-desk{gap:8px;padding-top:12px;padding-bottom:12px}.sd-cause{min-height:53px}.sd-ledger{min-height:69px}.sd-main{padding:10px 13px}.sd-assets-table td{height:36px}.sd-section-heading h1{font-size:18px}.sd-selection-footer,.sd-decision-footer{padding-top:7px}}
-@media(max-width:800px){.settlement-desk{inset:55px 0 0;padding:12px;gap:9px}.sd-topbar{gap:10px}.sd-cycle{display:none}.sd-cause{grid-template-columns:30px 1fr;gap:8px}.sd-cause-flow{grid-column:2;font-size:7px;flex-wrap:wrap}.sd-cause p{position:static;grid-column:2;max-width:none;white-space:normal}.sd-ledger{grid-template-columns:1fr 24px 1fr;gap:7px;padding:10px}.sd-ledger-arrow:nth-of-type(2){display:none}.sd-party strong{font-size:13px}.sd-party span{font-size:8px}.sd-obligation{grid-column:1/-1;grid-row:2;padding:5px 0;border-top:1px solid #bdc4c21c}.sd-obligation strong{font-size:17px}.sd-obligation span{font-size:8px}.sd-party-creditor{grid-column:3;grid-row:1}.sd-priority{align-items:flex-start;flex-direction:column;gap:6px}.sd-priority>div{width:100%}.sd-main{padding:11px 9px}.sd-section-heading{align-items:flex-start}.sd-section-heading h1{font-size:16px}.sd-section-heading>span{font-size:7px;text-align:right}.sd-selection-footer,.sd-decision-footer{align-items:stretch;flex-direction:column}.sd-estimate{max-width:none}.sd-actions{display:grid;grid-template-columns:1fr}.sd-actions button{min-height:40px}.sd-offer-card{grid-template-columns:1fr}.sd-offer-math{border-left:0;border-top:1px solid #bac6c21b}.sd-decision-footer{margin-top:10px}.sd-waiting{min-height:100px;text-align:center}.sd-handoff{font-size:8px}}
-/* The clearing desk occupies the board's central work area; the persistent HUD stays visible. */
-.settlement-desk{position:absolute;inset:var(--center-top) var(--center-right) var(--center-bottom) var(--center-left);gap:6px;overflow:hidden;padding:10px;background:linear-gradient(145deg,#0b1c28f5,#06111bf7)}
-.sd-topbar{flex:none;min-height:26px;padding:0 0 5px;gap:12px;font-size:8px}
-.sd-brand>i{width:23px;height:23px}
-.sd-cause{flex:none;min-height:42px;padding:5px 9px;grid-template-columns:24px minmax(125px,175px) 1fr;gap:8px}
-.sd-cause-mark{width:22px;height:22px}
-.sd-cause p{bottom:2px;right:8px;font-size:8px}
-.sd-ledger{flex:none;min-height:60px;padding:6px 10px;grid-template-columns:1fr 28px 1.1fr 28px 1fr}
-.sd-party,.sd-obligation{gap:2px}
-.sd-party strong{font-size:14px}
-.sd-party span{font-size:8px}
-.sd-obligation strong{font-size:17px}
-.sd-obligation span{font-size:8px}
-.sd-priority{flex:none;min-height:35px;padding:3px 8px;gap:10px}
-.sd-priority>span{min-width:120px}
-.sd-priority>span small{display:block;margin:3px 0 0}
-.sd-priority>div>span{padding:3px 6px}
-.sd-main{flex:1 1 0;min-height:0;overflow:hidden;padding:8px 10px 7px}
-.sd-section-heading{flex:none;margin-bottom:6px}
-.sd-section-heading h1{font-size:17px}
-.sd-table-wrap{flex:1 1 56px;min-height:56px}
-.sd-assets-table th{height:24px}
-.sd-assets-table td{height:32px;padding:3px 8px}
-.sd-quantity button{width:20px;height:19px}
-.sd-selection-footer,.sd-decision-footer{flex:none;gap:10px;padding-top:6px}
-.sd-estimate{gap:3px 12px;max-width:50%}
-.sd-estimate>small{font-size:7px}
-.sd-actions{flex:none}
-.sd-actions button{min-height:32px;padding:0 9px;font-size:8px}
-.sd-hint{flex:none;margin:3px 0 0;font-size:8px;line-height:1.2}
-.sd-waiting{min-height:0}
-.sd-offer-main{overflow:hidden}
-.sd-offer-card{flex:1 1 0;min-height:0;overflow:auto;grid-template-columns:1.25fr 1fr}
-.sd-offer-assets{padding:9px 12px}
-.sd-offer-assets>small,.sd-decision-footer>div>small{margin-bottom:5px}
-.sd-offer-assets>div{padding:5px 0}
-.sd-offer-math{padding:9px 12px;gap:5px}
-.sd-cash-warning{flex:none;margin:5px 0 0;padding:5px 8px}
-.sd-decision-footer{margin-top:0}
-.sd-decision-footer>div>strong{font-size:14px}
-.sd-handoff{flex:none;min-height:18px;font-size:8px}
-@media(max-height:600px){.settlement-desk{padding:6px;gap:4px}.sd-topbar{min-height:22px;padding-bottom:3px}.sd-cause{min-height:36px}.sd-ledger{min-height:50px}.sd-priority{min-height:28px}.sd-main{padding:5px 7px}.sd-section-heading h1{font-size:15px}.sd-assets-table th{height:20px}.sd-assets-table td{height:27px}.sd-actions button{min-height:28px}.sd-hint{display:none}}
-@media(max-width:800px){.settlement-desk{inset:var(--center-top) 8px var(--center-bottom) 8px;padding:7px;gap:5px}.sd-cause{grid-template-columns:24px 1fr}.sd-cause-flow{grid-column:2}.sd-cause p{position:static;grid-column:2}.sd-ledger{min-height:55px}.sd-priority{min-height:31px}.sd-main{padding:7px}.sd-selection-footer,.sd-decision-footer{gap:5px}.sd-actions{display:flex;flex-wrap:wrap}.sd-actions button{flex:1;white-space:normal}.sd-estimate{max-width:100%}.sd-offer-card{grid-template-columns:1fr}.sd-offer-math{border-left:0;border-top:1px solid #bac6c21b}}
+/* ==========================================================================
+   Desk de règlement — « clearing room ».
+   The desk positions itself inside the central stage (see REDESIGN §5) and
+   floats a single sheet over the board: ledger (who owes whom), creditor
+   order, then the decision (asset picker or creditor offer).
+   ========================================================================== */
+
+.settlement-desk {
+  position: fixed;
+  top: var(--center-top, 92px);
+  right: var(--center-right, 108px);
+  bottom: var(--center-bottom, 168px);
+  left: var(--center-left, 16px);
+  z-index: var(--z-stage, 40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  pointer-events: none;
+  container: sd-stage / size;
+  color: var(--text-100);
+  font: 400 14px/1.45 var(--font-ui);
+  text-align: left;
+}
+
+/* --------------------------------------------------------------- sheet -- */
+.settlement-desk .sd-sheet {
+  --sd-serif: "Cormorant Garamond", "Iowan Old Style", "Times New Roman", serif;
+  --sd-pad-y: 26px;
+  --sd-pad-x: 34px;
+  --sd-gap: 20px;
+  --sd-seat: 64px;
+  --sd-name: 30px;
+  --sd-due: 58px;
+  --sd-title: 28px;
+  --sd-cell-y: 13px;
+  --sd-cell-x: 18px;
+  --sd-figure: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sd-gap);
+  width: min(100%, 1240px);
+  max-height: 100%;
+  min-height: 0;
+  padding: var(--sd-pad-y) var(--sd-pad-x);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  pointer-events: auto;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(64% 52% at 50% -6%, rgba(226, 196, 134, 0.1), transparent 72%),
+    linear-gradient(180deg, rgba(19, 27, 40, 0.95) 0%, rgba(9, 13, 21, 0.97) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 0 1px rgba(0, 0, 0, 0.45),
+    0 48px 120px -36px rgba(0, 0, 0, 0.92);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+}
+/* Bright hairline along the top bevel, as on every glass surface. */
+.settlement-desk .sd-sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0 14% auto;
+  height: 1px;
+  background: var(--sheen);
+  opacity: 0.7;
+  pointer-events: none;
+}
+/* Second engraved rule inside the frame, like a ledger page. */
+.settlement-desk .sd-sheet::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(226, 196, 134, 0.055);
+  border-radius: calc(var(--radius-lg) - 5px);
+  pointer-events: none;
+}
+.settlement-desk .sd-sheet > * { flex: none; min-width: 0; }
+
+.settlement-desk .sd-amount { font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.settlement-desk .sd-amount small { font-size: 0.52em; font-weight: 500; letter-spacing: 0.02em; }
+
+/* --------------------------------------------------------------- cause -- */
+.settlement-desk .sd-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.settlement-desk .sd-cause {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: var(--text-400);
+  font-size: 13px;
+  line-height: 1.2;
+}
+.settlement-desk .sd-cause strong {
+  font: 600 10.5px/1.2 var(--font-ui);
+  letter-spacing: 0.17em;
+  color: var(--gold-400);
+  white-space: nowrap;
+}
+.settlement-desk .sd-cause > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.settlement-desk .sd-cause > span::before { content: "·"; margin-right: 10px; color: var(--text-600); }
+.settlement-desk .sd-docket {
+  flex: none;
+  font: 500 11px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  color: var(--text-600);
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------- ledger -- */
+.settlement-desk .sd-ledger {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+}
+.settlement-desk .sd-party { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.settlement-desk .sd-party-creditor { flex-direction: row-reverse; text-align: right; }
+.settlement-desk .sd-seat {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--sd-seat);
+  height: var(--sd-seat);
+  border-radius: 50%;
+  color: var(--gold-400);
+  background: radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.08), rgba(4, 6, 10, 0.7) 72%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--seat, var(--gold-500)) 60%, transparent),
+    0 0 0 5px rgba(4, 6, 10, 0.4),
+    0 14px 34px -14px color-mix(in srgb, var(--seat, var(--gold-500)) 75%, transparent);
+}
+.settlement-desk .sd-seat.is-bank { box-shadow: inset 0 0 0 1px var(--hairline-strong), 0 0 0 5px rgba(4, 6, 10, 0.4); }
+.settlement-desk .sd-seat .pawn-object { width: 88%; height: 88%; }
+.settlement-desk .sd-party-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.settlement-desk .sd-party-creditor .sd-party-text { align-items: flex-end; }
+.settlement-desk .sd-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 10.5px/1.2 var(--font-ui);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--text-500);
+}
+.settlement-desk .sd-role em {
+  padding: 2px 7px 3px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-pill);
+  font: 600 10px/1 var(--font-ui);
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--gold-300);
+  background: rgba(210, 173, 102, 0.1);
+}
+.settlement-desk .sd-party-text > strong {
+  max-width: 100%;
+  overflow: hidden;
+  font: 600 var(--sd-name)/1.04 var(--sd-serif);
+  letter-spacing: -0.005em;
+  color: var(--text-100);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.settlement-desk .sd-cash { display: inline-flex; align-items: baseline; gap: 7px; font-size: 12.5px; color: var(--text-500); white-space: nowrap; }
+.settlement-desk .sd-cash .animated-money { font-size: 14px; font-weight: 500; color: var(--text-200); }
+
+/* The rails draw one long engraved line, debtor → creditor, broken by the amount. */
+.settlement-desk .sd-rail {
+  --sd-rail: linear-gradient(90deg, rgba(226, 196, 134, 0.06), rgba(226, 196, 134, 0.5));
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 24px;
+  height: 1px;
+  margin: 0 6px;
+  background: linear-gradient(90deg, transparent, rgba(255, 244, 214, 0.95), transparent) 200% 0 / 34% 100% no-repeat, var(--sd-rail);
+  animation: sd-flow 900ms var(--ease-in-out) 520ms 1 both;
+}
+.settlement-desk .sd-party-debtor .sd-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold-600);
+  transform: translate(-50%, -50%);
+}
+.settlement-desk .sd-party-creditor .sd-rail { --sd-rail: linear-gradient(90deg, rgba(226, 196, 134, 0.5), rgba(226, 196, 134, 0.9)); animation-delay: 1180ms; }
+.settlement-desk .sd-party-creditor .sd-rail::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid var(--gold-300);
+  border-right: 1px solid var(--gold-300);
+  transform: translateY(-50%) rotate(45deg);
+}
+.settlement-desk .sd-due {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 0 clamp(14px, 2.2vw, 34px);
+  text-align: center;
+}
+.settlement-desk .sd-due > small {
+  font: 600 10.5px/1.2 var(--font-ui);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+.settlement-desk .sd-due-amount {
+  font: 600 var(--sd-due)/0.95 var(--sd-serif);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -0.012em;
+  color: var(--gold-200);
+  background: linear-gradient(180deg, #fbf0d6 0%, var(--gold-300) 46%, var(--gold-600) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.settlement-desk .sd-gap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 11px;
+  border: 1px solid rgba(240, 107, 116, 0.42);
+  border-radius: var(--radius-pill);
+  font: 500 12px/1 var(--font-ui);
+  color: #ffc4c8;
+  background: rgba(240, 107, 116, 0.12);
+  white-space: nowrap;
+}
+.settlement-desk .sd-gap.is-ok { color: var(--up); border-color: rgba(56, 213, 155, 0.4); background: rgba(56, 213, 155, 0.1); }
+
+/* ------------------------------------------------------ creditor order -- */
+.settlement-desk .sd-priority {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline-cool);
+}
+.settlement-desk .sd-priority-title {
+  font: 600 10.5px/1.2 var(--font-ui);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--text-500);
+  cursor: help;
+}
+.settlement-desk .sd-priority > div { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 26px; }
+.settlement-desk .sd-priority > div > span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 32px;
+  padding: 0 14px 0 5px;
+  border: 1px solid var(--hairline-cool);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  color: var(--text-300);
+  background: rgba(255, 255, 255, 0.025);
+  white-space: nowrap;
+}
+.settlement-desk .sd-priority > div > span + span::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  background: var(--hairline-strong);
+}
+.settlement-desk .sd-priority > div > span > b {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--hairline-cool);
+  border-radius: 50%;
+  font: 600 11px/1 var(--font-ui);
+  color: var(--text-400);
+  background: rgba(255, 255, 255, 0.05);
+}
+.settlement-desk .sd-priority > div > span > small { font-size: 12px; color: var(--text-500); font-variant-numeric: tabular-nums; }
+.settlement-desk .sd-priority > div > span.is-current {
+  color: var(--text-100);
+  border-color: var(--hairline-strong);
+  background: rgba(210, 173, 102, 0.09);
+  box-shadow: 0 0 0 3px rgba(210, 173, 102, 0.06);
+}
+.settlement-desk .sd-priority > div > span.is-current > b { color: #1b1408; border-color: transparent; background: linear-gradient(180deg, #f3dfaf, #c79a52); }
+.settlement-desk .sd-priority > div > span.is-current > small { color: var(--gold-300); }
+.settlement-desk .sd-priority > div > span.is-done { color: var(--text-500); }
+.settlement-desk .sd-priority > div > span.is-done > b { color: var(--up); border-color: rgba(56, 213, 155, 0.35); background: rgba(56, 213, 155, 0.08); }
+.settlement-desk .sd-priority-note { font-size: 12px; color: var(--text-500); }
+
+/* ---------------------------------------------------------------- main -- */
+.settlement-desk .sd-sheet > .sd-main { display: flex; flex-direction: column; flex: 1 1 auto; gap: 14px; min-height: 0; }
+.settlement-desk .sd-main-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex: none; }
+.settlement-desk .sd-title {
+  font: 600 var(--sd-title)/1.05 var(--sd-serif);
+  letter-spacing: -0.008em;
+  color: var(--text-100);
+}
+.settlement-desk .sd-sub { margin-top: 6px; font-size: 13px; color: var(--text-400); }
+.settlement-desk .sd-frozen,
+.settlement-desk .sd-sync {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: none;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  font: 500 12px/1 var(--font-ui);
+  white-space: nowrap;
+}
+.settlement-desk .sd-frozen { color: var(--info); border: 1px solid rgba(114, 185, 234, 0.32); background: rgba(114, 185, 234, 0.07); cursor: help; }
+.settlement-desk .sd-sync { color: var(--text-400); border: 1px solid var(--hairline-cool); background: rgba(255, 255, 255, 0.03); }
+.settlement-desk .sd-sync svg { color: var(--gold-400); }
+
+/* --------------------------------------------------------- asset table -- */
+.settlement-desk .sd-table-wrap {
+  flex: 1 1 auto;
+  min-height: 96px;
+  overflow: auto;
+  border: 1px solid var(--hairline-cool);
+  border-radius: var(--radius-md);
+  background: rgba(4, 6, 10, 0.4);
+}
+.settlement-desk .sd-table-wrap.is-clipped {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 40px), rgba(0, 0, 0, 0.2));
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 40px), rgba(0, 0, 0, 0.2));
+}
+.settlement-desk .sd-assets-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; }
+.settlement-desk .sd-assets-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 11px var(--sd-cell-x);
+  border-bottom: 1px solid var(--hairline);
+  font: 600 10.5px/1.2 var(--font-ui);
+  letter-spacing: 0.15em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--text-500);
+  background: rgb(13, 19, 29);
+  white-space: nowrap;
+}
+.settlement-desk .sd-assets-table td {
+  padding: var(--sd-cell-y) var(--sd-cell-x);
+  border-bottom: 1px solid var(--hairline-cool);
+  color: var(--text-300);
+  vertical-align: middle;
+  transition: background var(--dur-2) var(--ease-out);
+}
+.settlement-desk .sd-assets-table tbody tr:last-child td { border-bottom: 0; }
+.settlement-desk .sd-assets-table .is-num { text-align: right; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.settlement-desk .sd-assets-table .is-center { text-align: center; }
+.settlement-desk .sd-assets-table tbody tr { animation: sd-row-in var(--dur-3) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 40ms + 120ms); }
+.settlement-desk .sd-assets-table tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
+.settlement-desk .sd-assets-table tbody tr.is-selected td { background: rgba(210, 173, 102, 0.075); }
+.settlement-desk .sd-assets-table tbody tr.is-selected td:first-child { box-shadow: inset 2px 0 0 var(--gold-400); }
+.settlement-desk .sd-company { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.settlement-desk .sd-company strong { font-weight: 600; color: var(--text-100); }
+.settlement-desk .sd-company small { font: 500 11px/1.2 var(--font-mono); letter-spacing: 0.06em; color: var(--text-500); }
+.settlement-desk .sd-folded { display: none; font-size: 12px; font-style: normal; color: var(--text-500); }
+.settlement-desk .sd-folded > span { display: none; }
+.settlement-desk .sd-market { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--text-300); }
+.settlement-desk .sd-sector { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-500); }
+.settlement-desk .sd-held { display: inline-flex; align-items: center; gap: 12px; }
+.settlement-desk .sd-pips { display: inline-flex; align-items: center; gap: 5px; }
+.settlement-desk .sd-pips i {
+  width: 7px;
+  height: 7px;
+  border-radius: 1.5px;
+  transform: rotate(45deg);
+  transition: background var(--dur-2), box-shadow var(--dur-2);
+}
+.settlement-desk .sd-pips i.is-kept { background: linear-gradient(135deg, var(--gold-300), var(--gold-600)); box-shadow: 0 0 6px rgba(210, 173, 102, 0.35); }
+.settlement-desk .sd-pips i.is-out { background: rgba(240, 107, 116, 0.12); box-shadow: inset 0 0 0 1px rgba(240, 107, 116, 0.85); }
+.settlement-desk .sd-pips i.is-free { width: 3px; height: 3px; margin: 0 2px; border-radius: 50%; background: rgba(255, 255, 255, 0.16); transform: none; }
+.settlement-desk .sd-quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--hairline-cool);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color var(--dur-2), background var(--dur-2);
+}
+.settlement-desk .sd-quantity button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--gold-300);
+  transition: background var(--dur-1), color var(--dur-1), transform var(--dur-1) var(--ease-out);
+}
+.settlement-desk .sd-quantity button:hover:not(:disabled) { color: var(--gold-200); background: rgba(210, 173, 102, 0.15); }
+.settlement-desk .sd-quantity button:active:not(:disabled) { transform: scale(0.92); }
+.settlement-desk .sd-quantity button:disabled { opacity: 0.28; }
+.settlement-desk .sd-quantity b { min-width: 26px; text-align: center; font: 600 15px/1 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--text-100); }
+.settlement-desk tr.is-selected .sd-quantity { border-color: var(--hairline-strong); background: rgba(210, 173, 102, 0.09); }
+.settlement-desk .sd-value { font-weight: 600; color: var(--gold-300); }
+.settlement-desk .sd-nil { color: var(--text-600); }
+.settlement-desk .sd-empty { padding: 26px; text-align: center; color: var(--text-500); }
+
+/* -------------------------------------------------------------- totals -- */
+.settlement-desk .sd-totals {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px 28px;
+  flex: none;
+}
+.settlement-desk .sd-meter {
+  grid-column: 1 / -1;
+  display: flex;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(240, 107, 116, 0.2);
+}
+.settlement-desk .sd-meter i { height: 100%; transition: width var(--dur-3) var(--ease-out), background var(--dur-3); }
+.settlement-desk .sd-meter .is-cash { background: var(--gold-700); }
+.settlement-desk .sd-meter .is-pick { background: linear-gradient(90deg, var(--gold-600), var(--gold-300)); }
+/* Covered: one seamless brass line (the segments become windows on the track gradient). */
+.settlement-desk .sd-meter.is-covered { background: linear-gradient(90deg, var(--gold-700), var(--gold-400) 55%, var(--gold-200)); box-shadow: 0 0 12px -2px rgba(226, 196, 134, 0.45); }
+.settlement-desk .sd-meter.is-covered i { background: transparent; }
+.settlement-desk .sd-readout { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.settlement-desk .sd-figures { display: flex; align-items: flex-end; gap: 40px; min-width: 0; margin: 0; }
+.settlement-desk .sd-figure-note { font-size: 12px; color: var(--warn); }
+.settlement-desk .sd-figures > div { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.settlement-desk .sd-figures dt { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-500); white-space: nowrap; }
+.settlement-desk .sd-figures dd {
+  margin: 0;
+  font: 600 var(--sd-figure)/1.1 var(--font-ui);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--text-100);
+  white-space: nowrap;
+}
+.settlement-desk .sd-figures dd.is-nil { color: var(--text-600); }
+.settlement-desk .sd-figures .is-ok { cursor: help; }
+.settlement-desk .sd-figures .is-ok dt { color: var(--up); }
+.settlement-desk .sd-figures .is-warn { cursor: help; }
+.settlement-desk .sd-figures .is-warn dt { color: var(--warn); }
+.settlement-desk .sd-figures .is-short dt,
+.settlement-desk .sd-figures .is-short dd { color: var(--down); }
+.settlement-desk .sd-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
+.settlement-desk .sd-actions .gf-btn svg { flex: none; }
+
+/* The single continuous effect allowed: the main action breathes while it is the viewer's call. */
+.settlement-desk.is-live .sd-cta:not(:disabled) { animation: sd-call 2.8s var(--ease-out) 1.2s infinite; }
+
+/* --------------------------------------------------------------- offer -- */
+.settlement-desk .sd-offer {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(26, 36, 50, 0.62), rgba(10, 15, 23, 0.72));
+  box-shadow: var(--shadow-1);
+}
+/* A single gold glint across the term sheet when it lands on the desk. */
+.settlement-desk .sd-offer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 38%, rgba(255, 236, 196, 0.14) 50%, transparent 62%);
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: sd-glint 1.5s var(--ease-out) 0.55s 1 both;
+  pointer-events: none;
+}
+.settlement-desk .sd-offer-assets { min-height: 0; padding: 20px 24px; overflow: auto; }
+.settlement-desk .sd-label {
+  font: 600 10.5px/1.2 var(--font-ui);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+.settlement-desk .sd-certs { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0 0; padding: 0; list-style: none; }
+/* A share certificate: double engraved frame, serif name, terms on the last line. */
+.settlement-desk .sd-cert {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 250px;
+  max-width: 360px;
+  padding: 14px 16px 13px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-sm);
+  background:
+    repeating-linear-gradient(135deg, rgba(226, 196, 134, 0.035) 0 1px, transparent 1px 7px),
+    linear-gradient(160deg, rgba(40, 46, 52, 0.55), rgba(14, 18, 26, 0.6));
+  box-shadow: inset 0 0 0 4px rgba(8, 12, 19, 0.55), inset 0 0 0 5px rgba(226, 196, 134, 0.14), 0 12px 26px -16px rgba(0, 0, 0, 0.9);
+}
+.settlement-desk .sd-cert-meta { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-500); white-space: nowrap; }
+.settlement-desk .sd-cert-meta i { margin-left: auto; font: 500 10.5px/1 var(--font-mono); font-style: normal; letter-spacing: 0.08em; color: var(--text-500); }
+.settlement-desk .sd-cert > b { font: 600 22px/1.1 var(--sd-serif); color: var(--text-100); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.settlement-desk .sd-cert-terms { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 7px; border-top: 1px solid rgba(226, 196, 134, 0.14); }
+.settlement-desk .sd-cert-terms small { font-size: 12.5px; color: var(--text-400); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.settlement-desk .sd-cert-terms strong { font-size: 16px; font-weight: 600; color: var(--gold-200); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.settlement-desk .sd-offer-math {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 20px 26px;
+  border-left: 1px solid var(--hairline-cool);
+  background: rgba(4, 6, 10, 0.3);
+}
+.settlement-desk .sd-offer-math > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.settlement-desk .sd-offer-math dt { font-size: 13px; color: var(--text-400); }
+.settlement-desk .sd-offer-math dd { margin: 0; font-size: 15px; font-weight: 500; color: var(--text-200); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.settlement-desk .sd-offer-math > .sd-net { align-items: center; margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--hairline); }
+.settlement-desk .sd-offer-math > .sd-net dt { font-size: 14px; font-weight: 600; color: var(--text-100); }
+.settlement-desk .sd-net .sd-amount { font: 600 36px/1 var(--sd-serif); font-variant-numeric: lining-nums tabular-nums; color: var(--gold-200); }
+.settlement-desk .sd-net.is-in .sd-amount { color: var(--up); }
+.settlement-desk .sd-net-note { font-size: 12.5px; color: var(--text-500); }
+.settlement-desk .sd-cash-warning {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(240, 107, 116, 0.45);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #ffc9cc;
+  background: rgba(240, 107, 116, 0.1);
+}
+.settlement-desk .sd-cash-warning strong { font-weight: 600; color: #ffdfe1; }
+.settlement-desk .sd-cash-warning span { font-variant-numeric: tabular-nums; }
+.settlement-desk .sd-decision { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px 28px; flex: none; }
+.settlement-desk .sd-balance { display: flex; flex-direction: column; gap: 5px; }
+.settlement-desk .sd-balance span { font-size: 12px; color: var(--text-500); }
+.settlement-desk .sd-balance strong { font: 600 var(--sd-figure)/1.1 var(--font-ui); font-variant-numeric: tabular-nums lining-nums; color: var(--text-100); }
+.settlement-desk .sd-balance strong.is-down { color: var(--down); }
+
+/* ------------------------------------------------------------- waiting -- */
+.settlement-desk .sd-waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 84px;
+  padding: 18px 0 6px;
+  font-size: 15px;
+  color: var(--text-400);
+}
+.settlement-desk .sd-waiting::before,
+.settlement-desk .sd-waiting::after {
+  content: "";
+  flex: 0 1 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline));
+}
+.settlement-desk .sd-waiting::after { background: linear-gradient(90deg, var(--hairline), transparent); }
+.settlement-desk .sd-waiting svg { flex: none; color: var(--gold-400); }
+.settlement-desk .sd-waiting b { font-weight: 600; color: var(--text-100); }
+
+/* -------------------------------------------------------------- motion -- */
+@keyframes sd-row-in { from { opacity: 0; } to { opacity: 1; } }
+/* One pass of light along the rails: the debt travels from debtor to creditor. */
+@keyframes sd-flow { from { background-position: -100% 0, 0 0; } to { background-position: 200% 0, 0 0; } }
+@keyframes sd-glint {
+  0% { opacity: 0; transform: translateX(-100%); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+@keyframes sd-call {
+  0% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(60, 40, 10, 0.25), 0 12px 30px -12px rgba(210, 173, 102, 0.7), 0 0 0 0 rgba(226, 196, 134, 0.42); }
+  70%, 100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(60, 40, 10, 0.25), 0 12px 30px -12px rgba(210, 173, 102, 0.7), 0 0 0 13px rgba(226, 196, 134, 0); }
+}
+html[data-motion="reduced"] .settlement-desk .sd-cta,
+html[data-motion="reduced"] .settlement-desk .sd-rail,
+html[data-motion="reduced"] .settlement-desk .sd-offer::after,
+html[data-motion="reduced"] .settlement-desk .sd-assets-table tbody tr { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .settlement-desk .sd-cta,
+  .settlement-desk .sd-rail,
+  .settlement-desk .sd-offer::after,
+  .settlement-desk .sd-assets-table tbody tr { animation: none !important; }
+}
+
+/* ---------------------------------------------- stage size adaptations -- */
+@container sd-stage (max-height: 680px) {
+  .settlement-desk .sd-sheet {
+    --sd-pad-y: 20px;
+    --sd-pad-x: 26px;
+    --sd-gap: 15px;
+    --sd-seat: 52px;
+    --sd-name: 25px;
+    --sd-due: 46px;
+    --sd-title: 24px;
+    --sd-cell-y: 9px;
+    --sd-figure: 18px;
+  }
+  .settlement-desk .sd-priority { padding-top: 11px; }
+  .settlement-desk .sd-sheet > .sd-main { gap: 11px; }
+  .settlement-desk .sd-offer-assets, .settlement-desk .sd-offer-math { padding: 15px 20px; }
+  .settlement-desk .sd-cert { padding: 12px 14px 11px; }
+  .settlement-desk .sd-net .sd-amount { font-size: 30px; }
+}
+@container sd-stage (max-height: 540px) {
+  .settlement-desk .sd-sheet {
+    --sd-pad-y: 14px;
+    --sd-pad-x: 20px;
+    --sd-gap: 10px;
+    --sd-seat: 42px;
+    --sd-name: 21px;
+    --sd-due: 36px;
+    --sd-title: 21px;
+    --sd-cell-y: 6px;
+    --sd-cell-x: 14px;
+    --sd-figure: 16px;
+  }
+  .settlement-desk .sd-due { gap: 4px; }
+  .settlement-desk .sd-gap { height: 21px; font-size: 11.5px; }
+  .settlement-desk .sd-cash { font-size: 12px; }
+  .settlement-desk .sd-cash .animated-money { font-size: 13px; }
+  .settlement-desk .sd-priority { padding-top: 9px; }
+  .settlement-desk .sd-priority > div > span { height: 28px; }
+  .settlement-desk .sd-sheet > .sd-main { gap: 9px; }
+  .settlement-desk .sd-sub { margin-top: 3px; font-size: 12px; }
+  .settlement-desk .sd-assets-table th { padding-top: 8px; padding-bottom: 8px; }
+  .settlement-desk .sd-quantity button { width: 26px; height: 26px; }
+  .settlement-desk .sd-figures { gap: 28px; }
+  .settlement-desk .sd-figures > div { gap: 3px; }
+  .settlement-desk .sd-totals { gap: 10px 20px; }
+  .settlement-desk .sd-actions .gf-btn { min-height: 38px; padding: 0 16px; }
+  .settlement-desk .sd-offer-assets, .settlement-desk .sd-offer-math { padding: 11px 16px; }
+  .settlement-desk .sd-offer-math { gap: 6px; }
+  .settlement-desk .sd-certs { margin-top: 8px; gap: 8px; }
+  .settlement-desk .sd-cert { gap: 4px; padding: 10px 13px 9px; }
+  .settlement-desk .sd-cert > b { font-size: 19px; }
+  .settlement-desk .sd-cert-terms { padding-top: 5px; }
+  .settlement-desk .sd-net .sd-amount { font-size: 26px; }
+  .settlement-desk .sd-offer-math > .sd-net { padding-top: 9px; }
+  .settlement-desk .sd-waiting { min-height: 60px; padding-top: 10px; }
+}
+@container sd-stage (max-width: 860px) {
+  .settlement-desk .sd-sheet { --sd-pad-x: 18px; --sd-cell-x: 12px; border-radius: var(--radius-md); }
+  .settlement-desk .sd-ledger { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 14px; }
+  .settlement-desk .sd-due { grid-column: 1 / -1; grid-row: 2; padding: 10px 0 0; border-top: 1px solid var(--hairline-cool); }
+  .settlement-desk .sd-party-debtor { grid-column: 1; grid-row: 1; }
+  .settlement-desk .sd-party-creditor { grid-column: 2; grid-row: 1; }
+  .settlement-desk .sd-rail { display: none; }
+  .settlement-desk .sd-priority { justify-content: flex-start; }
+  .settlement-desk .sd-assets-table th:nth-child(2),
+  .settlement-desk .sd-assets-table td:nth-child(2) { display: none; }
+  .settlement-desk .sd-folded { display: block; }
+  .settlement-desk .sd-pips { display: none; }
+  .settlement-desk .sd-totals { grid-template-columns: 1fr; }
+  .settlement-desk .sd-actions { justify-content: stretch; }
+  .settlement-desk .sd-actions .gf-btn { flex: 1 1 200px; }
+  .settlement-desk .sd-offer { grid-template-columns: 1fr; }
+  .settlement-desk .sd-offer-math { border-left: 0; border-top: 1px solid var(--hairline-cool); }
+  .settlement-desk .sd-decision { align-items: stretch; flex-direction: column; }
+}
+@container sd-stage (max-width: 560px) {
+  .settlement-desk .sd-sheet { --sd-seat: 40px; --sd-name: 19px; --sd-due: 34px; --sd-pad-x: 14px; }
+  .settlement-desk .sd-party { gap: 10px; }
+  .settlement-desk .sd-cause > span { display: none; }
+  .settlement-desk .sd-assets-table th:nth-child(3),
+  .settlement-desk .sd-assets-table td:nth-child(3) { display: none; }
+  .settlement-desk .sd-folded > span { display: inline; }
+  .settlement-desk .sd-figures { gap: 22px; }
+}

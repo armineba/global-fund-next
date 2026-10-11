@@ -1,0 +1,208 @@
+/* Travel decision: a panel docked at the left of the centre stage. The board
+   stays visible on the right, where the globe previews the route. */
+.game-world .decision-backdrop.central-decision {
+  position: fixed;
+  z-index: 40;
+  top: var(--center-top);
+  right: var(--center-right);
+  bottom: var(--center-bottom);
+  left: var(--center-left);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  animation: none;
+  pointer-events: none;
+}
+.game-world .geography-scene {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(440px, 100%);
+  max-height: 100%;
+  overflow: hidden auto;
+  padding: 22px 20px 20px;
+  outline: none;
+  pointer-events: auto;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(19, 26, 39, 0.88), rgba(6, 9, 15, 0.94));
+  border-color: rgba(226, 196, 134, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 240, 210, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.35), 0 40px 90px -36px rgba(0, 0, 0, 0.95);
+  scrollbar-width: thin;
+  animation: geo-in var(--dur-3) var(--ease-out) both;
+}
+.game-world .geography-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--text-400);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--hairline-cool);
+  transition: color var(--dur-2), border-color var(--dur-2), background var(--dur-2);
+}
+.game-world .geography-close:hover { color: var(--gold-200); border-color: var(--hairline-strong); background: rgba(210, 173, 102, 0.08); }
+.game-world .geo-head { display: grid; gap: 7px; padding: 0 40px 0 4px; }
+.game-world .geo-head .gf-kicker { color: var(--gold-400); }
+.game-world .geo-head h2 { font-size: 32px; color: var(--text-100); }
+.game-world .geo-head p { font: 400 12.5px/1.45 var(--font-ui); color: var(--text-400); }
+
+.game-world .travel-markets { display: grid; gap: 6px; }
+.game-world .travel-market {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.025);
+  transition: border-color var(--dur-2), background var(--dur-2), box-shadow var(--dur-3);
+}
+.game-world .travel-market:hover { border-color: rgba(226, 196, 134, 0.26); background: rgba(255, 255, 255, 0.045); }
+.game-world .travel-market.selected {
+  border-color: rgba(226, 196, 134, 0.62);
+  background: linear-gradient(90deg, rgba(210, 173, 102, 0.17), rgba(210, 173, 102, 0.04));
+  box-shadow: 0 0 0 1px rgba(226, 196, 134, 0.18), 0 12px 30px -18px rgba(226, 196, 134, 0.6);
+}
+.game-world .travel-zone-select {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px 9px 10px;
+  text-align: left;
+  color: var(--text-200);
+  border-radius: 15px 0 0 15px;
+}
+.game-world .travel-zone-select:focus-visible { outline-offset: -2px; }
+.game-world .travel-gem { position: relative; display: grid; }
+.game-world .geo-gem { --jewel-size: 36px; }
+.game-world .geo-gem em { font: 800 17px/1 var(--font-ui); font-style: normal; }
+.game-world .travel-check {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  color: #1b1408;
+  background: linear-gradient(180deg, #f6e6bd, #c79d55);
+  box-shadow: 0 0 0 2px rgba(10, 13, 20, 0.95), 0 0 14px -2px rgba(226, 196, 134, 0.8);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity var(--dur-2), transform var(--dur-2) var(--ease-spring);
+}
+.game-world .travel-market.selected .travel-check { opacity: 1; transform: none; }
+.game-world .travel-zone-text { display: grid; gap: 4px; min-width: 0; }
+.game-world .travel-zone-text b { min-width: 0; font: 600 14px/1.15 var(--font-ui); color: var(--text-100); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.game-world .travel-market.selected .travel-zone-text b { color: var(--gold-200); }
+.game-world .travel-zone-text small { font: 400 11.5px/1.25 var(--font-ui); color: var(--text-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.game-world .travel-cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: 500 11.5px/1 var(--font-ui);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--text-400);
+  white-space: nowrap;
+}
+.game-world .travel-cost.is-here { color: var(--up); font-size: 11px; }
+.game-world .travel-analyse {
+  position: relative;
+  flex: none;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-right: 9px;
+  border-radius: 50%;
+  color: var(--gold-300);
+  border: 1px solid rgba(226, 196, 134, 0.22);
+  background: rgba(210, 173, 102, 0.05);
+  transition: color var(--dur-2), border-color var(--dur-2), background var(--dur-2);
+}
+.game-world .travel-analyse:hover, .game-world .travel-analyse:focus-visible { color: var(--gold-200); border-color: var(--gold-500); background: rgba(210, 173, 102, 0.12); }
+.game-world .travel-analyse::after {
+  content: attr(data-tip);
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  padding: 6px 9px;
+  border-radius: 8px;
+  font: 500 11px/1 var(--font-ui);
+  color: var(--text-100);
+  background: rgba(8, 12, 19, 0.96);
+  border: 1px solid var(--hud-line, var(--hairline));
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(4px, -50%);
+  pointer-events: none;
+  transition: opacity var(--dur-1), transform var(--dur-1);
+}
+.game-world .travel-analyse:is(:hover, :focus-visible)::after { opacity: 1; transform: translate(0, -50%); }
+
+.game-world .travel-choice-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 4px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.game-world .travel-choice-summary > span { display: grid; gap: 5px; min-width: 0; }
+.game-world .travel-choice-summary > span:last-child { justify-items: end; text-align: right; }
+.game-world .travel-choice-summary small { font: 600 9.5px/1 var(--font-ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-600); }
+.game-world .travel-choice-summary b { font: 600 19px/1.1 var(--font-display); font-variant-numeric: lining-nums tabular-nums; color: var(--text-100); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.game-world .travel-confirm-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.game-world .travel-confirm-actions .gf-btn { flex: 1 1 auto; min-height: 46px; max-width: 100%; }
+
+/* Detention variant: the trial. */
+.game-world .justice-scene { border-color: rgba(240, 107, 116, 0.3); background: linear-gradient(180deg, rgba(34, 18, 25, 0.9), rgba(8, 8, 12, 0.95)); }
+.game-world .justice-scene .geo-head .gf-kicker { color: #f5a3a9; }
+.game-world .geo-trial { display: grid; justify-items: center; gap: 16px; padding: 6px 0 2px; text-align: center; }
+.game-world .geo-trial__seal {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  color: #f3c9a8;
+  background: radial-gradient(circle at 50% 30%, rgba(240, 107, 116, 0.22), rgba(240, 107, 116, 0.04) 65%, transparent 72%);
+  box-shadow: 0 0 0 1px rgba(240, 107, 116, 0.4), 0 0 50px -14px rgba(240, 107, 116, 0.6);
+}
+.game-world .geo-trial__roll { width: 100%; }
+.game-world .geo-trial small { display: grid; gap: 2px; font: 400 11.5px/1.45 var(--font-ui); color: var(--text-500); }
+
+@keyframes geo-in { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+.game-world.motion-reduced .geography-scene { animation: none; }
+@media (max-height: 800px) {
+  .game-world .geography-scene { gap: 10px; padding: 16px 16px 14px; }
+  .game-world .geo-head { gap: 5px; }
+  .game-world .geo-head h2 { font-size: 26px; }
+  .game-world .geo-head p { font-size: 12px; }
+  .game-world .travel-markets { gap: 4px; }
+  .game-world .travel-zone-select { padding-top: 6px; padding-bottom: 6px; gap: 10px; }
+  .game-world .geo-gem { --jewel-size: 30px; }
+  .game-world .geo-gem em { font-size: 14px; }
+  .game-world .travel-analyse { width: 30px; height: 30px; }
+  .game-world .travel-choice-summary { padding-top: 9px; }
+  .game-world .travel-confirm-actions .gf-btn { min-height: 42px; }
+}
+@media (max-width: 1679px) {
+  .game-world .geography-scene { width: min(410px, 100%); }
+  .game-world .travel-zone-select { gap: 10px; }
+  .game-world .travel-zone-text b { font-size: 13.5px; }
+}
+@media (max-width: 900px) { .game-world .geography-scene { width: 100%; } }

@@ -1,118 +1,89 @@
-import {
-  ArrowRight,
-  BookOpen,
-  Globe2,
-  Play,
-  Plus,
-  Settings2,
-  UsersRound,
-} from "lucide-react";
+import { useId } from "react";
+import { ArrowRight, BookOpen, Play, Plus, Settings2, UsersRound } from "lucide-react";
 import "./main-menu.css";
 
 export interface MainMenuProps {
   onNew: () => void;
   onJoin: () => void;
   onResume?: () => void;
+  /** Room code of the saved session, shown on REPRENDRE. */
+  resumeCode?: string;
   onSettings: () => void;
   onRules?: () => void;
 }
 
-/** Full-screen title menu. Game setup and resume state are owned by the caller. */
-export default function MainMenu({
-  onNew,
-  onJoin,
-  onResume,
-  onSettings,
-  onRules,
-}: MainMenuProps) {
+/** Watch-bezel ticks every 30° (cardinal points carry the longer marks). */
+const BEZEL_TICKS = Array.from({ length: 12 }, (_, i) => i)
+  .filter((i) => i % 3 !== 0)
+  .map((i) => {
+    const a = (i * Math.PI) / 6;
+    const p = (r: number) => `${(24 + r * Math.sin(a)).toFixed(2)} ${(24 - r * Math.cos(a)).toFixed(2)}`;
+    return `M${p(19.9)}L${p(21.7)}`;
+  })
+  .join("");
+
+/** Engraved armillary seal: the Global Fund mark (decorative). */
+export function Emblem({ className = "" }: { className?: string }) {
+  const id = useId().replace(/:/g, "");
+  const stroke = `url(#${id}-brass)`;
+  return (
+    <svg className={`gf-emblem ${className}`} viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id={`${id}-brass`} x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#f8ecce" />
+          <stop offset="0.45" stopColor="#dcb770" />
+          <stop offset="1" stopColor="#8a6a33" />
+        </linearGradient>
+      </defs>
+      <circle cx="24" cy="24" r="22.6" stroke={stroke} strokeWidth="1.3" />
+      <circle cx="24" cy="24" r="19.2" stroke={stroke} strokeWidth="0.7" opacity="0.6" />
+      <path d={BEZEL_TICKS} stroke={stroke} strokeWidth="0.7" opacity="0.7" strokeLinecap="round" />
+      <path d="M24 1.4v3.4M24 43.2v3.4M1.4 24h3.4M43.2 24h3.4" stroke={stroke} strokeWidth="1.3" strokeLinecap="round" />
+      <ellipse cx="24" cy="24" rx="7.4" ry="15.6" stroke={stroke} strokeWidth="1.15" />
+      <ellipse cx="24" cy="24" rx="15.6" ry="5.2" stroke={stroke} strokeWidth="1.15" transform="rotate(-23 24 24)" />
+      <path d="M8.6 24h30.8" stroke={stroke} strokeWidth="0.8" opacity="0.65" />
+      <circle cx="24" cy="24" r="2.8" fill={stroke} />
+    </svg>
+  );
+}
+
+/** Title screen. The 3D hero (MenuHero) lives behind it, on the right half. */
+export default function MainMenu({ onNew, onJoin, onResume, resumeCode, onSettings, onRules }: MainMenuProps) {
   return (
     <main id="main-menu" className="main-menu" aria-labelledby="main-menu-title">
-      <div className="main-menu__backdrop" aria-hidden="true" />
-      <header className="main-menu__header">
-        <a className="main-menu__brand" href="#main-menu" aria-label="Global Fund, accueil">
-          <span className="main-menu__brand-mark"><Globe2 /></span>
-          <span className="main-menu__brand-copy">
-            <strong id="main-menu-title">GLOBAL <em>FUND</em></strong>
-            <small>INVESTIR · NÉGOCIER · ANTICIPER · DOMINER</small>
-          </span>
-        </a>
-        <div className="main-menu__edition"><i /> MARCHÉS MONDIAUX <span>·</span> ÉDITION 2026</div>
-      </header>
+      <section className="mm-stage">
+        <div className="mm-title">
+          <Emblem className="mm-emblem" />
+          <h1 id="main-menu-title" className="mm-wordmark">
+            <span>Global</span> <span>Fund</span>
+          </h1>
+          <p className="mm-tagline">Le monde est votre marché.</p>
+        </div>
 
-      <div className="main-menu__body">
-        <section className="main-menu__welcome" aria-label="Présentation du jeu">
-          <div className="main-menu__kicker"><span /> STRATÉGIE · CAPITAL · INFLUENCE</div>
-          <h1>Le monde est<br />votre <em>marché.</em></h1>
-          <p>Chaque décision dessine votre empire.<br />Prenez place à la table des marchés mondiaux.</p>
-
-          <nav className="main-menu__actions" aria-label="Menu principal">
-            <button className="main-menu__action main-menu__action--primary" onClick={onNew}>
-              <span className="main-menu__action-icon"><Plus aria-hidden="true" /></span>
-              <span>NOUVELLE PARTIE<small>Créer une partie</small></span>
-              <ArrowRight aria-hidden="true" className="main-menu__action-arrow" />
+        <nav className="mm-actions" aria-label="Menu principal">
+          <button className="mm-action mm-action--primary" onClick={onNew}>
+            <span className="mm-action__icon" aria-hidden="true"><Plus size={18} strokeWidth={1.8} /></span>
+            <span className="mm-action__label">NOUVELLE PARTIE<small>2 à 6 fonds, humains ou IA</small></span>
+            <ArrowRight className="mm-action__arrow" size={18} aria-hidden="true" />
+          </button>
+          <button className="mm-action" onClick={onJoin}>
+            <span className="mm-action__icon" aria-hidden="true"><UsersRound size={17} strokeWidth={1.6} /></span>
+            <span className="mm-action__label">REJOINDRE<small>Avec un code d’invitation</small></span>
+            <ArrowRight className="mm-action__arrow" size={17} aria-hidden="true" />
+          </button>
+          {onResume && (
+            <button className="mm-action" onClick={onResume}>
+              <span className="mm-action__icon" aria-hidden="true"><Play size={16} strokeWidth={1.6} /></span>
+              <span className="mm-action__label">REPRENDRE<small>{resumeCode ? <>Salon <span className="gf-mono">{resumeCode}</span></> : "Dernière séance"}</small></span>
+              <ArrowRight className="mm-action__arrow" size={17} aria-hidden="true" />
             </button>
-            <button className="main-menu__action" onClick={onJoin}>
-              <span className="main-menu__action-icon"><UsersRound aria-hidden="true" /></span>
-              <span>REJOINDRE<small>Entrer dans un salon</small></span>
-              <ArrowRight aria-hidden="true" className="main-menu__action-arrow" />
-            </button>
-            {onResume && (
-              <button className="main-menu__action" onClick={onResume}>
-                <span className="main-menu__action-icon"><Play aria-hidden="true" /></span>
-                <span>REPRENDRE<small>Continuer la partie sauvegardée</small></span>
-                <ArrowRight aria-hidden="true" className="main-menu__action-arrow" />
-              </button>
-            )}
-            <div className="main-menu__utility-actions">
-              {onRules && <button onClick={onRules}><BookOpen aria-hidden="true" /> RÈGLES</button>}
-              <button onClick={onSettings}><Settings2 aria-hidden="true" /> PARAMÈTRES</button>
-            </div>
-          </nav>
-
-          <div className="main-menu__footnote">
-            <span className="main-menu__footnote-rule" />
-            <span>5 ZONES ÉCONOMIQUES <b>·</b> 9 SECTEURS</span>
-            <small>Une partie. Des marchés en mouvement.</small>
+          )}
+          <div className="mm-utility">
+            {onRules && <button onClick={onRules}><BookOpen size={15} strokeWidth={1.6} aria-hidden="true" /> RÈGLES</button>}
+            <button onClick={onSettings}><Settings2 size={15} strokeWidth={1.6} aria-hidden="true" /> PARAMÈTRES</button>
           </div>
-        </section>
-
-        <aside className="main-menu__showcase" aria-label="Aperçu du plateau">
-          <div className="main-menu__showcase-heading">
-            <span>LE PLATEAU MONDIAL</span>
-            <span className="main-menu__live"><i /> APERÇU</span>
-          </div>
-          <div className="main-menu__table" aria-hidden="true">
-            <div className="main-menu__table-rim">
-              <div className="main-menu__map">
-                <div className="main-menu__map-glow" />
-                <div className="main-menu__route main-menu__route--one" />
-                <div className="main-menu__route main-menu__route--two" />
-                <span className="main-menu__route-node main-menu__route-node--one" />
-                <span className="main-menu__route-node main-menu__route-node--two" />
-                <span className="main-menu__route-node main-menu__route-node--three" />
-                <div className="main-menu__table-label"><Globe2 /><b>GLOBAL FUND</b><small>LE CIRCUIT DES MARCHÉS</small></div>
-                <div className="main-menu__table-pawn"><img src="/assets/pawns/premium/globe.webp" alt="" /></div>
-              </div>
-            </div>
-          </div>
-          <div className="main-menu__showcase-footer">
-            <span>PARCOURS MONDIAL</span><span>52 CASES <b>·</b> 5 ZONES</span>
-          </div>
-          <div className="main-menu__side-object" aria-hidden="true">
-            <span className="main-menu__side-orbit main-menu__side-orbit--a" />
-            <span className="main-menu__side-orbit main-menu__side-orbit--b" />
-            <img src="/assets/pawns/premium/globe.webp" alt="" />
-            <span className="main-menu__side-base" />
-          </div>
-          <div className="main-menu__aside-caption"><span>01</span> INVESTISSEZ À L’ÉCHELLE DU MONDE</div>
-        </aside>
-      </div>
-
-      <footer className="main-menu__footer">
-        <span>GLOBAL FUND <b>·</b> STRATÉGIE FINANCIÈRE</span>
-        <span>ANTICIPER. NÉGOCIER. DOMINER.</span>
-        <span>ÉDITION NEXT <b>·</b> 2026</span>
-      </footer>
+        </nav>
+      </section>
     </main>
   );
 }
