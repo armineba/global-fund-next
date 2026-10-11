@@ -29,4 +29,10 @@ export interface BoardSceneProps {
   insets?: BoardInsets;
   /** Fund inspected by this client (used for subtle emphasis only). */
   viewerId?: string;
+  /** HUD hover: the board lights this sector's cells (no command, no camera move). */
+  highlightSector?: string | null;
+  /** HUD hover: the globe pulses this zone's pin. */
+  highlightZone?: string | null;
+  /** HUD hover: this fund's figurine is put in the light. */
+  highlightPlayerId?: string | null;
 }

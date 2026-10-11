@@ -7,22 +7,20 @@
   min-width: 0;
   height: 26px;
   padding-left: 20px;
-  color: var(--text-300);
-  background: linear-gradient(180deg, rgba(6, 9, 14, 0.84), rgba(3, 5, 8, 0.96));
-  border-top: 1px solid rgba(226, 196, 134, 0.14);
-  box-shadow: 0 -14px 30px -20px rgba(0, 0, 0, 0.9);
+  color: var(--text-2);
+  background: linear-gradient(180deg, rgba(11, 11, 12, 0), rgba(11, 11, 12, 0.85) 45%);
   overflow: hidden;
 }
-.financial-ticker__label { flex: none; font: 600 9.5px/1 var(--font-ui); letter-spacing: 0.24em; color: var(--gold-400); white-space: nowrap; }
+.financial-ticker__label { flex: none; font: 600 10px/1 var(--font-ui); letter-spacing: 0.16em; color: var(--text-3); white-space: nowrap; }
 .financial-ticker__wire {
   flex: 0 0 auto;
   min-width: 0;
   max-width: 34%;
   margin: 0;
   padding-left: 16px;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  font: 400 11.5px/1 var(--font-ui);
-  color: var(--text-400);
+  border-left: 1px solid var(--line);
+  font: 400 12px/1 var(--font-ui);
+  color: var(--text-2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -39,8 +37,8 @@
 .financial-ticker__track:focus-within { animation-play-state: paused; }
 .financial-ticker__group { display: flex; align-items: center; gap: 30px; padding-right: 30px; white-space: nowrap; }
 .financial-ticker__quote { display: inline-flex; align-items: baseline; gap: 8px; font: 500 11px/1 var(--font-ui); font-variant-numeric: tabular-nums lining-nums; }
-.financial-ticker__quote > b { font: 500 10.5px/1 var(--font-mono); letter-spacing: 0.06em; color: var(--text-500); }
-.financial-ticker__quote > strong { font-weight: 500; color: var(--text-100); }
+.financial-ticker__quote > b { font: 600 11px/1 var(--font-ui); letter-spacing: 0.04em; color: var(--text-3); }
+.financial-ticker__quote > strong { font-weight: 500; color: var(--text-2); }
 .financial-ticker__quote > i { font-size: 10.5px; font-style: normal; color: var(--text-500); }
 .financial-ticker__quote > i.positive { color: var(--up); }
 .financial-ticker__quote > i.negative { color: var(--down); }

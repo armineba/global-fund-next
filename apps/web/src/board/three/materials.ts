@@ -15,7 +15,7 @@ export type ObjectQuality = "high" | "medium" | "low";
 
 /** Base hues of the hero objects (sRGB hex). */
 export const OBJECT_PALETTE = {
-  lacquer: "#06070a",
+  lacquer: "#080706",
   brass: "#cfa862",
   gold: "#f0c877",
   goldDeep: "#d8b25f",
@@ -24,11 +24,12 @@ export const OBJECT_PALETTE = {
   amethyst: "#9a5cf0",
   ruby: "#d91e3c",
   emerald: "#18b877",
-  onyx: "#050608",
-  obsidian: "#04060a",
+  onyx: "#070605",
+  obsidian: "#070605",
   ember: "#ffcf8a",
   rubyGlow: "#ff3b52",
-  atmosphere: "#6f9fe8",
+  /** Warm haze on the globe's limb (no blue cast anywhere). */
+  atmosphere: "#b99f7c",
 } as const;
 
 export type PieceMaterialKey =
@@ -114,7 +115,7 @@ const BASE_HUE: Record<PieceMaterialKey, string> = {
   lacquer: OBJECT_PALETTE.lacquer, brass: OBJECT_PALETTE.brass, gold: OBJECT_PALETTE.gold, goldSculpt: OBJECT_PALETTE.gold,
   platinum: OBJECT_PALETTE.platinum, platinumSculpt: OBJECT_PALETTE.platinum, sapphire: OBJECT_PALETTE.sapphire,
   sapphireSculpt: OBJECT_PALETTE.sapphire, amethyst: OBJECT_PALETTE.amethyst, ruby: OBJECT_PALETTE.ruby,
-  emerald: OBJECT_PALETTE.emerald, onyx: OBJECT_PALETTE.onyx, rock: "#2a2233", mirror: "#07080b",
+  emerald: OBJECT_PALETTE.emerald, onyx: OBJECT_PALETTE.onyx, rock: "#2a2233", mirror: "#080706",
 };
 
 function createPieceMaterial(key: PieceMaterialKey, quality: ObjectQuality): THREE.Material {
@@ -149,7 +150,7 @@ function createPieceMaterial(key: PieceMaterialKey, quality: ObjectQuality): THR
     case "rock":
       return physical(quality, { color: "#2a2233", metalness: 0.1, roughness: 0.55, flatShading: true });
     case "mirror":
-      return physical(quality, { color: "#07080b", metalness: 0.6, roughness: 0.12, clearcoat: 1, clearcoatRoughness: 0.04 });
+      return physical(quality, { color: "#080706", metalness: 0.6, roughness: 0.12, clearcoat: 1, clearcoatRoughness: 0.04 });
   }
 }
 
@@ -285,7 +286,7 @@ export function glowMaterial(color: string, kind: "halo" | "sprite" = "halo"): T
  * pass discards it (used by the transparent portrait studio). The mesh must
  * set `onBeforeRender = transmissionOnlyBeforeRender`.
  */
-export function transmissionBackdropMaterial(top = "#1a1f2b", bottom = "#050608", band = "#a88a55") {
+export function transmissionBackdropMaterial(top = "#221d17", bottom = "#070605", band = "#a88a55") {
   return new THREE.ShaderMaterial({
     side: THREE.BackSide,
     depthWrite: false,

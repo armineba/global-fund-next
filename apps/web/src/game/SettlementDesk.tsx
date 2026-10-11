@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight, BadgeEuro, Check, CircleAlert, HandCoins, Hourglass, Landmark, Minus, Plus, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, Check, CircleAlert, Landmark, Minus, Plus, ShieldCheck } from "lucide-react";
 import type { GameCommand, GameView, PendingSettlement, Player } from "@global-fund/shared";
 import AnimatedMoney from "../presentation/AnimatedMoney";
 import { usePresentationSettings } from "../presentation/settings";
 import { money, pad2 } from "../ui/format";
+import { Money } from "../ui/Money";
 import { SectorIcon } from "../ui/SectorIcon";
 import Pawn from "./Pawn";
 import "./settlement-desk.css";
@@ -25,13 +26,6 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const NO_PICKS: Readonly<Record<string, number>> = {};
 const ESTIMATE_NOTE = "Estimation au cours affiché. Le serveur fixe les cours à l’envoi de la proposition.";
 
-/** "1 234,50 M€" with the unit set smaller than the figure (text content is unchanged). */
-function Amount({ value, className = "" }: { value: number; className?: string }) {
-  const text = money(value);
-  const cut = text.lastIndexOf(" ");
-  return <span className={`sd-amount ${className}`}>{text.slice(0, cut)} <small>{text.slice(cut + 1)}</small></span>;
-}
-
 /** One side of the ledger: figurine, role, name and live cash. The rail draws the payment direction. */
 function Party({ side, player, name, isViewer }: { side: "debtor" | "creditor"; player?: Player; name: string; isViewer: boolean }) {
   return <div className={`sd-party sd-party-${side}`}>
@@ -39,7 +33,7 @@ function Party({ side, player, name, isViewer }: { side: "debtor" | "creditor"; 
       {player ? <Pawn id={player.pawn} color={player.color} /> : <Landmark size={22} strokeWidth={1.5} />}
     </span>
     <span className="sd-party-text">
-      <small className="sd-role">{side === "debtor" ? "Débiteur" : "Créancier"}{isViewer && <em>vous</em>}</small>
+      <small className="sd-role">{side === "debtor" ? "Débiteur" : "Créancier"}{isViewer && <em>Vous</em>}</small>
       <strong title={player?.name ?? name}>{player?.name ?? name}</strong>
       <span className="sd-cash">{player ? <><span>Liquidités</span><AnimatedMoney value={player.cash} /></> : "Règlement au marché"}</span>
     </span>
@@ -49,7 +43,7 @@ function Party({ side, player, name, isViewer }: { side: "debtor" | "creditor"; 
 
 /** Waiting state: the decision belongs to another fund. */
 function Waiting({ name, action }: { name: string; action: string }) {
-  return <p className="sd-waiting" role="status"><Hourglass size={17} strokeWidth={1.6} aria-hidden="true" /><span><b>{name}</b> {action}</span></p>;
+  return <p className="sd-waiting" role="status"><i className="sd-orbit" aria-hidden="true" /><span><b>{name}</b> {action}</span></p>;
 }
 
 export default function SettlementDesk({ game, settlement, viewerId, canAct, onCommand }: Props) {
@@ -156,8 +150,7 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
     >
       <header className="sd-head">
         <p className="sd-cause" title={cause ? "Arrivée sur la case, revenus dus aux détenteurs, puis règlement." : undefined}>
-          {settlement.sectorId && <SectorIcon id={settlement.sectorId} size={15} />}
-          <strong>{cause ? `CASE ${cause.toLocaleUpperCase("fr-FR")}` : "RÈGLEMENT FINANCIER"}</strong>
+          <strong>{settlement.sectorId && <SectorIcon id={settlement.sectorId} size={14} />}{cause ? `CASE ${cause.toLocaleUpperCase("fr-FR")}` : "RÈGLEMENT FINANCIER"}</strong>
           <span title={reason === settlement.reason ? undefined : settlement.reason}>{reason}</span>
         </p>
         <span className="sd-docket" title={`Cycle ${pad2(game.cycle)} · dossier ${docket}`}>Nº {docket}</span>
@@ -167,22 +160,22 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
         <Party side="debtor" player={debtor} name={debtorName} isViewer={viewerId === settlement.debtorId} />
         <div className="sd-due">
           <small>Reste à régler</small>
-          <Amount value={currentDebt} className="sd-due-amount" />
+          <Money value={currentDebt} className="sd-due-amount" />
           {cashGap <= 0
-            ? <span className="sd-gap is-ok"><Check size={13} aria-hidden="true" />Liquidités suffisantes</span>
+            ? <span className="sd-gap is-ok"><Check size={13} strokeWidth={2.4} aria-hidden="true" />Liquidités suffisantes</span>
             : <span className="sd-gap" title={`Liquidités du débiteur : ${money(debtorCash)}`}>{debtorCash > 0 ? `Manque ${money(cashGap)}` : "À couvrir en actifs"}</span>}
         </div>
         <Party side="creditor" player={creditor} name={creditorName} isViewer={Boolean(settlement.creditorId) && viewerId === settlement.creditorId} />
       </section>
 
       {order.length > 1 && <section className="sd-priority" aria-label="Ordre des créanciers">
-        <p className="sd-priority-title" title={priorityRule}>Priorité</p>
+        <p className="sd-priority-title" title={priorityRule}>Ordre de paiement</p>
         <div>{order.map((player, index) => {
           const current = player.id === settlement.creditorId;
           const done = !current && settled.has(player.id);
           const unpaid = settled.get(player.id) ?? 0;
           return <span key={player.id} className={current ? "is-current" : done ? "is-done" : ""} title={done ? (unpaid > 0 ? `Impayé : ${money(unpaid)}` : "Réglé") : current ? "En cours" : undefined}>
-            <b>{done ? <><Check size={11} strokeWidth={2.4} aria-hidden="true" /><i className="sr-only">Réglé</i></> : index + 1}</b>{player.name}<small>{money(frozenPriorities.get(player.id) ?? player.fundValue)}</small>
+            <b>{done ? <><Check size={11} strokeWidth={2.6} aria-hidden="true" /><i className="sr-only">Réglé</i></> : index + 1}</b>{player.name}<small>{money(frozenPriorities.get(player.id) ?? player.fundValue)}</small>
           </span>;
         })}</div>
         <p className="sd-priority-note">{priorityLabel}</p>
@@ -194,10 +187,10 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
             <div>
               <h2 className="sd-title">Choisissez les actifs à céder</h2>
               <p className="sd-sub">{settlement.creditorId
-                ? "Couvrez la dette pour proposer au créancier, ou vendez au marché, même en partie."
-                : "Dette due au marché : les parts sélectionnées seront vendues pour la payer."}</p>
+                ? "Couvrez la dette pour proposer, ou vendez au marché, même en partie."
+                : "Les parts choisies sont vendues au marché pour payer la dette."}</p>
             </div>
-            {!editable && <span className="sd-sync" role="status"><Hourglass size={14} aria-hidden="true" />Synchronisation…</span>}
+            {!editable && <span className="sd-sync" role="status"><i className="sd-orbit" aria-hidden="true" />Synchronisation…</span>}
           </div>
           <div className={`sd-table-wrap${clipped ? " is-clipped" : ""}`} ref={tableRef}>
             <table className="sd-assets-table">
@@ -216,7 +209,7 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
                 const zone = game.zones.find(item => item.id === company.zone)?.name ?? company.zone;
                 const sector = game.sectors.find(item => item.id === company.sector)?.name ?? company.sector;
                 return <tr key={company.id} className={count > 0 ? "is-selected" : ""} style={{ "--i": index } as CSSProperties}>
-                  <td title={company.ticker ? undefined : company.id}><span className="sd-company"><strong>{company.name}</strong>{company.ticker && <small>{company.ticker}</small>}<em className="sd-folded">{zone} · {sector}<span> · {quantity(held)} {held > 1 ? "détenues" : "détenue"}</span></em></span></td>
+                  <td title={company.ticker ? undefined : company.id}><span className="sd-company"><strong>{company.name}</strong>{company.ticker && <small>{company.ticker}</small>}<em className="sd-folded">{zone} · {sector}<span> · {quantity(held)} {held > 1 ? "détenues" : "détenue"}</span><span> · {money(company.price)}</span></em></span></td>
                   <td><span className="sd-market"><span>{zone}</span><span className="sd-sector"><SectorIcon id={company.sector} size={13} />{sector}</span></span></td>
                   <td className="is-num"><span className="sd-held" title={`${quantity(held)} ${held > 1 ? "parts détenues" : "part détenue"}${count > 0 ? `, ${quantity(count)} à céder` : ""}`}>
                     <span className="sd-pips" aria-hidden="true">{Array.from({ length: Math.max(5, held) }, (_, slot) => <i key={slot} className={slot < held - count ? "is-kept" : slot < held ? "is-out" : "is-free"} />)}</span>
@@ -224,9 +217,9 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
                   </span></td>
                   <td className="is-num">{money(company.price)}</td>
                   <td className="is-center"><div className="sd-quantity">
-                    <button type="button" aria-label={`Retirer une part de ${company.name}`} disabled={!editable || count === 0} onClick={() => setCount(company.id, held, count - 1)}><Minus size={14} strokeWidth={2} aria-hidden="true" /></button>
+                    <button type="button" aria-label={`Retirer une part de ${company.name}`} disabled={!editable || count === 0} onClick={() => setCount(company.id, held, count - 1)}><Minus size={14} strokeWidth={2.2} aria-hidden="true" /></button>
                     <b>{quantity(count)}</b>
-                    <button type="button" aria-label={`Ajouter une part de ${company.name}`} disabled={!editable || count >= held} onClick={() => setCount(company.id, held, count + 1)}><Plus size={14} strokeWidth={2} aria-hidden="true" /></button>
+                    <button type="button" aria-label={`Ajouter une part de ${company.name}`} disabled={!editable || count >= held} onClick={() => setCount(company.id, held, count + 1)}><Plus size={14} strokeWidth={2.2} aria-hidden="true" /></button>
                   </div></td>
                   <td className="is-num">{count > 0 ? <span className="sd-value">{money(count * company.price)}</span> : <span className="sd-nil" aria-label="Aucune part">—</span>}</td>
                 </tr>;
@@ -243,7 +236,7 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
                 <div><dt>Sélection</dt><dd className={hasSelection ? "" : "is-nil"}><AnimatedMoney value={roundCent(selectedValue)} /></dd></div>
                 {hasSelection && (selectionCovers
                   ? <div className={creditorShort ? "is-warn" : "is-ok"} title={ESTIMATE_NOTE}>
-                      <dt>{creditorShort ? <CircleAlert size={13} aria-hidden="true" /> : <Check size={13} aria-hidden="true" />}{outcomeLabel}</dt>
+                      <dt>{creditorShort ? <CircleAlert size={13} aria-hidden="true" /> : <Check size={13} strokeWidth={2.4} aria-hidden="true" />}{outcomeLabel}</dt>
                       <dd>{proposedCashDelta !== 0 ? `≈ ${money(Math.abs(proposedCashDelta))}` : "Aucun complément"}</dd>
                     </div>
                   : <div className="is-short"><dt><CircleAlert size={13} aria-hidden="true" />Il manque</dt><dd>{money(missing)}</dd></div>)}
@@ -251,8 +244,8 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
               {hasSelection && selectionCovers && creditorShort && <p className="sd-figure-note" role="status">Au-delà de sa trésorerie : préférez la vente au marché.</p>}
             </div>
             <div className="sd-actions">
-              <button type="button" className={`gf-btn ${preferMarket ? "gf-btn--primary sd-cta" : "gf-btn--ghost"}`} disabled={!editable || !hasSelection} onClick={() => submit("LIQUIDATE_ASSETS")} title="Vente immédiate au cours affiché ; le produit sert au paiement."><BadgeEuro size={16} aria-hidden="true" />Vendre au marché</button>
-              {settlement.creditorId && <button type="button" className={`gf-btn ${preferMarket ? "gf-btn--ghost" : "gf-btn--primary sd-cta"}`} disabled={!editable || !selectionCovers} onClick={() => submit("PROPOSE_SETTLEMENT")} title="Le créancier accepte, refuse ou exige du cash."><HandCoins size={16} aria-hidden="true" />Proposer au créancier<ArrowRight size={16} aria-hidden="true" /></button>}
+              <button type="button" className={`gf-btn ${preferMarket ? "gf-btn--primary sd-cta" : "gf-btn--ghost"}`} disabled={!editable || !hasSelection} onClick={() => submit("LIQUIDATE_ASSETS")} title="Vente immédiate au cours affiché ; le produit sert au paiement.">Vendre au marché</button>
+              {settlement.creditorId && <button type="button" className={`gf-btn ${preferMarket ? "gf-btn--ghost" : "gf-btn--primary sd-cta"}`} disabled={!editable || !selectionCovers} onClick={() => submit("PROPOSE_SETTLEMENT")} title="Le créancier accepte, refuse ou exige du cash.">Proposer au créancier<ArrowRight size={16} aria-hidden="true" /></button>}
             </div>
           </footer>
         </> : <Waiting name={actorName} action="choisit les actifs à céder." />}
@@ -263,17 +256,17 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
           <div className="sd-main-head">
             <h2 className="sd-title">{debtorName} vous propose un règlement</h2>
             {!editable
-              ? <span className="sd-sync" role="status"><Hourglass size={14} aria-hidden="true" />Synchronisation…</span>
+              ? <span className="sd-sync" role="status"><i className="sd-orbit" aria-hidden="true" />Synchronisation…</span>
               : <span className="sd-frozen" title="Cours figés à la proposition"><ShieldCheck size={14} aria-hidden="true" />Cours figés</span>}
           </div>
           <motion.div
             className="sd-offer"
-            initial={calm ? { opacity: 0 } : { opacity: 0, x: -18, rotate: -0.6 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ duration: calm ? 0.2 : 0.5, delay: calm ? 0 : 0.12, ease: EASE }}
+            initial={calm ? { opacity: 0 } : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: calm ? 0.2 : 0.4, delay: calm ? 0 : 0.12, ease: EASE }}
           >
+            <p className="sd-label">Vous recevez</p>
             <div className="sd-offer-assets">
-              <p className="sd-label">Vous recevez</p>
               {offerAssets.length ? <ul className="sd-certs">{offerAssets.map(asset => {
                 const company = game.companies.find(item => item.id === asset.companyId);
                 const zone = company ? game.zones.find(item => item.id === company.zone)?.name ?? company.zone : undefined;
@@ -290,7 +283,7 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
               <div><dt>Valeur des parts</dt><dd>{money(offer?.value ?? 0)}</dd></div>
               <div className={`sd-net ${offerExact ? "is-exact" : creditorPays ? "is-out" : "is-in"}`} title={offerExact ? undefined : netNote}>
                 <dt>{offerExact ? "Aucun complément en cash" : creditorPays ? "Vous versez au débiteur" : "Le débiteur vous verse"}</dt>
-                {!offerExact && <dd><Amount value={Math.abs(offerDelta)} /></dd>}
+                {!offerExact && <dd><Money value={Math.abs(offerDelta)} /></dd>}
               </div>
               {offerExact && <p className="sd-net-note">{netNote}</p>}
             </dl>
@@ -299,9 +292,9 @@ export default function SettlementDesk({ game, settlement, viewerId, canAct, onC
           <footer className="sd-decision">
             <div className="sd-balance"><span>Trésorerie après acceptation</span><strong className={balanceAfter < 0 ? "is-down" : ""}>{balanceAfter < 0 ? `−${money(Math.abs(balanceAfter))}` : money(balanceAfter)}</strong></div>
             <div className="sd-actions">
-              <button type="button" className="gf-btn gf-btn--ghost" disabled={!editable} onClick={() => onCommand({ type: "REJECT_SETTLEMENT" })} title="Le débiteur devra proposer d’autres actifs."><X size={16} aria-hidden="true" />Refuser</button>
-              <button type="button" className="gf-btn gf-btn--ghost" disabled={!editable} onClick={() => onCommand({ type: "REQUIRE_CASH" })} title="Les parts sont vendues au marché ; vous êtes payé en cash."><BadgeEuro size={16} aria-hidden="true" />Exiger du cash</button>
-              <button type="button" className="gf-btn gf-btn--primary sd-cta" disabled={!editable || !creditorCanPay} onClick={() => onCommand({ type: "ACCEPT_SETTLEMENT" })} title={netNote}><Check size={16} aria-hidden="true" />{creditorPays ? `Accepter et payer ${money(Math.abs(offerDelta))}` : "Accepter le règlement"}</button>
+              <button type="button" className="gf-btn gf-btn--quiet" disabled={!editable} onClick={() => onCommand({ type: "REJECT_SETTLEMENT" })} title="Le débiteur devra proposer d’autres actifs.">Refuser</button>
+              <button type="button" className="gf-btn gf-btn--ghost" disabled={!editable} onClick={() => onCommand({ type: "REQUIRE_CASH" })} title="Les parts sont vendues au marché ; vous êtes payé en cash.">Exiger du cash</button>
+              <button type="button" className="gf-btn gf-btn--primary sd-cta" disabled={!editable || !creditorCanPay} onClick={() => onCommand({ type: "ACCEPT_SETTLEMENT" })} title={netNote}><Check size={16} strokeWidth={2.4} aria-hidden="true" />{creditorPays ? `Accepter et payer ${money(Math.abs(offerDelta))}` : "Accepter le règlement"}</button>
             </div>
           </footer>
         </> : <Waiting name={actorName} action="examine l’offre." />}

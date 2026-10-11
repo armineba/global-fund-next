@@ -10,10 +10,11 @@
  *   --pieces=lion,bull   Pieces to render (default: all six).
  *   --size=512           Output size in px (rendered at 2x, then downsampled).
  *   --out=<dir>          Output directory (default: apps/web/public/assets/pawns/render).
- *   --shots=<list>       Extra review screenshots: sheet, review, globe, hero-menu, hero-setup, hero-lobby
- *                        (any studio query can be appended after a colon, e.g. "globe:zone=asia&flight=1").
+ *   --shots=<list>       Extra review screenshots: sheet, review, globe, plane, turn-<piece>, hero-menu, hero-setup, hero-lobby
+ *                        (any studio query can be appended after a colon, e.g. "globe:flight=europe-oceania").
  *   --shots-out=<dir>    Where review screenshots go (default: <os tmp>/gf-pawn-shots).
  *   --viewport=WxH       Viewport of the review screenshots (default 1600x900).
+ *   --frames=N           Screenshots per shot (default 1), one every --every=ms (default 400): films an animation.
  *   --no-portraits       Only take the review screenshots.
  *   --swiftshader        Software WebGL instead of the hardware GPU.
  *   --cache=<name>       Private Vite dependency cache name.
@@ -110,9 +111,16 @@ async function main() {
         await page.goto(`${origin}/pawn-studio.html?${query}${extra ? `&${extra}` : ""}`, { waitUntil: "load" });
         await waitReady(page).catch(() => errors.push(`${shot}: never ready`));
         await page.waitForTimeout(Number(args.get("hold") ?? 600));
-        const file = join(SHOTS_OUT, `${shot.replace(/[^\w-]+/g, "_")}.png`);
-        await page.screenshot({ path: file, fullPage: name === "review" });
-        console.log(`✓ shot ${shot} → ${file}`);
+        const frames = Math.max(1, Number(args.get("frames") ?? 1));
+        const every = Number(args.get("every") ?? 400);
+        const started = Date.now();
+        for (let frame = 0; frame < frames; frame++) {
+          if (frame) await page.waitForTimeout(Math.max(0, started + frame * every - Date.now()));
+          const suffix = frames > 1 ? `-${String(frame).padStart(2, "0")}` : "";
+          const file = join(SHOTS_OUT, `${shot.replace(/[^\w-]+/g, "_")}${suffix}.png`);
+          await page.screenshot({ path: file, fullPage: name === "review" });
+          console.log(`✓ shot ${shot}${suffix} → ${file}`);
+        }
         await page.close();
       }
     }

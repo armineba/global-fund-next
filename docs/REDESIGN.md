@@ -1,190 +1,227 @@
-# Global Fund — Refonte « La table privée » (front uniquement)
+# Global Fund — Refonte « simple et immersive » (front uniquement)
 
-Branche : `refonte-front`. Cette refonte change **uniquement la présentation**. Elle remplace le plateau 2D PixiJS par une scène 3D temps réel (Three.js via React Three Fiber) et refait toute l'interface HTML.
+Branche : `refonte-front`. Cette refonte ne change **que la présentation**.
+
+Trois directions ont été **rejetées** par le product owner. On ne les reproduit jamais :
+- v1 « La table privée », en verre bleu nuit et laque : « très généré par IA, pas jeu de plateau, très dashboard, pas immersif » ;
+- v2 « Club 1929 », en feutre, acajou et laiton : « pas beau », « pas texturé » ;
+- v3 « Monaco noir & or texturé », en marbre, cuir et or photographiques : « atroce », puis « reviens dans la simplicité ».
+
+**Brief actuel (v4)**, dans ses mots :
+- « faut juste pas que ça fasse dashboard, et mettre de l'immersion » ;
+- « le jeu doit rester joli » ;
+- « des animations en fonction du type d'industrie » ;
+- « UI/UX clean, simple mais impressionnante avec l'interactivité ».
+
+S'y ajoutent ses demandes précédentes, toujours valables : un vrai avion pour les voyages, des animations propres partout et une vue plongeante sur le plateau.
 
 ---
 
 ## 0. Règles absolues
 
 1. **Ne jamais toucher `main`.** On travaille uniquement sur `refonte-front`.
-2. **Backend en lecture seule** : `apps/server/**`, `packages/game-engine/**`, `packages/shared/**` ne sont **jamais** modifiés. Le protocole, les commandes, les règles et les données restent identiques.
-3. **Aucune feature perdue.** Chaque commande, chaque décision, chaque donnée visible aujourd'hui reste accessible. On peut la déplacer, la condenser ou la mettre derrière un survol ou un dépli, mais jamais la supprimer. Inventaire en §7.
-4. **Logique client figée** : `store.ts`, `presentation/sequence.ts`, `presentation/useGamePresentation.ts`, `setupDraft.ts`, `trading/tradingSort.ts` gardent leur sémantique. Seules les durées de `PRESENTATION_TIMING` ont été retouchées, et uniquement par le lead.
+2. **Backend en lecture seule** : `apps/server/**`, `packages/game-engine/**` et `packages/shared/**` ne sont **jamais** modifiés. Le protocole, les commandes, les règles et les données restent identiques.
+3. **Aucune feature perdue.** Chaque commande, chaque décision et chaque donnée visible aujourd'hui reste accessible. On peut la déplacer, la condenser ou la mettre derrière un survol ou un dépli, mais jamais la supprimer. L'inventaire est en §7.
+4. **Logique client figée** : `store.ts`, `presentation/sequence.ts`, `presentation/useGamePresentation.ts`, `setupDraft.ts` et `trading/tradingSort.ts` gardent leur sémantique. Seules les durées de `PRESENTATION_TIMING` ont été retouchées, et uniquement par le lead.
 5. **Contrat de test** : les tests E2E (`tests/e2e/*.spec.ts`) et le script de captures s'appuient sur des classes, des libellés, des rôles et des attributs. Ils sont listés par écran en §7 et doivent rester valides. Si un texte change, on garde au moins la chaîne exigée.
-6. **Interface en français.** Montants au format `1 234,50 M€` (`ui/format.ts`), avec un vrai signe moins `−`.
+6. **Interface en français.** Les montants s'écrivent `1 234,50 M€` (`ui/format.ts`), avec un vrai signe moins `−`.
 
 ---
 
 ## 1. Vision
 
-> Une salle de conseil de banque privée, la nuit. Sur la table, un jeu de plateau de luxe : plateau en laque noire cerclé de laiton, globe armillaire d'obsidienne gravé d'or au centre, figurines taillées dans les pierres précieuses, dé d'onyx à points d'or. Autour, une interface de verre fine comme un trait : peu de mots, une typographie parfaite, seulement les chiffres qui comptent.
+> Un jeu de plateau premium, posé dans la pénombre. Le plateau 3D, réaliste et vivant, occupe l'écran. L'interface est un habillage de jeu fin, sobre et solide, qui s'efface devant lui.
 
 **Piliers**
-1. **Le plateau est le héros.** La 3D occupe tout l'écran. Le HUD reste en périphérie et en verre.
-2. **Un coup d'œil.** Chaque écran dit en moins de 2 s ce qui se passe et ce que je peux faire. Une seule action principale, visuellement dominante.
-3. **Le luxe par la retenue.** Des noirs profonds, du laiton chaud, beaucoup d'air, peu de bordures et peu de majuscules. Pas d'images générées par IA. La matière vient de la 3D, de la lumière et de la typographie.
-4. **Une animation porte un fait.** Le dé, le déplacement, les cours et les flux montrent un fait déjà décidé par le serveur. Pas de bruit décoratif permanent.
-5. **Parité accessibilité.** Avec `prefers-reduced-motion` ou le réglage « Réduire les animations », il n'y a ni mouvement de caméra ni effet intense. On garde le même contenu, les mêmes états et le même ordre.
+1. **Le plateau est le héros.** Il est en plein écran, en vue plongeante. L'immersion et le réalisme viennent de la 3D (lumière, matières, animations), jamais de textures plaquées sur l'interface.
+2. **Une interface de jeu, pas un dashboard.** Peu d'éléments, tous aux bords de l'écran :
+   - en haut à gauche, le statut ;
+   - en haut au centre, les joueurs ;
+   - à gauche, les notations ;
+   - en bas, la barre de tour ;
+   - en bas à droite, les outils.
 
-**Références d'ambiance** : montres de haute horlogerie (laiton satiné, émail), terminaux financiers haut de gamme, jeux de plateau numériques premium (le plateau physique au centre, l'interface discrète autour).
+   Pas de grilles de tuiles, pas de rails d'étiquettes, pas de petites capitales partout.
+3. **Simple et solide.**
+   - Noirs neutres, jamais de bleu.
+   - Surfaces pleines aux coins très arrondis.
+   - Une seule couleur d'accent, l'or, réservée à l'action principale et à l'état actif.
+   - Ni verre, ni texture, ni dégradé décoratif dans l'interface.
+4. **L'interactivité répond dans la scène.** L'interface pilote la scène, sans commande ni mouvement de caméra :
+   - survoler un secteur allume ses cases sur le plateau ;
+   - survoler une zone fait pulser son épingle sur le globe ;
+   - survoler un joueur met sa figurine dans la lumière.
+5. **Des animations propres partout.** Elles s'adaptent au contenu (au secteur de la case, au type de carte), avec parité en mouvement réduit.
+
+**Interdits**
+- le bleu marine, le bleu nuit et tout fond teinté de bleu ;
+- le glassmorphism, les textures photographiques dans l'interface et les dégradés « SaaS » ;
+- le look dashboard : tuiles de KPI, tableaux de bord, étiquettes grises en capitales ;
+- les textes qui répètent une information déjà visible.
 
 ---
 
 ## 2. Design system
 
-Tous les tokens sont dans `apps/web/src/styles.css` (`:root`). Les constantes partagées avec la 3D sont dans `apps/web/src/ui/theme.ts`.
+Les tokens sont dans `apps/web/src/styles.css`. Les constantes partagées avec la 3D sont dans `apps/web/src/ui/theme.ts` : couleurs des secteurs, couleurs des notes, pions et villes.
 
 | Usage | Tokens |
 | --- | --- |
-| Fonds | `--ink-950 … --ink-600` (encre de nuit) |
-| Laiton | `--gold-200 … --gold-700` (accent principal ; jamais en grands aplats hors bouton primaire) |
-| Texte | `--text-100` (blanc chaud), `--text-300`, `--text-500` (données secondaires plus froides) |
-| Signaux | `--up` émeraude, `--down` rubis, `--info` bleu, `--warn` ambre. Toujours avec un signe ou une flèche |
-| Notes | `--grade-a … --grade-e` via `<GradeJewel/>` |
-| Secteurs | `SECTOR_META[id].color` (saphir, or, acier, jade, cuivre, améthyste, péridot, rose, aigue-marine) |
-| Surfaces | `.gf-glass` (verre dépoli, filet doré, reflet sur le chant), `.gf-glass--quiet` |
-| Rayons | `--radius-xs/sm/md/lg/pill` |
-| Mouvement | `--ease-out`, `--ease-spring`, `--dur-1…4` |
-| Couches | `--z-scene 0`, `--z-hud 20`, `--z-stage 40`, `--z-modal 60`, `--z-toast 80`, `--z-top 100` |
+| Fonds | `--bg` (#0e0e0f), `--bg-2` |
+| Surfaces pleines, de la plus basse à la plus haute | `--surface`, `--surface-2`, `--surface-3`, `--surface-4` ; filets `--line`, `--line-2` |
+| Texte | `--text` (ivoire), `--text-2`, `--text-3` |
+| Accent unique (or) | `--accent`, `--accent-hover`, `--accent-press`, `--accent-soft` ; texte sur l'accent : `--accent-ink` |
+| Signaux | `--up` (vert), `--down` (rouge) |
+| Notes A–E | `--grade-a…e`, `<GradeJewel/>`, `<GradeShift/>` |
+| Rayons, ombres, durées, courbes | `--radius-*`, `--shadow-1/2/3`, `--dur-1…4`, `--ease-out`, `--ease-in-out`, `--ease-spring` |
+
+Les anciens tokens (`--gold-*`, `--ink-*`, `--text-100…`, `--glass`, `--hairline…`) restent comme alias de compatibilité. On ne leur ajoute aucun nouvel usage.
 
 **Typographie**
-- Titres : `var(--font-display)` Cormorant Garamond 500/600, en minuscules avec capitale initiale (`.gf-display`). Tailles 56 / 40 / 30 / 24.
-- Marque et gravure : Cinzel (`.gf-brand`). Seulement pour le logotype « GLOBAL FUND », les gravures du plateau 3D et de rares sur-titres.
-- Interface : Inter 400/500/600, en 15 / 13 / 12 px.
-- Sur-titres : `.gf-kicker`, 10,5 px en capitales espacées. Un seul par bloc au maximum.
-- Chiffres : classe `.gf-num` (chiffres tabulaires). Plex Mono (`.gf-mono`) seulement pour les codes (salon, tickers).
+- `--font-ui` **Inter** partout : titres en 600–700, chiffres tabulaires.
+- `--font-brand` **Cinzel**, uniquement pour la marque « GLOBAL FUND ».
+- Montants : `<Money/>` ou `<AnimatedMoney/>`. Le texte reste exactement `1 234,50 M€` ; l'unité est dans `.money-unit`.
 
-**Composants partagés** (styles.css, `ui/`)
-- Boutons : `.gf-btn` + `--primary` (laiton, reflet au survol), `--ghost`, `--quiet`, `--up`, `--down`, tailles `--sm/--lg`, `--block`. Les alias historiques `.gold-button` et `.outline-button` sont gardés car les tests et l'ancien code les ciblent.
-- `.gf-icon-btn` (rond, verre), `.gf-chip`, `.gf-kbd`, `.gf-dot`, `.gf-divider`.
-- `<GradeJewel grade label size pips/>` et `<GradeShift before after/>` dans `ui/GradeJewel.tsx`.
-- `<SectorIcon id/>` et `sectorIcon(id)` dans `ui/SectorIcon.tsx`. `SECTOR_META`, `ZONE_META`, `PAWN_META` et `GRADE_META` dans `ui/theme.ts`.
-- `<Pawn id color size/>` (`game/Pawn.tsx`) : portrait PNG rendu depuis la figurine 3D, rangé dans `/assets/pawns/render/{id}.png`. À défaut, il bascule sur l'ancien sprite, puis sur une icône. **`.pawn-object` est un hook de test.**
-- `<AnimatedMoney value/>` (`presentation/AnimatedMoney.tsx`) pour tout montant qui évolue.
-- Formatage : `money`, `signedMoney`, `signedPercent`, `tone`, `pad2` (`ui/format.ts`).
-- Mouvement global : `html[data-motion="reduced"]` (réglage in-app) et `@media (prefers-reduced-motion)` neutralisent les animations CSS. `html[data-quality]` vaut `high`, `medium` ou `low`.
-- Animations de panneaux : la bibliothèque `motion` (`import { motion, AnimatePresence } from "motion/react"`) est disponible. Ses animations doivent se dégrader en fondu simple en mouvement réduit (`useReducedMotion` ou le réglage in-app).
+**Composants**
+- Boutons en pilule :
+  - `.gf-btn--primary` : or plein, pour l'action principale (une seule par vue) ;
+  - `.gf-btn--ghost` : surface ;
+  - `.gf-btn--quiet` : sans fond ;
+  - `.gf-btn--up` / `.gf-btn--down` : signaux ;
+  - tailles `--sm` / `--lg`, et `--block`.
+- `.gf-icon-btn` : bouton rond.
+- `.gf-panel` / `.gf-glass` : surface pleine. Les deux ont le même rendu ; le nom `gf-glass` est historique.
+- `.gf-chip` et `kbd`.
+- `.gf-jewel` : pastille de note (aplat de couleur, lettre blanche).
+- `<Pawn/>` : portrait rendu de la figurine 3D. `.pawn-object` est un hook de test.
+- Mouvement réduit : `html[data-motion="reduced"]`, `prefers-reduced-motion`, `usePresentationSettings().reducedMotion`.
 
 ---
 
 ## 3. Règles d'écriture (condensation)
 
-L'utilisateur trouve l'existant trop bavard et redondant. Règles :
-1. **Une idée par ligne.** Titre de 4 mots maximum, texte d'appui d'une phrase (environ 90 caractères).
-2. **Ne pas répéter ce qui est déjà visible** : pas de « Prenez le temps de lire » en trois endroits, ni de « Vous avez la main » à côté d'un gros bouton d'action. Un même nombre ne s'affiche qu'une fois par vue.
-3. **Masquer les zéros** : une liste d'impacts ne montre que les fonds réellement touchés, avec la mention « Aucun autre fonds concerné » si nécessaire.
-4. **Les explications passent dans un `title`, une infobulle ou un dépli** (`<details>`), pas dans le flux.
-5. **Capitales réservées aux sur-titres de 1 à 3 mots.** Jamais de phrase entière en capitales.
-6. **États vides élégants et courts.** « Rien à régler. » plutôt que trois phrases.
+1. **Une idée par ligne.** Un titre fait 4 mots au plus ; le texte d'appui tient en une phrase.
+2. **Ne jamais répéter** une information déjà visible à l'écran.
+3. **Masquer les zéros** (fonds non touchés), avec « Aucun autre fonds concerné » si nécessaire.
+4. Les explications vont dans un `title`, une infobulle, une carte au survol ou un dépli `<details>`.
+5. Pas de phrases entières en capitales.
+6. Des verbes d'action courts : « Lancer le dé », « Négocier », « Voyager vers… ».
 7. Les chaînes exigées par les tests (§7) restent mot pour mot.
-
-Exemple de la carte « Règlement — Industrie » (capture de l'utilisateur) :
-- **Avant** : un sur-titre, un titre, une phrase de 2 lignes, « OPÉRATIONS DU TOUR », « Aucun paiement ce tour », une phrase d'explication, puis « EN BOURSE — Les entreprises concernées — Aucune entreprise cotée n'est directement concernée. »
-- **Après** : une carte compacte. Sur-titre « Apex Capital · case Industrie », titre « Règlement — Industrie », puis une ligne « Aucun détenteur à rémunérer — rien à régler. » et le bouton Continuer. La section entreprises disparaît quand elle est vide.
 
 ---
 
 ## 4. Mouvement
 
-- Entrées de panneaux en 240–420 ms (`--ease-out`) : fondu, translation de 8 à 14 px, échelle de 0,985 à 1. Sorties deux fois plus rapides.
-- Cartes : entrée « tirée du paquet » (rotation 3D CSS de −8° à 0°, translation et fondu), puis un reflet doré qui balaie la carte une seule fois.
-- Chiffres : interpolation `AnimatedMoney` et flash vert/rouge.
-- Un seul effet continu toléré dans le HUD : la pulsation lente de l'action principale quand c'est au joueur d'agir.
-- 3D : toutes les durées viennent de `PRESENTATION_TIMING` et de la `timeline` (§8). En mouvement réduit, pas d'interpolation ni de secousse, et un rendu à la demande.
+| Moment | Mise en scène |
+| --- | --- |
+| Lancer | Le dé est lancé, roule et s'arrête sur la valeur du serveur (`PRESENTATION_TIMING.dice`, puis `result`). |
+| Déplacement | Le pion saute case par case (220 ms), et la caméra l'accompagne doucement. |
+| Arrivée | La case joue **l'animation de son secteur**, courte (moins d'une seconde) et dans la lumière de la case. Les corners et les cases Événement ont leur propre signal. |
+| **Voyage** | **Cinématique d'environ 4,2 s** (`PRESENTATION_TIMING.travel`) : un avion 3D décolle de la ville de départ, suit un arc au-dessus du globe et se pose, puis la caméra revient. En mouvement réduit, l'arc est tracé d'un coup et l'avion apparaît à destination. |
+| Carte tirée | La carte du dessus se soulève du paquet 3D, puis la carte s'ouvre au centre de l'écran. |
+| Krach, Bull, Bear | La lumière de la scène change (rouge, vert ou froid), et le bandeau d'impact apparaît. |
+| Notes (`MARKET_IMPACT`) | La case ou l'épingle du globe pulse en vert ou en rouge, et la pastille de note bascule dans le HUD. |
+| Survols du HUD | De la lumière dans la scène (secteur, zone ou figurine), sans mouvement de caméra. |
+| Panneaux | Entrées en 250–420 ms (fondu et légère translation), sorties plus rapides. |
+
+Courbes : `--ease-out` et `--ease-spring`. On vise 60 fps.
 
 ---
 
-## 5. Agencement en jeu (desktop ≥ 1280 px)
+## 5. Écran de jeu
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│ ◎  Cycle 07/101 · Composer son portefeuille        Salon A11C·Londres  ● 🔊 ⚙ │  bande haute (App topbar + .world-status)
-│ ┌──────────┐                                                   ┌──────────┐ │
-│ │ INDICES  │                                                   │  FONDS   │ │
-│ │ zones ×5 │              PLATEAU 3D (plein écran,             │ cartes   │ │
-│ │ secteurs │              derrière tout le HUD)                │ joueurs  │ │
-│ │   ×9     │                                                   │  ×2–6    │ │
-│ │.world-   │                                                   │.fund-dock│ │
-│ │ ratings  │                                                   │          │ │
-│ └──────────┘                                                   └──────────┘ │
-│ [⤢ vue]        ┌────────── .command-console ──────────┐   [P][M][A][S][Salon] │
-│                │ pion·nom·étapes  [ ACTION PRINCIPALE ] cash│   .world-tools     │
-│                └──────────────────────────────────────┘                       │
-│ GLOBAL EXCHANGE ── ticker ─────────────────────────────────────────────────── │
+│ ◎ Cycle 07/101       (●Amara 2 425 M€)(●Luca 961 M€)(●Mei …)    ● Serveur  ◌ ◌ │
+│   Composer son portefeuille                                       Salon D00002 │
+│ ┌─────────┐                                                                    │
+│ │ Zones   │                PLATEAU 3D PLEIN ÉCRAN                              │
+│ │ Secteurs│                (vue plongeante, globe au centre)                   │
+│ └─────────┘                                                                    │
+│  ⤢          ┌────────────── barre de tour ──────────────┐          ◌ ◌ ◌ ◌ ◌   │
+│             │ ●Amara · À vous   [ Lancer le dé ␣ ]  185,00 M€ │                │
+│ GLOBAL EXCHANGE · téléscripteur discret ────────────────────────────────────── │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-- Le canvas 3D est **plein écran** (`.fund-board { position: fixed; inset: 0; z-index: 1 }`) sous le HUD (z ≥ 20). Le bureau (`.market-office`, skyline photographique de la ville du joueur) est un calque DOM fixe **derrière** le canvas (`z-index: 0`), assombri et flouté. Le canvas est transparent hors de la table. Aucun ancêtre du plateau ne doit porter de `transform` ou de `filter` : cela casserait le `position: fixed`.
-- **Règle des pointeurs** : les conteneurs du HUD sont en `pointer-events: none` ; seuls les contrôles interactifs et les panneaux défilables repassent en `auto`. Le test survole `.fund-board-canvas` en (100, 100) : aucun élément interactif ne doit s'y trouver, et un texte du HUD posé à cet endroit doit être en `pointer-events: none`.
-- **Scène centrale** (terminal, cartes, décision de voyage, desk de règlement) : variables CSS sur `.game-world` : `--center-top`, `--center-right`, `--center-bottom` et `--center-left`. Ce sont des **longueurs px simples** (par ex. `92px`), jamais `calc()`, car le script de captures les lit avec `parseFloat`. Chaque surface se positionne avec `position: fixed; top: var(--center-top); right: var(--center-right); bottom: var(--center-bottom); left: var(--center-left)`. Le hud positionne `.floating-terminal`, `.cs-backdrop.is-embedded` et `.geography-scene` ; le desk de règlement positionne lui-même `.settlement-desk`. Le contenu central doit rester dans ce rectangle **sans chevaucher `.command-console` ni `.fund-dock`**.
-- **Mode focus** : quand une surface centrale est ouverte, le rail gauche peut être recouvert et le rail droit (`.fund-dock`) se réduit à une colonne d'avatars d'environ 76 px. Son texte reste dans le DOM, car les tests lisent `textContent`. Les variables `--center-*` sont mises à jour en conséquence, par exemple `.game-world[data-stage-open] { --center-left: 16px; … }`.
-- Insets transmis au plateau : `BoardScene` reçoit `insets` (px masqués par le HUD) et cadre le plateau dans la zone libre.
-- Responsive :
-  - ≤ 1440 : rails plus étroits.
-  - ≤ 1180 : rail gauche en colonne compacte (lettres seules).
-  - ≤ 900 (tablette) : bande haute, plateau, puis les rails en bandes horizontales défilables et la console en bas. Le test tablette (768×1024) exige que le dialogue de carte et son bouton de fermeture soient visibles dans le viewport.
-  - ≤ 600 : mobile utilisable.
+**Le décor**
+- **Le canvas 3D est plein écran.**
+- **Bureau (`.market-office`)** : la skyline de la ville du fonds, très loin derrière, en noir et blanc, floue et assombrie. On garde les attributs `data-*` et le fondu `.office-leaving`.
+
+**Le HUD**
+- **Statut** (`.world-status`, en haut à gauche) : la ligne du cycle, puis le titre de phase exact en `h1`. `pointer-events: none`.
+- **Joueurs** (`.fund-dock`, en haut au centre) : une pilule par siège.
+  - Contenu : figurine avec un anneau à la couleur du siège, nom et valeur du fonds. Les liquidités s'affichent quand la place le permet (container query).
+  - Au survol, une carte montre la place, les liquidités et l'insolvabilité, et la figurine passe dans la lumière en 3D.
+  - États :
+    - fonds actif : anneau or et soulignement ;
+    - fonds inspecté : filet ;
+    - en détention : anneau rouge ;
+    - insolvable : grisé.
+- **Notations** (`.world-ratings`, à gauche) : une carte pleine et compacte, masquée en mode focus.
+  - Zones : un clic centre la caméra, un survol fait pulser l'épingle du globe.
+  - Secteurs : un survol allume les cases du secteur.
+- **Barre de tour** (`.command-console`, en bas au centre) :
+  - une ligne fine avec les étapes et la position ;
+  - puis le fonds actif, **une seule action principale en or**, et les liquidités (`.console-fund`).
+- **Outils** (`.world-tools`, en bas à droite) : boutons ronds avec infobulle. Les libellés restent dans le DOM. La **vue globale** est un bouton en bas à gauche.
+- **Téléscripteur** (`.financial-ticker`) : discret, au bord inférieur de l'écran.
+
+**Règles de mise en page**
+- **Surfaces centrales** : elles utilisent `--center-*` (des px simples sur `.game-world`, lus par le script de captures). Elles ne recouvrent jamais `.command-console` ni `.fund-dock`.
+- **Pointeurs** : les conteneurs du HUD sont en `pointer-events: none`, seuls les contrôles sont en `auto`, et rien n'est interactif en (100, 100).
+- **Cadrage** : la caméra cadre le plateau dans la zone libre grâce aux `insets` mesurés par `useHudInsets` (statut et joueurs en haut, notations à gauche, barre et outils en bas).
+
+**Responsive**
+- 1366×768 : pilules compactes (figurine 32 px, nom et valeur).
+- 1180 px et moins : notations réduites aux pastilles.
+- Tablette 768×1024 : les joueurs défilent en bande, les notations forment une bande au-dessus de la barre de tour, et le bouton de fermeture des cartes est visible.
+- Mobile : utilisable.
+
+### Surfaces centrales
+
+Elles suivent le même langage : surfaces pleines, une seule couleur d'accent, textes condensés. Elles seront reprises une à une après validation de l'écran de jeu :
+- terminal de trading ;
+- cartes (les familles gardent leur couleur signal, sur fond charbon : vert pour le Bull, rouge pour le Krach) ;
+- panneau de voyage ;
+- desk de règlement ;
+- bandeau d'impact ;
+- reçu de transaction ;
+- victoire.
+
+### Menus, configuration, salon
+
+- Fond 3D `MenuHero` neutre.
+- Menu simple, avec les boutons en pilule.
+- Configuration et salon sur des surfaces pleines, sans bleu.
 
 ---
 
 ## 6. Direction 3D
 
-### 6.1 Rendu
-- R3F `<Canvas>` avec `gl={{ alpha: true, antialias, powerPreference: "high-performance" }}`, rendu sRGB, `ACESFilmicToneMapping` (exposition ≈ 1), ombres douces (`PCFSoftShadowMap`).
-- Qualité :
-  - `high` : DPR [1, 1.75], post-traitement complet (Bloom mipmap sélectif, Vignette, léger grain, SMAA ou MSAA 4), ombres 2048.
-  - `medium` : DPR [1, 1.25], Bloom et Vignette, ombres 1024.
-  - `low` : DPR 0.85, sans composer ni transmission, ombres basiques ou aucune.
-  - **Rendu logiciel** (`WEBGL_debug_renderer_info` contient « SwiftShader », « llvmpipe » ou « Software ») : forcer `low` avec un DPR ≤ 0.75. Les tests E2E tournent sous SwiftShader.
-- `frameloop="always"` en mouvement normal (60 fps maximum, en pause quand l'onglet est caché ou le canvas hors écran) et `frameloop="demand"` en mouvement réduit, avec `invalidate()` à chaque changement de props, de textures ou de taille.
-- `data-scene-ready="true"` sur `.fund-board-canvas` après la première image rendue une fois les assets critiques chargés (ou après 4 s de délai, même si un asset échoue). `data-fps` est mesuré chaque seconde en mouvement normal et vaut `"0"` en mouvement réduit.
-
-### 6.2 Composition (unités monde ; arête de case ≈ 1)
-- **Table** : grand disque de cuir ou de bois sombre qui se fond en alpha vers les bords (dégradé radial), pour que le bureau DOM apparaisse derrière.
-- **Plateau** : dalle de 16 × 16 × 0,45 en laque noire (`MeshPhysicalMaterial`, clearcoat 1), cadre de laiton biseauté (metalness 1, roughness 0,3), filet d'or incrusté.
-- **52 cases, disposition « Monopoly »** : 4 coins carrés (index 0 Départ, 13 Bull Market, 26 Événement, 39 Événement) et 12 cases par côté. Ordre horaire depuis Départ (coin avant-gauche du point de vue de la caméra par défaut). Chaque case est une plaque d'émail sombre légèrement surélevée, avec un **liseré de couleur secteur** côté intérieur, une icône et un libellé gravés à la feuille d'or (texture canvas Cinzel, atlas unique), et le numéro de semaine 01–52 en petit. Cases spéciales :
-  - Départ : laiton plein avec une flèche.
-  - Événement : sceau, émail bleu nuit.
-  - Bull : émeraude avec ▲.
-  - Bear : rubis assombri avec ▼.
-  - Crash : rubis profond avec un éclair.
-- **Centre** :
-  - le globe armillaire (`globe.tsx`) sur un piédestal de laiton et de marbre noir ;
-  - une rose des vents gravée ;
-  - deux **paquets de cartes 3D**, CONTEXTE (100) et ÉVÉNEMENTS (50), dont la hauteur suit `contextsRemaining` et `boardEventsRemaining` ;
-  - la zone de lancer du dé.
-- **Figurines** (`pawns.tsx`, `PawnModel`) : lion en or, taureau saphir, globe platine, cristal améthyste, tour (gratte-ciel Art déco) rubis, feuille émeraude. Socle tourné, anneau à la couleur du siège. La figurine active porte un halo pulsé et un léger spot. Une figurine détenue est désaturée et assombrie, avec un anneau rubis.
-- **Dé** : cube d'onyx à arêtes arrondies et points d'or incrustés.
-- **Lumière** : clé chaude zénithale qui projette les ombres, contre-jour froid bleu, remplissage faible. `<Environment>` drei avec des `<Lightformer>` procéduraux (aucun fichier HDR) pour les reflets du métal. Pas de brouillard opaque : la transparence doit rester.
-
-### 6.3 Mouvements synchronisés (source unique : `timeline` + `stage`)
-- `timeline` (`BoardTimeline`) fournit `diceStartedAt`, `motionStartedAt` (horloge `performance.now()`), `roll`, `fromPosition`, `toPosition`, `motionStepMs` et `playerId`.
-- **Dé** : de `diceStartedAt` à `+PRESENTATION_TIMING.dice`, lancer depuis le côté du joueur actif, deux rebonds amortis, culbutes, puis une interpolation (slerp) vers l'orientation qui montre **exactement `timeline.roll`** sur la face supérieure. Pendant `DICE_RESULT`, éclat doré bref et pastille du résultat. Hors lancer, le dé repose sur la dernière valeur.
-- **Pion** : à partir de `motionStartedAt`, une case par `motionStepMs`, en arc (hauteur ≈ 0,55) avec écrasement à l'atterrissage, de `fromPosition` vers `toPosition` (modulo 52). La caméra suit. À l'arrivée (`PAWN_ARRIVAL`), une onde au sol à la couleur du secteur et la case s'illumine. Un procès en prison donne `fromPosition === toPosition` : aucun déplacement.
-- `game.players[].sectorPosition` suit déjà l'avant ou l'après mouvement selon l'étape (vue détachée). Le plateau ne calcule aucune règle.
-- **Voyage** : la dernière notice avec `fromZoneId → zoneId` devient un `flight` du globe (arc de grand cercle lumineux, comète à la couleur du siège, `PRESENTATION_TIMING.travel`). Le marqueur du fonds se déplace avec elle.
-- **Aperçu de voyage** : `travelPreview` donne un arc pointillé et le globe pivote vers la destination.
-- **MARKET_IMPACT** : `marketImpact` (`GradeChange`). Pour un secteur, ses cases pulsent en vert ou en rouge. Pour une zone, l'épingle du globe pulse.
-- **Présentations** :
-  - `crash` : vignette rubis, secousse courte de caméra (pas en mouvement réduit), cases assombries.
-  - `bull` : balayage de lumière or-vert et particules ascendantes.
-  - `bear` : lumière froide.
-  - `context` : reflet doré sur le paquet Contexte.
-  - `event` : spot sur le paquet Événements.
-- **Caméra** (amortie, environ 500 ms) :
-  - `global` : tout le plateau, cadré dans les `insets` ;
-  - `player` : suivi du pion pendant `BOARD_FOCUS → SPACE_REVEAL` ;
-  - `zone` : vers le globe pour `focusZone` ;
-  - `crash` : recul ;
-  - `overview` force `global`.
-  - Dérive inactive très lente et parallaxe souris de ±1,5° (écoute `window`, le canvas reste `pointer-events: none`), désactivées en mouvement réduit.
-
-### 6.4 Écrans de menu
-`MenuHero` (`board/three/MenuHero.tsx`) est un fond 3D plein écran derrière l'accueil, la configuration et le salon : globe armillaire en vedette, figurines sur un socle miroir, poussière d'or. Trois cadrages : `menu`, `setup` (les figurines des sièges configurés, la figurine choisie en avant) et `lobby` (figurines assises autour de la table).
+- **Lumière** : une lumière clé chaude au-dessus du plateau, avec des ombres douces et une chute sombre vers les bords. Tonemapping ACES. Bloom léger, réservé aux points lumineux.
+- **Matières** : réalistes mais retenues.
+  - Cadre en bois sombre ou ébène, filets dorés satinés.
+  - Cases sombres et mates, avec une bande de la couleur du secteur.
+  - **Aucun bleu marine** : noirs neutres et charbon.
+- **Cases** : bande de couleur, icône et libellé. Le survol d'un secteur dans le HUD (`highlightSector`) allume les cases avec un liseré lumineux de la couleur du secteur.
+- **Animations de secteur** : une animation courte par secteur à l'arrivée du pion, en complément de l'onde d'arrivée.
+- **Globe** : sombre avec des continents dorés, des épingles et l'arc d'aperçu de voyage. `highlightZone` fait pulser une épingle.
+- **Avion** : voir §4.
+- **Pions** : figurines (le lion est un vrai lion). `highlightPlayerId` met une figurine dans la lumière.
+- **Caméra** : vue plongeante à environ 55–65°, cadrée avec les `insets`. Elle suit doucement le pion et se tourne vers le globe pour les voyages. En mouvement réduit, la caméra est fixe et le rendu se fait à la demande.
+- **Contrats techniques inchangés** :
+  - `BoardSceneProps`, avec en plus `highlightSector`, `highlightZone` et `highlightPlayerId`, qui ne servent qu'à la présentation ;
+  - les attributs `data-*` ;
+  - la liste accessible des 52 cases ;
+  - le tier `low` en rendu logiciel ;
+  - `data-scene-ready` et `data-fps`.
 
 ---
 
 ## 7. Inventaire des features et contrat de test par écran
+
+> Les descriptions de cette section décrivent les **hooks** (classes, rôles, libellés, attributs) qui doivent survivre. La disposition visuelle et les matières sont celles des §5 et §6.
 
 ### 7.1 Coquille App, menus, configuration, salon — `App.tsx`, `game/MainMenu.tsx`, `game/StartingMarketPicker.tsx`, `game/Chat.tsx`
 - Le texte **« Serveur connecté »** est visible sur tous les écrans, jeu compris. Sinon : « Reconnexion… ».
@@ -234,7 +271,7 @@ Exemple de la carte « Règlement — Industrie » (capture de l'utilisateur) :
   - `.console-fund` : sa **dernière** `.animated-money` = liquidités du fonds actif ;
   - la détention (procès, sortie forcée à 5 M€) ;
   - pendant une présentation, le libellé d'étape, avec « Lire la carte » si le terminal masque une carte.
-- `.fund-dock` : un `button.investor-card` par fonds, avec `.pawn-object`, le nom, la zone ou « Justice », IA/Humain, Insolvable, les liquidités et la valeur du fonds (`AnimatedMoney`). La classe `is-active` marque le fonds actif, `inspecting` le fonds inspecté. Le clic inspecte ce fonds (`viewerId`).
+- `.fund-dock` : un `button.investor-card` par fonds, avec `.pawn-object`, le nom, IA/Humain, la valeur du fonds et les liquidités (`AnimatedMoney`). `.dock-place` est la carte au survol : la zone ou « Justice », « Insolvable », et les liquidités quand la pilule est compacte. La classe `is-active` marque le fonds actif, `inspecting` le fonds inspecté. Le clic inspecte ce fonds (`viewerId`) ; le survol éclaire sa figurine (`highlightPlayerId`).
 - `.world-tools` : boutons contenant **Portefeuille**, **Marché**, **Analyse**, **Statistiques** et **Salon** (badge non lus). On y trouve aussi le nom du fonds inspecté, le nombre de participations et le nombre de contrôles 100 % (C/C).
 - Raccourcis : **P** portefeuille, **M** marché, **Espace** lance le dé (en phase dé, si autorisé, hors champ de saisie ou de bouton). Échap ferme le terminal.
 - `.trade-receipt` : reçu construit depuis deux états serveur, de titre « ACHAT VALIDÉ », « VENTE VALIDÉE », « CONTRÔLE TOTAL » ou « MONOPOLE CONSTITUÉ ».
@@ -292,7 +329,7 @@ Exemple de la carte « Règlement — Industrie » (capture de l'utilisateur) :
 - Portefeuille : « VOS POSITIONS », groupes zone × secteur (`.td-portfolio-groups`), progression de contrôle, monopole.
 - Analyse (`.td-analysis`) : répartition par zone et par secteur (anneaux), contrôles 5/5 C/C, monopoles A/A.
 - Statistiques (`.td-statistics`) : au moins 3 `.td-card` enfants directs, chacun d'au moins 180 px de haut : historique de valeur du fonds, notations zones/secteurs, cours d'une société. Le terminal reste dans le viewport à 1920, 1440 et 1366.
-- Graphiques : ECharts, à restyler (palette laiton, grilles discrètes).
+- Graphiques : ECharts, avec des courbes or ou neutres et des grilles très discrètes.
 
 ### 7.5 Desk de règlement — `game/SettlementDesk.tsx`
 - `main.settlement-desk` (`aria-label="Desk de règlement"`).
@@ -313,22 +350,15 @@ Exemple de la carte « Règlement — Industrie » (capture de l'utilisateur) :
 
 ---
 
-## 8. Répartition (workstreams) et coordination
+## 8. Organisation
 
-| Workstream | Fichiers (propriété exclusive) |
-| --- | --- |
-| **board** | `board/BoardScene.tsx`, `board/board-scene.css`, `board/three/*` sauf `pawns.tsx`, `globe.tsx` et `MenuHero.tsx` |
-| **objects** | `board/three/pawns.tsx`, `board/three/globe.tsx`, `board/three/MenuHero.tsx`, `board/three/materials.ts` (matières partagées), studio de rendu des portraits (`apps/web/pawn-studio.html`, `apps/web/src/pawnStudio.tsx`, `scripts/redesign/render-pawns.ts`), `public/assets/pawns/render/*.png` |
-| **hud** | `game/GameWorld.tsx`, `game/game-world.css`, `game/impact-ribbon.css`, `game/Geography.tsx` (+ son css), `game/OfficeEnvironment.tsx`, `game/office-environment.css`, `game/FinancialTicker.tsx`, `game/FinancialTicker.css` |
-| **cards** | `presentation/CardScene.tsx`, `presentation/CardScene.css` |
-| **terminal** | `trading/TradingDesk.tsx`, `trading/trading-desk.css` |
-| **settlement** | `game/SettlementDesk.tsx`, `game/settlement-desk.css` |
-| **menus** | `App.tsx`, `game/MainMenu.tsx`, `game/main-menu.css`, `game/StartingMarketPicker.tsx`, `game/starting-market-picker.css`, `game/Chat.tsx`, nouveaux `game/app-shell.css`, `game/home.css` et `game/lobby.css` |
-| **lead** | `styles.css`, `ui/*`, `game/Pawn.tsx`, `board/types.ts`, `main.tsx`, `presentation/*` hors CardScene, `index.html`, `package.json`, docs, `scripts/redesign/shoot.ts` |
-
-- Ne jamais modifier un fichier d'un autre workstream. Un besoin partagé (token, primitive) est noté dans le rapport final : le lead l'intègre.
-- Les styles d'un écran vivent dans son fichier CSS. Les sélecteurs sont préfixés par la racine de l'écran pour ne pas fuir.
-- `motion` est disponible (`motion/react`). `lucide-react` fournit les icônes, avec un trait de 1,5–1,75.
+- Un seul propriétaire par fichier à la fois. Un besoin partagé se signale au lead.
+- **Lead** :
+  - `styles.css`, `ui/*`, `board/types.ts` ;
+  - le HUD : `game/GameWorld.tsx`, `game-world.css`, `geography.css`, `impact-ribbon.css`, `office-environment.css` et `FinancialTicker.css` ;
+  - `app-shell.css`, la documentation et `scripts/redesign/shoot.ts`.
+- **3D** : `board/BoardScene.tsx` et `board/three/*` (plateau, cases, animations de secteur, lumière). Le globe, l'avion, les pions et `MenuHero` peuvent être confiés à un second chantier.
+- Les styles d'un écran vivent dans son fichier et sont préfixés par la racine de l'écran.
 
 ## 9. Vérification
 
@@ -337,5 +367,5 @@ Exemple de la carte « Règlement — Industrie » (capture de l'utilisateur) :
   ```
   npx tsx scripts/redesign/shoot.ts --scenes=<scènes> --sizes=1920x1080,1366x768 --out=<dossier> --cache=<workstream>
   ```
-  Scènes : `menu`, `settings`, `rules`, `setup`, `setup-markets`, `join`, `lobby`, `board`, `chat`, `dice`, `roll` (avec `--motion=full`), `trading`, `portfolio`, `analysis`, `statistics`, `travel`, `jail`, `context`, `impact`, `event`, `prison`, `crash`, `bull`, `bear`, `payments`, `settlement-cash`, `settlement`, `creditor`, `ending`. Le rapport (`report.json`) liste aussi les erreurs console. Par défaut le GPU matériel (RTX) est utilisé ; `--swiftshader` reproduit le rendu logiciel des tests E2E (qualité `low` forcée). Regarder chaque PNG produit avec l'outil Read.
+  Scènes : `menu`, `settings`, `rules`, `setup`, `setup-markets`, `join`, `lobby`, `board`, `hover` (survols du HUD), `chat`, `dice`, `roll` (avec `--motion=full`), `trading`, `portfolio`, `analysis`, `statistics`, `travel`, `jail`, `context`, `impact`, `event`, `prison`, `crash`, `bull`, `bear`, `payments`, `settlement-cash`, `settlement`, `creditor`, `ending`. Le rapport (`report.json`) liste aussi les erreurs console. Par défaut le GPU matériel (RTX) est utilisé ; `--swiftshader` reproduit le rendu logiciel des tests E2E (qualité `low` forcée). Regarder chaque PNG produit avec l'outil Read.
 - Avant de rendre la main : zéro erreur console sur ses scènes, contrat §7 respecté, revue critique de ses propres captures à 1920 et 1366 (luxe, lisibilité, densité, alignements).

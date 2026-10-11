@@ -3,6 +3,11 @@
  * (insets) with a lens shift (setViewOffset), so it stays centred at any
  * aspect ratio. Modes are damped (~500 ms); idle drift, pointer parallax and
  * the crash shake are disabled in reduced motion.
+ *
+ * Travel ("flight"): the globe publishes the close-up camera of the travel
+ * cinematic in runtime.travel for this very frame (it runs first); the rig keeps
+ * computing the plain board framing underneath and blends the two with the
+ * cinematic's close weight (dive in, return out), so the hand-back is exact.
  */
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -10,10 +15,16 @@ import * as THREE from "three";
 import { BOARD_SIZE, CENTRE, FRAME_TOP, cellAt } from "./layout";
 import { GLOBE_CENTER_Y } from "./Centerpiece";
 import { dampFactor, useRuntime, type CameraMode } from "./runtime";
+import { blendCameraPoses, createCameraPose } from "./travelCinematic";
 import type { BoardInsets } from "../types";
 
 const FOV = 30;
 const DEG = Math.PI / 180;
+const BOARD_NEAR = 0.5;
+const GLOBE_CENTRE = new THREE.Vector3(CENTRE.globe.x, GLOBE_CENTER_Y, CENTRE.globe.z);
+const boardPose = createCameraPose();
+const flightPose = createCameraPose();
+const blendedPose = createCameraPose();
 
 interface Pose { tx: number; ty: number; tz: number; distance: number; elevation: number; azimuth: number; ax: number; ay: number }
 
@@ -90,7 +101,12 @@ export function CameraRig({ mode, insets }: { mode: CameraMode; insets: BoardIns
     const rt = runtime.current;
     const now = performance.now();
     const target: Pose = { tx: 0, ty: 0.3, tz: 0, distance: fit.distance, elevation, azimuth: 0, ax: fit.ax, ay: fit.ay };
-    if (mode === "player") {
+    const travel = rt.travel?.frame;
+    const flying = !rt.reduced && !!travel && travel.active && Math.abs(now - travel.now) < 250;
+    // Travel cinematic: underneath, the framing the board takes right after it (the "zone" mode
+    // only exists because of the flight), so the return lands exactly where the rig resumes.
+    const framing: CameraMode = flying ? (rt.game.phase === "sector" ? "player" : "global") : mode;
+    if (framing === "player") {
       // Gentle follow: the roll frames the pawn with the dice tray, the walk follows the pawn.
       const stage = rt.stage ?? "";
       const px = rt.activePos.x, pz = rt.activePos.z;
@@ -99,20 +115,22 @@ export function CameraRig({ mode, insets }: { mode: CameraMode; insets: BoardIns
         target.tx = px * 0.32 + CENTRE.tray.x * 0.4; target.tz = pz * 0.32 + CENTRE.tray.z * 0.4;
         target.distance = fit.distance * 0.86; target.elevation = 50 * DEG;
       } else if (stage === "PAWN_MOVING" || stage === "PAWN_ARRIVAL" || stage === "SPACE_REVEAL") {
-        target.tx = px * 0.4; target.tz = pz * 0.4 + 0.2;
-        target.distance = fit.distance * 0.82; target.elevation = 49 * DEG;
+        // The walk follows the pawn; on arrival a slight push-in lets the sector effects read.
+        const landed = stage !== "PAWN_MOVING";
+        target.tx = px * (landed ? 0.46 : 0.4); target.tz = pz * (landed ? 0.46 : 0.4) + 0.2;
+        target.distance = fit.distance * (landed ? 0.72 : 0.82); target.elevation = (landed ? 47.5 : 49) * DEG;
       } else {
         target.tx = px * 0.16; target.tz = pz * 0.16 + 0.15;
         target.distance = fit.distance * 0.94; target.elevation = 51 * DEG;
       }
-    } else if (mode === "cell" && rt.hovered != null) {
+    } else if (framing === "cell" && rt.hovered != null) {
       const cell = cellAt(rt.hovered);
       target.tx = cell.cx; target.tz = cell.cz; target.ty = 0.5;
       target.distance = fit.distance * 0.6; target.elevation = 50 * DEG; target.ax = fit.cx; target.ay = fit.cy;
-    } else if (mode === "zone") {
+    } else if (framing === "zone") {
       target.tx = CENTRE.globe.x; target.tz = CENTRE.globe.z; target.ty = GLOBE_CENTER_Y * 0.85;
       target.distance = fit.distance * 0.56; target.elevation = 30 * DEG; target.ax = fit.cx; target.ay = fit.cy;
-    } else if (mode === "crash") {
+    } else if (framing === "crash") {
       target.distance = fit.distance * 1.07;
     }
     const p = pose.current;
@@ -137,6 +155,33 @@ export function CameraRig({ mode, insets }: { mode: CameraMode; insets: BoardIns
     }
     direction(elevationNow, azimuthNow, _v);
     camera.position.set(c.tx, c.ty, c.tz).addScaledVector(_v, c.distance);
+    if (flying && travel) {
+      boardPose.position.copy(camera.position);
+      boardPose.target.set(c.tx, c.ty, c.tz);
+      boardPose.up.set(0, 1, 0);
+      boardPose.fov = FOV;
+      boardPose.near = BOARD_NEAR;
+      boardPose.shiftX = size.width / 2 - c.ax;
+      boardPose.shiftY = size.height / 2 - c.ay;
+      flightPose.position.copy(travel.camPos);
+      flightPose.target.copy(travel.camTarget);
+      flightPose.up.copy(travel.camUp);
+      flightPose.fov = travel.fov;
+      flightPose.near = travel.near;
+      flightPose.shiftX = 0;
+      flightPose.shiftY = 0;
+      const view = blendCameraPoses(boardPose, flightPose, travel.close, GLOBE_CENTRE, blendedPose);
+      camera.position.copy(view.position);
+      camera.up.copy(view.up);
+      camera.lookAt(view.target);
+      camera.fov = view.fov;
+      camera.near = view.near;
+      camera.setViewOffset(size.width, size.height, view.shiftX, view.shiftY, size.width, size.height);
+      camera.updateProjectionMatrix();
+      return;
+    }
+    camera.up.set(0, 1, 0);
+    camera.near = BOARD_NEAR;
     camera.lookAt(c.tx, c.ty, c.tz);
     if (!rt.reduced && rt.mood === "crash") {
       const age = (now - rt.shakeAt) / 1000;

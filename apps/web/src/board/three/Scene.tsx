@@ -1,7 +1,8 @@
 /**
  * Everything inside the R3F canvas: render loop control, frame probe
  * (data-fps / data-scene-ready), camera, lights, the board, centre piece,
- * die, decks, figurines, event effects and post-processing.
+ * die, decks, figurines, sector arrival effects, event effects and
+ * post-processing.
  */
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { advance, useThree } from "@react-three/fiber";
@@ -18,7 +19,8 @@ import { Decks } from "./Decks";
 import { Figurines } from "./Figurines";
 import { CameraRig } from "./Camera";
 import { Lighting } from "./Lighting";
-import { ArrivalRipple, BullEffects } from "./Effects";
+import { BullEffects } from "./Effects";
+import { SectorFx } from "./SectorFx";
 import { PostFX } from "./PostFX";
 import { RuntimeContext, type BoardRuntime, type CameraMode, type DeckFocus } from "./runtime";
 import type { TierSettings } from "./quality";
@@ -162,7 +164,7 @@ export function Scene(props: SceneProps) {
       )}
       <Centerpiece materials={materials} globe={props.globe} onReady={onGlobeReady} />
       <Figurines players={props.players} activeId={props.activeId} quality={tier.tier} timeline={props.timeline} reduced={reduced} spotlight={tier.tier !== "low"} />
-      <ArrivalRipple />
+      {atlas && <SectorFx lite={tier.tier === "low"} shadows={tier.shadows} />}
       {tier.tier !== "low" && <BullEffects count={tier.tier === "high" ? 220 : 120} />}
       <PostFX tier={tier} />
     </RuntimeContext.Provider>

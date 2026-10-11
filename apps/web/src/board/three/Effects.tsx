@@ -1,58 +1,18 @@
 /**
- * Event effects on the board: the arrival ripple in the cell's colour, and the
- * bull market's gold-emerald light sweep with rising motes. Nothing here runs
+ * Market mood effects on the board: the bull market's gold-emerald light sweep
+ * with rising motes. (Arrival effects live in SectorFx.) Nothing here runs
  * permanently; everything is idle (and invisible) outside its event.
  */
 import { useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import { BOARD_SIZE, PLAQUE_TOP, TRACK_HALF, cellAt } from "./layout";
+import { BOARD_SIZE, PLAQUE_TOP, TRACK_HALF } from "./layout";
 import { useDisposable } from "./Board";
 import { clamp01, easeOutCubic, seeded, useRuntime } from "./runtime";
 
-const RIPPLE_FRAGMENT = /* glsl */ `
-  uniform float uProgress;
-  uniform vec3 uColor;
-  varying vec2 vUv;
-  float ring(float r, float radius, float width) { return smoothstep(width, 0.0, abs(r - radius)); }
-  void main() {
-    float r = length(vUv - 0.5) * 2.0;
-    float p = clamp(uProgress, 0.0, 1.0);
-    float e = 1.0 - pow(1.0 - p, 3.0);
-    float a = ring(r, mix(0.12, 0.96, e), 0.035 + 0.05 * p) * pow(1.0 - p, 1.4);
-    float q = clamp(p * 1.35 - 0.35, 0.0, 1.0);
-    a += ring(r, mix(0.1, 0.7, 1.0 - pow(1.0 - q, 3.0)), 0.03) * pow(1.0 - q, 1.6) * step(0.001, q) * 0.7;
-    a += smoothstep(0.5, 0.0, r) * pow(1.0 - p, 2.4) * 0.18;
-    gl_FragColor = vec4(uColor * a, a);
-  }`;
 const BASIC_VERTEX = /* glsl */ `
   varying vec2 vUv;
   void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`;
-
-export function ArrivalRipple() {
-  const runtime = useRuntime();
-  const mesh = useRef<THREE.Mesh>(null);
-  const geometry = useDisposable(() => new THREE.PlaneGeometry(2.6, 2.6).rotateX(-Math.PI / 2), []);
-  const material = useDisposable(() => new THREE.ShaderMaterial({
-    uniforms: { uProgress: { value: 0 }, uColor: { value: new THREE.Color() } },
-    vertexShader: BASIC_VERTEX, fragmentShader: RIPPLE_FRAGMENT,
-    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false,
-  }), []);
-  useFrame(() => {
-    const m = mesh.current;
-    if (!m) return;
-    const rt = runtime.current;
-    const arrival = rt.arrival;
-    const progress = arrival ? (performance.now() - arrival.at) / 1100 : 2;
-    m.visible = !rt.reduced && progress >= 0 && progress < 1;
-    if (!m.visible || !arrival) return;
-    const cell = cellAt(arrival.cell);
-    m.position.set(cell.cx, PLAQUE_TOP + 0.012, cell.cz);
-    material.uniforms.uProgress!.value = progress;
-    (material.uniforms.uColor!.value as THREE.Color).set(arrival.color).multiplyScalar(1.7);
-  });
-  return <mesh ref={mesh} geometry={geometry} material={material} visible={false} renderOrder={4} />;
-}
 
 // ------------------------------------------------------------------- bull --
 const SWEEP_FRAGMENT = /* glsl */ `

@@ -8,7 +8,7 @@
  *
  * Scene: a black-lacquer plinth with a dark mirror top, the armillary globe on
  * a brass column, the figurines and a little golden dust, under a warm key and
- * a cool rim. Three compositions share one instance and blend smoothly:
+ * a neutral silver rim (warm blacks, no blue cast). Three compositions share one instance and blend smoothly:
  *   menu  — the globe is the hero on the right half, the left stays calm
  *   setup — the configured figurines line up; the chosen one steps forward
  *   lobby — the seated funds' figurines circle a small globe, centred
@@ -43,7 +43,7 @@ export interface MenuHeroProps {
 
 type Variant = MenuHeroProps["variant"];
 
-const BACKDROP = { inner: "#17243a", mid: "#0a111c", outer: "#04060a" };
+const BACKDROP = { inner: "#2a241d", mid: "#120f0c", outer: "#070605" };
 const CSS_BACKDROP = `radial-gradient(85% 75% at 68% 42%, ${BACKDROP.inner} 0%, ${BACKDROP.mid} 46%, ${BACKDROP.outer} 100%)`;
 const PLINTH_RADIUS = 3.15;
 const GLOBE_HEIGHT = 1.92;
@@ -214,12 +214,12 @@ function Plinth({ quality }: { quality: ObjectQuality }) {
             depthScale={1.15}
             minDepthThreshold={0.3}
             maxDepthThreshold={1.4}
-            color="#07080b"
+            color="#090807"
             metalness={0.6}
             mirror={0.86}
           />
         ) : (
-          <meshPhysicalMaterial color="#050608" roughness={0.14} metalness={0.45} clearcoat={quality === "medium" ? 1 : 0} clearcoatRoughness={0.05} />
+          <meshPhysicalMaterial color="#070605" roughness={0.14} metalness={0.45} clearcoat={quality === "medium" ? 1 : 0} clearcoatRoughness={0.05} />
         )}
       </mesh>
     </group>
@@ -372,7 +372,7 @@ function Lights({ quality }: { quality: ObjectQuality }) {
   return (
     <>
       <primitive object={target} position={[0.2, 0.8, 0.2]} />
-      <hemisphereLight args={["#31415f", "#0b0806", 0.5]} />
+      <hemisphereLight args={["#3d352c", "#0b0806", 0.5]} />
       <spotLight
         ref={key}
         position={[-5.5, 9.5, 6]}
@@ -388,12 +388,12 @@ function Lights({ quality }: { quality: ObjectQuality }) {
         shadow-normalBias={0.02}
         shadow-radius={6}
       />
-      <directionalLight position={[6, 4.5, -6]} intensity={2.6} color="#9fc2ff" />
-      <directionalLight position={[-6.5, 2, -4]} intensity={0.8} color="#6f8fd8" />
+      <directionalLight position={[6, 4.5, -6]} intensity={2.4} color="#f1eee8" />
+      <directionalLight position={[-6.5, 2, -4]} intensity={0.7} color="#dccbb0" />
       <directionalLight position={[0.5, 1.2, 7]} intensity={0.35} color="#ffe2bd" />
       <Environment resolution={quality === "low" ? 64 : 256} frames={1}>
         <Lightformer form="circle" intensity={1.7} color="#ffe2bd" position={[-4.5, 6, 4]} scale={3.2} target={[0, 1, 0]} />
-        <Lightformer form="rect" intensity={3.4} color="#a9c9ff" position={[5.5, 2.5, -4]} scale={[0.7, 6, 1]} target={[0, 1, 0]} />
+        <Lightformer form="rect" intensity={3.2} color="#f3f0ea" position={[5.5, 2.5, -4]} scale={[0.7, 6, 1]} target={[0, 1, 0]} />
         <Lightformer form="ring" intensity={1.4} color="#fff1da" position={[0, 7.5, 1]} scale={3.5} target={[0, 0, 0]} />
         <Lightformer form="rect" intensity={0.9} color="#ffffff" position={[-6.5, 1.5, -1]} scale={[0.45, 5, 1]} target={[0, 1, 0]} />
         <Lightformer form="rect" intensity={0.45} color="#c08a45" position={[0, -2, 3]} scale={[10, 2, 1]} target={[0, 1, 0]} />

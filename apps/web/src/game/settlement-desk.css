@@ -1,8 +1,10 @@
 /* ==========================================================================
-   Desk de règlement — « clearing room ».
-   The desk positions itself inside the central stage (see REDESIGN §5) and
-   floats a single sheet over the board: ledger (who owes whom), creditor
-   order, then the decision (asset picker or creditor offer).
+   Desk de règlement — one solid sheet over the dimmed board.
+   Top: the cause, then who owes whom (debtor → amount → creditor) with the
+   remaining amount as the single focal number. Then the creditor order (when
+   several) and the decision: the debtor's asset picker or the creditor's offer.
+   Holdings and offered shares are raised tiles; summaries sit in a recessed
+   well. Gold only marks the primary action and the active selection.
    ========================================================================== */
 
 .settlement-desk {
@@ -19,96 +21,72 @@
   min-height: 0;
   pointer-events: none;
   container: sd-stage / size;
-  color: var(--text-100);
+  color: var(--text);
   font: 400 14px/1.45 var(--font-ui);
   text-align: left;
 }
 
 /* --------------------------------------------------------------- sheet -- */
 .settlement-desk .sd-sheet {
-  --sd-serif: "Cormorant Garamond", "Iowan Old Style", "Times New Roman", serif;
-  --sd-pad-y: 26px;
+  --sd-pad-y: 28px;
   --sd-pad-x: 34px;
-  --sd-gap: 20px;
+  --sd-gap: 24px;
   --sd-seat: 64px;
-  --sd-name: 30px;
-  --sd-due: 58px;
-  --sd-title: 28px;
-  --sd-cell-y: 13px;
+  --sd-name: 21px;
+  --sd-due: 56px;
+  --sd-title: 22px;
+  --sd-cell-y: 12px;
   --sd-cell-x: 18px;
   --sd-figure: 20px;
+  --sd-ring: rgba(227, 184, 96, 0.55);
   position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--sd-gap);
-  width: min(100%, 1240px);
+  width: min(100%, 1080px);
   max-height: 100%;
   min-height: 0;
   padding: var(--sd-pad-y) var(--sd-pad-x);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   overscroll-behavior: contain;
   pointer-events: auto;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(64% 52% at 50% -6%, rgba(226, 196, 134, 0.1), transparent 72%),
-    linear-gradient(180deg, rgba(19, 27, 40, 0.95) 0%, rgba(9, 13, 21, 0.97) 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 0 1px rgba(0, 0, 0, 0.45),
-    0 48px 120px -36px rgba(0, 0, 0, 0.92);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-}
-/* Bright hairline along the top bevel, as on every glass surface. */
-.settlement-desk .sd-sheet::before {
-  content: "";
-  position: absolute;
-  inset: 0 14% auto;
-  height: 1px;
-  background: var(--sheen);
-  opacity: 0.7;
-  pointer-events: none;
-}
-/* Second engraved rule inside the frame, like a ledger page. */
-.settlement-desk .sd-sheet::after {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border: 1px solid rgba(226, 196, 134, 0.055);
-  border-radius: calc(var(--radius-lg) - 5px);
-  pointer-events: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow-3);
 }
 .settlement-desk .sd-sheet > * { flex: none; min-width: 0; }
 
-.settlement-desk .sd-amount { font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
-.settlement-desk .sd-amount small { font-size: 0.52em; font-weight: 500; letter-spacing: 0.02em; }
-
 /* --------------------------------------------------------------- cause -- */
-.settlement-desk .sd-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.settlement-desk .sd-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .settlement-desk .sd-cause {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   min-width: 0;
-  color: var(--text-400);
-  font-size: 13px;
-  line-height: 1.2;
+  font: 500 13px/1.2 var(--font-ui);
+  color: var(--text-3);
 }
 .settlement-desk .sd-cause strong {
-  font: 600 10.5px/1.2 var(--font-ui);
-  letter-spacing: 0.17em;
-  color: var(--gold-400);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: none;
+  height: 28px;
+  padding: 0 12px 0 10px;
+  border-radius: var(--radius-pill);
+  font: 600 12px/1 var(--font-ui);
+  letter-spacing: 0.02em;
+  color: var(--text-2);
+  background: var(--surface-2);
   white-space: nowrap;
 }
 .settlement-desk .sd-cause > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.settlement-desk .sd-cause > span::before { content: "·"; margin-right: 10px; color: var(--text-600); }
 .settlement-desk .sd-docket {
   flex: none;
-  font: 500 11px/1 var(--font-mono);
-  letter-spacing: 0.14em;
-  color: var(--text-600);
+  font: 500 12px/1 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
   white-space: nowrap;
 }
 
@@ -120,69 +98,65 @@
 }
 .settlement-desk .sd-party { display: flex; align-items: center; gap: 16px; min-width: 0; }
 .settlement-desk .sd-party-creditor { flex-direction: row-reverse; text-align: right; }
+/* Figurine medallion, ringed with the seat colour (same object as the HUD). */
 .settlement-desk .sd-seat {
-  position: relative;
   display: grid;
   place-items: center;
   flex: none;
   width: var(--sd-seat);
   height: var(--sd-seat);
+  overflow: hidden;
   border-radius: 50%;
-  color: var(--gold-400);
-  background: radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.08), rgba(4, 6, 10, 0.7) 72%);
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--seat, var(--gold-500)) 60%, transparent),
-    0 0 0 5px rgba(4, 6, 10, 0.4),
-    0 14px 34px -14px color-mix(in srgb, var(--seat, var(--gold-500)) 75%, transparent);
+  color: var(--text-2);
+  background: radial-gradient(circle at 50% 35%, #2c2c30, #141416 70%);
+  box-shadow: 0 0 0 2px var(--seat, var(--surface-4)), var(--shadow-1);
 }
-.settlement-desk .sd-seat.is-bank { box-shadow: inset 0 0 0 1px var(--hairline-strong), 0 0 0 5px rgba(4, 6, 10, 0.4); }
-.settlement-desk .sd-seat .pawn-object { width: 88%; height: 88%; }
+.settlement-desk .sd-seat.is-bank { background: var(--surface-2); box-shadow: 0 0 0 1px var(--line-2); }
+.settlement-desk .sd-seat .pawn-object { width: 100%; height: 100%; }
+.settlement-desk .sd-seat .pawn-object img { inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px); }
 .settlement-desk .sd-party-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .settlement-desk .sd-party-creditor .sd-party-text { align-items: flex-end; }
 .settlement-desk .sd-role {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font: 600 10.5px/1.2 var(--font-ui);
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: var(--text-500);
+  gap: 6px;
+  font: 500 12px/1.2 var(--font-ui);
+  color: var(--text-3);
 }
 .settlement-desk .sd-role em {
-  padding: 2px 7px 3px;
-  border: 1px solid var(--hairline-strong);
+  padding: 3px 7px;
   border-radius: var(--radius-pill);
-  font: 600 10px/1 var(--font-ui);
+  font: 600 11px/1 var(--font-ui);
   font-style: normal;
-  letter-spacing: 0.06em;
-  text-transform: none;
-  color: var(--gold-300);
-  background: rgba(210, 173, 102, 0.1);
+  color: var(--text);
+  background: var(--surface-3);
 }
 .settlement-desk .sd-party-text > strong {
   max-width: 100%;
   overflow: hidden;
-  font: 600 var(--sd-name)/1.04 var(--sd-serif);
-  letter-spacing: -0.005em;
-  color: var(--text-100);
+  font: 650 var(--sd-name)/1.15 var(--font-ui);
+  letter-spacing: -0.015em;
+  color: var(--text);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.settlement-desk .sd-cash { display: inline-flex; align-items: baseline; gap: 7px; font-size: 12.5px; color: var(--text-500); white-space: nowrap; }
-.settlement-desk .sd-cash .animated-money { font-size: 14px; font-weight: 500; color: var(--text-200); }
+.settlement-desk .sd-cash { display: inline-flex; align-items: baseline; gap: 6px; font: 500 12.5px/1.2 var(--font-ui); color: var(--text-3); white-space: nowrap; }
+.settlement-desk .sd-cash .animated-money { font-size: 13.5px; font-weight: 600; color: var(--text-2); }
 
-/* The rails draw one long engraved line, debtor → creditor, broken by the amount. */
-.settlement-desk .sd-rail {
-  --sd-rail: linear-gradient(90deg, rgba(226, 196, 134, 0.06), rgba(226, 196, 134, 0.5));
-  position: relative;
-  flex: 1 1 auto;
-  min-width: 24px;
+/* The two rails draw one calm line, debtor → creditor, broken by the amount. */
+.settlement-desk .sd-rail { position: relative; flex: 1 1 auto; min-width: 24px; height: 12px; margin: 0 2px; }
+.settlement-desk .sd-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
   height: 1px;
-  margin: 0 6px;
-  background: linear-gradient(90deg, transparent, rgba(255, 244, 214, 0.95), transparent) 200% 0 / 34% 100% no-repeat, var(--sd-rail);
-  animation: sd-flow 900ms var(--ease-in-out) 520ms 1 both;
+  background: rgba(255, 255, 255, 0.16);
+  transform-origin: left center;
+  animation: sd-line 560ms var(--ease-out) 240ms both;
 }
-.settlement-desk .sd-party-debtor .sd-rail::before {
+.settlement-desk .sd-party-debtor .sd-rail::after {
   content: "";
   position: absolute;
   left: 0;
@@ -190,59 +164,53 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--gold-600);
-  transform: translate(-50%, -50%);
+  background: var(--text-3);
+  transform: translateY(-50%);
 }
-.settlement-desk .sd-party-creditor .sd-rail { --sd-rail: linear-gradient(90deg, rgba(226, 196, 134, 0.5), rgba(226, 196, 134, 0.9)); animation-delay: 1180ms; }
+.settlement-desk .sd-party-creditor .sd-rail::before { animation-delay: 680ms; }
 .settlement-desk .sd-party-creditor .sd-rail::after {
   content: "";
   position: absolute;
-  right: 0;
+  right: 2px;
   top: 50%;
-  width: 8px;
-  height: 8px;
-  border-top: 1px solid var(--gold-300);
-  border-right: 1px solid var(--gold-300);
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid var(--text-3);
+  border-right: 1.5px solid var(--text-3);
   transform: translateY(-50%) rotate(45deg);
+  animation: sd-fade 260ms var(--ease-out) 1180ms both;
 }
 .settlement-desk .sd-due {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7px;
-  padding: 0 clamp(14px, 2.2vw, 34px);
+  gap: 8px;
+  padding: 0 clamp(16px, 2.4vw, 36px);
   text-align: center;
 }
-.settlement-desk .sd-due > small {
-  font: 600 10.5px/1.2 var(--font-ui);
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: var(--gold-400);
-}
+.settlement-desk .sd-due > small { font: 500 12px/1.2 var(--font-ui); color: var(--text-3); }
 .settlement-desk .sd-due-amount {
-  font: 600 var(--sd-due)/0.95 var(--sd-serif);
-  font-variant-numeric: lining-nums tabular-nums;
-  letter-spacing: -0.012em;
-  color: var(--gold-200);
-  background: linear-gradient(180deg, #fbf0d6 0%, var(--gold-300) 46%, var(--gold-600) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font: 700 var(--sd-due)/1 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  white-space: nowrap;
 }
+.settlement-desk .sd-due-amount .money-unit { margin-left: 0.06em; font-size: 0.4em; font-weight: 600; letter-spacing: 0; color: var(--text-2); opacity: 1; }
+/* Status pill: what the debtor's cash leaves uncovered. */
 .settlement-desk .sd-gap {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 24px;
-  padding: 0 11px;
-  border: 1px solid rgba(240, 107, 116, 0.42);
+  height: 26px;
+  padding: 0 12px;
   border-radius: var(--radius-pill);
-  font: 500 12px/1 var(--font-ui);
-  color: #ffc4c8;
-  background: rgba(240, 107, 116, 0.12);
+  font: 600 12px/1 var(--font-ui);
+  color: var(--down);
+  background: rgba(236, 107, 95, 0.12);
   white-space: nowrap;
 }
-.settlement-desk .sd-gap.is-ok { color: var(--up); border-color: rgba(56, 213, 155, 0.4); background: rgba(56, 213, 155, 0.1); }
+.settlement-desk .sd-gap.is-ok { color: var(--up); background: rgba(76, 195, 141, 0.12); }
 
 /* ------------------------------------------------------ creditor order -- */
 .settlement-desk .sd-priority {
@@ -251,73 +219,64 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--hairline-cool);
 }
-.settlement-desk .sd-priority-title {
-  font: 600 10.5px/1.2 var(--font-ui);
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: var(--text-500);
-  cursor: help;
-}
-.settlement-desk .sd-priority > div { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 26px; }
+.settlement-desk .sd-priority-title { font: 500 12px/1.2 var(--font-ui); color: var(--text-3); cursor: help; }
+.settlement-desk .sd-priority > div { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 22px; }
 .settlement-desk .sd-priority > div > span {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   height: 32px;
   padding: 0 14px 0 5px;
-  border: 1px solid var(--hairline-cool);
   border-radius: var(--radius-pill);
-  font-size: 13px;
-  color: var(--text-300);
-  background: rgba(255, 255, 255, 0.025);
+  font: 500 13px/1 var(--font-ui);
+  color: var(--text-2);
+  background: var(--surface-2);
   white-space: nowrap;
 }
 .settlement-desk .sd-priority > div > span + span::before {
   content: "";
   position: absolute;
-  left: -20px;
+  left: -17px;
   top: 50%;
-  width: 14px;
+  width: 12px;
   height: 1px;
-  background: var(--hairline-strong);
+  background: var(--line-2);
 }
 .settlement-desk .sd-priority > div > span > b {
   display: grid;
   place-items: center;
   width: 22px;
   height: 22px;
-  border: 1px solid var(--hairline-cool);
   border-radius: 50%;
   font: 600 11px/1 var(--font-ui);
-  color: var(--text-400);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-2);
+  background: var(--surface-3);
 }
-.settlement-desk .sd-priority > div > span > small { font-size: 12px; color: var(--text-500); font-variant-numeric: tabular-nums; }
-.settlement-desk .sd-priority > div > span.is-current {
-  color: var(--text-100);
-  border-color: var(--hairline-strong);
-  background: rgba(210, 173, 102, 0.09);
-  box-shadow: 0 0 0 3px rgba(210, 173, 102, 0.06);
-}
-.settlement-desk .sd-priority > div > span.is-current > b { color: #1b1408; border-color: transparent; background: linear-gradient(180deg, #f3dfaf, #c79a52); }
-.settlement-desk .sd-priority > div > span.is-current > small { color: var(--gold-300); }
-.settlement-desk .sd-priority > div > span.is-done { color: var(--text-500); }
-.settlement-desk .sd-priority > div > span.is-done > b { color: var(--up); border-color: rgba(56, 213, 155, 0.35); background: rgba(56, 213, 155, 0.08); }
-.settlement-desk .sd-priority-note { font-size: 12px; color: var(--text-500); }
+.settlement-desk .sd-priority > div > span > small { font: 500 12px/1 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--text-3); }
+.settlement-desk .sd-priority > div > span.is-current { color: var(--text); background: var(--surface-3); }
+.settlement-desk .sd-priority > div > span.is-current > b { color: var(--accent-ink); background: var(--accent); }
+.settlement-desk .sd-priority > div > span.is-current > small { color: var(--text-2); }
+.settlement-desk .sd-priority > div > span.is-done { color: var(--text-3); background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+.settlement-desk .sd-priority > div > span.is-done > b { color: var(--up); background: rgba(76, 195, 141, 0.12); }
+.settlement-desk .sd-priority-note { font: 500 12px/1.2 var(--font-ui); color: var(--text-3); }
 
 /* ---------------------------------------------------------------- main -- */
-.settlement-desk .sd-sheet > .sd-main { display: flex; flex-direction: column; flex: 1 1 auto; gap: 14px; min-height: 0; }
-.settlement-desk .sd-main-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex: none; }
-.settlement-desk .sd-title {
-  font: 600 var(--sd-title)/1.05 var(--sd-serif);
-  letter-spacing: -0.008em;
-  color: var(--text-100);
+.settlement-desk .sd-sheet > .sd-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 16px;
+  min-height: 0;
+  padding-top: var(--sd-gap);
+  border-top: 1px solid var(--line);
 }
-.settlement-desk .sd-sub { margin-top: 6px; font-size: 13px; color: var(--text-400); }
+/* The offer never squeezes: when space runs out the sheet scrolls instead. */
+.settlement-desk .sd-sheet > .sd-offer-main { flex: none; }
+.settlement-desk .sd-main-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex: none; }
+.settlement-desk .sd-title { font: 650 var(--sd-title)/1.15 var(--font-ui); letter-spacing: -0.02em; color: var(--text); }
+.settlement-desk .sd-sub { margin-top: 5px; font: 500 13px/1.45 var(--font-ui); color: var(--text-2); }
 .settlement-desk .sd-frozen,
 .settlement-desk .sd-sync {
   display: inline-flex;
@@ -328,82 +287,79 @@
   padding: 0 12px;
   border-radius: var(--radius-pill);
   font: 500 12px/1 var(--font-ui);
+  color: var(--text-2);
+  background: var(--surface-2);
   white-space: nowrap;
 }
-.settlement-desk .sd-frozen { color: var(--info); border: 1px solid rgba(114, 185, 234, 0.32); background: rgba(114, 185, 234, 0.07); cursor: help; }
-.settlement-desk .sd-sync { color: var(--text-400); border: 1px solid var(--hairline-cool); background: rgba(255, 255, 255, 0.03); }
-.settlement-desk .sd-sync svg { color: var(--gold-400); }
+.settlement-desk .sd-frozen { cursor: help; }
+.settlement-desk .sd-frozen svg { color: var(--text-3); }
+.settlement-desk .sd-sync .sd-orbit { width: 12px; height: 12px; border-width: 1.5px; }
 
-/* --------------------------------------------------------- asset table -- */
-.settlement-desk .sd-table-wrap {
-  flex: 1 1 auto;
-  min-height: 96px;
-  overflow: auto;
-  border: 1px solid var(--hairline-cool);
-  border-radius: var(--radius-md);
-  background: rgba(4, 6, 10, 0.4);
-}
+/* ------------------------------------------------------- holdings tiles -- */
+/* The negative margin absorbs the table's outer border-spacing without creating overflow. */
+.settlement-desk .sd-table-wrap { flex: 1 1 auto; min-height: 96px; margin: -6px 0; overflow: auto; }
 .settlement-desk .sd-table-wrap.is-clipped {
-  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 40px), rgba(0, 0, 0, 0.2));
-  mask-image: linear-gradient(to bottom, #000 calc(100% - 40px), rgba(0, 0, 0, 0.2));
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent);
 }
-.settlement-desk .sd-assets-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; }
+.settlement-desk .sd-assets-table { width: 100%; border-collapse: separate; border-spacing: 0 6px; font-size: 14px; }
 .settlement-desk .sd-assets-table th {
   position: sticky;
   top: 0;
   z-index: 1;
-  padding: 11px var(--sd-cell-x);
-  border-bottom: 1px solid var(--hairline);
-  font: 600 10.5px/1.2 var(--font-ui);
-  letter-spacing: 0.15em;
+  padding: 2px var(--sd-cell-x) 4px;
+  font: 500 12px/1.2 var(--font-ui);
   text-align: left;
-  text-transform: uppercase;
-  color: var(--text-500);
-  background: rgb(13, 19, 29);
+  color: var(--text-3);
+  background: var(--surface);
+  box-shadow: 0 6px 0 var(--surface);
   white-space: nowrap;
 }
 .settlement-desk .sd-assets-table td {
   padding: var(--sd-cell-y) var(--sd-cell-x);
-  border-bottom: 1px solid var(--hairline-cool);
-  color: var(--text-300);
+  color: var(--text-2);
   vertical-align: middle;
-  transition: background var(--dur-2) var(--ease-out);
+  background: var(--surface-2);
+  transition: background var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
 }
-.settlement-desk .sd-assets-table tbody tr:last-child td { border-bottom: 0; }
-.settlement-desk .sd-assets-table .is-num { text-align: right; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
-.settlement-desk .sd-assets-table .is-center { text-align: center; }
-.settlement-desk .sd-assets-table tbody tr { animation: sd-row-in var(--dur-3) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 40ms + 120ms); }
-.settlement-desk .sd-assets-table tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
-.settlement-desk .sd-assets-table tbody tr.is-selected td { background: rgba(210, 173, 102, 0.075); }
-.settlement-desk .sd-assets-table tbody tr.is-selected td:first-child { box-shadow: inset 2px 0 0 var(--gold-400); }
+.settlement-desk .sd-assets-table td:first-child { border-radius: 14px 0 0 14px; }
+.settlement-desk .sd-assets-table td:last-child { border-radius: 0 14px 14px 0; }
+.settlement-desk .sd-assets-table td:only-child { border-radius: 14px; }
+.settlement-desk .sd-assets-table .is-num { width: 1%; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.settlement-desk .sd-assets-table .is-center { width: 1%; text-align: center; }
+.settlement-desk .sd-assets-table tbody tr { animation: sd-row-in var(--dur-3) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 40ms + 160ms); }
+.settlement-desk .sd-assets-table tbody tr:hover td { background: var(--surface-3); }
+/* Selected holding: the tile lifts and takes a fine gold ring. */
+.settlement-desk .sd-assets-table tbody tr.is-selected td { background: var(--surface-3); box-shadow: inset 0 1px 0 var(--sd-ring), inset 0 -1px 0 var(--sd-ring); }
+.settlement-desk .sd-assets-table tbody tr.is-selected td:first-child { box-shadow: inset 1px 0 0 var(--sd-ring), inset 0 1px 0 var(--sd-ring), inset 0 -1px 0 var(--sd-ring); }
+.settlement-desk .sd-assets-table tbody tr.is-selected td:last-child { box-shadow: inset -1px 0 0 var(--sd-ring), inset 0 1px 0 var(--sd-ring), inset 0 -1px 0 var(--sd-ring); }
 .settlement-desk .sd-company { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.settlement-desk .sd-company strong { font-weight: 600; color: var(--text-100); }
-.settlement-desk .sd-company small { font: 500 11px/1.2 var(--font-mono); letter-spacing: 0.06em; color: var(--text-500); }
-.settlement-desk .sd-folded { display: none; font-size: 12px; font-style: normal; color: var(--text-500); }
+.settlement-desk .sd-company strong { font: 600 14px/1.25 var(--font-ui); color: var(--text); }
+.settlement-desk .sd-company small { font: 500 12px/1.2 var(--font-ui); color: var(--text-3); }
+.settlement-desk .sd-folded { display: none; font: 500 12px/1.3 var(--font-ui); font-style: normal; color: var(--text-3); }
 .settlement-desk .sd-folded > span { display: none; }
-.settlement-desk .sd-market { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--text-300); }
-.settlement-desk .sd-sector { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-500); }
-.settlement-desk .sd-held { display: inline-flex; align-items: center; gap: 12px; }
-.settlement-desk .sd-pips { display: inline-flex; align-items: center; gap: 5px; }
+.settlement-desk .sd-market { display: flex; flex-direction: column; gap: 3px; font: 500 13px/1.25 var(--font-ui); color: var(--text-2); }
+.settlement-desk .sd-sector { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-3); }
+/* Share tokens out of five: kept (ivory), leaving with this selection (gold), not held (empty slot). */
+.settlement-desk .sd-held { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; }
+.settlement-desk .sd-pips { display: inline-flex; align-items: center; gap: 4px; }
 .settlement-desk .sd-pips i {
-  width: 7px;
-  height: 7px;
-  border-radius: 1.5px;
-  transform: rotate(45deg);
-  transition: background var(--dur-2), box-shadow var(--dur-2);
+  width: 8px;
+  height: 8px;
+  border-radius: 2.5px;
+  transition: background var(--dur-2), box-shadow var(--dur-2), transform var(--dur-2) var(--ease-spring);
 }
-.settlement-desk .sd-pips i.is-kept { background: linear-gradient(135deg, var(--gold-300), var(--gold-600)); box-shadow: 0 0 6px rgba(210, 173, 102, 0.35); }
-.settlement-desk .sd-pips i.is-out { background: rgba(240, 107, 116, 0.12); box-shadow: inset 0 0 0 1px rgba(240, 107, 116, 0.85); }
-.settlement-desk .sd-pips i.is-free { width: 3px; height: 3px; margin: 0 2px; border-radius: 50%; background: rgba(255, 255, 255, 0.16); transform: none; }
+.settlement-desk .sd-pips i.is-kept { background: var(--text-2); }
+.settlement-desk .sd-pips i.is-out { background: var(--accent); transform: scale(1.12); }
+.settlement-desk .sd-pips i.is-free { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16); }
 .settlement-desk .sd-quantity {
   display: inline-flex;
   align-items: center;
   gap: 2px;
   padding: 3px;
-  border: 1px solid var(--hairline-cool);
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.03);
-  transition: border-color var(--dur-2), background var(--dur-2);
+  background: var(--surface-3);
+  transition: background var(--dur-2);
 }
 .settlement-desk .sd-quantity button {
   display: grid;
@@ -411,17 +367,18 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  color: var(--gold-300);
+  color: var(--text);
   transition: background var(--dur-1), color var(--dur-1), transform var(--dur-1) var(--ease-out);
 }
-.settlement-desk .sd-quantity button:hover:not(:disabled) { color: var(--gold-200); background: rgba(210, 173, 102, 0.15); }
-.settlement-desk .sd-quantity button:active:not(:disabled) { transform: scale(0.92); }
-.settlement-desk .sd-quantity button:disabled { opacity: 0.28; }
-.settlement-desk .sd-quantity b { min-width: 26px; text-align: center; font: 600 15px/1 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--text-100); }
-.settlement-desk tr.is-selected .sd-quantity { border-color: var(--hairline-strong); background: rgba(210, 173, 102, 0.09); }
-.settlement-desk .sd-value { font-weight: 600; color: var(--gold-300); }
-.settlement-desk .sd-nil { color: var(--text-600); }
-.settlement-desk .sd-empty { padding: 26px; text-align: center; color: var(--text-500); }
+.settlement-desk .sd-quantity button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
+.settlement-desk .sd-quantity button:active:not(:disabled) { transform: scale(0.9); }
+.settlement-desk .sd-quantity button:disabled { color: var(--text-3); opacity: 0.45; }
+.settlement-desk .sd-quantity b { min-width: 26px; text-align: center; font: 650 15px/1 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--text); transition: color var(--dur-2); }
+.settlement-desk tr.is-selected .sd-quantity { background: var(--surface-4); }
+.settlement-desk tr.is-selected .sd-quantity b { color: var(--accent); }
+.settlement-desk .sd-value { font-weight: 650; color: var(--text); }
+.settlement-desk .sd-nil { color: var(--text-3); }
+.settlement-desk .sd-empty { padding: 26px; text-align: center; color: var(--text-3); }
 
 /* -------------------------------------------------------------- totals -- */
 .settlement-desk .sd-totals {
@@ -431,247 +388,244 @@
   gap: 16px 28px;
   flex: none;
 }
+/* Coverage: debtor cash (neutral) + selection (gold); fully green once covered. */
 .settlement-desk .sd-meter {
   grid-column: 1 / -1;
   display: flex;
-  height: 2px;
+  height: 4px;
   overflow: hidden;
-  border-radius: 2px;
-  background: rgba(240, 107, 116, 0.2);
+  border-radius: 4px;
+  background: var(--surface-3);
 }
 .settlement-desk .sd-meter i { height: 100%; transition: width var(--dur-3) var(--ease-out), background var(--dur-3); }
-.settlement-desk .sd-meter .is-cash { background: var(--gold-700); }
-.settlement-desk .sd-meter .is-pick { background: linear-gradient(90deg, var(--gold-600), var(--gold-300)); }
-/* Covered: one seamless brass line (the segments become windows on the track gradient). */
-.settlement-desk .sd-meter.is-covered { background: linear-gradient(90deg, var(--gold-700), var(--gold-400) 55%, var(--gold-200)); box-shadow: 0 0 12px -2px rgba(226, 196, 134, 0.45); }
-.settlement-desk .sd-meter.is-covered i { background: transparent; }
-.settlement-desk .sd-readout { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.settlement-desk .sd-figures { display: flex; align-items: flex-end; gap: 40px; min-width: 0; margin: 0; }
-.settlement-desk .sd-figure-note { font-size: 12px; color: var(--warn); }
+.settlement-desk .sd-meter .is-cash { background: var(--text-3); }
+.settlement-desk .sd-meter .is-pick { background: var(--accent); }
+.settlement-desk .sd-meter.is-covered i { background: var(--up); }
+.settlement-desk .sd-readout { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.settlement-desk .sd-figures { display: flex; align-items: flex-end; gap: 36px; min-width: 0; margin: 0; }
 .settlement-desk .sd-figures > div { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
-.settlement-desk .sd-figures dt { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-500); white-space: nowrap; }
+.settlement-desk .sd-figures dt { display: inline-flex; align-items: center; gap: 6px; font: 500 12px/1.2 var(--font-ui); color: var(--text-3); white-space: nowrap; }
 .settlement-desk .sd-figures dd {
   margin: 0;
-  font: 600 var(--sd-figure)/1.1 var(--font-ui);
-  font-variant-numeric: tabular-nums lining-nums;
-  color: var(--text-100);
+  font: 650 var(--sd-figure)/1.1 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  color: var(--text);
   white-space: nowrap;
 }
-.settlement-desk .sd-figures dd.is-nil { color: var(--text-600); }
-.settlement-desk .sd-figures .is-ok { cursor: help; }
-.settlement-desk .sd-figures .is-ok dt { color: var(--up); }
+.settlement-desk .sd-figures dd .money-unit { font-size: 0.72em; color: var(--text-2); opacity: 1; }
+.settlement-desk .sd-figures dd.is-nil { color: var(--text-3); }
+.settlement-desk .sd-figures .is-ok,
 .settlement-desk .sd-figures .is-warn { cursor: help; }
+.settlement-desk .sd-figures .is-ok dt { color: var(--up); }
 .settlement-desk .sd-figures .is-warn dt { color: var(--warn); }
 .settlement-desk .sd-figures .is-short dt,
 .settlement-desk .sd-figures .is-short dd { color: var(--down); }
+.settlement-desk .sd-figure-note { font: 500 12px/1.3 var(--font-ui); color: var(--warn); }
 .settlement-desk .sd-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
 .settlement-desk .sd-actions .gf-btn svg { flex: none; }
 
-/* The single continuous effect allowed: the main action breathes while it is the viewer's call. */
-.settlement-desk.is-live .sd-cta:not(:disabled) { animation: sd-call 2.8s var(--ease-out) 1.2s infinite; }
+/* The one continuous effect: the main action breathes while it is the viewer's call. */
+.settlement-desk.is-live .sd-cta:not(:disabled) { animation: sd-call 2.4s var(--ease-in-out) 1.2s infinite; }
 
 /* --------------------------------------------------------------- offer -- */
+/* Label row on the left only, so the offered shares and the summary well share their top edge. */
 .settlement-desk .sd-offer {
-  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
-  flex: 0 1 auto;
-  min-height: 0;
-  overflow: hidden;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-md);
-  background: linear-gradient(180deg, rgba(26, 36, 50, 0.62), rgba(10, 15, 23, 0.72));
-  box-shadow: var(--shadow-1);
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 10px 16px;
+  flex: none;
 }
-/* A single gold glint across the term sheet when it lands on the desk. */
-.settlement-desk .sd-offer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, transparent 38%, rgba(255, 236, 196, 0.14) 50%, transparent 62%);
-  opacity: 0;
-  transform: translateX(-100%);
-  animation: sd-glint 1.5s var(--ease-out) 0.55s 1 both;
-  pointer-events: none;
-}
-.settlement-desk .sd-offer-assets { min-height: 0; padding: 20px 24px; overflow: auto; }
-.settlement-desk .sd-label {
-  font: 600 10.5px/1.2 var(--font-ui);
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: var(--gold-400);
-}
-.settlement-desk .sd-certs { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0 0; padding: 0; list-style: none; }
-/* A share certificate: double engraved frame, serif name, terms on the last line. */
+.settlement-desk .sd-offer > .sd-label { grid-column: 1; grid-row: 1; }
+.settlement-desk .sd-offer-assets { grid-column: 1; grid-row: 2; display: flex; flex-direction: column; min-height: 0; overflow: auto; }
+.settlement-desk .sd-label { font: 500 12px/1.2 var(--font-ui); color: var(--text-3); }
+.settlement-desk .sd-certs { display: flex; flex-direction: column; flex: 1 1 auto; gap: 8px; margin: 0; padding: 0; list-style: none; }
+/* An offered holding, like a share certificate: sector · zone, the name, then the terms over a hairline. */
 .settlement-desk .sd-cert {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1 1 250px;
-  max-width: 360px;
-  padding: 14px 16px 13px;
-  border: 1px solid var(--hairline-strong);
-  border-radius: var(--radius-sm);
-  background:
-    repeating-linear-gradient(135deg, rgba(226, 196, 134, 0.035) 0 1px, transparent 1px 7px),
-    linear-gradient(160deg, rgba(40, 46, 52, 0.55), rgba(14, 18, 26, 0.6));
-  box-shadow: inset 0 0 0 4px rgba(8, 12, 19, 0.55), inset 0 0 0 5px rgba(226, 196, 134, 0.14), 0 12px 26px -16px rgba(0, 0, 0, 0.9);
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface-2);
 }
-.settlement-desk .sd-cert-meta { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-500); white-space: nowrap; }
-.settlement-desk .sd-cert-meta i { margin-left: auto; font: 500 10.5px/1 var(--font-mono); font-style: normal; letter-spacing: 0.08em; color: var(--text-500); }
-.settlement-desk .sd-cert > b { font: 600 22px/1.1 var(--sd-serif); color: var(--text-100); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.settlement-desk .sd-cert-terms { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 7px; border-top: 1px solid rgba(226, 196, 134, 0.14); }
-.settlement-desk .sd-cert-terms small { font-size: 12.5px; color: var(--text-400); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.settlement-desk .sd-cert-terms strong { font-size: 16px; font-weight: 600; color: var(--gold-200); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.settlement-desk .sd-cert:only-child { flex: 1 1 auto; }
+.settlement-desk .sd-cert-meta { display: flex; align-items: center; gap: 6px; min-width: 0; font: 500 12px/1.2 var(--font-ui); color: var(--text-3); white-space: nowrap; }
+.settlement-desk .sd-cert-meta i { font-style: normal; color: var(--text-3); }
+.settlement-desk .sd-cert-meta i::before { content: "·"; margin-right: 6px; }
+.settlement-desk .sd-cert > b {
+  overflow: hidden;
+  font: 650 18px/1.25 var(--font-ui);
+  letter-spacing: -0.015em;
+  color: var(--text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.settlement-desk .sd-cert-terms {
+  align-self: end;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.settlement-desk .sd-cert-terms small { font: 500 12.5px/1.2 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--text-2); white-space: nowrap; }
+.settlement-desk .sd-cert-terms strong { font: 650 16px/1.2 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--text); white-space: nowrap; }
 .settlement-desk .sd-offer-math {
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
   margin: 0;
-  padding: 20px 26px;
-  border-left: 1px solid var(--hairline-cool);
-  background: rgba(4, 6, 10, 0.3);
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: var(--bg-2);
 }
 .settlement-desk .sd-offer-math > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-.settlement-desk .sd-offer-math dt { font-size: 13px; color: var(--text-400); }
-.settlement-desk .sd-offer-math dd { margin: 0; font-size: 15px; font-weight: 500; color: var(--text-200); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.settlement-desk .sd-offer-math > .sd-net { align-items: center; margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--hairline); }
-.settlement-desk .sd-offer-math > .sd-net dt { font-size: 14px; font-weight: 600; color: var(--text-100); }
-.settlement-desk .sd-net .sd-amount { font: 600 36px/1 var(--sd-serif); font-variant-numeric: lining-nums tabular-nums; color: var(--gold-200); }
-.settlement-desk .sd-net.is-in .sd-amount { color: var(--up); }
-.settlement-desk .sd-net-note { font-size: 12.5px; color: var(--text-500); }
+.settlement-desk .sd-offer-math dt { font: 500 13px/1.3 var(--font-ui); color: var(--text-2); }
+.settlement-desk .sd-offer-math dd { margin: 0; font: 600 14px/1.3 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--text); white-space: nowrap; }
+.settlement-desk .sd-offer-math > .sd-net { align-items: center; margin-top: 2px; padding-top: 14px; border-top: 1px solid var(--line); }
+.settlement-desk .sd-offer-math > .sd-net dt { font: 600 14px/1.3 var(--font-ui); color: var(--text); }
+.settlement-desk .sd-net .gf-amount { font: 700 30px/1 var(--font-ui); font-variant-numeric: tabular-nums; letter-spacing: -0.025em; color: var(--text); }
+.settlement-desk .sd-net .money-unit { font-size: 0.5em; font-weight: 600; letter-spacing: 0; color: var(--text-2); opacity: 1; }
+.settlement-desk .sd-net.is-in .gf-amount,
+.settlement-desk .sd-net.is-in .money-unit { color: var(--up); }
+.settlement-desk .sd-net-note { font: 500 12.5px/1.4 var(--font-ui); color: var(--text-3); }
 .settlement-desk .sd-cash-warning {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 6px 10px;
   padding: 10px 14px;
-  border: 1px solid rgba(240, 107, 116, 0.45);
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  color: #ffc9cc;
-  background: rgba(240, 107, 116, 0.1);
+  border-radius: 12px;
+  font: 500 13px/1.3 var(--font-ui);
+  color: var(--text-2);
+  background: rgba(236, 107, 95, 0.12);
 }
-.settlement-desk .sd-cash-warning strong { font-weight: 600; color: #ffdfe1; }
+.settlement-desk .sd-cash-warning svg { flex: none; color: var(--down); }
+.settlement-desk .sd-cash-warning strong { font-weight: 600; color: var(--text); }
 .settlement-desk .sd-cash-warning span { font-variant-numeric: tabular-nums; }
 .settlement-desk .sd-decision { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px 28px; flex: none; }
 .settlement-desk .sd-balance { display: flex; flex-direction: column; gap: 5px; }
-.settlement-desk .sd-balance span { font-size: 12px; color: var(--text-500); }
-.settlement-desk .sd-balance strong { font: 600 var(--sd-figure)/1.1 var(--font-ui); font-variant-numeric: tabular-nums lining-nums; color: var(--text-100); }
+.settlement-desk .sd-balance span { font: 500 12px/1.2 var(--font-ui); color: var(--text-3); }
+.settlement-desk .sd-balance strong { font: 650 var(--sd-figure)/1.1 var(--font-ui); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; color: var(--text); }
 .settlement-desk .sd-balance strong.is-down { color: var(--down); }
 
 /* ------------------------------------------------------------- waiting -- */
 .settlement-desk .sd-waiting {
-  display: flex;
+  align-self: center;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
-  min-height: 84px;
-  padding: 18px 0 6px;
-  font-size: 15px;
-  color: var(--text-400);
+  margin: 4px 0;
+  padding: 13px 22px 13px 18px;
+  border-radius: var(--radius-pill);
+  font: 500 14px/1.3 var(--font-ui);
+  color: var(--text-2);
+  background: var(--surface-2);
 }
-.settlement-desk .sd-waiting::before,
-.settlement-desk .sd-waiting::after {
-  content: "";
-  flex: 0 1 120px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--hairline));
+.settlement-desk .sd-waiting b { font-weight: 600; color: var(--text); }
+.settlement-desk .sd-orbit {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--surface-4);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: sd-spin 900ms linear infinite;
 }
-.settlement-desk .sd-waiting::after { background: linear-gradient(90deg, var(--hairline), transparent); }
-.settlement-desk .sd-waiting svg { flex: none; color: var(--gold-400); }
-.settlement-desk .sd-waiting b { font-weight: 600; color: var(--text-100); }
 
 /* -------------------------------------------------------------- motion -- */
 @keyframes sd-row-in { from { opacity: 0; } to { opacity: 1; } }
-/* One pass of light along the rails: the debt travels from debtor to creditor. */
-@keyframes sd-flow { from { background-position: -100% 0, 0 0; } to { background-position: 200% 0, 0 0; } }
-@keyframes sd-glint {
-  0% { opacity: 0; transform: translateX(-100%); }
-  20% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(100%); }
-}
+@keyframes sd-line { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes sd-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sd-spin { to { transform: rotate(360deg); } }
 @keyframes sd-call {
-  0% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(60, 40, 10, 0.25), 0 12px 30px -12px rgba(210, 173, 102, 0.7), 0 0 0 0 rgba(226, 196, 134, 0.42); }
-  70%, 100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(60, 40, 10, 0.25), 0 12px 30px -12px rgba(210, 173, 102, 0.7), 0 0 0 13px rgba(226, 196, 134, 0); }
+  0%, 100% { box-shadow: 0 6px 18px rgba(227, 184, 96, 0.25), 0 0 0 0 rgba(227, 184, 96, 0.4); }
+  50% { box-shadow: 0 6px 18px rgba(227, 184, 96, 0.25), 0 0 0 9px rgba(227, 184, 96, 0); }
 }
 html[data-motion="reduced"] .settlement-desk .sd-cta,
-html[data-motion="reduced"] .settlement-desk .sd-rail,
-html[data-motion="reduced"] .settlement-desk .sd-offer::after,
-html[data-motion="reduced"] .settlement-desk .sd-assets-table tbody tr { animation: none !important; }
+html[data-motion="reduced"] .settlement-desk .sd-rail::before,
+html[data-motion="reduced"] .settlement-desk .sd-rail::after,
+html[data-motion="reduced"] .settlement-desk .sd-assets-table tbody tr,
+html[data-motion="reduced"] .settlement-desk .sd-orbit { animation: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .settlement-desk .sd-cta,
-  .settlement-desk .sd-rail,
-  .settlement-desk .sd-offer::after,
-  .settlement-desk .sd-assets-table tbody tr { animation: none !important; }
+  .settlement-desk .sd-rail::before,
+  .settlement-desk .sd-rail::after,
+  .settlement-desk .sd-assets-table tbody tr,
+  .settlement-desk .sd-orbit { animation: none !important; }
 }
 
 /* ---------------------------------------------- stage size adaptations -- */
 @container sd-stage (max-height: 680px) {
   .settlement-desk .sd-sheet {
     --sd-pad-y: 20px;
-    --sd-pad-x: 26px;
-    --sd-gap: 15px;
+    --sd-pad-x: 28px;
+    --sd-gap: 16px;
     --sd-seat: 52px;
-    --sd-name: 25px;
-    --sd-due: 46px;
-    --sd-title: 24px;
-    --sd-cell-y: 9px;
+    --sd-name: 18px;
+    --sd-due: 44px;
+    --sd-title: 19px;
+    --sd-cell-y: 8px;
     --sd-figure: 18px;
   }
-  .settlement-desk .sd-priority { padding-top: 11px; }
-  .settlement-desk .sd-sheet > .sd-main { gap: 11px; }
-  .settlement-desk .sd-offer-assets, .settlement-desk .sd-offer-math { padding: 15px 20px; }
-  .settlement-desk .sd-cert { padding: 12px 14px 11px; }
-  .settlement-desk .sd-net .sd-amount { font-size: 30px; }
+  .settlement-desk .sd-due { gap: 6px; }
+  .settlement-desk .sd-sheet > .sd-main { gap: 12px; }
+  .settlement-desk .sd-sub { margin-top: 3px; }
+  .settlement-desk .sd-offer-math { gap: 8px; padding: 14px 18px; }
+  .settlement-desk .sd-cert { padding: 11px 14px; }
+  .settlement-desk .sd-offer-math > .sd-net { padding-top: 10px; }
+  .settlement-desk .sd-net .gf-amount { font-size: 26px; }
 }
 @container sd-stage (max-height: 540px) {
   .settlement-desk .sd-sheet {
     --sd-pad-y: 14px;
     --sd-pad-x: 20px;
-    --sd-gap: 10px;
+    --sd-gap: 11px;
     --sd-seat: 42px;
-    --sd-name: 21px;
-    --sd-due: 36px;
-    --sd-title: 21px;
-    --sd-cell-y: 6px;
+    --sd-name: 16px;
+    --sd-due: 34px;
+    --sd-title: 17px;
+    --sd-cell-y: 5px;
     --sd-cell-x: 14px;
     --sd-figure: 16px;
   }
   .settlement-desk .sd-due { gap: 4px; }
-  .settlement-desk .sd-gap { height: 21px; font-size: 11.5px; }
+  .settlement-desk .sd-gap { height: 22px; font-size: 11.5px; }
   .settlement-desk .sd-cash { font-size: 12px; }
-  .settlement-desk .sd-cash .animated-money { font-size: 13px; }
-  .settlement-desk .sd-priority { padding-top: 9px; }
+  .settlement-desk .sd-cash .animated-money { font-size: 12.5px; }
+  .settlement-desk .sd-cause strong { height: 24px; }
   .settlement-desk .sd-priority > div > span { height: 28px; }
   .settlement-desk .sd-sheet > .sd-main { gap: 9px; }
-  .settlement-desk .sd-sub { margin-top: 3px; font-size: 12px; }
-  .settlement-desk .sd-assets-table th { padding-top: 8px; padding-bottom: 8px; }
+  .settlement-desk .sd-sub { display: none; }
   .settlement-desk .sd-quantity button { width: 26px; height: 26px; }
-  .settlement-desk .sd-figures { gap: 28px; }
+  .settlement-desk .sd-figures { gap: 26px; }
   .settlement-desk .sd-figures > div { gap: 3px; }
   .settlement-desk .sd-totals { gap: 10px 20px; }
   .settlement-desk .sd-actions .gf-btn { min-height: 38px; padding: 0 16px; }
-  .settlement-desk .sd-offer-assets, .settlement-desk .sd-offer-math { padding: 11px 16px; }
-  .settlement-desk .sd-offer-math { gap: 6px; }
-  .settlement-desk .sd-certs { margin-top: 8px; gap: 8px; }
-  .settlement-desk .sd-cert { gap: 4px; padding: 10px 13px 9px; }
-  .settlement-desk .sd-cert > b { font-size: 19px; }
-  .settlement-desk .sd-cert-terms { padding-top: 5px; }
-  .settlement-desk .sd-net .sd-amount { font-size: 26px; }
-  .settlement-desk .sd-offer-math > .sd-net { padding-top: 9px; }
-  .settlement-desk .sd-waiting { min-height: 60px; padding-top: 10px; }
+  .settlement-desk .sd-offer-math { gap: 6px; padding: 10px 14px; }
+  .settlement-desk .sd-cert { gap: 3px 12px; padding: 9px 12px; }
+  .settlement-desk .sd-net .gf-amount { font-size: 22px; }
+  .settlement-desk .sd-offer-math > .sd-net { padding-top: 8px; }
+  .settlement-desk .sd-waiting { padding: 10px 18px 10px 14px; }
 }
 @container sd-stage (max-width: 860px) {
-  .settlement-desk .sd-sheet { --sd-pad-x: 18px; --sd-cell-x: 12px; border-radius: var(--radius-md); }
-  .settlement-desk .sd-ledger { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 14px; }
-  .settlement-desk .sd-due { grid-column: 1 / -1; grid-row: 2; padding: 10px 0 0; border-top: 1px solid var(--hairline-cool); }
+  .settlement-desk .sd-sheet { --sd-pad-x: 18px; --sd-cell-x: 12px; border-radius: 20px; }
+  .settlement-desk .sd-ledger { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+  .settlement-desk .sd-due { grid-column: 1 / -1; grid-row: 2; padding: 12px 0 0; border-top: 1px solid var(--line); }
   .settlement-desk .sd-party-debtor { grid-column: 1; grid-row: 1; }
   .settlement-desk .sd-party-creditor { grid-column: 2; grid-row: 1; }
   .settlement-desk .sd-rail { display: none; }
   .settlement-desk .sd-priority { justify-content: flex-start; }
+  /* Narrow stages scroll the whole sheet rather than a squeezed list. */
+  .settlement-desk .sd-sheet > .sd-main { flex: none; }
+  .settlement-desk .sd-table-wrap { flex: none; min-height: 0; overflow: auto hidden; }
   .settlement-desk .sd-assets-table th:nth-child(2),
   .settlement-desk .sd-assets-table td:nth-child(2) { display: none; }
   .settlement-desk .sd-folded { display: block; }
@@ -679,16 +633,24 @@ html[data-motion="reduced"] .settlement-desk .sd-assets-table tbody tr { animati
   .settlement-desk .sd-totals { grid-template-columns: 1fr; }
   .settlement-desk .sd-actions { justify-content: stretch; }
   .settlement-desk .sd-actions .gf-btn { flex: 1 1 200px; }
-  .settlement-desk .sd-offer { grid-template-columns: 1fr; }
-  .settlement-desk .sd-offer-math { border-left: 0; border-top: 1px solid var(--hairline-cool); }
+  .settlement-desk .sd-offer { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; }
+  .settlement-desk .sd-offer-math { grid-column: 1; grid-row: 3; }
   .settlement-desk .sd-decision { align-items: stretch; flex-direction: column; }
 }
 @container sd-stage (max-width: 560px) {
-  .settlement-desk .sd-sheet { --sd-seat: 40px; --sd-name: 19px; --sd-due: 34px; --sd-pad-x: 14px; }
-  .settlement-desk .sd-party { gap: 10px; }
+  .settlement-desk .sd-sheet { --sd-seat: 40px; --sd-name: 16px; --sd-due: 34px; --sd-pad-x: 14px; --sd-cell-x: 10px; }
+  /* Phones: debtor then creditor, each on its own line, then the amount. */
+  .settlement-desk .sd-ledger { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .settlement-desk .sd-party { gap: 12px; }
+  .settlement-desk .sd-party-creditor { grid-column: 1; grid-row: 2; flex-direction: row; text-align: left; }
+  .settlement-desk .sd-party-creditor .sd-party-text { align-items: flex-start; }
+  .settlement-desk .sd-due { grid-row: 3; }
   .settlement-desk .sd-cause > span { display: none; }
   .settlement-desk .sd-assets-table th:nth-child(3),
-  .settlement-desk .sd-assets-table td:nth-child(3) { display: none; }
+  .settlement-desk .sd-assets-table td:nth-child(3),
+  .settlement-desk .sd-assets-table th:nth-child(4),
+  .settlement-desk .sd-assets-table td:nth-child(4) { display: none; }
   .settlement-desk .sd-folded > span { display: inline; }
+  .settlement-desk .sd-quantity button { width: 26px; height: 26px; }
   .settlement-desk .sd-figures { gap: 22px; }
 }

@@ -7,6 +7,9 @@
  * data-reduced-motion, data-presentation-stage, data-dice-state,
  * data-pawn-state] > .fund-board-canvas[role=img, data-camera, data-fps,
  * data-scene-ready] + .fund-board-accessible (52 cells, "Lancer le dé").
+ *
+ * HUD hover props (highlightSector / highlightZone / highlightPlayerId) only
+ * light things up: they never move the camera and never issue a command.
  */
 import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
@@ -17,7 +20,7 @@ import { PRESENTATION_TIMING } from "../presentation/sequence";
 import { gradeDelta } from "../ui/theme";
 import type { BoardInsets, BoardSceneProps } from "./types";
 import type { GlobeFlight, GlobeMarker, GlobeProps } from "./three/globe";
-import { cellAccent, cellArt } from "./three/atlas";
+import { cellAccent, cellArt, cellTheme } from "./three/atlas";
 import { playerRegion, wrapCell } from "./three/layout";
 import { probeRenderer, tierSettings } from "./three/quality";
 import { Scene } from "./three/Scene";
@@ -69,6 +72,7 @@ class CanvasBoundary extends Component<{ fallback: ReactNode; children: ReactNod
 export default function BoardScene({
   game, onRoll, disabled = false, reducedMotion = false, focusZone = null, quality = "high", presentation = null,
   overview = false, timeline = null, stage, travelPreview = null, marketImpact = null, insets, viewerId,
+  highlightSector = null, highlightZone = null, highlightPlayerId = null,
 }: BoardSceneProps) {
   const host = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(() => typeof document === "undefined" || !document.hidden);
@@ -125,7 +129,7 @@ export default function BoardScene({
     if (!travel || seenTravel.current === travel.id) return;
     seenTravel.current = travel.id;
     const traveller = game.players.find((p) => p.id === travel.playerId);
-    setFlight({ key: travel.id, fromZone: travel.fromZoneId as ZoneId, toZone: travel.zoneId as ZoneId, seatColor: traveller?.color ?? "#d2ad66", startedAt: performance.now(), durationMs: PRESENTATION_TIMING.travel });
+    setFlight({ key: travel.id, fromZone: travel.fromZoneId as ZoneId, toZone: travel.zoneId as ZoneId, seatColor: traveller?.color ?? "#d2ad66", startedAt: performance.now(), durationMs: PRESENTATION_TIMING.travel, playerId: travel.playerId ?? undefined });
     setFlightActive(true);
     playCue("travel");
   }, [travel, game.players]);
@@ -163,17 +167,19 @@ export default function BoardScene({
       preview: travelPreview && isMarketId(travelPreview.to) ? { fromZone: travelPreview.from && isMarketId(travelPreview.from) ? travelPreview.from : null, toZone: travelPreview.to } : null,
       impact,
       labels: true,
+      highlightZone: highlightZone && isMarketId(highlightZone) ? highlightZone : null,
       reducedMotion: animateLess,
       quality: tier.tier,
     };
-  }, [game.players, game.zoneGrades, activeId, active, zoneFocus, flight, travelPreview, marketImpact, animateLess, tier.tier]);
+  }, [game.players, game.zoneGrades, activeId, active, zoneFocus, flight, travelPreview, marketImpact, highlightZone, animateLess, tier.tier]);
 
   // ------------------------------------------------------------ runtime --
   const runtime = useRef<BoardRuntime>(null as unknown as BoardRuntime);
   if (runtime.current === null) {
     runtime.current = {
       game, timeline, stage, reduced: animateLess, tier, insets: frame, hovered, focusZone: zoneFocus, cameraMode, mood: null, moodAt: -1e9,
-      deck: null, deckAt: -1e9, impact: null, arrival: null, activeId, viewerId, activePos: { x: 0, z: 0 }, shakeAt: -1e9,
+      deck: null, deckAt: -1e9, impact: null, arrival: null, activeId, viewerId, highlightSector, highlightPlayerId,
+      activePos: { x: 0, z: 0 }, shakeAt: -1e9,
     };
   }
   useLayoutEffect(() => {
@@ -183,7 +189,11 @@ export default function BoardScene({
     if (rt.deck !== deckFocus && deckFocus) rt.deckAt = now;
     if (stage === "PAWN_ARRIVAL" && timeline && rt.stage !== "PAWN_ARRIVAL") {
       const cell = wrapCell(timeline.toPosition);
-      rt.arrival = { cell, at: now, color: cellAccent(cellArt(game.board[cell])) };
+      const art = cellArt(game.board[cell]);
+      // Start on the pawn's landing beat (the stage may commit a frame late).
+      const landing = timeline.motionStartedAt + Math.max(1, timeline.roll) * (timeline.motionStepMs || PRESENTATION_TIMING.step);
+      const at = now - landing >= 0 && now - landing < 400 ? landing : now;
+      rt.arrival = { cell, at, color: cellAccent(art), theme: cellTheme(art), key: timeline.noticeId };
     }
     const impactKey = marketImpact?.scope === "sector" ? `${marketImpact.id}-${marketImpact.before}-${marketImpact.after}` : null;
     if (!impactKey) rt.impact = null;
@@ -191,7 +201,7 @@ export default function BoardScene({
       const cells = game.board.flatMap((cell, index) => (cell.sector === marketImpact.id ? [index] : []));
       rt.impact = { cells, up: gradeDelta(marketImpact.before, marketImpact.after) >= 0, at: now, key: impactKey };
     }
-    Object.assign(rt, { game, timeline, stage, reduced: animateLess, tier, insets: frame, hovered, focusZone: zoneFocus, cameraMode, mood, deck: deckFocus, activeId, viewerId });
+    Object.assign(rt, { game, timeline, stage, reduced: animateLess, tier, insets: frame, hovered, focusZone: zoneFocus, cameraMode, mood, deck: deckFocus, activeId, viewerId, highlightSector, highlightPlayerId });
   });
 
   // Dice cue once per roll (the die itself follows the timeline).
@@ -227,7 +237,7 @@ export default function BoardScene({
       data-pawn-state={stage === "PAWN_MOVING" && !animateLess ? "moving" : "idle"}
       data-mood={mood ?? undefined}
     >
-      <div ref={host} className="fund-board-canvas" role="img" aria-label={`Plateau Global Fund. ${summary}`} data-camera={cameraMode} data-fps="0" data-scene-ready="false">
+      <div ref={host} className="fund-board-canvas" role="img" aria-label={`Plateau Global Fund. ${summary}`} data-camera={flightActive && !animateLess ? "flight" : cameraMode} data-fps="0" data-scene-ready="false">
         {probe.available ? (
           <CanvasBoundary fallback={fallback}>
             <Canvas

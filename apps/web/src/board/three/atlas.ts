@@ -7,6 +7,7 @@
  */
 import type { BoardCell } from "@global-fund/shared";
 import { SECTOR_META, type SectorId } from "../../ui/theme";
+import type { FxTheme } from "./runtime";
 import { CARD, CELLS, CELL_COUNT, PLAQUE_BEVEL, PLAQUE_GAP, type CellRect } from "./layout";
 import { ICON_PATHS, ZAP_PATH } from "./icons";
 
@@ -37,12 +38,18 @@ export function cellArt(cell: BoardCell | undefined): CellArt {
 export function cellAccent(art: CellArt): string {
   switch (art.kind) {
     case "start": return "#e8c67e";
-    case "event": return "#7fa6ff";
+    case "event": return "#ead2a0";
     case "bull": return "#36d898";
-    case "bear": return "#e8687a";
+    case "bear": return "#a9b6c4";
     case "crash": return "#ff4458";
     default: return art.sector ? SECTOR_META[art.sector].color : "#d2ad66";
   }
+}
+
+/** Arrival effect family of a cell (sector theme or special kind). */
+export function cellTheme(art: CellArt): FxTheme {
+  if (art.kind !== "sector") return art.kind;
+  return art.sector ?? "neutral";
 }
 
 // ------------------------------------------------------------------ fonts --
@@ -82,7 +89,6 @@ export interface BoardAtlas {
   brand: AtlasRect;
   contextLabel: AtlasRect;
   eventLabel: AtlasRect;
-  compass: AtlasRect[];
   glint: AtlasRect;
   side: AtlasRect;
 }
@@ -212,7 +218,7 @@ function engraveText(p: Pen, text: string, x: number, y: number, o: TextOptions)
     ctx.fillStyle = "#efe4cc";
     drawSpaced(ctx, text, left, y, spacing);
   } else {
-    ctx.fillStyle = "#1b1d24";
+    ctx.fillStyle = "#1e1b17";
     drawSpaced(ctx, text, left, y, spacing);
   }
   return size;
@@ -249,7 +255,7 @@ function engraveIcon(p: Pen, paths: string[], cx: number, cy: number, size: numb
     ctx.strokeStyle = goldGradient(ctx, 1, 23);
     for (const s of shapes) ctx.stroke(s);
   } else {
-    ctx.strokeStyle = role === "ink" ? "#1b1d24" : "#2a1c0b";
+    ctx.strokeStyle = role === "ink" ? "#1e1b17" : "#2a1c0b";
     for (const s of shapes) ctx.stroke(s);
   }
   ctx.restore();
@@ -291,11 +297,11 @@ function palette(art: CellArt): Palette {
   const rim: [string, string] = ["#e3c486", "#7d5f2d"];
   switch (art.kind) {
     case "start": return { base: ["#dcbb7a", "#9c7a3e"], rays: "255,246,220", raysAlpha: 0.08, band: null, rim: ["#f4dfa8", "#8b6a33"] };
-    case "event": return { base: ["#16305f", "#0a1734"], rays: "150,190,255", raysAlpha: 0.06, band: "gold", rim };
+    case "event": return { base: ["#3a2f1f", "#140f0a"], rays: "255,226,170", raysAlpha: 0.05, band: "gold", rim };
     case "bull": return { base: ["#127052", "#063322"], rays: "160,255,210", raysAlpha: 0.06, band: "#2fd598", rim };
-    case "bear": return { base: ["#5a1a26", "#250a10"], rays: "255,170,180", raysAlpha: 0.05, band: "#d44a5d", rim };
+    case "bear": return { base: ["#3b3f45", "#141619"], rays: "225,232,240", raysAlpha: 0.05, band: "#a9b6c4", rim };
     case "crash": return { base: ["#7e1222", "#33050e"], rays: "255,150,160", raysAlpha: 0.06, band: "#ff3b52", rim };
-    default: return { base: ["#141d2b", "#0a0f18"], rays: "240,214,160", raysAlpha: 0.035, band: art.sector ? SECTOR_META[art.sector].color : "#d2ad66", rim };
+    default: return { base: ["#1b1916", "#0b0a09"], rays: "240,214,160", raysAlpha: 0.035, band: art.sector ? SECTOR_META[art.sector].color : "#d2ad66", rim };
   }
 }
 
@@ -423,7 +429,7 @@ function drawSeal(p: Pen, cx: number, cy: number, radius: number) {
   // Enamel well, inner ring and an eight-point star.
   ctx.beginPath();
   ctx.arc(cx, cy, radius * 0.76, 0, Math.PI * 2);
-  fill(p, "enamel", gradient(ctx, cx - radius, cy - radius, cx + radius, cy + radius, [[0, "#1a3a73"], [1, "#0a1836"]]));
+  fill(p, "enamel", gradient(ctx, cx - radius, cy - radius, cx + radius, cy + radius, [[0, "#26211a"], [1, "#080706"]]));
   ctx.fill();
   ctx.lineWidth = Math.max(1, radius * 0.05);
   stroke(p, "gold", goldGradient(ctx, cy - radius, cy + radius));
@@ -565,23 +571,23 @@ function drawGlyph(p: Pen, art: CellArt, cx: number, cy: number, size: number) {
 function drawCardBack(p: Pen, r: AtlasRect, kind: "context" | "event", pad: number) {
   const { ctx, s } = p;
   const W = r.w, H = r.h;
-  const navy = kind === "context";
+  const lacquer = kind === "context";
   ctx.save();
   ctx.translate(r.x, r.y);
-  fill(p, navy ? "enamel" : "paper", navy
-    ? gradient(ctx, 0, 0, W, H, [[0, "#14254a"], [1, "#070f22"]])
+  fill(p, lacquer ? "enamel" : "paper", lacquer
+    ? gradient(ctx, 0, 0, W, H, [[0, "#1f1c18"], [1, "#080706"]])
     : gradient(ctx, 0, 0, W, H, [[0, "#f6efdf"], [1, "#ddd0b4"]]));
   ctx.fillRect(-pad, -pad, W + pad * 2, H + pad * 2);
   const cx = W / 2, cy = H * 0.47;
   ctx.save();
   roundRectPath(ctx, W * 0.07, H * 0.05, W * 0.86, H * 0.9, s * 0.05);
   ctx.clip();
-  sunburst(p, cx, cy, s * 0.03, Math.hypot(W, H), 160, navy ? 0.07 : 0.09, navy ? "226,196,134" : "60,50,40");
+  sunburst(p, cx, cy, s * 0.03, Math.hypot(W, H), 160, lacquer ? 0.07 : 0.09, lacquer ? "226,196,134" : "60,50,40");
   ctx.restore();
-  const ink = navy ? "gold" : "ink";
-  const lineStyle = navy ? goldGradient(ctx, 0, H) : "#22242c";
+  const ink = lacquer ? "gold" : "ink";
+  const lineStyle = lacquer ? goldGradient(ctx, 0, H) : "#24211c";
   ctx.lineWidth = Math.max(1, s / 90);
-  stroke(p, navy ? "gold" : "ink", lineStyle);
+  stroke(p, lacquer ? "gold" : "ink", lineStyle);
   roundRectPath(ctx, W * 0.05, H * 0.035, W * 0.9, H * 0.93, s * 0.06);
   ctx.stroke();
   ctx.lineWidth = Math.max(0.8, s / 200);
@@ -592,22 +598,22 @@ function drawCardBack(p: Pen, r: AtlasRect, kind: "context" | "event", pad: numb
     ctx.beginPath();
     const d = s * 0.035;
     ctx.moveTo(x, y - d); ctx.lineTo(x + d, y); ctx.lineTo(x, y + d); ctx.lineTo(x - d, y); ctx.closePath();
-    fill(p, navy ? "gold" : "ink", lineStyle);
+    fill(p, lacquer ? "gold" : "ink", lineStyle);
     ctx.fill();
   }
   // Emblem.
   const R = W * 0.26;
   ctx.lineWidth = Math.max(1, s / 110);
-  stroke(p, navy ? "gold" : "ink", lineStyle);
+  stroke(p, lacquer ? "gold" : "ink", lineStyle);
   ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
   ctx.beginPath(); ctx.ellipse(cx, cy, R * 0.45, R, 0, 0, Math.PI * 2); ctx.stroke();
   ctx.beginPath(); ctx.ellipse(cx, cy, R, R * 0.36, 0, 0, Math.PI * 2); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(cx - R, cy); ctx.lineTo(cx + R, cy); ctx.moveTo(cx, cy - R); ctx.lineTo(cx, cy + R); ctx.stroke();
   ctx.beginPath(); ctx.ellipse(cx, cy, R * 1.18, R * 0.3, -0.42, 0, Math.PI * 2); ctx.stroke();
-  ctx.beginPath(); ctx.arc(cx, cy, R * 0.09, 0, Math.PI * 2); fill(p, navy ? "gold" : "ink", lineStyle); ctx.fill();
-  const role = navy ? "gold" : "ink";
-  engraveText(p, navy ? "CONTEXTE" : "ÉVÉNEMENTS", cx, H * 0.8, { size: s * 0.15, weight: 700, tracking: 0.14, maxWidth: W * 0.74, role });
-  engraveText(p, navy ? "GLOBAL FUND" : "FINANCIAL CHRONICLE", cx, H * 0.135, { size: s * 0.065, weight: 600, tracking: 0.3, maxWidth: W * 0.7, role });
+  ctx.beginPath(); ctx.arc(cx, cy, R * 0.09, 0, Math.PI * 2); fill(p, lacquer ? "gold" : "ink", lineStyle); ctx.fill();
+  const role = lacquer ? "gold" : "ink";
+  engraveText(p, lacquer ? "CONTEXTE" : "ÉVÉNEMENTS", cx, H * 0.8, { size: s * 0.15, weight: 700, tracking: 0.14, maxWidth: W * 0.74, role });
+  engraveText(p, lacquer ? "GLOBAL FUND" : "FINANCIAL CHRONICLE", cx, H * 0.135, { size: s * 0.065, weight: 600, tracking: 0.3, maxWidth: W * 0.7, role });
   void ink;
   ctx.restore();
 }
@@ -634,7 +640,7 @@ function drawBadge(p: Pen, r: AtlasRect, value: number) {
   fill(p, "gold", goldGradient(ctx, cy - R, cy + R));
   ctx.fill();
   ctx.beginPath(); ctx.arc(cx, cy, R * 0.86, 0, Math.PI * 2);
-  fill(p, "enamel", gradient(ctx, cx - R, cy - R, cx + R, cy + R, [[0, "#1a1d24"], [1, "#050608"]]));
+  fill(p, "enamel", gradient(ctx, cx - R, cy - R, cx + R, cy + R, [[0, "#1d1b18"], [1, "#060505"]]));
   ctx.fill();
   ctx.lineWidth = Math.max(1, R * 0.03);
   stroke(p, "gold", "rgba(232,200,138,0.7)");
@@ -701,7 +707,6 @@ export function buildBoardAtlas(board: BoardCell[], s: number, withMask: boolean
     { key: "brand", w: Math.round(1000 * unit), h: Math.round(150 * unit) },
     { key: "contextLabel", w: Math.round(380 * unit), h: Math.round(64 * unit) },
     { key: "eventLabel", w: Math.round(380 * unit), h: Math.round(64 * unit) },
-    ...["N", "E", "S", "O"].map((k) => ({ key: `compass${k}`, w: Math.round(72 * unit), h: Math.round(72 * unit) })),
     { key: "glint", w: Math.round(128 * unit), h: Math.round(128 * unit) },
     { key: "side", w: 8, h: 8 },
   );
@@ -720,7 +725,6 @@ export function buildBoardAtlas(board: BoardCell[], s: number, withMask: boolean
     brand: at("brand"),
     contextLabel: at("contextLabel"),
     eventLabel: at("eventLabel"),
-    compass: ["N", "E", "S", "O"].map((k) => at(`compass${k}`)),
     glint: at("glint"),
     side: at("side"),
   };
@@ -740,9 +744,8 @@ export function buildBoardAtlas(board: BoardCell[], s: number, withMask: boolean
     drawDecalText(p, atlas.brand, "GLOBAL FUND", 0.42, 0.34, true);
     drawDecalText(p, atlas.contextLabel, "CONTEXTE", 0.62, 0.32, false);
     drawDecalText(p, atlas.eventLabel, "ÉVÉNEMENTS", 0.62, 0.32, false);
-    ["N", "E", "S", "O"].forEach((k, i) => drawDecalText(p, atlas.compass[i]!, k, 0.7, 0, false));
     drawGlint(p, atlas.glint);
-    fill(p, "side", "#0b0d12");
+    fill(p, "side", "#0c0b0a");
     ctx.fillRect(atlas.side.x - pad, atlas.side.y - pad, atlas.side.w + pad * 2, atlas.side.h + pad * 2);
   };
   draw(atlas.color, false);

@@ -2,6 +2,8 @@
  * The physical board: leather table, black-lacquer slab, bevelled brass frame,
  * inlaid gold fillets, 52 raised enamel plaques and the engraved centre panel
  * (compass rose, card slots, dice tray, brand, pedestal).
+ * The plaques' per-cell effect texture drives the landing light-up, the
+ * arrival flash and the HUD sector highlight (see surfaces.withCellFx).
  */
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
@@ -9,9 +11,9 @@ import { MeshReflectorMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { cellAccent, cellArt, type BoardAtlas } from "./atlas";
-import { CARD, CELLS, CELL_COUNT, CENTRE, FRAME_TOP, INNER_HALF, SLAB_H, TRACK_HALF, BOARD_SIZE } from "./layout";
-import { TABLE_RADIUS, cellFxTexture, decalGeometry, feltTexture, marbleTexture, plaqueGeometry, tableTexture, withCellFx } from "./surfaces";
-import { useRuntime, clamp01 } from "./runtime";
+import { CARD, CELL_COUNT, CENTRE, FRAME_TOP, INNER_HALF, SLAB_H, TRACK_HALF, BOARD_SIZE } from "./layout";
+import { FX_EDGE, FX_INLAY, FX_ROWS, FX_WASH, TABLE_RADIUS, cellFxTexture, decalGeometry, feltTexture, marbleTexture, plaqueGeometry, tableTexture, withCellFx } from "./surfaces";
+import { useRuntime, clamp01, dampFactor, envelope } from "./runtime";
 
 /** Dispose GPU objects created in a memo when they are replaced or unmounted. */
 export function useDisposable<T extends { dispose: () => void }>(factory: () => T, deps: unknown[]): T {
@@ -40,7 +42,7 @@ export function useBoardMaterials(physical: boolean): BoardMaterials {
     return {
       gold: make({ color: "#e9c27a", metalness: 1, roughness: 0.26, envMapIntensity: 1.25 }),
       brass: make({ color: "#c79f5c", metalness: 1, roughness: 0.34, envMapIntensity: 1.15 }),
-      lacquer: make({ color: "#040508", metalness: 0, roughness: 0.32, clearcoat: 1, clearcoatRoughness: 0.045, envMapIntensity: 1.1 }),
+      lacquer: make({ color: "#070606", metalness: 0, roughness: 0.32, clearcoat: 1, clearcoatRoughness: 0.045, envMapIntensity: 1.1 }),
       marble: make({ color: "#ffffff", map: marbleMap, metalness: 0, roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 0.9 }),
     };
   }, [physical, marbleMap]);
@@ -76,7 +78,7 @@ export function LacquerMirror() {
         depthScale={1.1}
         minDepthThreshold={0.35}
         maxDepthThreshold={1.3}
-        color="#1d1f24"
+        color="#201e1c"
         metalness={0}
         roughness={1}
         envMapIntensity={0}
@@ -145,6 +147,24 @@ export function Fillets({ materials }: { materials: BoardMaterials }) {
 
 // ---------------------------------------------------------------- plaques --
 const GOLD_GLOW = new THREE.Color("#ffd58a");
+const IMPACT_UP = new THREE.Color("#3cf0a8");
+const IMPACT_DOWN = new THREE.Color("#ff4d63");
+const CRASH_FLASH = new THREE.Color("#ff2a40");
+/** Stages during which the landed cell keeps its gold inlay lit. */
+const LIT_STAGES = new Set(["PAWN_ARRIVAL", "SPACE_REVEAL", "CARD_READING"]);
+/** HUD sector hover: pulse period (s). */
+const HIGHLIGHT_PERIOD = 1.2;
+
+/** Adds glow to one cell of an effect-texture row (values × CELL_FX_SCALE). */
+function addFx(v: Float32Array, row: number, i: number, c: THREE.Color, k: number) {
+  const o = (row * CELL_COUNT + i) * 4;
+  v[o] += c.r * k; v[o + 1] += c.g * k; v[o + 2] += c.b * k;
+}
+/** Darkens a cell (the strongest request wins). */
+function darkenFx(v: Float32Array, i: number, a: number) {
+  const o = (FX_WASH * CELL_COUNT + i) * 4 + 3;
+  if (a > v[o]!) v[o] = a;
+}
 
 export function Plaques({ atlas, color, mask, physical }: { atlas: BoardAtlas; color: THREE.Texture; mask: THREE.Texture | null; physical: boolean }) {
   const runtime = useRuntime();
@@ -167,53 +187,109 @@ export function Plaques({ atlas, color, mask, physical }: { atlas: BoardAtlas; c
     return withCellFx(m, fx);
   }, [color, mask, physical, fx]);
 
-  const accents = useMemo(() => {
-    const game = runtime.current.game;
-    return Array.from({ length: CELL_COUNT }, (_, i) => new THREE.Color(cellAccent(cellArt(game.board[i]))));
-    // The board layout never changes during a game.
+  // The board layout never changes during a game.
+  const cells = useMemo(() => {
+    const board = runtime.current.game.board;
+    return Array.from({ length: CELL_COUNT }, (_, i) => {
+      const art = cellArt(board[i]);
+      const accent = new THREE.Color(cellAccent(art));
+      // Hover glow: the sector colour, lifted a little towards white so dark hues still read.
+      const glow = accent.clone().lerp(new THREE.Color("#ffffff"), 0.18);
+      return { kind: art.kind, sector: board[i]?.sector ?? null, accent, glow };
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [atlas]);
-  const kinds = useMemo(() => Array.from({ length: CELL_COUNT }, (_, i) => cellArt(runtime.current.game.board[i]).kind), [atlas, runtime]);
-  const values = useRef(new Float32Array(CELL_COUNT * 4));
+  const state = useRef({
+    values: new Float32Array(CELL_COUNT * FX_ROWS * 4),
+    highlight: new Float32Array(CELL_COUNT),
+    focus: 0,
+    lit: 0,
+    litCell: -1,
+    last: performance.now(),
+  });
 
   useFrame(() => {
     const rt = runtime.current;
+    const st = state.current;
     const now = performance.now();
-    const v = values.current;
+    const dt = Math.min(0.1, Math.max(0, (now - st.last) / 1000));
+    st.last = now;
+    const v = st.values;
     v.fill(0);
-    const add = (i: number, c: THREE.Color, k: number) => {
-      v[i * 4] += c.r * k; v[i * 4 + 1] += c.g * k; v[i * 4 + 2] += c.b * k;
-    };
     const active = rt.game.players.find((p) => p.id === rt.activeId);
     const moving = rt.stage === "PAWN_MOVING" && !rt.reduced;
     const breathe = rt.reduced ? 0.5 : 0.5 + 0.5 * Math.sin(now / 900);
-    if (active && !moving) add(((active.sectorPosition % 52) + 52) % 52, GOLD_GLOW, 0.035 + breathe * 0.02);
-    if (rt.hovered != null) add(rt.hovered, GOLD_GLOW, 0.14);
-    if (rt.arrival) {
-      const t = rt.reduced ? 0.4 : (now - rt.arrival.at) / 1500;
-      if (t < 1) add(rt.arrival.cell, accents[rt.arrival.cell]!, 0.2 * Math.pow(1 - clamp01(t), 1.8));
+    if (active && !moving) {
+      // The active fund's cell breathes a gold outline (its enamel stays dark and legible).
+      const cell = ((active.sectorPosition % 52) + 52) % 52;
+      addFx(v, FX_EDGE, cell, GOLD_GLOW, 0.07 + breathe * 0.05);
+      addFx(v, FX_WASH, cell, GOLD_GLOW, 0.01);
+    }
+    if (rt.hovered != null) addFx(v, FX_WASH, rt.hovered, GOLD_GLOW, 0.14);
+
+    // Landed cell: its gold inlay brightens and stays lit while the card is read.
+    const litTarget = rt.timeline && LIT_STAGES.has(rt.stage ?? "") ? 1 : 0;
+    if (litTarget) st.litCell = ((Math.round(rt.timeline!.toPosition) % 52) + 52) % 52;
+    st.lit = rt.reduced ? litTarget : st.lit + (litTarget - st.lit) * dampFactor(litTarget ? 3.2 : 5, dt);
+    if (st.litCell >= 0 && st.lit > 0.002) {
+      addFx(v, FX_INLAY, st.litCell, GOLD_GLOW, 0.08 * st.lit);
+      addFx(v, FX_EDGE, st.litCell, GOLD_GLOW, 0.05 * st.lit);
+    }
+
+    // Arrival: a flash of the cell's colour on its outline, inlay and enamel.
+    if (rt.arrival && !rt.reduced) {
+      const t = (now - rt.arrival.at) / 1000;
+      if (t >= 0 && t < 2) {
+        const c = cells[rt.arrival.cell]!;
+        addFx(v, FX_EDGE, rt.arrival.cell, c.glow, 0.2 * envelope(t, 0, 0.05, 0.25, 1.3));
+        addFx(v, FX_INLAY, rt.arrival.cell, c.glow, 0.13 * envelope(t, 0, 0.08, 0.45, 1.5));
+        addFx(v, FX_WASH, rt.arrival.cell, c.accent, 0.03 * Math.pow(1 - clamp01(t / 0.8), 2));
+        if (rt.arrival.theme === "crash") {
+          // The whole board takes the shock: a brief red flash over every plaque.
+          const flash = 0.15 * envelope(t, 0, 0.04, 0.06, 0.55);
+          for (let i = 0; i < CELL_COUNT; i++) addFx(v, FX_WASH, i, CRASH_FLASH, flash);
+        }
+      }
     }
     if (rt.impact) {
       const t = (now - rt.impact.at) / 1000;
       const pulse = rt.reduced ? 0.55 : 0.4 + 0.6 * Math.abs(Math.sin(t * Math.PI * 1.6));
       const tint = rt.impact.up ? IMPACT_UP : IMPACT_DOWN;
-      for (const i of rt.impact.cells) add(i, tint, 0.34 * pulse);
+      for (const i of rt.impact.cells) addFx(v, FX_WASH, i, tint, 0.34 * pulse);
     }
     if (rt.mood) {
       const t = (now - rt.moodAt) / 1000;
       const pulse = rt.reduced ? 0.6 : 0.5 + 0.5 * Math.sin(t * 5);
       for (let i = 0; i < CELL_COUNT; i++) {
-        const kind = kinds[i];
+        const kind = cells[i]!.kind;
         if (rt.mood === "crash") {
-          if (kind === "crash") add(i, accents[i]!, 0.3 + 0.25 * pulse);
-          else v[i * 4 + 3] = 0.5;
-        } else if (rt.mood === "bull" && kind === "bull") add(i, accents[i]!, 0.25 + 0.2 * pulse);
+          if (kind === "crash") addFx(v, FX_WASH, i, cells[i]!.accent, 0.16 + 0.14 * pulse);
+          else darkenFx(v, i, 0.5);
+        } else if (rt.mood === "bull" && kind === "bull") addFx(v, FX_WASH, i, cells[i]!.accent, 0.08 + 0.07 * pulse);
         else if (rt.mood === "bear") {
-          if (kind === "bear") add(i, accents[i]!, 0.22 + 0.15 * pulse);
-          else v[i * 4 + 3] = 0.18;
+          if (kind === "bear") addFx(v, FX_WASH, i, cells[i]!.accent, 0.05 + 0.04 * pulse);
+          else darkenFx(v, i, 0.18);
         }
       }
     }
+
+    // HUD sector hover: every cell of the sector pulses (outline + inlay), the others recede.
+    const sector = rt.highlightSector;
+    const k = dampFactor(9, dt);
+    st.focus = rt.reduced ? (sector ? 1 : 0) : st.focus + ((sector ? 1 : 0) - st.focus) * k;
+    const pulse = rt.reduced ? 0.8 : 0.62 + 0.38 * Math.sin((now / 1000) * ((Math.PI * 2) / HIGHLIGHT_PERIOD));
+    for (let i = 0; i < CELL_COUNT; i++) {
+      const target = sector && cells[i]!.sector === sector ? 1 : 0;
+      const h = rt.reduced ? target : st.highlight[i]! + (target - st.highlight[i]!) * k;
+      st.highlight[i] = h;
+      if (h > 0.002) {
+        addFx(v, FX_EDGE, i, cells[i]!.glow, 0.3 * h * pulse);
+        addFx(v, FX_INLAY, i, cells[i]!.glow, 0.13 * h * (0.75 + 0.25 * pulse));
+        addFx(v, FX_WASH, i, cells[i]!.accent, 0.018 * h * pulse);
+      }
+      if (st.focus > 0.002) darkenFx(v, i, 0.3 * st.focus * (1 - h));
+    }
+
     const data = fx.image.data as Uint8Array;
     let changed = false;
     for (let i = 0; i < data.length; i++) {
@@ -225,8 +301,6 @@ export function Plaques({ atlas, color, mask, physical }: { atlas: BoardAtlas; c
 
   return <mesh geometry={geometry} material={material} castShadow receiveShadow />;
 }
-const IMPACT_UP = new THREE.Color("#3cf0a8");
-const IMPACT_DOWN = new THREE.Color("#ff4d63");
 
 // ------------------------------------------------------------ centre decor --
 function compassGeometry() {
@@ -285,10 +359,6 @@ export function CentreDecor({ atlas, color, mask, materials }: { atlas: BoardAtl
   const brand = useDisposable(() => decalGeometry(atlas, atlas.brand, 4.0, 0.6), [atlas]);
   const contextLabel = useDisposable(() => decalGeometry(atlas, atlas.contextLabel, 1.5, 0.25), [atlas]);
   const eventLabel = useDisposable(() => decalGeometry(atlas, atlas.eventLabel, 1.5, 0.25), [atlas]);
-  const letters = useDisposable(() => {
-    const geos = atlas.compass.map((r) => decalGeometry(atlas, r, 0.34, 0.34));
-    return { geos, dispose: () => geos.forEach((g) => g.dispose()) };
-  }, [atlas]);
   const slot = useDisposable(() => {
     const w = CARD.w + 0.26, d = CARD.d + 0.26;
     const shape = new THREE.Shape();
@@ -316,13 +386,11 @@ export function CentreDecor({ atlas, color, mask, materials }: { atlas: BoardAtl
   const felt = useDisposable(() => new THREE.MeshStandardMaterial({ color: "#ffffff", map: feltMap, roughness: 0.95, metalness: 0, envMapIntensity: 0.4 }), [feltMap]);
   const y = SLAB_H + 0.002;
   const g = CENTRE.globe;
-  const letterPos: [number, number][] = [[0, -3.62], [3.62, 0], [0, 3.62], [-3.62, 0]];
   return (
     <group>
       <group position={[g.x, y, g.z]}>
         <mesh geometry={compass} material={lineMaterial} receiveShadow />
         <mesh geometry={star} material={starMaterial} position={[0, 0.001, 0]} receiveShadow />
-        {letters.geos.map((geo, i) => <mesh key={i} geometry={geo} material={decalMaterial} position={[letterPos[i]![0], 0.002, letterPos[i]![1]]} />)}
       </group>
       <mesh geometry={brand} material={decalMaterial} position={[CENTRE.brand.x, y + 0.002, CENTRE.brand.z]} />
       {([[CENTRE.contextDeck, contextLabel], [CENTRE.eventDeck, eventLabel]] as const).map(([deck, label], i) => (

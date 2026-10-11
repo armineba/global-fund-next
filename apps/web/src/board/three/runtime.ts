@@ -6,12 +6,17 @@
 import { createContext, useContext } from "react";
 import type { GameView } from "@global-fund/shared";
 import type { BoardTimeline, PresentationStage } from "../../presentation/sequence";
+import type { SectorId } from "../../ui/theme";
 import type { BoardInsets } from "../types";
 import type { TierSettings } from "./quality";
+import type { TravelChannel } from "./travelCinematic";
 
-export type CameraMode = "global" | "player" | "cell" | "zone" | "crash";
+/** "flight": the travel cinematic flies the camera (travelCinematic.ts). */
+export type CameraMode = "global" | "player" | "cell" | "zone" | "crash" | "flight";
 export type Mood = "crash" | "bull" | "bear" | null;
 export type DeckFocus = "context" | "event" | null;
+/** Arrival effect family: the landed cell's sector, or its special kind. */
+export type FxTheme = SectorId | "start" | "event" | "bull" | "bear" | "crash" | "neutral";
 
 export interface BoardRuntime {
   game: GameView;
@@ -28,13 +33,19 @@ export interface BoardRuntime {
   deck: DeckFocus;
   deckAt: number;
   impact: { cells: number[]; up: boolean; at: number; key: string } | null;
-  arrival: { cell: number; at: number; color: string } | null;
+  /** Pawn landing (PAWN_ARRIVAL): cell, landing epoch, accent colour and effect family. */
+  arrival: { cell: number; at: number; color: string; theme: FxTheme; key: number } | null;
   activeId: string;
   viewerId: string | undefined;
+  /** HUD hover: sector whose cells glow, fund whose figurine is lit (no camera move). */
+  highlightSector: string | null;
+  highlightPlayerId: string | null;
   /** Display position of the active figurine (camera follow), world x / z. */
   activePos: { x: number; z: number };
   /** Epoch of the last mood start that should shake the camera. */
   shakeAt: number;
+  /** Travel cinematic published by the globe every frame (plane + camera on one clock); read by the camera rig. */
+  travel?: TravelChannel;
 }
 
 export const RuntimeContext = createContext<{ current: BoardRuntime } | null>(null);
@@ -52,10 +63,21 @@ export const smoothstep = (e0: number, e1: number, v: number) => {
   return t * t * (3 - 2 * t);
 };
 export const easeOutCubic = (t: number) => 1 - Math.pow(1 - clamp01(t), 3);
+export const easeInCubic = (t: number) => {
+  const x = clamp01(t);
+  return x * x * x;
+};
 export const easeInOutCubic = (t: number) => {
   const x = clamp01(t);
   return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 };
+/** Overshooting ease-out (pop). */
+export const easeOutBack = (t: number, s = 1.70158) => {
+  const x = clamp01(t) - 1;
+  return 1 + x * x * ((s + 1) * x + s);
+};
+/** Fade in over [a, b], hold, fade out over [c, d]. */
+export const envelope = (t: number, a: number, b: number, c: number, d: number) => smoothstep(a, b, t) * (1 - smoothstep(c, d, t));
 /** Frame-rate independent exponential damping factor. */
 export const dampFactor = (lambda: number, dt: number) => 1 - Math.exp(-lambda * dt);
 

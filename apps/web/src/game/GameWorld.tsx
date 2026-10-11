@@ -12,11 +12,11 @@ import AnimatedMoney from "../presentation/AnimatedMoney";
 import { useDialogFocus } from "../presentation/useDialogFocus";
 import CardScene from "../presentation/CardScene";
 import { useGamePresentation } from "../presentation/useGamePresentation";
-import type { PresentationStage } from "../presentation/sequence";
+import { PRESENTATION_TIMING, type PresentationStage } from "../presentation/sequence";
 import type { BoardInsets } from "../board/types";
 import { GradeJewel, GradeShift } from "../ui/GradeJewel";
 import { SectorIcon } from "../ui/SectorIcon";
-import { GRADE_META, gradeDelta, sectorMeta } from "../ui/theme";
+import { GRADE_META, ZONE_META, gradeDelta, sectorMeta } from "../ui/theme";
 import { money, pad2, signedMoney, signedPercent, tone } from "../ui/format";
 import Pawn from "./Pawn";
 import Chat from "./Chat";
@@ -24,6 +24,7 @@ import Geography from "./Geography";
 import OfficeEnvironment from "./OfficeEnvironment";
 import SettlementDesk from "./SettlementDesk";
 import { FinancialTicker } from "./FinancialTicker";
+import { SceneLoader } from "./SceneLoader";
 import { playerOfficeMarket, marketPlaceVisuals } from "./marketPlaceVisuals";
 import "./game-world.css";
 import "./impact-ribbon.css";
@@ -70,6 +71,36 @@ function ConsequenceRibbon({ game, notice, gradeImpact, awaitingMarketConfirmati
           </> : <span className="ribbon-name">Nouvelles conditions de marché</span>}
         </strong>}
     {awaitingMarketConfirmation && <button type="button" className="gf-btn gf-btn--primary impact-continue" onClick={onContinue}>Valider les cours <ArrowRight size={15} strokeWidth={1.75} aria-hidden="true" /></button>}
+  </div>;
+}
+
+type CityZone = keyof typeof ZONE_META;
+const isCityZone = (id: string | null | undefined): id is CityZone => !!id && id in ZONE_META;
+/** Latest flight between two market places (same rule as the board's globe flight). */
+function latestFlight(notices: GameNotice[]) {
+  for (let i = notices.length - 1; i >= 0; i--) {
+    const n = notices[i]!;
+    if (isCityZone(n.fromZoneId) && isCityZone(n.zoneId) && n.fromZoneId !== n.zoneId) return n;
+  }
+  return null;
+}
+
+/** Cinema mode while the board flies the plane: letterbox bars and the route, the HUD steps aside. */
+function TravelCinema({ game, notice }: { game: GameView; notice: GameNotice }) {
+  const traveller = game.players.find(p => p.id === notice.playerId);
+  const from = ZONE_META[notice.fromZoneId as CityZone].city;
+  const to = ZONE_META[notice.zoneId as CityZone].city;
+  return <div className="travel-cinema" style={{ "--flight-ms": `${PRESENTATION_TIMING.travel}ms`, "--player-color": traveller?.color ?? "var(--accent)" } as CSSProperties}>
+    <span className="travel-cinema__bar is-top" aria-hidden="true" />
+    <span className="travel-cinema__bar is-bottom" aria-hidden="true" />
+    <p className="travel-cinema__caption" role="status">
+      <span className="sr-only">Vol de {traveller?.name ?? "l’investisseur"} : </span>
+      <span className="travel-cinema__city">{from}</span>
+      <span className="travel-cinema__route" aria-hidden="true"><i /><Plane className="travel-cinema__plane" size={15} strokeWidth={1.75} /></span>
+      <span className="sr-only"> vers </span>
+      <span className="travel-cinema__city is-destination">{to}</span>
+      {traveller && <small aria-hidden="true"><b />{traveller.name}</small>}
+    </p>
   </div>;
 }
 
@@ -184,11 +215,13 @@ function marketPresentation(notice: GameNotice | null): "context" | "event" | "b
   return notice.cardType === "context" ? "context" : notice.cardType === "event" ? "event" : null;
 }
 
-const DEFAULT_INSETS: BoardInsets = { top: 84, right: 320, bottom: 168, left: 248 };
+const DEFAULT_INSETS: BoardInsets = { top: 96, right: 24, bottom: 156, left: 228 };
 /**
  * Measures the screen margins covered by the HUD so the 3D camera frames the
- * table in the free area. Focus surfaces that cover the centre (terminal, card,
- * settlement) keep the previous framing; the travel panel reframes the table.
+ * table in the free area: status + players on top, ratings on the left, the
+ * turn bar and tools at the bottom. Focus surfaces that cover the centre
+ * (terminal, card, settlement) keep the previous framing; the travel panel
+ * reframes the table.
  */
 function useHudInsets(world: RefObject<HTMLElement | null>, layoutKey: string) {
   const [insets, setInsets] = useState<BoardInsets>(DEFAULT_INSETS);
@@ -213,17 +246,19 @@ function useHudInsets(world: RefObject<HTMLElement | null>, layoutKey: string) {
       const rail = focus ? null : box(".world-ratings");
       const dock = box(".fund-dock");
       const consoleBox = box(".command-console");
+      const tools = box(".world-tools");
       const panel = focus === "travel" ? box(".geography-scene") : null;
-      const top = Math.max(64, status?.bottom ?? 0) + gap;
+      const top = Math.max(64, status?.bottom ?? 0, dock?.bottom ?? 0) + gap;
+      const lowest = (rects: (DOMRect | null)[]) => Math.min(height, ...rects.flatMap(rect => (rect ? [rect.top] : [])));
       let next: BoardInsets;
       if (width <= 900) {
-        const stackTop = Math.min(height, ...[rail, dock, consoleBox].flatMap(rect => (rect ? [rect.top] : [])));
-        next = { top, right: 0, bottom: height - stackTop + gap, left: 0 };
+        // Phone/tablet: the ratings strip sits right above the turn bar.
+        next = { top, right: 0, bottom: height - lowest([rail, consoleBox]) + gap, left: 0 };
       } else {
         next = {
           top,
-          right: dock ? width - dock.left + gap : 0,
-          bottom: consoleBox ? height - consoleBox.top + gap : 0,
+          right: gap,
+          bottom: height - lowest([consoleBox, tools]) + gap,
           left: Math.max(rail?.right ?? 0, panel?.right ?? 0) + gap,
         };
       }
@@ -233,7 +268,7 @@ function useHudInsets(world: RefObject<HTMLElement | null>, layoutKey: string) {
     const schedule = () => { if (!frame) frame = requestAnimationFrame(measure); };
     const observer = new ResizeObserver(schedule);
     observer.observe(root);
-    root.querySelectorAll(".world-status, .world-ratings, .fund-dock, .command-console, .geography-scene").forEach(element => observer.observe(element));
+    root.querySelectorAll(".world-status, .world-ratings, .fund-dock, .command-console, .world-tools, .geography-scene").forEach(element => observer.observe(element));
     window.addEventListener("resize", schedule);
     // Focus-mode rails move with a short transition: measure once they settle.
     const settle = window.setTimeout(schedule, 480);
@@ -282,6 +317,8 @@ export default function GameWorld({ room }: { room: RoomView }) {
   const [browseZone, setBrowseZone] = useState(active.zone ?? game.zones[0].id);
   const [overview, setOverview] = useState(false);
   const [focusedZone, setFocusedZone] = useState<string | null>(null);
+  /** What the pointer rests on in the HUD; the 3D table answers with light only. */
+  const [hover, setHover] = useState<{ sector?: string; zone?: string; player?: string }>({});
   const receipt = useFinancialFeedback(authoritativeGame, room.revision);
   useEffect(() => {
     setViewerId(controls ? active.id : session?.playerId ?? active.id);
@@ -354,16 +391,26 @@ export default function GameWorld({ room }: { room: RoomView }) {
   const status = active.bot ? { kind: "bot", text: "IA en réflexion…" } : controls ? { kind: "local", text: "À vous" } : { kind: "remote", text: "Joue à distance" };
   const city = marketPlaceVisuals[officeMarket].city;
   const tool = (id: Terminal) => () => { setTerminal(id); playCue("ui_click"); };
+  const hoverOn = (key: "sector" | "zone" | "player", id: string) => {
+    const enter = () => setHover({ [key]: id });
+    const leave = () => setHover(h => (h[key] === id ? {} : h));
+    return { onPointerEnter: enter, onPointerLeave: leave, onFocus: enter, onBlur: leave };
+  };
+  // A surface opening under the pointer must not leave a highlight behind.
+  useEffect(() => { setHover({}); }, [stageKind]);
+  const flight = presentationStage === "TRAVEL_RESOLUTION" && !reducedMotion ? latestFlight(visual.boardGame!.notices) : null;
 
   return <main ref={worldRef} className={`game-world wealth-${stage.id} ${reducedMotion ? "motion-reduced" : ""} ${active.jailed ? "world-detained" : ""}`}
     data-quality={quality} data-presentation-stage={presentationStage} data-effects-started={presentationStage === "MARKET_IMPACT"}
-    data-stage-open={stageKind ?? undefined} data-turn={controls ? "local" : "remote"}>
+    data-stage-open={stageKind ?? undefined} data-turn={controls ? "local" : "remote"} data-cinematic={flight ? "travel" : undefined}>
     <OfficeEnvironment market={officeMarket} playerId={officePlayer.id} travelling={presentationStage === "TRAVEL_RESOLUTION"} reducedMotion={reducedMotion} />
     <div className="board-world">
-      <Suspense fallback={<div className="world-loading"><span className="resolution-orbit" aria-hidden="true" />Installation de la table…</div>}>
+      {/* The SceneLoader curtain covers the table while its code and assets load. */}
+      <Suspense fallback={null}>
         <BoardScene game={visual.boardGame!} timeline={visual.timeline} stage={presentationStage} onRoll={() => send({ type: "ROLL" })} disabled={!canAct || game.phase !== "sector"} reducedMotion={reducedMotion} quality={quality}
           focusZone={overview ? null : focusedZone ?? (terminal ? browseZone : undefined)} overview={overview} presentation={presentation}
-          insets={insets} travelPreview={travelPreview} marketImpact={impact} viewerId={viewerId} />
+          insets={insets} travelPreview={travelPreview} marketImpact={impact} viewerId={viewerId}
+          highlightSector={hover.sector ?? null} highlightZone={hover.zone ?? null} highlightPlayerId={hover.player ?? null} />
       </Suspense>
     </div>
     <div className="world-scrim" aria-hidden="true" />
@@ -378,8 +425,6 @@ export default function GameWorld({ room }: { room: RoomView }) {
     </header>
     <div className="world-session" title={`Bureau de ${city} · ${stage.label}`}>
       <span>Salon <b className="gf-mono">{room.roomId}</b></span>
-      <span>{city}</span>
-      <span className="world-session__prestige">{stage.label}</span>
     </div>
 
     <section className="world-ratings gf-glass" aria-label="Notations économiques">
@@ -391,7 +436,7 @@ export default function GameWorld({ room }: { room: RoomView }) {
           return <button key={z.id} type="button" className={`economic-zone ${isCurrent ? "is-current zone-selected" : ""} ${focusedZone === z.id ? "is-focused" : ""} ${impactClass("zone", z.id)}`}
             onClick={() => { setOverview(false); setFocusedZone(focusedZone === z.id ? null : z.id); }} aria-pressed={focusedZone === z.id}
             aria-label={`${z.name}, note ${grade} (${GRADE_META[grade].label}) — centrer le plateau`} title={`${z.name} — ${GRADE_META[grade].label}${isCurrent ? ` · ${active.name}` : ""}`}
-            style={isCurrent ? { "--player-color": active.color } as CSSProperties : undefined}>
+            style={isCurrent ? { "--player-color": active.color } as CSSProperties : undefined} {...hoverOn("zone", z.id)}>
             <span className="economic-zone__marker" aria-hidden="true" />
             <span className="economic-zone__name">{ZONE_LABEL[z.id] ?? z.name}</span>
             <GradeJewel key={`${z.id}-${grade}`} grade={grade} label={z.name} size="sm" className="rating-instrument" />
@@ -402,7 +447,7 @@ export default function GameWorld({ room }: { room: RoomView }) {
         <span className="gf-kicker">Secteurs</span>
         <div className="world-sectors">{game.sectors.map(s => {
           const grade = game.sectorGrades[s.id];
-          return <div className={`economic-tile ${impactClass("sector", s.id)}`} key={s.id} title={`${s.name} — ${GRADE_META[grade].label}`}>
+          return <div className={`economic-tile ${impactClass("sector", s.id)}`} key={s.id} title={`${s.name} — ${GRADE_META[grade].label}`} {...hoverOn("sector", s.id)}>
             <SectorIcon id={s.id} size={15} />
             <span className="economic-tile__name">{sectorMeta(s.id)?.label ?? s.name.split("&")[0]}</span>
             <GradeJewel key={`${s.id}-${grade}`} grade={grade} label={s.name} size="sm" className="rating-instrument" />
@@ -470,11 +515,14 @@ export default function GameWorld({ room }: { room: RoomView }) {
     <section className="fund-dock" aria-label="Fonds à la table">{game.players.map(p => {
       const place = p.jailed ? "Justice" : zoneName(p.currentMarket ?? p.zone);
       return <button key={p.id} type="button" className={`investor-card dock-fund ${p.id === active.id ? "is-active" : ""} ${p.id === viewerId ? "inspecting" : ""} ${!p.solvent ? "insolvent" : ""} ${p.jailed ? "is-jailed" : ""}`}
-        onClick={() => setViewerId(p.id)} aria-pressed={p.id === viewerId} style={{ "--player-color": p.color } as CSSProperties} title={`Inspecter ${p.name}`}>
+        onClick={() => setViewerId(p.id)} aria-pressed={p.id === viewerId} style={{ "--player-color": p.color } as CSSProperties} title={`Inspecter ${p.name}`} {...hoverOn("player", p.id)}>
         <Pawn id={p.pawn} color={p.color} />
         <span className="dock-text">
           <span className="dock-head"><b>{p.name}</b>{p.bot ? <i className="dock-kind">IA</i> : <span className="sr-only"> · Humain</span>}</span>
-          <small className="dock-place">{p.jailed && <Scale size={11} strokeWidth={1.75} aria-hidden="true" />}{place}{!p.solvent && <em className="dock-flag">Insolvable</em>}</small>
+          <small className="dock-place">
+            <span>{p.jailed && <Scale size={11} strokeWidth={1.75} aria-hidden="true" />}{place}{!p.solvent && <em className="dock-flag">Insolvable</em>}</span>
+            <span className="dock-place__cash" aria-hidden="true"><Wallet size={11} strokeWidth={1.75} /><AnimatedMoney value={p.cash} /></span>
+          </small>
           <span className="dock-figures">
             <strong className="dock-value" title="Valeur du fonds"><span className="sr-only">Valeur du fonds </span><AnimatedMoney value={p.fundValue} /></strong>
             <span className="dock-cash" title="Liquidités"><Wallet size={11} strokeWidth={1.75} aria-hidden="true" /><span className="sr-only">Liquidités </span><AnimatedMoney value={p.cash} /></span>
@@ -518,6 +566,8 @@ export default function GameWorld({ room }: { room: RoomView }) {
     {cardVisible && current && <CardScene embedded notice={current} game={authoritativeGame} onClose={visual.continueCard} />}
     {settlementVisible && settlement && <SettlementDesk key={`${settlement.id}-${settlement.debtorId}-${settlement.creditorId ?? "bank"}-${settlement.completed.length}-${settlement.status}-${settlement.marketSales?.length ?? 0}`} game={authoritativeGame} settlement={settlement} viewerId={decisionControls ? decisionId : session?.playerId ?? viewerId} canAct={canSettle} onCommand={sendSettlement} />}
     {visual.busy && !current && presentationStage === "MARKET_IMPACT" && <ConsequenceRibbon game={game} notice={notice!} gradeImpact={visual.gradeImpact} awaitingMarketConfirmation={visual.awaitingMarketConfirmation} onContinue={visual.continueImpact} />}
+    {flight && <TravelCinema key={flight.id} game={visual.boardGame!} notice={flight} />}
     {game.finished && !visual.busy && <Victory game={game} />}
+    <SceneLoader world={worldRef} reducedMotion={reducedMotion} />
   </main>;
 }

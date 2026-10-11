@@ -30,7 +30,7 @@ export function FallbackBoard({ board, players, insets, host }: { board: BoardCe
       ctx.clearRect(0, 0, width, height);
       ctx.fillStyle = "#c79f5c";
       ctx.fillRect(x0, y0, size, size);
-      ctx.fillStyle = "#050609";
+      ctx.fillStyle = "#070606";
       ctx.fillRect(X(-TRACK_HALF), Y(-TRACK_HALF), TRACK_HALF * 2 * unit, TRACK_HALF * 2 * unit);
       const g = PLAQUE_GAP / 2;
       CELLS.forEach((cell, i) => {

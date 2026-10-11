@@ -90,23 +90,19 @@ function CityGlobe({ zone }: { zone: ZoneId }) {
   return (
     <svg className="smo-globe" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
       <defs>
+        {/* Sphere shading only: a lit pole fading to the night side. */}
         <radialGradient id={`${id}-disc`} cx="38%" cy="30%" r="75%">
-          <stop offset="0" stopColor="#1b2638" />
-          <stop offset="0.6" stopColor="#0b111b" />
-          <stop offset="1" stopColor="#05080d" />
+          <stop offset="0" stopColor="#2a2a2c" />
+          <stop offset="0.62" stopColor="#141415" />
+          <stop offset="1" stopColor="#09090a" />
         </radialGradient>
-        <linearGradient id={`${id}-rim`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#f6e7c4" stopOpacity="0.75" />
-          <stop offset="0.5" stopColor="#d2ad66" stopOpacity="0.25" />
-          <stop offset="1" stopColor="#80642f" stopOpacity="0.6" />
-        </linearGradient>
       </defs>
       <circle cx={CENTER} cy={CENTER} r={RADIUS} fill={`url(#${id}-disc)`} />
       <path className="smo-globe__graticule" d={graticule} />
       <path className="smo-globe__land is-far" d={dots[0]} />
       <path className="smo-globe__land is-mid" d={dots[1]} />
       <path className="smo-globe__land is-near" d={dots[2]} />
-      <circle cx={CENTER} cy={CENTER} r={RADIUS} fill="none" stroke={`url(#${id}-rim)`} strokeWidth="0.9" />
+      <circle className="smo-globe__rim" cx={CENTER} cy={CENTER} r={RADIUS} />
       <circle className="smo-globe__halo" cx={pin[0]} cy={pin[1]} r="6.5" />
       <circle className="smo-globe__pin" cx={pin[0]} cy={pin[1]} r="2.6" />
     </svg>
@@ -115,18 +111,22 @@ function CityGlobe({ zone }: { zone: ZoneId }) {
 
 const coordinate = (value: number, positive: string, negative: string) =>
   `${Math.abs(value).toFixed(2).replace(".", ",")}° ${value >= 0 ? positive : negative}`;
+const coordinates = (zone: ZoneId) => `${coordinate(ZONE_META[zone].lat, "N", "S")} · ${coordinate(ZONE_META[zone].lon, "E", "O")}`;
 
 const CAPS_HINT = "Classes de taille Global Fund fondées sur les capitalisations approximatives ; les prix du jeu sont normalisés séparément.";
 
 export default function StartingMarketPicker({
   value,
   onChange,
+  onPreview,
   label = "Place de marché initiale",
   hideLegend = false,
   occupants,
 }: {
   value: ZoneId;
   onChange: (market: ZoneId) => void;
+  /** Hover / focus preview (presentation only): the 3D globe turns to that city. `null` when it ends. */
+  onPreview?: (market: ZoneId | null) => void;
   label?: string;
   /** Keep the legend for assistive technology only (the surrounding UI already names it). */
   hideLegend?: boolean;
@@ -140,9 +140,10 @@ export default function StartingMarketPicker({
         {MARKET_PLACES.map((place, index) => {
           const overview = marketOverview(place.id);
           const selected = value === place.id;
-          const geo = ZONE_META[place.id];
           const total = Math.max(1, overview.caps.small + overview.caps.medium + overview.caps.large);
           const here = occupants?.[place.id] ?? [];
+          // Preview on pointermove, not pointerenter: a pointer left resting over a card
+          // after a step change must not swing the globe away from the chosen city.
           return (
             <button
               key={place.id}
@@ -150,21 +151,33 @@ export default function StartingMarketPicker({
               type="button"
               className={`starting-market-option${selected ? " is-selected" : ""}`}
               aria-pressed={selected}
-              title={place.description}
+              title={`${place.city} · ${coordinates(place.id)}\n${place.description}`}
               style={{ "--smo-i": index } as React.CSSProperties}
               onClick={() => onChange(place.id)}
+              onPointerMove={onPreview && (() => onPreview(place.id))}
+              onPointerLeave={onPreview && (() => onPreview(null))}
+              onFocus={onPreview && (() => onPreview(place.id))}
+              onBlur={onPreview && (() => onPreview(null))}
             >
               <span className="smo-visual" aria-hidden="true">
                 <CityGlobe zone={place.id} />
-                {selected && <span className="smo-check"><Check size={12} strokeWidth={2.4} /></span>}
+                {selected && <span className="smo-check"><Check size={12} strokeWidth={2.6} /></span>}
+                {here.length > 0 && (
+                  <span className="smo-occupants" title={here.map((fund) => fund.name).join(" · ")}>
+                    {here.slice(0, 6).map((fund, i) => (
+                      <span key={`${fund.pawn}-${i}`} className="smo-occupant" style={{ "--seat-color": fund.color } as React.CSSProperties}>
+                        <Pawn id={fund.pawn} color={fund.color} size={22} />
+                      </span>
+                    ))}
+                  </span>
+                )}
               </span>
               <span className="smo-place">
-                <span className="smo-region">{place.name}</span>
                 <strong className="smo-city">{place.city}</strong>
-                <span className="smo-coords gf-mono" aria-hidden="true">{coordinate(geo.lat, "N", "S")} · {coordinate(geo.lon, "E", "O")}</span>
+                <span className="smo-region">{place.name}</span>
               </span>
               <span className="smo-facts">
-                <span className="smo-grade">Note <b>C</b></span>
+                <span className="smo-grade">Note <span className="gf-jewel gf-jewel--sm grade-C"><b>C</b></span></span>
                 <span className="smo-count"><b className="gf-num">{overview.companyCount}</b> entreprises</span>
               </span>
               <span className="smo-sectors">
@@ -187,15 +200,6 @@ export default function StartingMarketPicker({
                   <span>L <b>{overview.caps.large}</b></span>
                 </span>
               </span>
-              {here.length > 0 && (
-                <span className="smo-occupants" title={here.map((fund) => fund.name).join(" · ")}>
-                  {here.slice(0, 6).map((fund, i) => (
-                    <span key={`${fund.pawn}-${i}`} className="smo-occupant" style={{ "--seat-color": fund.color } as React.CSSProperties}>
-                      <Pawn id={fund.pawn} color={fund.color} size={22} />
-                    </span>
-                  ))}
-                </span>
-              )}
             </button>
           );
         })}

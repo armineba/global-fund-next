@@ -1,7 +1,9 @@
 /**
- * Warm zenithal key (shadows), cool blue rim, low fill and a procedural
- * studio environment (no HDR file) for the metal reflections. Market moods
- * shift the lights: crash ruby, bull gold-emerald, bear cold.
+ * Warm neutral studio: a soft zenithal key with shadows from the front left,
+ * a gentle neutral rim from behind, a warm-grey fill and a procedural studio
+ * environment (no HDR file) for the metal and lacquer reflections. No light
+ * is tinted blue: blacks stay neutral and the gold reads warm. Market moods
+ * shift the lights: crash ruby, bull gold-emerald, bear cold steel.
  */
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
@@ -12,10 +14,10 @@ import type { TierSettings } from "./quality";
 
 interface Rig { key: THREE.Color; keyI: number; rim: THREE.Color; rimI: number; sky: THREE.Color; fillI: number }
 const RIGS: Record<"calm" | Exclude<Mood, null>, Rig> = {
-  calm: { key: new THREE.Color("#ffe3c0"), keyI: 2.7, rim: new THREE.Color("#86aaff"), rimI: 1.25, sky: new THREE.Color("#1d2a44"), fillI: 0.42 },
-  crash: { key: new THREE.Color("#ffb4a4"), keyI: 1.55, rim: new THREE.Color("#ff2e48"), rimI: 3.0, sky: new THREE.Color("#2c0a12"), fillI: 0.28 },
-  bull: { key: new THREE.Color("#fff1cc"), keyI: 3.1, rim: new THREE.Color("#3ee6a6"), rimI: 2.2, sky: new THREE.Color("#10302a"), fillI: 0.46 },
-  bear: { key: new THREE.Color("#bfd3ff"), keyI: 2.0, rim: new THREE.Color("#6c8cff"), rimI: 1.9, sky: new THREE.Color("#132544"), fillI: 0.34 },
+  calm: { key: new THREE.Color("#fff0dc"), keyI: 2.65, rim: new THREE.Color("#f3ece2"), rimI: 1.0, sky: new THREE.Color("#3a322b"), fillI: 0.36 },
+  crash: { key: new THREE.Color("#ffc4b6"), keyI: 1.6, rim: new THREE.Color("#ff3048"), rimI: 2.8, sky: new THREE.Color("#2c0c10"), fillI: 0.26 },
+  bull: { key: new THREE.Color("#fff3d6"), keyI: 3.0, rim: new THREE.Color("#46e2a8"), rimI: 2.0, sky: new THREE.Color("#172f26"), fillI: 0.42 },
+  bear: { key: new THREE.Color("#eaecef"), keyI: 2.1, rim: new THREE.Color("#aeb8c4"), rimI: 1.6, sky: new THREE.Color("#25272b"), fillI: 0.3 },
 };
 
 /** Soft elliptical falloff so the lacquer reflection has no hard edge. */
@@ -58,7 +60,7 @@ export function Lighting({ tier }: { tier: TierSettings }) {
     <>
       <directionalLight
         ref={key}
-        position={[-7.5, 17, 9.5]}
+        position={[-7, 17, 9.5]}
         intensity={RIGS.calm.keyI}
         color={RIGS.calm.key}
         castShadow={tier.shadows}
@@ -72,19 +74,24 @@ export function Lighting({ tier }: { tier: TierSettings }) {
         shadow-camera-far={48}
         shadow-bias={-0.0004}
         shadow-normalBias={0.025}
-        shadow-radius={tier.tier === "high" ? 5 : 3}
+        shadow-radius={tier.tier === "high" ? 6 : 3}
       />
       <directionalLight ref={rim} position={[7, 6.5, -15]} intensity={RIGS.calm.rimI} color={RIGS.calm.rim} />
-      <hemisphereLight ref={fill} args={[RIGS.calm.sky, new THREE.Color("#1c130c"), RIGS.calm.fillI]} />
+      <hemisphereLight ref={fill} args={[RIGS.calm.sky, new THREE.Color("#140f0a"), RIGS.calm.fillI]} />
       <Environment resolution={tier.envResolution} frames={1} background={false} environmentIntensity={1}>
-        <color attach="background" args={["#040508"]} />
-        <Lightformer form="rect" intensity={2.2} color="#ffe6c4" scale={[14, 7, 1]} position={[0, 16, 2]} />
-        <Lightformer form="rect" intensity={1.5} color="#ffeedd" scale={[30, 11, 1]} position={[0, 13, -13]} map={softbox} />
-        <Lightformer form="rect" intensity={1.5} color="#d6e4ff" scale={[1.4, 20, 1]} position={[-15, 6, 0]} />
-        <Lightformer form="rect" intensity={1.25} color="#ffd6a0" scale={[1.4, 20, 1]} position={[15, 6, 0]} />
-        <Lightformer form="ring" intensity={1.6} color="#ffcf8a" scale={7} position={[0, 6, -17]} />
-        <Lightformer form="rect" intensity={0.7} color="#fff3e0" scale={[24, 0.7, 1]} position={[0, 2, 17]} />
-        <Lightformer form="circle" intensity={0.9} color="#7fa2ff" scale={5} position={[-10, 10, -10]} />
+        <color attach="background" args={["#060505"]} />
+        {/* Overhead softbox: the long soft highlight across lacquer and enamel. */}
+        <Lightformer form="rect" intensity={2.1} color="#fff2e2" scale={[14, 7, 1]} position={[0, 16, 2]} />
+        {/* Diffused back softbox. */}
+        <Lightformer form="rect" intensity={1.4} color="#fff0de" scale={[30, 11, 1]} position={[0, 13, -13]} map={softbox} />
+        {/* Side strips (neutral left, warm right): crisp edges on brass and figurines. */}
+        <Lightformer form="rect" intensity={1.25} color="#f4f1eb" scale={[1.4, 20, 1]} position={[-15, 6, 0]} />
+        <Lightformer form="rect" intensity={1.25} color="#ffd9a8" scale={[1.4, 20, 1]} position={[15, 6, 0]} />
+        {/* Gold kicker behind the board: sparkle on gilt edges. */}
+        <Lightformer form="ring" intensity={1.5} color="#ffcf8a" scale={7} position={[0, 6, -17]} />
+        {/* Low front strip. */}
+        <Lightformer form="rect" intensity={0.65} color="#fff3e0" scale={[24, 0.7, 1]} position={[0, 2, 17]} />
+        <Lightformer form="circle" intensity={0.55} color="#efe9df" scale={5} position={[-10, 10, -10]} />
       </Environment>
     </>
   );

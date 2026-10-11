@@ -166,11 +166,15 @@ const ROOMS: Record<string, () => ReturnType<typeof room>> = {
   D000000A: () => room("D000000A", jailedState()),
   D000000B: () => room("D000000B", phaseState("sector")),
   D000000C: () => room("D000000C", phaseState("finished")),
+  // One fresh travel decision per viewport for the travel-flight scene (the flight mutates its room).
+  D000000D: () => room("D000000D", phaseState("geography")),
+  D000000E: () => room("D000000E", phaseState("geography")),
+  D000000F: () => room("D000000F", phaseState("geography")),
 };
 
 // ------------------------------------------------------------------ scenes --
 type Ctx = { page: Page; context: BrowserContext; browser: Browser; gameOrigin: string; webOrigin: string; size: { width: number; height: number } };
-type Scene = { room?: string; run: (ctx: Ctx, shot: (suffix?: string) => Promise<void>) => Promise<void> };
+type Scene = { room?: string | ((sizeIndex: number) => string); run: (ctx: Ctx, shot: (suffix?: string) => Promise<void>) => Promise<void> };
 
 const continueLabel = "Continuer et appliquer les conséquences";
 async function waitBoard(page: Page) {
@@ -217,6 +221,24 @@ const SCENES: Record<string, Scene> = {
   join: { run: async ({ page }, shot) => { await page.getByRole("button", { name: /REJOINDRE/ }).click(); await shot(); } },
   lobby: { room: "D0000001", run: async ({ page }, shot) => { await page.getByText("CODE D’INVITATION").waitFor({ timeout: 30_000 }); await shot(); } },
   board: { room: "D0000002", run: async ({ page }, shot) => { await waitBoard(page); await closeTerminal(page); await shot(); } },
+  loading: { room: "D0000002", run: async ({ page, size }, shot) => {
+    const start = Date.now();
+    for (const at of [300, 1200, 2400]) {
+      const wait = at - (Date.now() - start);
+      if (wait > 0) await page.waitForTimeout(wait);
+      await shot(`t${String(at).padStart(4, "0")}`);
+    }
+    await waitBoard(page);
+    console.log(`  loading ${size.width}x${size.height}: scene ready ${Date.now() - start} ms after the page answered`);
+    await page.waitForTimeout(120); await shot("ready");
+    await page.waitForTimeout(900); await shot("revealed");
+  } },
+  hover: { room: "D0000002", run: async ({ page }, shot) => {
+    await waitBoard(page); await closeTerminal(page);
+    await page.locator(".fund-dock .investor-card").nth(1).hover(); await page.waitForTimeout(800); await shot("a-player");
+    await page.locator(".world-sectors .economic-tile").first().hover(); await page.waitForTimeout(800); await shot("b-sector");
+    await page.locator(".world-zones .economic-zone").nth(1).hover(); await page.waitForTimeout(800); await shot("c-zone");
+  } },
   chat: { room: "D0000002", run: async ({ page }, shot) => {
     await waitBoard(page); await closeTerminal(page);
     await page.locator(".world-tools").getByRole("button", { name: /Salon/ }).click(); await shot();
@@ -246,6 +268,19 @@ const SCENES: Record<string, Scene> = {
     await waitBoard(page); await page.locator(".geography-scene").waitFor({ timeout: 20_000 }); await shot();
     const other = page.locator(".travel-market:not(.current-market)").first().getByRole("radio");
     if (await other.isVisible().catch(() => false)) { await other.click(); await page.waitForTimeout(900); await shot("selected"); }
+  } },
+  "travel-flight": { room: (sizeIndex) => ["D000000D", "D000000E", "D000000F"][sizeIndex % 3]!, run: async ({ page }, shot) => {
+    await waitBoard(page); await page.locator(".geography-scene").waitFor({ timeout: 20_000 });
+    await page.locator(".travel-market:not(.current-market)").first().getByRole("radio").click();
+    await page.waitForTimeout(700);
+    const start = Date.now();
+    await page.locator(".travel-go").click();
+    // Frames across the whole cinematic (PRESENTATION_TIMING.travel = 6500 ms) and just after it.
+    for (const at of [250, 700, 1200, 1800, 2400, 3000, 3600, 4200, 4800, 5400, 6000, 6600, 7400]) {
+      const wait = at - (Date.now() - start);
+      if (wait > 0) await page.waitForTimeout(wait);
+      await shot(`t${String(at).padStart(4, "0")}`);
+    }
   } },
   jail: { room: "D000000A", run: async ({ page }, shot) => { await waitBoard(page); await page.waitForTimeout(500); await shot(); } },
   context: { room: "D0000003", run: async ({ page }, shot) => { await waitBoard(page); await waitCard(page); await shot(); } },
@@ -355,10 +390,11 @@ async function main() {
     // Warm Vite's dependency optimizer once so the first scene is not a cold compile.
     { const warm = await browser.newPage(); await warm.goto(webOrigin, { waitUntil: "load", timeout: 120_000 }).catch(() => {}); await warm.waitForTimeout(4000); await warm.close(); }
     for (const name of selected) {
-      for (const size of SIZES) {
+      for (const [sizeIndex, size] of SIZES.entries()) {
         const scene = SCENES[name]!;
+        const roomId = typeof scene.room === "function" ? scene.room(sizeIndex) : scene.room;
         const context = await browser.newContext({ viewport: size, deviceScaleFactor: 1, reducedMotion: MOTION === "full" ? "no-preference" : "reduce" });
-        if (scene.room) await context.addInitScript(({ roomId, token }) => localStorage.setItem("global-fund-next:session", JSON.stringify({ roomId, playerId: "p1", token })), { roomId: scene.room, token: TOKEN });
+        if (roomId) await context.addInitScript(({ roomId, token }) => localStorage.setItem("global-fund-next:session", JSON.stringify({ roomId, playerId: "p1", token })), { roomId, token: TOKEN });
         await context.addInitScript((reduced) => localStorage.setItem("global-fund-presentation-settings", JSON.stringify({ quality: "high", reducedMotion: reduced })), MOTION !== "full");
         const page = await context.newPage();
         const errors: string[] = [];
@@ -372,7 +408,7 @@ async function main() {
           files.push(file);
         };
         try {
-          if (scene.room || !["payments", "settlement-cash", "settlement", "creditor"].includes(name)) await page.goto(webOrigin, { waitUntil: "domcontentloaded" });
+          if (roomId || !["payments", "settlement-cash", "settlement", "creditor"].includes(name)) await page.goto(webOrigin, { waitUntil: "domcontentloaded" });
           await page.getByText("Serveur connecté").first().waitFor({ timeout: 30_000 }).catch(() => {});
           await scene.run({ page, context, browser, gameOrigin, webOrigin, size }, shot);
         } catch (error) {

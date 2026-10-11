@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { LayoutGroup, motion } from "motion/react";
 import { ArrowDown, ArrowLeft, ArrowUp, Check, Crown, Info, Minus, Network, Plus, Search, X } from "lucide-react";
 import * as echarts from "echarts/core";
@@ -11,7 +11,7 @@ import AnimatedMoney from "../presentation/AnimatedMoney";
 import { usePresentationSettings } from "../presentation/settings";
 import { GradeJewel } from "../ui/GradeJewel";
 import { SectorIcon } from "../ui/SectorIcon";
-import { GRADE_META, PALETTE, SECTOR_META, type SectorId } from "../ui/theme";
+import { GRADE_META, PALETTE } from "../ui/theme";
 import { money, signedPercent, tone } from "../ui/format";
 import { profitLossPercent, sortTradingRows, type TradingSortDirection, type TradingSortKey } from "./tradingSort";
 import "./trading-desk.css";
@@ -39,11 +39,20 @@ type SeriesPoint = { cycle: number; tip: string; value: number };
 type Slice = { id: string; name: string; short: string; value: number; color: string };
 
 const TABS: [Tab, string][] = [["market", "Marché"], ["portfolio", "Portefeuille"], ["analysis", "Analyse"], ["statistics", "Statistiques"]];
-/** Exposure ring colours per market (sapphire, brass, jade, orchid, pearl), validated for the dark surface. */
-const ZONE_COLORS: Record<string, string> = { americas: "#3f86d6", europe: "#b8893a", asia: "#36a58c", africa: "#c05ab0", oceania: "#ddd6c6" };
 const GRADE_ORDER: Grade[] = ["A", "B", "C", "D", "E"];
 const CHART_FONT = "Inter, system-ui, sans-serif";
-const INK = "#0b1018";
+/** Chart ink, mirrored from the tokens in styles.css (canvas cannot read CSS variables). */
+const INK = {
+  text: PALETTE.text,
+  label: "#7d7a73", // --text-3
+  grid: "rgba(255, 255, 255, 0.05)",
+  axis: "rgba(255, 255, 255, 0.08)",
+  gold: PALETTE.accent,
+  wash: "rgba(227, 184, 96, 0.08)",
+  panel: PALETTE.surface2, // card surface: rings around end dots
+  tooltip: "#2a2a2e", // --surface-3
+  quiet: "#67635c", // the non-leading ring slices
+};
 const axisNumber = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 });
 const percent0 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
 
@@ -72,6 +81,7 @@ const periodChange = (points: SeriesPoint[]) => {
   const last = points.at(-1)?.value;
   return points.length > 1 && first && last != null ? (last / first - 1) * 100 : null;
 };
+const share = (value: number, total: number) => percent0.format((value / (total || 1)) * 100);
 
 function priceSeries(history: HistoryPoint[], companyId: string): SeriesPoint[] {
   return history
@@ -80,16 +90,23 @@ function priceSeries(history: HistoryPoint[], companyId: string): SeriesPoint[] 
     .filter((point) => point.value >= 0);
 }
 
+/** Exposure slices, largest first: the lead in gold, the rest in one quiet neutral. */
+function rankSlices(rows: { id: string; name: string; short: string; value: number }[]): Slice[] {
+  return [...rows]
+    .sort((a, b) => b.value - a.value)
+    .map((row, index) => ({ ...row, color: index === 0 ? INK.gold : INK.quiet }));
+}
+
 /* ------------------------------------------------------------- charts -- */
 
 const tooltipChrome = (): TooltipComponentOption => ({
   confine: true,
-  backgroundColor: "rgba(8, 12, 19, 0.94)",
-  borderColor: "rgba(226, 196, 134, 0.42)",
+  backgroundColor: INK.tooltip,
+  borderColor: "rgba(255, 255, 255, 0.12)",
   borderWidth: 1,
-  padding: [8, 12],
-  textStyle: { color: PALETTE.text100, fontFamily: CHART_FONT, fontSize: 12 },
-  extraCssText: "border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.9);",
+  padding: [9, 13],
+  textStyle: { color: INK.text, fontFamily: CHART_FONT, fontSize: 12 },
+  extraCssText: "border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.35),0 18px 48px rgba(0,0,0,.45);",
 });
 
 /** Round value-axis bounds with a little headroom, so flat or tiny moves stay centred and legible. */
@@ -110,15 +127,15 @@ function lineOption(points: SeriesPoint[], name: string, reduced: boolean): ECha
   const cycleStart = points.map((point, index) => index === 0 || point.cycle !== points[index - 1].cycle);
   return {
     animation: !reduced,
-    animationDuration: 640,
+    animationDuration: 600,
     animationEasing: "cubicOut",
     animationDurationUpdate: 260,
     textStyle: { fontFamily: CHART_FONT },
-    grid: { left: 2, right: 14, top: 30, bottom: 2 },
+    grid: { left: 2, right: 10, top: 14, bottom: 2 },
     tooltip: {
       ...tooltipChrome(),
       trigger: "axis",
-      axisPointer: { type: "line", lineStyle: { color: "rgba(226, 196, 134, 0.55)", width: 1 } },
+      axisPointer: { type: "line", lineStyle: { color: "rgba(227, 184, 96, 0.45)", width: 1 } },
       formatter: (params) => {
         const item = Array.isArray(params) ? params[0] : params;
         const point = points[item?.dataIndex ?? -1];
@@ -129,12 +146,12 @@ function lineOption(points: SeriesPoint[], name: string, reduced: boolean): ECha
       type: "category",
       data: points.map((_, index) => String(index)),
       boundaryGap: false,
-      axisLine: { lineStyle: { color: "rgba(255, 255, 255, 0.08)" } },
+      axisLine: { lineStyle: { color: INK.axis } },
       axisTick: { show: false },
       axisLabel: {
-        color: PALETTE.text500,
-        fontSize: 10,
-        margin: 10,
+        color: INK.label,
+        fontSize: 11,
+        margin: 12,
         hideOverlap: true,
         interval: (index: number) => cycleStart[index] ?? false,
         formatter: (_value: string, index: number) => `C${points[index]?.cycle ?? ""}`,
@@ -146,54 +163,42 @@ function lineOption(points: SeriesPoint[], name: string, reduced: boolean): ECha
       ...(extent ?? { splitNumber: 4 }),
       axisLine: { show: false },
       axisTick: { show: false },
-      axisLabel: { color: PALETTE.text500, fontSize: 10, margin: 10, formatter: (value: number) => axisNumber.format(value) },
-      splitLine: { lineStyle: { color: "rgba(255, 255, 255, 0.05)" } },
+      axisLabel: { color: INK.label, fontSize: 11, margin: 12, formatter: (value: number) => axisNumber.format(value) },
+      splitLine: { lineStyle: { color: INK.grid } },
     },
     series: [{
       type: "line",
       name,
-      smooth: 0.32,
+      smooth: 0.3,
       showSymbol: true,
       symbol: "none",
-      lineStyle: { width: 2, color: PALETTE.gold500, cap: "round", join: "round", shadowBlur: 12, shadowColor: "rgba(210, 173, 102, 0.35)" },
-      areaStyle: {
-        color: { type: "linear", x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: "rgba(210, 173, 102, 0.26)" }, { offset: 1, color: "rgba(210, 173, 102, 0)" }] },
-      },
+      lineStyle: { width: 2, color: INK.gold, cap: "round", join: "round" },
+      areaStyle: { color: INK.wash },
       emphasis: { disabled: true },
       data: points.map((point, index) => index === last
-        ? { value: point.value, symbol: "circle", symbolSize: 9, itemStyle: { color: PALETTE.gold300, borderColor: INK, borderWidth: 2, shadowBlur: 14, shadowColor: "rgba(226, 196, 134, 0.85)" } }
+        ? { value: point.value, symbol: "circle", symbolSize: 10, itemStyle: { color: INK.gold, borderColor: INK.panel, borderWidth: 2 } }
         : { value: point.value, symbol: "none" }),
     }],
   };
 }
 
 function donutOption(slices: Slice[], reduced: boolean): EChartsOption {
-  const total = slices.reduce((sum, slice) => sum + slice.value, 0) || 1;
   return {
     animation: !reduced,
     animationDuration: 700,
     animationEasing: "cubicOut",
     textStyle: { fontFamily: CHART_FONT },
-    tooltip: {
-      ...tooltipChrome(),
-      trigger: "item",
-      formatter: (params) => {
-        const item = Array.isArray(params) ? params[0] : params;
-        const slice = slices[item?.dataIndex ?? -1];
-        return slice ? `<div class="td-tip"><span>${escapeHtml(slice.name)}</span><b>${escapeHtml(money(slice.value))} · ${percent0.format((slice.value / total) * 100)} %</b></div>` : "";
-      },
-    },
     series: [{
       type: "pie",
-      radius: ["71%", "92%"],
+      radius: ["78%", "94%"],
       center: ["50%", "50%"],
-      padAngle: slices.length > 1 ? 2.2 : 0,
+      padAngle: slices.length > 1 ? 1.8 : 0,
       startAngle: 90,
       avoidLabelOverlap: false,
       label: { show: false },
       labelLine: { show: false },
-      itemStyle: { borderRadius: 4 },
-      emphasis: { scale: true, scaleSize: 5 },
+      itemStyle: { borderRadius: 3 },
+      emphasis: { scale: true, scaleSize: 4 },
       data: slices.map((slice) => ({ name: slice.name, value: slice.value, itemStyle: { color: slice.color } })),
     }],
   };
@@ -244,7 +249,7 @@ const withAria = (option: EChartsOption, label: string): EChartsOption => ({ ...
 
 /* -------------------------------------------------------------- parts -- */
 
-/** Company mark: official logo on a porcelain plate, engraved monogram when there is none. */
+/** Company mark: official logo on a light plate, a monogram when there is none. */
 function Logo({ company, size = "md" }: { company: Company; size?: "sm" | "md" | "lg" }) {
   const [failed, setFailed] = useState<string | null>(null);
   const showLogo = Boolean(company.logoPath) && failed !== company.logoPath;
@@ -257,16 +262,24 @@ function Logo({ company, size = "md" }: { company: Company; size?: "sm" | "md" |
   );
 }
 
-/** Five share pips. Newly confirmed shares light up with a short pop. */
-function Pips({ value }: { value: number }) {
+/**
+ * Five share pips. Newly confirmed shares light up with a short pop; `ghost`
+ * previews an order (+n shares outlined in gold, −n shares hollowed out).
+ */
+function Pips({ value, ghost = 0 }: { value: number; ghost?: number }) {
   const previous = useRef(value);
   const before = previous.current;
   useEffect(() => { previous.current = value; }, [value]);
+  const low = Math.max(0, Math.min(value, value + ghost));
+  const high = Math.min(5, Math.max(value, value + ghost));
   return (
     <span className={`td-pips ${value >= 5 ? "is-full" : ""}`} aria-hidden="true">
-      {Array.from({ length: 5 }, (_, index) => (
-        <i key={index} className={`${index < value ? "lit" : ""} ${index < value && index >= before ? "is-new" : ""}`} />
-      ))}
+      {Array.from({ length: 5 }, (_, index) => {
+        const lit = index < value;
+        const previewed = ghost !== 0 && index >= low && index < high;
+        const classes = [lit && "lit", lit && index >= before && "is-new", previewed && (ghost > 0 ? "is-gain" : "is-loss")].filter(Boolean).join(" ");
+        return <i key={index} className={classes || undefined} />;
+      })}
     </span>
   );
 }
@@ -302,6 +315,8 @@ export default function TradingDesk({
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<{ key: TradingSortKey; direction: TradingSortDirection }>({ key: "company", direction: "ascending" });
   const [ratingScope, setRatingScope] = useState<RatingScope>("zone");
+  /** The order button under the pointer or focus: its result is previewed on the selected row. */
+  const [preview, setPreview] = useState<"buy" | "sell" | null>(null);
   const flashes = useHoldingFlashes(game.companies, viewerId);
   const activeZone = viewer?.zone ?? "";
   const selectedZone = game.phase === "geography" ? browseZone ?? activeZone : activeZone;
@@ -390,6 +405,14 @@ export default function TradingDesk({
   };
   const buyDisabled = !canTrade || !selected || quantity > selected.sharesAvailable || buyTotal > amount(viewer?.cash);
   const sellDisabled = !canTrade || quantity > held;
+  /** Shares the selected company would hold after the previewed order (presentation only). */
+  const previewShares = preview === "buy" && !buyDisabled ? held + quantity : preview === "sell" && !sellDisabled ? held - quantity : null;
+  const previewOn = (side: "buy" | "sell") => ({
+    onPointerEnter: () => setPreview(side),
+    onPointerLeave: () => setPreview(null),
+    onFocus: () => setPreview(side),
+    onBlur: () => setPreview(null),
+  });
 
   const history = useMemo(() => (selected ? priceSeries(game.marketHistory, selected.id) : []), [game.marketHistory, selected]);
   const marketOption = useMemo(() => lineOption(history, selected?.name ?? "Cours", reducedMotion), [history, selected?.name, reducedMotion]);
@@ -407,12 +430,12 @@ export default function TradingDesk({
         .filter((item) => item.value > 0);
     return { zones: rows("zone", game.zones), sectors: rows("sector", game.sectors) };
   }, [game.companies, game.zones, game.sectors, viewerId]);
-  const zoneSlices = useMemo<Slice[]>(() => exposure.zones.map((zone) => ({
-    id: zone.id, name: zone.name, short: zoneShort(zone.id, zone.name), value: zone.value, color: ZONE_COLORS[zone.id] ?? PALETTE.gold500,
-  })), [exposure.zones]);
-  const sectorSlices = useMemo<Slice[]>(() => exposure.sectors.map((sector) => ({
-    id: sector.id, name: sector.name, short: splitName(sector.name).head, value: sector.value, color: SECTOR_META[sector.id as SectorId]?.color ?? PALETTE.gold500,
-  })), [exposure.sectors]);
+  const zoneSlices = useMemo(() => rankSlices(exposure.zones.map((zone) => ({
+    id: zone.id, name: zone.name, short: zoneShort(zone.id, zone.name), value: zone.value,
+  }))), [exposure.zones]);
+  const sectorSlices = useMemo(() => rankSlices(exposure.sectors.map((sector) => ({
+    id: sector.id, name: sector.name, short: splitName(sector.name).head, value: sector.value,
+  }))), [exposure.sectors]);
 
   const fullOwned = game.companies.filter((company) => holding(company, viewerId) >= 5);
   const monopolyCount = useMemo(() => {
@@ -457,6 +480,7 @@ export default function TradingDesk({
 
   const zoneName = catalogName(game.zones, selectedZone);
   const titleZone = zoneName.toUpperCase() || "ZONE À DÉFINIR";
+  const zoneGrade = game.zoneGrades?.[selectedZone];
   const isListTab = tab === "market" || tab === "portfolio";
   const marketOpen = game.phase === "market";
 
@@ -483,15 +507,18 @@ export default function TradingDesk({
         <div className="td-heading">
           {tab === "portfolio" ? (
             <>
-              <p className="td-title-over">{viewer?.name ?? "Fonds"}</p>
               <h1><span className="td-title-main">PORTEFEUILLE</span></h1>
+              {viewer?.name && <span className="td-title-note">{viewer.name}</span>}
             </>
           ) : (
-            <h1>
-              <span className="td-title-over">TRADING</span>
-              <span className="td-title-sep"> — </span>
-              <span className="td-title-main" title={zoneName}>{titleZone}</span>
-            </h1>
+            <>
+              <h1 title={zoneName ? `Trading — ${zoneName}` : undefined}>
+                <span className="td-title-over">TRADING</span>
+                <span className="td-title-sep"> — </span>
+                <span className="td-title-main">{titleZone}</span>
+              </h1>
+              {zoneGrade && <GradeJewel grade={zoneGrade} size="sm" label={`Note de la zone ${zoneName}`} className="td-zone-grade" />}
+            </>
           )}
         </div>
         <div className="td-header-end">
@@ -503,17 +530,17 @@ export default function TradingDesk({
           <div className="td-header-actions">
             {game.phase === "market" && canAct && onEndTurn && (
               <button type="button" className="gf-btn gf-btn--ghost gf-btn--sm td-end-turn" onClick={onEndTurn} aria-label="Terminer le marché" title="Terminer le marché">
-                <Check size={15} strokeWidth={1.75} aria-hidden="true" />Terminer le marché
+                <Check size={15} strokeWidth={2} aria-hidden="true" />Terminer le marché
               </button>
             )}
             {game.phase === "geography" && onReturnTravel && (
               <button type="button" className="gf-btn gf-btn--quiet gf-btn--sm td-back-travel" onClick={onReturnTravel} aria-label="Retour à la décision de voyage" title="Retour à la décision de voyage">
-                <ArrowLeft size={15} strokeWidth={1.75} aria-hidden="true" />Voyage
+                <ArrowLeft size={15} strokeWidth={2} aria-hidden="true" />Voyage
               </button>
             )}
             {onClose && (
               <button type="button" className="gf-icon-btn td-close" onClick={onClose} aria-label="Retour au plateau" title="Retour au plateau · Échap">
-                <X size={17} strokeWidth={1.75} aria-hidden="true" />
+                <X size={17} strokeWidth={2} aria-hidden="true" />
               </button>
             )}
           </div>
@@ -535,7 +562,7 @@ export default function TradingDesk({
         {isListTab && (
           <div className="td-filters">
             <label className="td-search">
-              <Search size={14} strokeWidth={1.75} aria-hidden="true" />
+              <Search size={15} strokeWidth={2} aria-hidden="true" />
               <span className="sr-only">Rechercher une entreprise</span>
               <input type="search" aria-label="Rechercher une entreprise" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Société, pays…" />
             </label>
@@ -570,14 +597,14 @@ export default function TradingDesk({
       {tab === "analysis" ? (
         <div className="td-view td-analysis">
           <DonutCard title="Exposition par zone" slices={zoneSlices} reduced={reducedMotion} label="Répartition par zone" />
-          <DonutCard title="Exposition par secteur" slices={sectorSlices} reduced={reducedMotion} label="Répartition par secteur" sectors />
+          <DonutCard title="Exposition par secteur" slices={sectorSlices} reduced={reducedMotion} label="Répartition par secteur" />
           <article className="td-card td-ownership">
             <header className="td-card-head"><h2>Contrôle</h2></header>
             <section className="td-control-block" aria-label="Détentions intégrales">
-              <div className="td-kpi" title="5/5 parts d’une société · revenu minimum C/C">
-                <Crown size={18} strokeWidth={1.6} aria-hidden="true" />
+              <div className="td-tally" title="5/5 parts d’une société · revenu minimum C/C">
                 <strong>{fullOwned.length}</strong>
-                <span>{fullOwned.length > 1 ? "Contrôles" : "Contrôle"} 5/5<small>Revenu minimum C/C</small></span>
+                <span><Crown size={15} strokeWidth={1.8} aria-hidden="true" />{fullOwned.length > 1 ? "Contrôles" : "Contrôle"} 5/5</span>
+                <small>Revenu minimum C/C</small>
               </div>
               {fullOwned.length > 0 && (
                 <ul className="td-owned-list">
@@ -592,10 +619,10 @@ export default function TradingDesk({
               )}
             </section>
             <section className="td-control-block is-monopoly" aria-label="Monopoles zone et secteur">
-              <div className="td-kpi" title="Toutes les sociétés d’un groupe zone × secteur à 5/5 · revenu minimum A/A">
-                <Network size={18} strokeWidth={1.6} aria-hidden="true" />
+              <div className="td-tally" title="Toutes les sociétés d’un groupe zone × secteur à 5/5 · revenu minimum A/A">
                 <strong>{monopolyCount}</strong>
-                <span>{monopolyCount > 1 ? "Monopoles" : "Monopole"}<small>Revenu minimum A/A</small></span>
+                <span><Network size={15} strokeWidth={1.8} aria-hidden="true" />{monopolyCount > 1 ? "Monopoles" : "Monopole"}</span>
+                <small>Revenu minimum A/A</small>
               </div>
               {fullGroups.length > 0 && (
                 <ul className="td-owned-list">
@@ -689,9 +716,9 @@ export default function TradingDesk({
                           title={complete ? "Monopole : toutes les sociétés du groupe à 5/5 · revenu minimum A/A" : "Seuil 5/5 par société pour C/C · toutes à 5/5 pour le monopole A/A"}
                         >
                           <header>
-                            <SectorIcon id={group.sector} size={13} />
+                            <SectorIcon id={group.sector} size={14} />
                             <strong>{zoneShort(group.zone, zone)} · {splitName(sector).head}</strong>
-                            {complete && <Network className="td-group-mark" size={13} strokeWidth={1.75} aria-hidden="true" />}
+                            {complete && <Network className="td-group-mark" size={14} strokeWidth={1.8} aria-hidden="true" />}
                           </header>
                           <div className="td-group-progress">
                             <span className="td-group-bar" aria-hidden="true">
@@ -714,10 +741,10 @@ export default function TradingDesk({
                 {([
                   ["company", "Entreprise", "entreprise", undefined, false],
                   ["sector", "Secteur", "secteur", undefined, false],
-                  ["capitalization", "Cap.", "catégorie de capitalisation : Small Cap, Medium Cap ou Large Cap", "Capitalisation : Small · Medium · Large", false],
+                  ["capitalization", "Taille", "catégorie de capitalisation : Small Cap, Medium Cap ou Large Cap", "Capitalisation : Small · Medium · Large", false],
                   ["price", "Cours", "cours actuel par part", undefined, true],
                   ["profitLoss", "P/L", "plus-value ou moins-value en pourcentage par rapport au prix moyen d’achat", "P/L = (cours actuel / prix moyen − 1) × 100 ; tiret si PRU inconnu ou aucune part détenue", true],
-                  ["held", "Détenues", "parts détenues", "Parts détenues sur 5", true],
+                  ["held", "Vos parts", "parts détenues", "Parts détenues sur 5", true],
                   ["available", "Dispo.", "parts disponibles", "Parts disponibles sur 5", true],
                 ] as const).map(([key, label, accessibleLabel, tooltip, numeric]) => (
                   <span key={key} className={`td-column ${numeric ? "is-num" : ""}`} role="columnheader" aria-sort={sort.key === key ? sort.direction : "none"}>
@@ -730,8 +757,8 @@ export default function TradingDesk({
                     >
                       {label}
                       {sort.key === key && (sort.direction === "ascending"
-                        ? <ArrowUp className="td-sort-indicator" size={11} strokeWidth={2} aria-hidden="true" />
-                        : <ArrowDown className="td-sort-indicator" size={11} strokeWidth={2} aria-hidden="true" />)}
+                        ? <ArrowUp className="td-sort-indicator" size={12} strokeWidth={2.2} aria-hidden="true" />
+                        : <ArrowDown className="td-sort-indicator" size={12} strokeWidth={2.2} aria-hidden="true" />)}
                     </button>
                   </span>
                 ))}
@@ -742,14 +769,16 @@ export default function TradingDesk({
                   const profitLoss = profitLossPercent(amount(company.price), company.averageBuyPrice?.[viewerId], shares);
                   const monopoly = fullGroups.some((group) => group.zone === company.zone && group.sector === company.sector);
                   const sectorName = catalogName(game.sectors, company.sector);
+                  const isSelected = selected?.id === company.id;
+                  const origin = company.country || catalogName(game.zones, company.zone);
                   return (
                     <button
                       key={company.id}
                       type="button"
-                      className={`td-row ${selected?.id === company.id ? "selected" : ""} ${shares === 5 ? "has-control" : ""} ${monopoly ? "has-monopoly" : ""}`}
+                      className={`td-row ${isSelected ? "selected" : ""} ${shares === 5 ? "has-control" : ""} ${monopoly ? "has-monopoly" : ""}`}
                       style={{ "--i": Math.min(index, 14) } as CSSProperties}
                       data-flash={flashes[company.id]}
-                      aria-pressed={selected?.id === company.id}
+                      aria-pressed={isSelected}
                       onClick={() => selectRow(company)}
                     >
                       <span className="td-name">
@@ -757,10 +786,10 @@ export default function TradingDesk({
                         <span className="td-name-text">
                           <span className="td-name-line">
                             <b title={company.name}>{company.name}</b>
-                            {shares === 5 && <Crown className="td-mark" size={13} strokeWidth={1.75} aria-label="Contrôle total · revenu minimum C/C" />}
-                            {monopoly && <Network className="td-mark" size={13} strokeWidth={1.75} aria-label="Monopole · revenu minimum A/A" />}
+                            {shares === 5 && <Crown className="td-mark" size={13} strokeWidth={1.9} aria-label="Contrôle total · revenu minimum C/C" />}
+                            {monopoly && <Network className="td-mark" size={13} strokeWidth={1.9} aria-label="Monopole · revenu minimum A/A" />}
                           </span>
-                          <small>{[company.ticker, company.country].filter(Boolean).join(" · ") || catalogName(game.zones, company.zone)}</small>
+                          <small title={[company.ticker, origin].filter(Boolean).join(" · ")}>{origin}</small>
                         </span>
                       </span>
                       <span className="td-sector" title={sectorName}><SectorName id={company.sector} name={sectorName} /></span>
@@ -770,9 +799,9 @@ export default function TradingDesk({
                       </span>
                       <span className="td-price"><b><AnimatedMoney value={amount(company.price)} /></b></span>
                       <span className={`td-profit-loss ${profitLoss == null ? "unknown" : profitLoss >= 0 ? "positive" : "negative"}`}>{profitLoss == null ? "—" : signedPercent(profitLoss)}</span>
-                      <span className={`td-held ${shares ? "" : "is-empty"}`}>
-                        <span className="td-fraction"><b>{shares}</b><small> / 5</small></span>
-                        <Pips value={shares} />
+                      <span className={`td-held ${shares ? "" : "is-empty"}`} title={`${shares} / 5 parts détenues`}>
+                        <span className="sr-only">{shares} / 5</span>
+                        <Pips value={shares} ghost={isSelected && previewShares != null ? previewShares - shares : 0} />
                       </span>
                       <span className="td-available"><b>{company.sharesAvailable}</b><small> / 5</small></span>
                     </button>
@@ -790,24 +819,25 @@ export default function TradingDesk({
           <aside className="td-card td-focus" aria-label="Fiche valeur">
             {selected ? (
               <>
-                <div className="td-focus-summary">
-                  <div className="td-identity" key={selected.id}>
+                <div className="td-focus-summary" key={selected.id}>
+                  <div className="td-identity">
                     <Logo company={selected} size="lg" />
                     <div className="td-identity-text">
                       <h2 title={selected.name}>{selected.name}</h2>
-                      <p title={[catalogName(game.sectors, selected.sector), selected.country, catalogName(game.zones, selected.zone)].filter(Boolean).join(" · ")}>
-                        <SectorIcon id={selected.sector} size={13} />
+                      <p title={[catalogName(game.sectors, selected.sector), selected.country, catalogName(game.zones, selected.zone), selected.ticker].filter(Boolean).join(" · ")}>
+                        <SectorIcon id={selected.sector} size={14} />
                         <span className="td-identity-sector">{splitName(catalogName(game.sectors, selected.sector)).head}</span>
                         {selected.country && <><i aria-hidden="true" /><span>{selected.country}</span></>}
                         {(tab === "portfolio" || selected.zone !== selectedZone) && <><i aria-hidden="true" /><span>{catalogName(game.zones, selected.zone)}</span></>}
+                        {selected.ticker && <><i aria-hidden="true" /><span className="td-ticker">{selected.ticker}</span></>}
                       </p>
                     </div>
                     {(held >= 5 || selectedGroup?.complete) && (
                       <div className="td-badges">
-                        {held >= 5 && <span className="td-badge" title="5/5 parts · revenu minimum C/C"><Crown size={12} strokeWidth={1.75} aria-hidden="true" />Contrôle C/C</span>}
+                        {held >= 5 && <span className="td-badge" title="5/5 parts · revenu minimum C/C"><Crown size={13} strokeWidth={1.9} aria-hidden="true" />Contrôle C/C</span>}
                         {selectedGroup?.complete && (
                           <span className="td-badge is-monopoly" title={`Monopole ${catalogName(game.zones, selectedGroup.zone)} · ${catalogName(game.sectors, selectedGroup.sector)} · revenu minimum A/A`}>
-                            <Network size={12} strokeWidth={1.75} aria-hidden="true" />Monopole A/A
+                            <Network size={13} strokeWidth={1.9} aria-hidden="true" />Monopole A/A
                           </span>
                         )}
                       </div>
@@ -817,9 +847,14 @@ export default function TradingDesk({
                     <div>
                       <span className="td-label" title="Cours actuel d’une part">Cours</span>
                       <strong><AnimatedMoney value={amount(selected.price)} /></strong>
+                      {historyChange != null && (
+                        <span className="td-change" title={`Variation sur ${history.length} relevés`}>
+                          <b className={tone(historyChange)}>{signedPercent(historyChange)}</b> depuis C{history[0]?.cycle}
+                        </span>
+                      )}
                     </div>
                     <div>
-                      <span className="td-label" title="Prix moyen d’achat par part">PRU</span>
+                      <span className="td-label" title="Prix de revient unitaire : prix moyen d’achat par part">PRU</span>
                       <strong className={average == null ? "unknown" : ""}>{average == null ? "—" : money(average)}</strong>
                     </div>
                     <div>
@@ -838,52 +873,47 @@ export default function TradingDesk({
                 </div>
                 <div className="td-focus-details">
                   <div className="td-chart-frame">
-                    <p className="td-chart-meta">
-                      <span>{history.length ? `${history.length} relevé${history.length > 1 ? "s" : ""}` : "Aucun relevé"}</span>
-                      {historyChange != null && <b className={tone(historyChange)} title="Variation sur la période">{signedPercent(historyChange)}</b>}
-                    </p>
                     {history.length > 1 ? (
                       <EChart option={marketOption} label={`Historique de ${selected.name} : ${history.map((point) => `${point.tip}, ${money(point.value)}`).join("; ")}`} className="td-price-chart" />
                     ) : (
-                      <div className="td-no-chart">{history.length === 1 ? `Premier relevé : ${money(history[0].value)}` : "L’historique se construit au fil du marché."}</div>
+                      <div className="td-no-chart">{history.length === 1 ? `Premier relevé : ${money(history[0].value)}` : "Pas encore d’historique."}</div>
                     )}
                   </div>
                 </div>
                 <div className="td-focus-order">
                   <div className="td-ticket">
                     <div className="td-quantity" role="group" aria-label="Quantité">
-                      <button type="button" aria-label="Réduire la quantité" disabled={quantity <= 1} onClick={() => setQuantity((value) => Math.max(1, value - 1))}><Minus size={15} strokeWidth={1.75} aria-hidden="true" /></button>
-                      <span><b>{quantity}</b><small>{quantity > 1 ? "parts" : "part"}</small></span>
-                      <button type="button" aria-label="Augmenter la quantité" disabled={quantity >= 5} onClick={() => setQuantity((value) => Math.min(5, value + 1))}><Plus size={15} strokeWidth={1.75} aria-hidden="true" /></button>
+                      <button type="button" aria-label="Réduire la quantité" disabled={quantity <= 1} onClick={() => setQuantity((value) => Math.max(1, value - 1))}><Minus size={16} strokeWidth={2} aria-hidden="true" /></button>
+                      <span><b key={quantity}>{quantity}</b><small>{quantity > 1 ? "parts" : "part"}</small></span>
+                      <button type="button" aria-label="Augmenter la quantité" disabled={quantity >= 5} onClick={() => setQuantity((value) => Math.min(5, value + 1))}><Plus size={16} strokeWidth={2} aria-hidden="true" /></button>
                     </div>
-                    <button type="button" className="gf-btn gf-btn--up td-trade-btn td-buy" aria-label="Acheter" disabled={buyDisabled} onClick={() => trade("BUY_SHARE")}>
+                    <button type="button" className="gf-btn gf-btn--primary td-trade-btn td-buy" aria-label="Acheter" disabled={buyDisabled} onClick={() => trade("BUY_SHARE")} {...previewOn("buy")}>
                       <span>Acheter</span><small>{money(buyTotal)}</small>
                     </button>
-                    <button type="button" className="gf-btn gf-btn--down td-trade-btn td-sell" aria-label="Vendre" disabled={sellDisabled} onClick={() => trade("SELL_SHARE")}>
+                    <button type="button" className="gf-btn gf-btn--ghost td-trade-btn td-sell" aria-label="Vendre" disabled={sellDisabled} onClick={() => trade("SELL_SHARE")} {...previewOn("sell")}>
                       <span>Vendre</span><small>{money(buyTotal)}</small>
                     </button>
                   </div>
                   {disabledReason && (
                     <p className="td-disabled-reason" role="status">
-                      <Info size={14} strokeWidth={1.75} aria-hidden="true" />
-                      <span>{game.phase === "geography" ? "Consultation libre pendant la décision de voyage. Les ordres restent disponibles en phase Marché." : disabledReason}</span>
+                      <Info size={14} strokeWidth={2} aria-hidden="true" />
+                      <span>{game.phase === "geography" ? "Consultation libre pendant la décision de voyage." : disabledReason}</span>
                     </p>
                   )}
                   {canTrade && quantity > selected.sharesAvailable && (
                     <p className="td-disabled-reason is-warn" role="status">
-                      <Info size={14} strokeWidth={1.75} aria-hidden="true" /><span>Seulement {selected.sharesAvailable} parts disponibles.</span>
+                      <Info size={14} strokeWidth={2} aria-hidden="true" /><span>Seulement {selected.sharesAvailable} parts disponibles.</span>
                     </p>
                   )}
                   {canTrade && buyTotal > amount(viewer?.cash) && (
                     <p className="td-disabled-reason is-warn" role="status">
-                      <Info size={14} strokeWidth={1.75} aria-hidden="true" /><span>Trésorerie insuffisante pour cet ordre.</span>
+                      <Info size={14} strokeWidth={2} aria-hidden="true" /><span>Trésorerie insuffisante pour cet ordre.</span>
                     </p>
                   )}
                 </div>
               </>
             ) : (
               <div className="td-no-selection">
-                <span aria-hidden="true">GF</span>
                 <p>Aucune valeur sélectionnée.</p>
               </div>
             )}
@@ -895,8 +925,8 @@ export default function TradingDesk({
 }
 
 /**
- * Rows whose holdings just changed on the server get a one-off sweep
- * (gold when shares arrive, ruby when they leave). Never driven by the click.
+ * Rows whose holdings just changed on the server get a one-off wash
+ * (gold when shares arrive, red when they leave). Never driven by the click.
  */
 function useHoldingFlashes(companies: Company[], viewerId: string) {
   const [flashes, setFlashes] = useState<Record<string, "up" | "down">>({});
@@ -927,33 +957,58 @@ function useHoldingFlashes(companies: Company[], viewerId: string) {
 
 /* ------------------------------------------------------------- views --- */
 
-function DonutCard({ title, label, slices, reduced, sectors = false }: { title: string; label: string; slices: Slice[]; reduced: boolean; sectors?: boolean }) {
+/**
+ * Exposure ring. The centre names the leading slice; hovering a slice or a
+ * legend row brings that slice to the centre instead.
+ */
+function DonutCard({ title, label, slices, reduced }: { title: string; label: string; slices: Slice[]; reduced: boolean }) {
   const chart = useRef<ECharts | null>(null);
+  const latestSlices = useRef(slices);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  useEffect(() => { latestSlices.current = slices; }, [slices]);
   const total = slices.reduce((sum, slice) => sum + slice.value, 0);
-  const ranked = [...slices].sort((a, b) => b.value - a.value);
-  const lead = ranked[0];
+  const active = slices.find((slice) => slice.id === activeId) ?? slices[0];
   const option = useMemo(() => donutOption(slices, reduced), [slices, reduced]);
-  const highlight = (name: string, on: boolean) => chart.current?.dispatchAction({ type: on ? "highlight" : "downplay", seriesIndex: 0, name });
+  const onReady = useCallback((instance: ECharts | null) => {
+    chart.current = instance;
+    if (!instance) return;
+    instance.on("mouseover", (params: { dataIndex?: number }) => setActiveId(latestSlices.current[params.dataIndex ?? -1]?.id ?? null));
+    instance.on("mouseout", () => setActiveId(null));
+  }, []);
+  const focusSlice = (slice: Slice, on: boolean) => {
+    chart.current?.dispatchAction({ type: on ? "highlight" : "downplay", seriesIndex: 0, name: slice.name });
+    setActiveId(on ? slice.id : null);
+  };
   return (
-    <article className={`td-card td-donut-card ${slices.length > 4 ? "is-dense" : ""}`}>
+    <article className={`td-card td-donut-card ${slices.length > 5 ? "is-dense" : ""}`}>
       <header className="td-card-head"><h2>{title}</h2></header>
       {slices.length ? (
         <div className="td-donut-body">
           <div className="td-donut">
-            <EChart option={option} label={`${label} : ${ranked.map((slice) => `${slice.name} ${money(slice.value)}`).join(", ")}`} onReady={(instance) => { chart.current = instance; }} />
-            {lead && (
-              <div className="td-donut-center" aria-hidden="true">
-                <strong>{percent0.format((lead.value / (total || 1)) * 100)}<small> %</small></strong>
-                <span>{lead.short}</span>
+            <EChart option={option} label={`${label} : ${slices.map((slice) => `${slice.name} ${money(slice.value)}`).join(", ")}`} onReady={onReady} />
+            {active && (
+              <div className="td-donut-center" aria-hidden="true" key={active.id}>
+                <strong>{share(active.value, total)}<small>%</small></strong>
+                <span>{active.short}</span>
+                <small className="td-donut-amount">{money(active.value)}</small>
               </div>
             )}
           </div>
           <ul className="td-legend">
-            {ranked.map((slice) => (
-              <li key={slice.id} onMouseEnter={() => highlight(slice.name, true)} onMouseLeave={() => highlight(slice.name, false)} title={slice.name}>
-                {sectors ? <SectorIcon id={slice.id} size={14} /> : <i style={{ background: slice.color }} aria-hidden="true" />}
+            {slices.map((slice) => (
+              <li
+                key={slice.id}
+                className={active?.id === slice.id ? "is-active" : undefined}
+                tabIndex={0}
+                title={`${slice.name} · ${money(slice.value)}`}
+                onMouseEnter={() => focusSlice(slice, true)}
+                onMouseLeave={() => focusSlice(slice, false)}
+                onFocus={() => focusSlice(slice, true)}
+                onBlur={() => focusSlice(slice, false)}
+              >
+                <i style={{ background: slice.color }} aria-hidden="true" />
                 <span>{slice.short}</span>
-                <b>{percent0.format((slice.value / (total || 1)) * 100)} %</b>
+                <b>{share(slice.value, total)} %</b>
                 <small>{money(slice.value)}</small>
               </li>
             ))}
@@ -989,33 +1044,33 @@ function RatingTimeline({ history, scope, items }: { history: HistoryPoint[]; sc
   return (
     <div className={`td-ratings is-${scope}`} role="img" aria-label={`Historique des notations par ${scope === "zone" ? "zone" : "secteur"} : ${summary}`}>
       <div className="td-ratings-grid">
-      {rows.map(({ item, runs, last }) => (
-        <div className="td-rating-row" key={item.id}>
-          <span className="td-rating-name" title={item.name}>
-            {scope === "sector" && <SectorIcon id={item.id} size={13} />}
-            {scope === "zone" ? zoneShort(item.id, item.name) : splitName(item.name).head}
-          </span>
-          <span className="td-rating-track">
-            {runs.filter((run) => run.grade).map((run) => (
-              <i
-                key={run.start}
-                className={`g-${run.grade}`}
-                style={{ left: `${(run.start / count) * 100}%`, width: `${((run.end - run.start + 1) / count) * 100}%` }}
-                title={`${item.name} · ${run.grade} — ${GRADE_META[run.grade!].label} · ${cycleLabel(run.start)}${run.end > run.start ? ` → ${cycleLabel(run.end)}` : ""}`}
-              >{(run.end - run.start + 1) / count >= 0.2 && <b>{run.grade}</b>}</i>
-            ))}
-          </span>
-          {last ? <GradeJewel grade={last} size="sm" label={item.name} /> : <span />}
+        {rows.map(({ item, runs, last }) => (
+          <div className="td-rating-row" key={item.id}>
+            <span className="td-rating-name" title={item.name}>
+              {scope === "sector" && <SectorIcon id={item.id} size={14} />}
+              {scope === "zone" ? zoneShort(item.id, item.name) : splitName(item.name).head}
+            </span>
+            <span className="td-rating-track">
+              {runs.filter((run) => run.grade).map((run) => (
+                <i
+                  key={run.start}
+                  className={`g-${run.grade}`}
+                  style={{ left: `${(run.start / count) * 100}%`, width: `${((run.end - run.start + 1) / count) * 100}%` }}
+                  title={`${item.name} · ${run.grade} — ${GRADE_META[run.grade!].label} · ${cycleLabel(run.start)}${run.end > run.start ? ` → ${cycleLabel(run.end)}` : ""}`}
+                >{(run.end - run.start + 1) / count >= 0.2 && <b>{run.grade}</b>}</i>
+              ))}
+            </span>
+            {last ? <GradeJewel grade={last} size="sm" label={item.name} /> : <span />}
+          </div>
+        ))}
+        <div className="td-rating-foot" aria-hidden="true">
+          <span />
+          <span className="td-rating-axis"><span>{cycleLabel(0)}</span><span>{cycleLabel(count - 1)}</span></span>
+          <span />
         </div>
-      ))}
-      <div className="td-rating-foot" aria-hidden="true">
-        <span />
-        <span className="td-rating-axis"><span>{cycleLabel(0)}</span><span>{cycleLabel(count - 1)}</span></span>
-        <span />
-      </div>
-      <div className="td-rating-legend" aria-hidden="true">
-        {GRADE_ORDER.map((grade) => <span key={grade}><i className={`g-${grade}`} />{grade}</span>)}
-      </div>
+        <div className="td-rating-legend" aria-hidden="true">
+          {GRADE_ORDER.map((grade) => <span key={grade}><i className={`g-${grade}`} />{grade}</span>)}
+        </div>
       </div>
     </div>
   );

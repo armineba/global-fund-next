@@ -1,8 +1,9 @@
-import { useEffect, useId, useMemo, useRef, useState, type CSSProperties, type ReactNode, type UIEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type UIEvent } from "react";
 import type { Company, GameNotice, GameView, GradeChange, PlayerImpact } from "@global-fund/shared";
-import { Gavel, Globe2, Landmark, Lock, LockOpen, Plane, Scale, TrendingDown, TrendingUp, Zap } from "lucide-react";
+import { ChevronDown, Compass, Globe2, Landmark, Lock, LockOpen, Plane, Scale, TrendingDown, TrendingUp, Zap } from "lucide-react";
 import Pawn from "../game/Pawn";
 import { GradeShift } from "../ui/GradeJewel";
+import { Money } from "../ui/Money";
 import { SectorIcon } from "../ui/SectorIcon";
 import { money, signedMoney, signedPercent, tone } from "../ui/format";
 import { GRADE_META, gradeDelta, sectorMeta } from "../ui/theme";
@@ -21,6 +22,11 @@ type MarketEvent = "bull" | "bear" | "crash";
 type EventFamily = "justice" | "regulation" | "premium" | "finance";
 type Family = "context" | "chronicle" | "justice" | "ledger" | MarketEvent;
 type CompanyImpacts = NonNullable<GameNotice["companyImpacts"]>;
+/** What the pointer rests on (a grade row or a fund row): the rail lights up the related companies. */
+type RailFocus = { kind: "zone" | "sector" | "fund"; id: string } | null;
+const relatedTo = (focus: RailFocus, company: Company) => !!focus && (focus.kind === "fund"
+  ? (company.holdings?.[focus.id] ?? 0) > 0
+  : focus.kind === "zone" ? company.zone === focus.id : company.sector === focus.id);
 
 const FAMILY_LABEL: Record<EventFamily, string> = {
   justice: "Justice & enquête",
@@ -37,7 +43,6 @@ const CAPITAL_HINT = "La performance mesure l’évolution du portefeuille hors 
 
 const percent2 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 });
 const signedPercent2 = (value: number) => `${value > 0 ? "+" : value < 0 ? "−" : ""}${percent2.format(Math.abs(value))} %`;
-const useSafeId = () => `cs${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
 
 /** First sentences of a story, with a flag when the full text says more. */
 function summarizeStory(story: string, limit = 2) {
@@ -76,79 +81,7 @@ function marketDek(changes: GradeChange[]) {
   return `${up} en hausse, ${down} en baisse.`;
 }
 
-/* ------------------------------------------------------------ engraving -- */
-function ringPath(radius: number, amplitude: number, lobes: number, steps = 420) {
-  let d = "";
-  for (let i = 0; i <= steps; i += 1) {
-    const t = (i / steps) * Math.PI * 2;
-    const r = radius + amplitude * Math.sin(lobes * t);
-    d += `${i ? "L" : "M"}${(100 + r * Math.cos(t)).toFixed(2)} ${(100 + r * Math.sin(t)).toFixed(2)}`;
-  }
-  return `${d}Z`;
-}
-const OUTER_LOBES = 12;
-const INNER_LOBES = 9;
-const ROSETTE_OUTER = ringPath(74, 11, OUTER_LOBES);
-const ROSETTE_INNER = ringPath(51, 7, INNER_LOBES);
-/** Evenly interleaved copies of a lobed ring (one lobe period split in `copies`). */
-const ringTurns = (lobes: number, copies: number) => Array.from({ length: copies }, (_, k) => ((k * 360) / lobes / copies).toFixed(2));
-
-/** Banknote rosette (guilloché) engraved with the GF monogram. */
-function Rosette() {
-  const id = useSafeId();
-  return (
-    <span className="cs-emblem cs-rosette" aria-hidden="true">
-      <svg viewBox="0 0 200 200">
-        <defs>
-          <path id={`${id}-o`} d={ROSETTE_OUTER} />
-          <path id={`${id}-i`} d={ROSETTE_INNER} />
-        </defs>
-        <circle cx="100" cy="100" r="98" className="cs-emblem-disc" />
-        <circle cx="100" cy="100" r="97" className="cs-line" />
-        <circle cx="100" cy="100" r="92" className="cs-line is-faint" />
-        <g className="cs-rosette-band">{ringTurns(OUTER_LOBES, 6).map((turn) => <use key={turn} href={`#${id}-o`} transform={`rotate(${turn} 100 100)`} />)}</g>
-        <g className="cs-rosette-band is-inner">{ringTurns(INNER_LOBES, 5).map((turn) => <use key={turn} href={`#${id}-i`} transform={`rotate(${turn} 100 100)`} />)}</g>
-        <circle cx="100" cy="100" r="35" className="cs-emblem-core" />
-        <circle cx="100" cy="100" r="30" className="cs-line is-faint" />
-        <text x="100" y="111" textAnchor="middle" className="cs-rosette-mark">GF</text>
-      </svg>
-    </span>
-  );
-}
-
-/** Large faint rosette printed behind the context header, like banknote security printing. */
-function Watermark() {
-  const id = useSafeId();
-  return (
-    <span className="cs-hero-art" aria-hidden="true">
-      <svg className="cs-watermark" viewBox="0 0 200 200">
-        <defs><path id={`${id}-w`} d={ROSETTE_OUTER} /><path id={`${id}-v`} d={ROSETTE_INNER} /></defs>
-        {ringTurns(OUTER_LOBES, 10).map((turn) => <use key={`o${turn}`} href={`#${id}-w`} transform={`rotate(${turn} 100 100)`} />)}
-        {ringTurns(INNER_LOBES, 8).map((turn) => <use key={`i${turn}`} href={`#${id}-v`} transform={`rotate(${turn} 100 100)`} />)}
-      </svg>
-    </span>
-  );
-}
-
-/** Round seal with engraved ring text and a central glyph. */
-function Seal({ ring, children, className = "" }: { ring: string; children: ReactNode; className?: string }) {
-  const id = useSafeId();
-  return (
-    <span className={`cs-emblem cs-seal ${className}`} aria-hidden="true">
-      <svg viewBox="0 0 120 120">
-        <defs><path id={`${id}-r`} d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0" /></defs>
-        <circle cx="60" cy="60" r="58.5" className="cs-emblem-disc" />
-        <circle cx="60" cy="60" r="57.5" className="cs-line" />
-        <circle cx="60" cy="60" r="54" className="cs-line is-faint" />
-        <circle cx="60" cy="60" r="37" className="cs-emblem-core" />
-        <circle cx="60" cy="60" r="37" className="cs-line" />
-        <text className="cs-seal-ring"><textPath href={`#${id}-r`} textLength="280" lengthAdjust="spacing">{ring}</textPath></text>
-      </svg>
-      <span className="cs-seal-icon">{children}</span>
-    </span>
-  );
-}
-
+/* --------------------------------------------------------- market line -- */
 function chartPaths(kind: MarketEvent, seed: number) {
   let state = (Math.imul(seed + 1, 2654435761) >>> 0) || 1;
   const random = () => {
@@ -167,33 +100,23 @@ function chartPaths(kind: MarketEvent, seed: number) {
     const y = Math.min(0.97, Math.max(0.04, base + (random() - 0.5) * (cliff ? 0.02 : 0.085)));
     points.push([t * width, y * height]);
   }
-  const line = points.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join("");
-  return { line, area: `${line}L${width} ${height}L0 ${height}Z` };
+  return points.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join("");
 }
 
-/** Market line drawn once across the card header. */
+/** Market line drawn once behind the card header: the move the card announces. */
 function MarketChart({ kind, seed }: { kind: MarketEvent; seed: number }) {
-  const id = useSafeId();
-  const { line, area } = useMemo(() => chartPaths(kind, seed), [kind, seed]);
+  const line = useMemo(() => chartPaths(kind, seed), [kind, seed]);
   return (
     <span className="cs-chart" aria-hidden="true">
-    <svg viewBox="0 0 1000 160" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id={`${id}-a`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" className="cs-chart-stop-a" />
-          <stop offset="1" className="cs-chart-stop-b" />
-        </linearGradient>
-      </defs>
-      <g className="cs-chart-grid">{[40, 80, 120].map((y) => <line key={y} x1="0" x2="1000" y1={y} y2={y} />)}</g>
-      <path d={area} className="cs-chart-area" fill={`url(#${id}-a)`} />
-      <path d={line} className="cs-chart-line" pathLength={1} />
-    </svg>
+      <svg viewBox="0 0 1000 160" preserveAspectRatio="none">
+        <path d={line} className="cs-chart-line" pathLength={1} />
+      </svg>
     </span>
   );
 }
 
 /* ----------------------------------------------------------- data rows -- */
-function GradeRow({ change, game, compact = false }: { change: GradeChange; game: GameView; compact?: boolean }) {
+function GradeRow({ change, game, compact = false, index = 0, onHover }: { change: GradeChange; game: GameView; compact?: boolean; index?: number; onHover?: (focus: RailFocus) => void }) {
   const full = gradeName(game, change);
   const name = compact && change.scope === "sector" ? sectorMeta(change.id)?.label ?? full : full;
   const delta = gradeDelta(change.before, change.after);
@@ -202,12 +125,14 @@ function GradeRow({ change, game, compact = false }: { change: GradeChange; game
     <div
       className={`cs-grade-row ${delta > 0 ? "is-up" : delta < 0 ? "is-down" : "is-flat"} ${compact ? "is-compact" : ""}`}
       title={`${full} : ${GRADE_META[change.before].label} → ${GRADE_META[change.after].label}`}
-      style={color ? ({ "--row-color": color } as CSSProperties) : undefined}
+      style={{ ...(color ? { "--row-color": color } : {}), "--k": index } as CSSProperties}
+      onMouseEnter={onHover ? () => onHover({ kind: change.scope, id: change.id }) : undefined}
+      onMouseLeave={onHover ? () => onHover(null) : undefined}
     >
-      <span className="cs-grade-icon" aria-hidden="true">{change.scope === "zone" ? <Globe2 size={15} strokeWidth={1.6} /> : <SectorIcon id={change.id} size={15} />}</span>
+      <span className="cs-grade-icon" aria-hidden="true">{change.scope === "zone" ? <Globe2 size={compact ? 15 : 17} strokeWidth={1.7} /> : <SectorIcon id={change.id} size={compact ? 15 : 17} />}</span>
       <span className="cs-grade-name">
-        {!compact && <small className="cs-scope">{change.scope === "zone" ? "Zone" : "Secteur"}</small>}
         <strong>{name}</strong>
+        {!compact && <small className="cs-scope">{change.scope === "zone" ? "Zone" : "Secteur"}</small>}
       </span>
       <GradeShift before={change.before} after={change.after} label={full} />
     </div>
@@ -215,7 +140,7 @@ function GradeRow({ change, game, compact = false }: { change: GradeChange; game
 }
 
 /** Funds actually touched: value change, cash when it tells something else, detention. */
-function FundImpacts({ impacts, game }: { impacts: PlayerImpact[]; game: GameView }) {
+function FundImpacts({ impacts, game, onHover }: { impacts: PlayerImpact[]; game: GameView; onHover?: (focus: RailFocus) => void }) {
   const touched = impacts.filter((impact) => impact.cash !== 0 || impact.valuation !== 0 || impact.prison === true);
   if (!touched.length) return <p className="cs-empty">Aucun portefeuille touché.</p>;
   return (
@@ -223,13 +148,24 @@ function FundImpacts({ impacts, game }: { impacts: PlayerImpact[]; game: GameVie
       <div className="cs-fund-list">
         {touched.map((impact) => {
           const fund = game.players.find((player) => player.id === impact.playerId);
+          const cashNote = impact.cash !== 0 && impact.cash !== impact.valuation;
           return (
-            <div className="cs-fund" key={impact.playerId} style={fund ? ({ "--seat": fund.color } as CSSProperties) : undefined}>
+            <div
+              className="cs-fund"
+              key={impact.playerId}
+              style={fund ? ({ "--seat": fund.color } as CSSProperties) : undefined}
+              onMouseEnter={onHover ? () => onHover({ kind: "fund", id: impact.playerId }) : undefined}
+              onMouseLeave={onHover ? () => onHover(null) : undefined}
+            >
               {fund ? <Pawn id={fund.pawn} color={fund.color} size={30} /> : <span className="cs-fund-dot" aria-hidden="true" />}
               <span className="cs-fund-name">{impact.playerName}</span>
-              {impact.valuation !== 0 && <strong className={`cs-fund-value ${tone(impact.valuation)}`} title="Variation de la valeur du fonds">{signedMoney(impact.valuation)}</strong>}
-              {impact.cash !== 0 && impact.cash !== impact.valuation && <span className="cs-fund-note">Trésorerie <b className={tone(impact.cash)}>{signedMoney(impact.cash)}</b></span>}
-              {impact.prison === true && <span className="cs-fund-flag" title="Placé en détention à la fermeture de la carte"><Lock size={11} strokeWidth={2} aria-hidden="true" /> Détention</span>}
+              {impact.valuation !== 0 && <strong className={`cs-fund-value ${tone(impact.valuation)}`} title="Variation de la valeur du fonds"><Money value={impact.valuation} signed /></strong>}
+              {(cashNote || impact.prison === true) && (
+                <span className="cs-fund-meta">
+                  {cashNote && <span className="cs-fund-note">Trésorerie <b className={tone(impact.cash)}>{signedMoney(impact.cash)}</b></span>}
+                  {impact.prison === true && <span className="cs-fund-flag" title="Placé en détention à la fermeture de la carte"><Lock size={11} strokeWidth={2} aria-hidden="true" /> Détention</span>}
+                </span>
+              )}
             </div>
           );
         })}
@@ -248,7 +184,7 @@ function CompanyMark({ company }: { company: Company }) {
   return <span className="cs-company-mark is-monogram" aria-hidden="true">{monogram(company.name)}</span>;
 }
 
-function CompanyRail({ companies, impacts, leadId }: { companies: Company[]; impacts?: CompanyImpacts; leadId?: string }) {
+function CompanyRail({ companies, impacts, leadId, focus = null }: { companies: Company[]; impacts?: CompanyImpacts; leadId?: string; focus?: RailFocus }) {
   const rail = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const { reducedMotion } = usePresentationSettings();
@@ -280,6 +216,25 @@ function CompanyRail({ companies, impacts, leadId }: { companies: Company[]; imp
     el.addEventListener("wheel", wheel, { passive: false });
     return () => el.removeEventListener("wheel", wheel);
   }, [companies.length, reducedMotion]);
+  // While a grade or fund row is hovered, its companies lead the rail and the others step back;
+  // the reading order and scroll position come back when the pointer leaves.
+  const shown = useMemo(() => {
+    const hits = ordered.filter((company) => relatedTo(focus, company));
+    return hits.length ? [...hits, ...ordered.filter((company) => !relatedTo(focus, company))] : ordered;
+  }, [ordered, focus]);
+  const lit = shown !== ordered;
+  const home = useRef<number | null>(null);
+  useLayoutEffect(() => {
+    const el = rail.current;
+    if (!el) return;
+    if (lit) {
+      if (home.current === null) home.current = el.scrollLeft;
+      el.scrollTo({ left: 0, behavior: "instant" });
+    } else if (home.current !== null) {
+      el.scrollTo({ left: home.current, behavior: "instant" });
+      home.current = null;
+    }
+  }, [lit, shown]);
   if (!companies.length) return null;
   const onScroll = (event: UIEvent<HTMLDivElement>) => {
     const el = event.currentTarget;
@@ -295,13 +250,17 @@ function CompanyRail({ companies, impacts, leadId }: { companies: Company[]; imp
         {companies.length > 1 && <span className="cs-counter">{active + 1} / {companies.length}</span>}
       </div>
       <div className="cs-rail" ref={rail} onScroll={onScroll} tabIndex={0} aria-label="Sociétés concernées, défilement horizontal">
-        {ordered.map((company) => {
+        {shown.map((company) => {
           const impact = impactById.get(company.id);
           const meta = sectorMeta(company.sector);
           const delta = impact ? impact.afterPrice - impact.beforePrice : 0;
           const deltaTone = tone(delta);
           return (
-            <article className={`cs-company ${impact?.bankruptcy ? "is-liquidated" : impact?.returned ? "is-returned" : ""}`} key={company.id} style={meta ? ({ "--sector": meta.color } as CSSProperties) : undefined}>
+            <article
+              className={`cs-company ${impact?.bankruptcy ? "is-liquidated" : impact?.returned ? "is-returned" : ""} ${lit ? (relatedTo(focus, company) ? "is-match" : "is-dim") : ""}`}
+              key={company.id}
+              style={meta ? ({ "--sector": meta.color } as CSSProperties) : undefined}
+            >
               <div className="cs-company-head">
                 <CompanyMark company={company} />
                 <div className="cs-company-id">
@@ -317,7 +276,7 @@ function CompanyRail({ companies, impacts, leadId }: { companies: Company[]; imp
                     <strong className={`cs-price-before ${delta === 0 ? "sr-only" : ""}`}>{money(impact.beforePrice)}</strong>
                     {delta !== 0 && <span className="cs-price-arrow" aria-hidden="true">→</span>}
                     <span className="sr-only">Cours après</span>
-                    <strong className={`cs-price-after ${deltaTone}`}>{money(impact.afterPrice)}</strong>
+                    <strong className={`cs-price-after ${deltaTone}`}><Money value={impact.afterPrice} /></strong>
                     <span className={`cs-company-delta ${deltaTone}`}>
                       {delta === 0 ? "Cours inchangé" : `${signedMoney(delta)}${impact.beforePrice > 0 ? ` · ${signedPercent((delta / impact.beforePrice) * 100)}` : ""}`}
                     </span>
@@ -325,7 +284,7 @@ function CompanyRail({ companies, impacts, leadId }: { companies: Company[]; imp
                 ) : (
                   <>
                     <span className="cs-price-label">{company.ticker || "Cours actuel"}</span>
-                    <strong className="cs-price-after">{money(company.price)}</strong>
+                    <strong className="cs-price-after"><Money value={company.price} /></strong>
                   </>
                 )}
                 <span className="cs-company-income">Revenu / action <b>{money(company.income)}</b></span>
@@ -346,9 +305,9 @@ function CapitalFigures({ label, performance, rate, flow }: { label: string; per
     <section className="cs-section cs-capital cs-reveal" title={CAPITAL_HINT}>
       <h2 className="cs-label">{label}</h2>
       <dl className="cs-capital-grid">
-        <div><dt>Performance du tour</dt><dd className={tone(performance)}>{signedMoney(performance)}</dd></div>
+        <div><dt>Performance du tour</dt><dd className={tone(performance)}><Money value={performance} signed /></dd></div>
         <div><dt>Rendement</dt><dd className={tone(rate)}>{signedPercent2(rate)}</dd></div>
-        <div><dt>{flow < 0 ? "Retrait de capital" : flow > 0 ? "Apport de capital" : "Flux de capital"}</dt><dd className={tone(flow)}>{signedMoney(flow)}</dd></div>
+        <div><dt>{flow < 0 ? "Retrait de capital" : flow > 0 ? "Apport de capital" : "Flux de capital"}</dt><dd className={tone(flow)}><Money value={flow} signed /></dd></div>
       </dl>
     </section>
   );
@@ -359,6 +318,14 @@ const reveal = (index: number) => ({ "--i": index }) as CSSProperties;
 export default function CardScene({ notice, game, onClose, embedded = false }: Props) {
   const dialog = useDialogFocus(onClose, !embedded);
   const { reducedMotion } = usePresentationSettings();
+  const [railFocus, setRailFocus] = useState<RailFocus>(null);
+  // A short hover intent, so a pointer crossing the card on its way elsewhere changes nothing.
+  const hoverTimer = useRef(0);
+  const hoverRail = useCallback((next: RailFocus) => {
+    window.clearTimeout(hoverTimer.current);
+    hoverTimer.current = window.setTimeout(() => setRailFocus(next), next ? 140 : 220);
+  }, []);
+  useEffect(() => () => window.clearTimeout(hoverTimer.current), []);
   const context = notice.cardType === "context";
   const paymentsNotice = notice.kind === "payments";
   const settlements = notice.settlements ?? [];
@@ -450,7 +417,7 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
   const settlementUnpaid = settlementResults.reduce((sum, result) => sum + (result.unpaidAmount ?? 0), 0);
   const sectorDueTotal = obligationsTotal || paymentRows.reduce((sum, payment) => sum + (payment.dueAmount ?? 0), 0);
   const contextStory = notice.description || "Les conditions économiques évoluent. Les investisseurs réévaluent leurs perspectives et les valorisations s’ajustent.";
-  const contextSummary = summarizeStory(contextStory, 2);
+  const contextSummary = summarizeStory(contextStory, 1);
   const settlementMode = (() => {
     const viaAssets = settlementResults.some((result) => result.assets.length || result.marketSales.length);
     const viaCash = settlementResults.some((result) => result.cashAmount !== 0);
@@ -524,7 +491,7 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
   const detained = targetShares > 0;
   const showRules = eventFamily === "justice" || notice.action === "skipTrading" || (notice.action === "prisonRoll" && !!player?.jailed);
   const leadId = family === "chronicle" || family === "justice" ? targetCompany?.id : undefined;
-  const rail = <CompanyRail companies={affectedCompanies} impacts={notice.companyImpacts} leadId={leadId} />;
+  const rail = <CompanyRail companies={affectedCompanies} impacts={notice.companyImpacts} leadId={leadId} focus={railFocus} />;
   const nameOf = (id: string | null | undefined, fallback: string) => game.players.find((p) => p.id === id)?.name ?? fallback;
   const emptyPayment = paymentsNotice && !settlementResults.length && !paymentRows.length && !obligations.length;
   const showInvestorFlow = paymentsNotice && (investorFlow !== 0 || notice.lapPerformance != null || notice.lapReturn != null);
@@ -539,19 +506,22 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
     ? ledgerRows <= 2 && !showInvestorFlow
     : !marketEvent && !context && !effectLines.length && !impacts.length && !showLap);
 
-  const emblem = family === "context"
-    ? <Rosette />
-    : family === "justice"
-      ? <Seal ring="Justice · Enquête · Détention · " className="is-justice"><Scale size={30} strokeWidth={1.4} /></Seal>
-      : family === "ledger"
-        ? <Seal ring="Global Fund · Livre de comptes · " className="is-ledger">
-            {cellSectorId ? <SectorIcon id={cellSectorId} size={28} /> : notice.action === "move" ? <Plane size={26} strokeWidth={1.4} /> : <Landmark size={26} strokeWidth={1.4} />}
-          </Seal>
-        : null;
-  const kickerIcon = marketEvent === "bull" ? <TrendingUp size={14} strokeWidth={2} aria-hidden="true" />
-    : marketEvent === "bear" ? <TrendingDown size={14} strokeWidth={2} aria-hidden="true" />
-      : marketEvent === "crash" ? <Zap size={14} strokeWidth={2} aria-hidden="true" />
-        : family === "justice" && notice.action !== "prisonRoll" ? <Gavel size={13} strokeWidth={1.8} aria-hidden="true" /> : null;
+  // One small family glyph; the Chronicle carries its masthead instead.
+  const ledgerSectorId = cellSectorId ?? settlement?.sectorId;
+  const emblemIcon = family === "context"
+    ? <Compass size={22} strokeWidth={1.7} />
+    : marketEvent === "bull"
+      ? <TrendingUp size={22} strokeWidth={1.9} />
+      : marketEvent === "bear"
+        ? <TrendingDown size={22} strokeWidth={1.9} />
+        : marketEvent === "crash"
+          ? <Zap size={21} strokeWidth={1.9} />
+          : family === "justice"
+            ? <Scale size={22} strokeWidth={1.7} />
+            : family === "ledger"
+              ? ledgerSectorId ? <SectorIcon id={ledgerSectorId} size={21} /> : notice.action === "move" ? <Plane size={21} strokeWidth={1.7} /> : <Landmark size={21} strokeWidth={1.7} />
+              : null;
+  const emblem = emblemIcon && <span className="cs-emblem" aria-hidden="true">{emblemIcon}</span>;
 
   const effectsBlock = effectLines.length > 0 && (
     <section className="cs-section cs-effects-block">
@@ -562,7 +532,7 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
   const fundsBlock = impacts.length > 0 && (
     <section className="cs-section cs-funds" aria-label="Impact sur les portefeuilles">
       <h2 className="cs-label">Valeur des fonds</h2>
-      <FundImpacts impacts={impacts} game={game} />
+      <FundImpacts impacts={impacts} game={game} onHover={affectedCompanies.length > 1 ? hoverRail : undefined} />
     </section>
   );
   const lapBlock = showLap && <CapitalFigures label={lapCard ? "En chiffres" : "Bilan au Départ"} performance={notice.lapPerformance ?? 0} rate={notice.lapReturn ?? 0} flow={eventFlow} />;
@@ -585,7 +555,6 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
         ref={dialog}
         data-family={family}
       >
-        <span className="cs-frame" aria-hidden="true"><i /><i /></span>
         <header className={`cs-hero ${emblem ? "has-emblem" : ""}`}>
           {family === "chronicle" && (
             <div className="cs-masthead">
@@ -594,20 +563,19 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
             </div>
           )}
           {marketEvent && <MarketChart kind={marketEvent} seed={notice.id} />}
-          {family === "context" && <Watermark />}
           {emblem}
           <div className="cs-hero-copy">
-            <span className="cs-kicker">{kickerIcon}<span>{kicker}</span></span>
+            <span className="cs-kicker"><span>{kicker}</span></span>
             <h1 id="cs-title">{title}</h1>
             <p id="cs-summary">{summary}</p>
             {fullStory && (
               <details className="cs-story-full">
-                <summary>Lire le texte complet</summary>
+                <summary>Lire le texte complet<ChevronDown size={14} strokeWidth={2} aria-hidden="true" /></summary>
                 <p>{fullStory}</p>
               </details>
             )}
           </div>
-          <button type="button" className="cs-close" onClick={onClose} aria-label="Continuer et appliquer les conséquences">
+          <button type="button" className="cs-close gf-btn gf-btn--primary" onClick={onClose} aria-label="Continuer et appliquer les conséquences">
             <span>Continuer</span>
             <kbd>Échap</kbd>
           </button>
@@ -619,7 +587,7 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
                 <section className="cs-section cs-grades" aria-label="Évolution des zones et secteurs">
                   <h2 className="cs-label">Notations</h2>
                   {gradeChanges.length
-                    ? <div className="cs-grade-list">{gradeChanges.map((change, index) => <GradeRow key={`${change.scope}-${change.id}-${index}`} change={change} game={game} />)}</div>
+                    ? <div className="cs-grade-list">{gradeChanges.map((change, index) => <GradeRow key={`${change.scope}-${change.id}-${index}`} change={change} game={game} index={index} onHover={affectedCompanies.length > 1 ? hoverRail : undefined} />)}</div>
                     : <p className="cs-empty">Aucune notation ne change.</p>}
                 </section>
                 {fundsBlock}
@@ -630,10 +598,12 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
 
           {marketEvent && (
             <>
-              <section className="cs-section cs-grades is-market cs-reveal" style={reveal(0)} aria-label="Indices et valorisations">
-                <h2 className="cs-label">Notations{gradeChanges.length ? ` · ${gradeChanges[0]!.scope === "zone" ? "zones" : "secteurs"}` : ""}</h2>
-                <div className="cs-grade-grid" style={{ "--n": Math.max(1, gradeChanges.length) } as CSSProperties}>{gradeChanges.map((change, index) => <GradeRow key={`${change.scope}-${change.id}-${index}`} change={change} game={game} compact />)}</div>
-              </section>
+              {/* The summary already names the scope ("Les 9 secteurs reculent."), so no label here. */}
+              {gradeChanges.length > 0 && (
+                <section className="cs-section cs-grades is-market cs-reveal" style={reveal(0)} aria-label="Indices et valorisations">
+                  <div className="cs-grade-grid" style={{ "--n": gradeChanges.length } as CSSProperties}>{gradeChanges.map((change, index) => <GradeRow key={`${change.scope}-${change.id}-${index}`} change={change} game={game} compact index={index} onHover={affectedCompanies.length > 1 ? hoverRail : undefined} />)}</div>
+                </section>
+              )}
               {fundsBlock && <div className="cs-reveal" style={reveal(1)}>{fundsBlock}</div>}
               {rail}
             </>
@@ -760,8 +730,8 @@ export default function CardScene({ notice, game, onClose, embedded = false }: P
                         ))}
                       </div>
                       <div className="cs-global-totals" aria-label="Totaux consolidés">
-                        <div className="cs-total is-main"><span>TOTAL RÉGLÉ</span><strong>{money(settlementPaid)}</strong></div>
-                        {settlementUnpaid > 0 && <div className="cs-total is-unpaid"><span>Reste impayé</span><strong>{money(settlementUnpaid)}</strong></div>}
+                        <div className="cs-total is-main"><span>TOTAL RÉGLÉ</span><strong><Money value={settlementPaid} /></strong></div>
+                        {settlementUnpaid > 0 && <div className="cs-total is-unpaid"><span>Reste impayé</span><strong><Money value={settlementUnpaid} /></strong></div>}
                       </div>
                     </>
                   ) : listedPayments.length ? (

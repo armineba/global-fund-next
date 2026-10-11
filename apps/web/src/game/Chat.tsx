@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { ArrowUp } from "lucide-react";
 import type { RoomView } from "@global-fund/shared";
 import { request } from "../store";
@@ -24,18 +24,20 @@ export default function Chat({ room, title = "Salon" }: { room: RoomView; title?
     void request("room:chat", { roomId: room.roomId, text });
     setText("");
   };
+  // Each author carries their seat colour, as on the table.
+  const seatColor = (playerId: string) => room.players.find((player) => player.id === playerId)?.color;
   return (
     <section className="chat-panel" aria-label="Discussion du salon">
       {title !== false && (
         <header className="chat-panel__head">
-          <span className="gf-kicker">{title}</span>
+          <span className="chat-panel__title">{title}</span>
           {room.messages.length > 0 && <span className="chat-panel__count gf-num">{room.messages.length}</span>}
         </header>
       )}
       <div className="chat-messages" ref={list} aria-live="polite">
         {messages.length ? (
           messages.map((m) => (
-            <p key={m.id} className="chat-message">
+            <p key={m.id} className="chat-message" style={{ "--seat-color": seatColor(m.playerId) } as CSSProperties}>
               <b>{m.name}</b>
               <span>{m.text}</span>
             </p>
@@ -53,7 +55,7 @@ export default function Chat({ room, title = "Salon" }: { room: RoomView; title?
           onChange={(e) => setText(e.target.value)}
         />
         <button className="chat-send" aria-label="Envoyer le message" disabled={!text.trim()}>
-          <ArrowUp size={16} strokeWidth={2} />
+          <ArrowUp size={16} strokeWidth={2.2} aria-hidden="true" />
         </button>
       </form>
     </section>

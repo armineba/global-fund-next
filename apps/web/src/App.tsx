@@ -77,7 +77,7 @@ function PawnPicker({ seat, value, onPick }: { seat: number; value: PawnId; onPi
             className={checked ? "selected" : ""}
             onClick={() => onPick(pawn.id)}
           >
-            <Pawn id={pawn.id} size={30} />
+            <Pawn id={pawn.id} size={32} />
           </button>
         );
       })}
@@ -107,6 +107,8 @@ function Home({ mode, onBack, onMode, onCast }: {
   const [createStep, setCreateStep] = useState<"funds" | "markets">(initialDraft.createStep);
   const [activeHuman, setActiveHuman] = useState(initialDraft.activeHuman);
   const [lastPawn, setLastPawn] = useState<PawnId | null>(null);
+  // Hovered or focused city card: the 3D globe previews it (presentation only, never saved).
+  const [previewZone, setPreviewZone] = useState<ZoneId | null>(null);
   const pending = useGameStore((s) => s.pending);
   const connected = useGameStore((s) => s.connected);
   useEffect(() => {
@@ -143,14 +145,16 @@ function Home({ mode, onBack, onMode, onCast }: {
   // The 3D backdrop shows the configured figurines, the last one touched in front.
   const seatPawns = seats.map((seat) => seat.pawn).join(",");
   const focus = mode === "join" ? joinPawn : lastPawn && seats.some((seat) => seat.pawn === lastPawn) ? lastPawn : (seats[0]?.pawn ?? null);
-  // While a starting market is being chosen, the globe turns to that city.
-  const focusZone = mode === "join" ? startingMarket : createStep === "markets" ? activeHumanSeat?.startingMarket ?? null : null;
+  // While a starting market is being chosen, the globe turns to that city (or to the card under the pointer).
+  const chosenZone = mode === "join" ? startingMarket : createStep === "markets" ? activeHumanSeat?.startingMarket ?? null : null;
+  const focusZone = chosenZone && previewZone ? previewZone : chosenZone;
+  useEffect(() => { setPreviewZone(null); }, [mode, createStep]);
   useEffect(() => {
     onCast({ pawns: mode === "join" ? [joinPawn] : (seatPawns.split(",") as PawnId[]), focusPawn: focus, focusZone });
   }, [mode, joinPawn, seatPawns, focus, focusZone, onCast]);
 
   const switchLink = (
-    <button type="button" className="gf-setup__switch" onClick={() => onMode(mode === "create" ? "join" : "create")}>
+    <button type="button" className="gf-btn gf-btn--quiet gf-btn--sm gf-setup__switch" onClick={() => onMode(mode === "create" ? "join" : "create")}>
       {mode === "create" ? "J’ai déjà un code d’invitation →" : "Créer une nouvelle partie →"}
     </button>
   );
@@ -159,7 +163,7 @@ function Home({ mode, onBack, onMode, onCast }: {
     <main className={`home-scene home-${mode}`}>
       <section className="gf-setup gf-glass" aria-labelledby="gf-setup-title">
         <div className="gf-setup__nav">
-          <button type="button" className="gf-setup__back" onClick={onBack}>← Retour au menu</button>
+          <button type="button" className="gf-btn gf-btn--quiet gf-btn--sm gf-setup__back" onClick={onBack}>← Retour au menu</button>
           {switchLink}
         </div>
 
@@ -264,6 +268,7 @@ function Home({ mode, onBack, onMode, onCast }: {
                     hideLegend
                     occupants={occupants}
                     onChange={(market) => update(activeHumanIndex, { startingMarket: market })}
+                    onPreview={setPreviewZone}
                   />
                 )}
                 {aiSeats.length > 0 && (
@@ -346,7 +351,7 @@ function Home({ mode, onBack, onMode, onCast }: {
                   </span>
                 </label>
               </div>
-              <StartingMarketPicker value={startingMarket} label="Votre place de départ" onChange={setStartingMarket} />
+              <StartingMarketPicker value={startingMarket} label="Votre place de départ" onChange={setStartingMarket} onPreview={setPreviewZone} />
             </div>
             <footer className="gf-setup__foot">
               <span className="gf-setup__reason" aria-live="polite">{!connected ? "Connexion au serveur…" : ""}</span>
@@ -385,16 +390,24 @@ async function copyText(text: string): Promise<boolean> {
   }
 }
 
-function LobbySeat({ player, index, you }: { player: RoomPlayer; index: number; you: boolean }) {
+function LobbySeat({ player, index, you, onSpotlight }: {
+  player: RoomPlayer;
+  index: number;
+  you: boolean;
+  /** Hovering a seat puts that figurine in the light on the 3D table (presentation only). */
+  onSpotlight: (pawn: PawnId | null) => void;
+}) {
   const state = player.ready ? "ready" : player.connected ? "waiting" : "absent";
   const status = player.ready ? "Prêt à investir" : player.connected ? "Connexion établie · en attente" : "En attente de votre invité";
   return (
     <article
       className={`lobby-player is-${state} ${index % 2 === 0 ? "is-left" : "is-right"}${you ? " you" : ""}`}
       style={{ "--seat-color": player.color, "--row": Math.floor(index / 2) + 1, "--i": index } as CSSProperties}
+      onPointerMove={() => onSpotlight(player.pawn)}
+      onPointerLeave={() => onSpotlight(null)}
     >
       <span className="lobby-player__pawn">
-        <Pawn id={player.pawn} color={player.color} size={60} />
+        <Pawn id={player.pawn} color={player.color} size={56} />
       </span>
       <div className="lobby-player__body">
         <div className="lobby-player__meta">
@@ -410,13 +423,15 @@ function LobbySeat({ player, index, you }: { player: RoomPlayer; index: number; 
   );
 }
 
-function Lobby({ room }: { room: RoomView }) {
+function Lobby({ room, onSpotlight }: { room: RoomView; onSpotlight: (pawn: PawnId | null) => void }) {
   const session = useGameStore((s) => s.session);
   const pending = useGameStore((s) => s.pending);
   const host = session?.playerId === room.hostId;
   const own = room.players.find((p) => p.id === session?.playerId);
   const allReady = room.players.every((p) => p.kind !== "remote" || (p.connected && p.ready));
   const [copied, setCopied] = useState(false);
+  // Leaving the lobby clears the spotlight (pointerleave never fires on unmount).
+  useEffect(() => () => onSpotlight(null), [onSpotlight]);
   useEffect(() => {
     if (!copied) return;
     const timer = window.setTimeout(() => setCopied(false), 2400);
@@ -428,13 +443,18 @@ function Lobby({ room }: { room: RoomView }) {
   return (
     <main className="lobby-scene" style={{ "--seat-rows": Math.ceil(room.players.length / 2) } as CSSProperties}>
       <header className="lobby-head">
-        <span className="gf-kicker">Salon privé</span>
         <h1 className="gf-display">Le capital vous attend.</h1>
+        <ul className="lobby-facts" aria-label="La partie">
+          <li><b>100 M€</b> par fonds</li>
+          <li><b>100</b> contextes</li>
+          <li><b>50</b> événements</li>
+          <li><b>52</b> semaines</li>
+        </ul>
         <div className="room-code">
           <small>CODE D’INVITATION</small>
           <b className="gf-mono">{room.roomId}</b>
-          <button type="button" className={`room-code__copy${copied ? " is-copied" : ""}`} onClick={copy} title="Copier le lien d’invitation">
-            {copied ? <Check size={14} strokeWidth={2.2} /> : <Copy size={14} />}
+          <button type="button" className={`gf-btn gf-btn--ghost gf-btn--sm room-code__copy${copied ? " is-copied" : ""}`} onClick={copy} title="Copier le lien d’invitation">
+            {copied ? <Check size={14} strokeWidth={2.2} aria-hidden="true" /> : <Copy size={14} strokeWidth={1.8} aria-hidden="true" />}
             {copied ? "Copié" : "Inviter"}
           </button>
           <span className="sr-only" aria-live="polite">{copied ? "Lien copié" : ""}</span>
@@ -442,15 +462,8 @@ function Lobby({ room }: { room: RoomView }) {
       </header>
 
       {room.players.map((player, index) => (
-        <LobbySeat key={player.id} player={player} index={index} you={player.id === session?.playerId} />
+        <LobbySeat key={player.id} player={player} index={index} you={player.id === session?.playerId} onSpotlight={onSpotlight} />
       ))}
-
-      <dl className="lobby-facts" aria-label="La partie">
-        <div><dt>par fonds</dt><dd>100 M€</dd></div>
-        <div><dt>Contextes</dt><dd>100</dd></div>
-        <div><dt>Événements</dt><dd>50</dd></div>
-        <div><dt>semaines</dt><dd>52</dd></div>
-      </dl>
 
       <div className="lobby-chat">
         <Chat room={room} />
@@ -458,7 +471,7 @@ function Lobby({ room }: { room: RoomView }) {
 
       <div className="lobby-dock">
         <div className="lobby-dock__actions">
-          <button type="button" className="gf-btn gf-btn--quiet gf-btn--lg" onClick={() => useGameStore.getState().reset()}>
+          <button type="button" className="gf-btn gf-btn--ghost gf-btn--lg lobby-dock__back" onClick={() => useGameStore.getState().reset()}>
             Retour à l’accueil
           </button>
           {host ? (
@@ -540,15 +553,11 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
         </div>
 
         <div className="settings-group">
-          <h3 className="settings-group__title">Animations</h3>
+          <h3 className="settings-group__title">Affichage</h3>
           <label className="settings-row">
             <span>Réduire les animations</span>
             <input type="checkbox" role="switch" className="shell-switch" checked={presentation.reducedMotion} onChange={(e) => setPresentationSettings({ reducedMotion: e.target.checked })} />
           </label>
-        </div>
-
-        <div className="settings-group">
-          <h3 className="settings-group__title">Qualité</h3>
           <label className="settings-row">
             <span>Qualité graphique</span>
             <select aria-label="Qualité graphique" value={presentation.quality} onChange={(e) => setPresentationSettings({ quality: e.target.value as "high" | "medium" | "low" })}>
@@ -600,7 +609,7 @@ function RulesDialog({ onClose }: { onClose: () => void }) {
         <ol className="rules-list">
           {RULES.map(([term, text]) => (
             <li key={term}>
-              <b>{term}</b>
+              <b>{term}</b>{" "}
               <span>{text}</span>
             </li>
           ))}
@@ -629,6 +638,7 @@ export default function App() {
   const [menuScreen, setMenuScreen] = useState<"menu" | "create" | "join">(new URLSearchParams(location.search).get("room") ? "join" : "menu");
   const [rules, setRules] = useState(false);
   const [cast, setCast] = useState<HeroCast>({ pawns: [], focusPawn: null, focusZone: null });
+  const [spotlight, setSpotlight] = useState<PawnId | null>(null);
   useEffect(() => {
     const gesture = () => void unlockAudio();
     window.addEventListener("pointerdown", gesture, { once: true });
@@ -639,7 +649,7 @@ export default function App() {
   const heroVariant = screen === "game" ? null : screen === "menu" ? "menu" : screen === "lobby" ? "lobby" : "setup";
   const ownPawn = room?.players.find((p) => p.id === session?.playerId)?.pawn ?? null;
   const castKey = screen === "lobby" && room ? room.players.map((p) => p.pawn).join(",") : heroVariant === "setup" ? cast.pawns.join(",") : "";
-  const castFocus = screen === "lobby" ? ownPawn : heroVariant === "setup" ? cast.focusPawn : null;
+  const castFocus = screen === "lobby" ? (spotlight ?? ownPawn) : heroVariant === "setup" ? cast.focusPawn : null;
   // Stable identity: the persistent 3D backdrop only reacts to real cast changes.
   const heroPawns = useMemo(() => (castKey ? (castKey.split(",") as PawnId[]) : undefined), [castKey]);
 
@@ -725,7 +735,7 @@ export default function App() {
           <Home mode={menuScreen} onBack={() => setMenuScreen("menu")} onMode={setMenuScreen} onCast={setCast} />
         )
       ) : room.status === "lobby" ? (
-        <Lobby room={room} />
+        <Lobby room={room} onSpotlight={setSpotlight} />
       ) : (
         <Suspense
           fallback={
